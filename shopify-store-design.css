@@ -76,14 +76,18 @@ a:focus-visible {
 .brand-mark {
   width: 34px;
   height: 34px;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
   background: var(--green-dark);
-  color: var(--white);
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 700;
+}
+
+.brand-mark img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
 }
 
 nav {
