@@ -18,7 +18,7 @@ Open `index.html` in any modern browser.
 
 ## Before publishing
 
-- Confirm `hello@jasonfung.studio` is the correct contact address or replace it in `index.html`.
+- Confirm `cptjason.jf@gmail.com` is the correct contact address or replace it in `index.html`.
 - Connect the footer social links if they are added later.
 - Add an approved social preview image and corresponding Open Graph image tag.
 - Test the final site on a real phone and desktop browser.
