@@ -261,8 +261,10 @@
   /* Testimonial: quote gently fades up */
   .section-reveal--testimonial:not(.is-in-view) .testimonial-heading{opacity:0;transform:translateY(16px)}
   .section-reveal--testimonial:not(.is-in-view) .testimonial-card{opacity:0;transform:translateY(22px)}
+  .section-reveal--testimonial:not(.is-in-view) .testimonial-preview{opacity:0;transform:translateY(22px)}
   .section-reveal--testimonial.is-in-view .testimonial-heading{opacity:1;transform:none;transition:opacity .75s ease,transform .75s ease}
   .section-reveal--testimonial.is-in-view .testimonial-card{opacity:1;transform:none;transition:opacity .85s ease .12s,transform .85s ease .12s}
+  .section-reveal--testimonial.is-in-view .testimonial-preview{opacity:1;transform:none;transition:opacity .85s ease .2s,transform .85s ease .2s}
 
   /* Audit: CTA section draws attention inward */
   .section-reveal--audit:not(.is-in-view)>div:first-child{opacity:0;transform:translateX(-20px)}
