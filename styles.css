@@ -127,9 +127,11 @@
 .audit-section>div:last-child>p:first-child{margin:0;color:#d8d7d2;font-size:clamp(19px,1.65vw,24px);line-height:1.55}
 .audit-section .audit-note{margin:28px 0 32px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:#b8b7b2;font-size:clamp(17px,1.35vw,20px);line-height:1.5}
 .audit-section .light-cta{width:100%;max-width:420px;min-height:64px;padding:0 34px;gap:40px;font-size:clamp(14px,1.1vw,16px)}
-.audit-section .cta-price{display:grid;grid-template-columns:1fr;gap:12px;color:#e9e6dc}
-.audit-section .cta-price p{margin:0;display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:clamp(16px,1.15vw,19px);font-weight:600;line-height:1.35}
+.audit-section .cta-price{display:grid;grid-template-columns:1fr;gap:14px;color:#e9e6dc}
+.audit-section .cta-price p{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;font-size:clamp(16px,1.15vw,19px);font-weight:600;line-height:1.35}
 .audit-section .cta-price span{display:block;color:#989891;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.audit-section .cta-price .cta-price__category{margin-top:18px;padding-top:14px;display:block;border-top:1px solid rgba(255,255,255,.12);color:#c8c0ae;font-family:var(--serif);font-size:17px;font-style:italic;font-weight:400;letter-spacing:0;line-height:1.1;text-transform:none}
+.audit-section .cta-price .cta-price__category:first-child{margin-top:0}
 @media(max-width:850px){.audit-section{grid-template-columns:1fr;gap:48px}}
 @media(max-width:640px){.audit-section{min-height:0;padding:60px 24px;gap:36px}.audit-section h2{font-size:48px}.audit-section>div:last-child>p:first-child{font-size:18px;line-height:1.5}.audit-section .audit-note{margin:22px 0 28px;font-size:16px}.audit-section .cta-price p{display:block}.audit-section .cta-price span{margin-bottom:4px}.audit-section .light-cta{max-width:none;width:100%}}
 .testimonial-section{margin:0 27px;padding:clamp(72px,8vw,100px) clamp(48px,6vw,80px);display:grid;grid-template-columns:minmax(360px,1fr) minmax(340px,.86fr);gap:clamp(36px,5vw,72px);align-items:start;border:1px solid #454642;border-top:0;background:#0a0b0a}

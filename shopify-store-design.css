@@ -420,7 +420,7 @@ h1 em, h2 em {
   margin-bottom: 30px;
   padding: 18px 20px;
   display: grid;
-  gap: 12px;
+  gap: 14px;
   border: 1px solid #d6e1da;
   border-radius: 8px;
   background: rgba(255, 255, 255, .58);
@@ -430,9 +430,10 @@ h1 em, h2 em {
 .audit-card .cta-price p {
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 24px;
+  gap: 6px 24px;
   font-size: clamp(16px, 1.25vw, 19px);
   font-weight: 700;
   line-height: 1.35;
@@ -445,6 +446,23 @@ h1 em, h2 em {
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+
+.audit-card .cta-price .cta-price__category {
+  margin-top: 18px;
+  padding-top: 14px;
+  display: block;
+  border-top: 1px solid #d6e1da;
+  color: #536059;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.audit-card .cta-price .cta-price__category:first-child { margin-top: 0; }
 
 .audit-detail {
   padding: 44px;
