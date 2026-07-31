@@ -44,8 +44,8 @@ if (!prefersReducedMotion) {
 let activeIndex = 0;
 const tabs = [...document.querySelectorAll('.work-tab')];
 const workTabs = document.querySelector('.work-tabs');
-const workSection = document.querySelector('.work-section');
 const caseImage = document.querySelector('[data-case-image]');
+const workSection = caseImage?.closest('.section-reveal--work, .work-section') || document.querySelector('.work-section');
 const caseImageEl = document.querySelector('[data-case-image-img]');
 const caseBeforeImageEl = document.querySelector('[data-case-before-img]');
 const beforeAfterRange = document.querySelector('[data-before-after-range]');

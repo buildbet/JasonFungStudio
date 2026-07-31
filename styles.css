@@ -151,7 +151,6 @@
 .testimonial-carousel::before{left:0;background:linear-gradient(90deg,#0a0b0a 0,rgba(10,11,10,.72) 30%,transparent 100%)}
 .testimonial-carousel::after{right:0;background:linear-gradient(270deg,#0a0b0a 0,rgba(10,11,10,.72) 30%,transparent 100%)}
 .testimonial-carousel-track{display:flex;align-items:stretch;width:max-content;gap:18px;animation:testimonial-reel 44s linear infinite}
-.testimonial-carousel:hover .testimonial-carousel-track{animation-play-state:paused}
 .testimonial-carousel-set{display:flex;align-items:stretch;gap:18px}
 .testimonial-carousel img{width:clamp(210px,20vw,300px);height:100%;display:block;flex:0 0 auto;object-fit:cover;object-position:center top;border:1px solid rgba(255,255,255,.16);border-radius:20px;box-shadow:0 26px 70px rgba(0,0,0,.34);filter:saturate(.98) contrast(1.02)}
 @keyframes testimonial-reel{to{transform:translateX(calc(-50% - 9px))}}

@@ -42,7 +42,6 @@
       .growth-heading .section-index{padding-top:10px}
       .growth-copy{max-width:800px;margin:48px auto 0}
       .growth-copy>p{margin:0 0 24px;color:#d0cec7;font-size:clamp(18px,1.65vw,24px);line-height:1.58}
-      .growth-copy>.fit-note{margin:18px 0 0 32px}
       .growth-section--paper .growth-copy>p{color:#383936}
       .proof-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0a0b0a}
       .proof-strip article{min-height:155px;padding:32px clamp(22px,3vw,42px);border-right:1px solid var(--line)}
@@ -50,8 +49,6 @@
       .proof-strip strong{display:block;margin-bottom:16px;color:#fff;font-family:var(--serif);font-size:clamp(30px,3vw,46px);font-weight:400;line-height:1}
       .proof-strip span{display:block;max-width:210px;color:#aaa9a3;font-size:12px;line-height:1.55}
       .brand-marquee{padding:30px 0;border-bottom:1px solid var(--line);overflow:hidden;background:#080908}
-      .brand-marquee__label{margin:0 0 22px;padding:0 clamp(28px,6vw,82px);display:grid;gap:6px;justify-items:center;color:#aaa9a3;font-size:12px;font-weight:600;letter-spacing:.08em;line-height:1.4;text-align:center;text-transform:uppercase}
-      .brand-marquee__label span{color:#f0d28a;letter-spacing:.08em}
       .brand-marquee__row{--duration:38s;--offset:0px;--fade:.42;margin:8px 0;display:flex;overflow:hidden;opacity:var(--fade);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
       .brand-marquee__row:nth-child(2){--duration:46s;--offset:-140px;--fade:.62}
       .brand-marquee__row:nth-child(3){--duration:34s;--offset:-260px;--fade:.36}
@@ -64,22 +61,13 @@
       .brand-marquee .brand-style--script{font-family:"Caveat",cursive;font-size:clamp(24px,2.4vw,38px);font-weight:600;letter-spacing:0}
       .brand-marquee .brand-style--wide{font-family:var(--sans);font-size:clamp(12px,1.1vw,16px);font-weight:600;letter-spacing:.18em;text-transform:uppercase}
       .brand-marquee .brand-style--italic{font-family:var(--serif);font-size:clamp(21px,2vw,32px);font-style:italic;font-weight:400;letter-spacing:0}
-      .hero-stat{display:block;min-height:1.7em}
-      .hero-stat.is-flickering{animation:stat-flicker .7s steps(2,end)}
       @keyframes brand-marquee{to{transform:translateX(calc(var(--offset) - 50%))}}
-      @keyframes stat-flicker{0%,19%,43%,71%,100%{opacity:1}10%,34%,58%{opacity:.38}}
       .plain-list{margin:34px 0 0;padding:0;display:grid;gap:13px;list-style:none;border-top:1px solid rgba(255,255,255,.13)}
       .plain-list li{padding:14px 0 0;display:grid;grid-template-columns:20px minmax(0,1fr);gap:12px;color:#d7d3ca;font-size:clamp(17px,1.35vw,20px);line-height:1.45}
       .plain-list li::before{color:var(--warm);content:"\2713"}
-      .plain-list--negative li::before{color:#9b9790;content:"\00d7"}
-      .contrast-list{max-width:760px;margin:34px auto 0;padding:0;display:grid;gap:12px;list-style:none}
-      .contrast-list li{position:relative;padding-left:32px;color:#383936;font-size:clamp(17px,1.35vw,20px);line-height:1.45}
-      .contrast-list li::before{position:absolute;left:0;top:.12em;width:20px;height:20px;display:grid;place-content:center;border-radius:50%;background:rgba(12,13,12,.08);color:#74746e;font-size:13px;font-weight:700;content:"\00d7"}
-      .contrast-list li:last-child::before{background:#11120f;color:#f3efe4;content:"\2713"}
       .list-label{margin:42px 0 0!important;color:#f3efe6!important;font-size:12px!important;font-weight:700;letter-spacing:.12em;line-height:1!important;text-transform:uppercase}
       .growth-section--paper .plain-list{border-color:rgba(12,13,12,.18)}
       .growth-section--paper .plain-list li{color:#383936}
-      .growth-section--paper .list-label{color:#383936!important}
       .wrong-way{max-width:1050px;margin:58px auto 0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.14);border-left:1px solid rgba(255,255,255,.1)}
       .wrong-way-intro{max-width:760px;margin:42px auto 0}
       .wrong-way-intro p{margin:0 0 18px;color:#383936;font-size:clamp(18px,1.55vw,23px);line-height:1.52}
@@ -95,35 +83,24 @@
       .process-ladder{max-width:620px;margin:54px auto 0;padding:0;display:grid;justify-items:center;list-style:none;text-align:center}
       .process-ladder li{width:min(100%,520px);padding:24px 30px;border-top:1px solid rgba(12,13,12,.18);border-bottom:1px solid rgba(12,13,12,.12);font-family:var(--serif);font-size:clamp(31px,3vw,44px);line-height:1}
       .process-ladder li+li::before{height:46px;display:grid;place-items:center;color:#777872;font-family:var(--sans);font-size:26px;content:"\2193"}
+      .system-ladder{max-width:540px}
+      .system-ladder li{border-color:rgba(255,255,255,.15);color:#f0ede5}
+      .system-ladder li+li::before{color:#8c8b86}
       .change-table{max-width:1040px;margin:54px auto 0;border-top:1px solid rgba(12,13,12,.22)}
       .change-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(12,13,12,.16)}
-      .change-row span{padding:24px;color:#4b4c47;font-size:clamp(16px,1.35vw,19px);line-height:1.7}
+      .change-row span{padding:20px 24px;color:#4b4c47;font-size:clamp(16px,1.35vw,19px);line-height:1.45}
       .change-row span+span{border-left:1px solid rgba(12,13,12,.16);color:#111}
-      .change-row span strong{display:block;margin-bottom:16px;color:#777872;font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1;text-transform:uppercase}
+      .change-row:first-child span{color:#777872;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
       .change-row span::before{display:none}
-      #before-after .change-table{border-color:rgba(255,255,255,.16)}
-      #before-after .change-row{border-color:rgba(255,255,255,.12)}
-      #before-after .change-row span{color:#d7d3ca}
-      #before-after .change-row span+span{border-color:rgba(255,255,255,.12);color:#f4f0e8}
-      #before-after .change-row span strong{color:#c8c0ae}
-      #before-after .change-row ul{margin:0;padding:0;display:grid;gap:12px;list-style:none}
-      #before-after .change-row li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px}
-      #before-after .change-row li::before{color:#9b9790;font-weight:700;content:"\00d7"}
-      #before-after .change-row span+span li::before{color:#c8c0ae;content:"\2713"}
       .fit-checks{max-width:760px;margin:48px auto 0}
       .fit-checks p{margin:26px 0 0;color:#c8c0ae;font-family:var(--serif);font-size:clamp(28px,2.8vw,42px);line-height:1.14}
-      .work-grid{margin:56px 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
-      .work-card{min-height:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:6px;background:#0c0d0c}
+      .work-grid{margin:56px 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.16);border-left:1px solid rgba(255,255,255,.1)}
+      .work-card{min-height:0;display:flex;flex-direction:column;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);background:#0c0d0c}
       .work-card img{width:100%;aspect-ratio:3/4;display:block;object-fit:cover;border-bottom:1px solid rgba(255,255,255,.1)}
       .work-card div{padding:24px}
       .work-card span{display:block;margin-bottom:17px;color:var(--warm);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
       .work-card h3{margin:0 0 16px;font-family:var(--serif);font-size:clamp(28px,2.55vw,38px);font-weight:400;line-height:1}
       .work-card p{margin:0;color:#aaa9a3;font-size:13px;line-height:1.55}
-      .growth-section--paper .work-card{border-color:rgba(12,13,12,.14);background:rgba(12,13,12,.035)}
-      .growth-section--paper .work-card img{border-color:rgba(12,13,12,.14)}
-      .growth-section--paper .work-card span{color:#766c5c}
-      .growth-section--paper .work-card h3{color:#11120f}
-      .growth-section--paper .work-card p{color:#454641}
       .system-grid{--orbit-size:min(620px,58vw);position:relative;width:var(--orbit-size);height:var(--orbit-size);margin:64px auto 0;border:1px solid rgba(255,255,255,.14);border-radius:50%;background:radial-gradient(circle at center,rgba(235,230,218,.08),transparent 37%),#090a09}
       .system-grid::before{position:absolute;inset:18%;border:1px solid rgba(255,255,255,.1);border-radius:50%;content:""}
       .system-grid::after{position:absolute;top:50%;left:50%;width:clamp(170px,22vw,250px);height:clamp(170px,22vw,250px);display:grid;place-items:center;padding:24px;border:1px solid rgba(255,255,255,.16);border-radius:50%;background:#10110f;color:#f1ede3;font-family:var(--serif);font-size:clamp(31px,3vw,44px);line-height:1;text-align:center;transform:translate(-50%,-50%);content:"Connected\A Commerce\A System";white-space:pre}
@@ -148,38 +125,8 @@
       .capability-groups{position:relative;z-index:1;margin:48px 0 0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(12,13,12,.22);border-left:1px solid rgba(12,13,12,.18)}
       .capability-group{padding:28px;border-right:1px solid rgba(12,13,12,.18);border-bottom:1px solid rgba(12,13,12,.18)}
       .capability-group h3{margin:0 0 22px;font-family:var(--serif);font-size:30px;font-weight:400}
-      .capability-group p{margin:0;color:#454641;font-size:14px;line-height:1.55}
       .capability-group ul{margin:0;padding:0;list-style:none}
       .capability-group li{padding:7px 0;color:#454641;font-size:13px}
-      .capability-groups.sprint-timeline{max-width:900px;margin:54px auto 0;display:grid;grid-template-columns:1fr;border:0}
-      .sprint-timeline::before{position:absolute;top:8px;bottom:8px;left:18px;width:1px;background:rgba(12,13,12,.2);content:""}
-      .sprint-timeline .sprint-week{position:relative;padding:0 0 38px 66px;border:0;display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;align-items:start}
-      .sprint-timeline .sprint-week:last-child{padding-bottom:0}
-      .sprint-timeline .sprint-week::before{position:absolute;top:0;left:0;width:36px;height:36px;display:grid;place-content:center;border:1px solid rgba(12,13,12,.24);border-radius:50%;background:#e8e3d6;color:#11120f;font-size:13px;font-weight:700;content:attr(data-step)}
-      .sprint-timeline .sprint-week h3{margin:2px 0 0;font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.14em;line-height:1.2;text-transform:uppercase}
-      .sprint-timeline .sprint-week h4{margin:0 0 8px;font-family:var(--serif);font-size:clamp(30px,3vw,44px);font-weight:400;line-height:1}
-      .sprint-timeline .sprint-week p{max-width:520px;margin:0;color:#454641;font-size:16px;line-height:1.5}
-      .growth-section:not(.growth-section--paper) .sprint-timeline::before{background:rgba(255,255,255,.16)}
-      .growth-section:not(.growth-section--paper) .sprint-timeline .sprint-week::before{border-color:rgba(255,255,255,.24);background:#10110f;color:#f3efe4}
-      .research-proof{max-width:900px;margin:52px auto 0;padding-top:34px;border-top:1px solid rgba(255,255,255,.14)}
-      .research-proof p{max-width:760px;margin:0 0 22px;color:#d0cec7;font-size:clamp(18px,1.55vw,23px);line-height:1.58}
-      .research-proof a{display:inline-flex;align-items:center;gap:10px;color:#f1ede3;font-size:14px;font-weight:700;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
-      .research-proof a:hover{color:#c8c0ae}
-      .growth-section--paper .research-proof{border-color:rgba(12,13,12,.18)}
-      .growth-section--paper .research-proof p{color:#383936}
-      .growth-section--paper .research-proof a{color:#11120f}
-      .growth-section--paper .research-proof a:hover{color:#6f6758}
-      .growth-section:not(.growth-section--paper) .capability-groups{border-color:rgba(255,255,255,.14)}
-      .growth-section:not(.growth-section--paper) .capability-group{border-color:rgba(255,255,255,.12)}
-      .growth-section:not(.growth-section--paper) .capability-group p{color:#aaa9a3}
-      .growth-section:not(.growth-section--paper) .capability-group li{color:#aaa9a3}
-      .comparison-groups .capability-group li{position:relative;padding-left:24px}
-      .comparison-groups .capability-group li::before{position:absolute;left:0;top:7px;width:15px;height:15px;display:grid;place-content:center;border-radius:50%;font-size:11px;font-weight:700;line-height:1}
-      .comparison-groups .comparison-option--risk li::before{background:rgba(12,13,12,.08);color:#74746e;content:"\00d7"}
-      .comparison-groups .comparison-option--sprint{background:rgba(200,192,174,.2)}
-      .comparison-groups .comparison-option--sprint h3{color:#11120f}
-      .comparison-groups .comparison-option--sprint li{color:#282924}
-      .comparison-groups .comparison-option--sprint li::before{background:#11120f;color:#f3efe4;content:"\2713"}
       .leave-list{max-width:920px;margin:54px auto 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);list-style:none;border-top:1px solid rgba(255,255,255,.14);border-left:1px solid rgba(255,255,255,.1)}
       .leave-list li{min-height:120px;padding:26px;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:30px 1fr;gap:16px;color:#e8e5dc;font-family:var(--serif);font-size:clamp(25px,2.35vw,36px);line-height:1.08}
       .leave-list li::before{width:30px;height:30px;margin-top:.06em;display:grid;place-content:center;border:1px solid rgba(200,192,174,.48);border-radius:50%;color:#c8c0ae;font-family:var(--sans);font-size:16px;font-weight:700;line-height:1;content:"✓"}
@@ -189,7 +136,7 @@
       .founder-panel__image img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;filter:saturate(.95) contrast(1.04)}
       .founder-note{align-self:center;max-width:760px;margin:0}
       .founder-note>p{max-width:760px;margin:0 0 22px;color:#d0cec7;font-size:clamp(18px,1.65vw,24px);line-height:1.58}
-      .founder-note__closing{max-width:720px;margin:32px 0 0!important;color:#c8c0ae!important;font-family:var(--serif);font-size:clamp(26px,2.35vw,36px)!important;line-height:1.08!important}
+      .founder-note__closing{max-width:660px;margin:32px 0 0!important;color:#c8c0ae!important;font-family:var(--serif);font-size:clamp(27px,2.6vw,40px)!important;line-height:1.08!important}
       .faq-list{max-width:900px;margin:55px auto 0;border-top:1px solid var(--line)}
       .faq-list details{border-bottom:1px solid var(--line)}
       .faq-list summary{padding:24px 46px 24px 0;position:relative;cursor:pointer;color:#eeeae0;font-family:var(--serif);font-size:clamp(22px,2.2vw,31px);list-style:none}
@@ -256,13 +203,6 @@
         .founder-panel{grid-template-columns:1fr;gap:34px}
         .founder-panel__image{min-height:420px}
         .wrong-way,.team-grid,.work-grid,.capability-groups,.wrong-way-list{grid-template-columns:1fr}
-        .capability-groups.sprint-timeline{margin-top:38px}
-        .sprint-timeline::before{left:17px}
-        .sprint-timeline .sprint-week{padding:0 0 32px 52px;display:block}
-        .sprint-timeline .sprint-week::before{width:34px;height:34px}
-        .sprint-timeline .sprint-week h3{margin:0 0 14px;font-size:13px}
-        .sprint-timeline .sprint-week h4{font-size:clamp(29px,8vw,38px)}
-        .sprint-timeline .sprint-week p{font-size:15px}
         .system-grid{--orbit-size:min(360px,88vw);margin-top:46px}
         .system-grid::before{inset:20%}
         .system-grid::after{width:118px;height:118px;padding:16px;font-size:22px}
@@ -271,16 +211,10 @@
         .growth-copy{margin-top:34px}
         .change-table{margin-top:36px;border-top:0;display:grid;gap:16px}
         .change-row{grid-template-columns:1fr;border:1px solid rgba(12,13,12,.14);background:rgba(255,255,255,.18)}
+        .change-row:first-child{display:none}
         .change-row span{padding:16px 18px 17px;font-size:16px}
-        .change-row span::before{display:none}
+        .change-row span::before{display:block;margin-bottom:7px;color:#777872;font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1;text-transform:uppercase;content:attr(data-label)}
         .change-row span+span{border-left:0;border-top:1px solid rgba(12,13,12,.1)}
-        #before-after .change-table{gap:0;border:1px solid rgba(255,255,255,.14)}
-        #before-after .change-row{grid-template-columns:1fr 1fr;border:0;background:#10110f}
-        #before-after .change-row span{padding:16px 14px;font-size:13px;line-height:1.55}
-        #before-after .change-row span+span{border-top:0;border-left:1px solid rgba(255,255,255,.12)}
-        #before-after .change-row span strong{margin-bottom:12px;font-size:10px}
-        #before-after .change-row ul{gap:10px}
-        #before-after .change-row li{grid-template-columns:16px minmax(0,1fr);gap:7px}
         .work-card{min-height:0}
         .growth-page .about-section{grid-template-columns:1fr}
         .growth-page .audit-section{min-height:0}
@@ -299,9 +233,9 @@
         <a class="brand" href="getstarted3.html" aria-label="Jason Fung Studio home"><img class="brand-logo" src="assets/jf-logo-white.png" alt="" width="28" height="28" />Jason Fung Studio</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Menu</span></button>
         <nav id="site-nav" aria-label="Primary navigation">
-          <a href="#problem">Problem</a><a href="#sprint">The Growth Sprint</a><a href="#founder">About</a><a href="#faq">FAQ</a>
+          <a href="#problem">Problem</a><a href="#sprint">Growth Sprint</a><a href="#founder">Founder</a><a href="#case-studies">Work</a><a href="#faq">FAQ</a>
         </nav>
-        <a class="header-cta" href="#apply">Apply for a Growth Sprint <span>&nearr;</span></a>
+        <a class="header-cta" href="book.html">Apply for a Growth Sprint <span>&nearr;</span></a>
       </header>
 
       <main id="main">
@@ -309,10 +243,9 @@
           <img src="assets/sera-hero.png" alt="Founder holding a skincare product in a premium campaign setting" />
           <div class="hero-shade"></div>
           <div class="hero-copy">
-            <p class="kicker">01 / Hero</p>
             <h1 id="hero-title"><span class="hero-title-line hero-title-desktop">Do you really need a $300K<br class="hero-title-break" /> ecommerce team yet?</span><span class="hero-title-line hero-title-mobile">Do you really need a $300K ecommerce team yet?</span></h1>
-            <p class="hero-lede hero-lede-desktop">Probably not. Upgrade your Shopify business before you hire a team.</p>
-            <p class="hero-lede hero-lede-mobile">Probably not. Upgrade your Shopify business before you hire a team.</p>
+            <p class="hero-lede hero-lede-desktop">Probably not. You need the right Shopify growth system first.</p>
+            <p class="hero-lede hero-lede-mobile">Probably not. You need the right Shopify growth system first.</p>
             <figure class="hero-banner testimonial-preview testimonial-carousel" aria-label="Rotating client creative examples">
               <div class="testimonial-carousel-track">
                 <div class="testimonial-carousel-set">
@@ -333,21 +266,16 @@
                 </div>
               </div>
             </figure>
-            <p class="hero-support">A founder-led 30-day sprint that connects your store, offer, creative and customer journey before you hire a complete internal team.</p>
+            <p class="hero-support">For founder-led product brands that have outgrown DIY but aren't ready for a full ecommerce department.</p>
             <div class="hero-actions">
-              <a class="light-cta" href="#apply"><span class="cta-label--desktop">Apply for a Growth Sprint</span><span class="cta-label--mobile">Apply for a Sprint</span> <span>&nearr;</span></a>
-              <a class="text-cta" href="#case-studies">View Transformations <span>&rarr;</span></a>
+              <a class="light-cta" href="book.html"><span class="cta-label--desktop">Apply for a Growth Sprint</span><span class="cta-label--mobile">Apply for a Sprint</span> <span>&nearr;</span></a>
+              <a class="text-cta" href="#case-studies">View Selected Work <span>&rarr;</span></a>
             </div>
-            <p class="hero-sprint-note" aria-label="Starting from $3,000. 30-Day Sprint. 20+ Growing Brands.">
-              <span class="hero-stat" data-prefix="Starting from $" data-count="3000">Starting from $3,000</span>
-              <span class="hero-stat" data-count="30" data-suffix="-Day Sprint">30-Day Sprint</span>
-              <span class="hero-stat" data-count="20" data-suffix="+ Growing Brands">20+ Growing Brands</span>
-            </p>
+            <p class="hero-sprint-note">30-Day Sprint<br />20+ Growing Brands<br />Founder-led</p>
           </div>
         </section>
 
         <section class="brand-marquee section-reveal" aria-label="Brand names">
-          <p class="brand-marquee__label"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>20+ growing brands supported</p>
           <div class="brand-marquee__row">
             <div class="brand-marquee__track">
               <span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">Atb Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span>
@@ -366,182 +294,64 @@
               <span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--script">Glowani</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--wide">Society777</span><span class="brand-style--sans">Blixed</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--script">Amourlyah Beauty</span>
             </div>
           </div>
-        </section>
-
-        <section class="growth-section growth-section--paper section-reveal" id="positioning" aria-labelledby="positioning-title">
-          <div class="growth-heading">
-            <p class="section-index">02 / Why Us</p>
-            <h2 id="positioning-title">Why founders hire us before they hire a team.</h2>
-          </div>
-          <div class="growth-copy">
-            <p>Most brands do not need more disconnected execution. They need the buying experience, priorities and system fixed first.</p>
-          </div>
-          <ul class="contrast-list">
-            <li>Before hiring multiple roles.</li>
-            <li>Before managing disconnected freelancers.</li>
-            <li>Before committing to a larger agency retainer.</li>
-            <li>One prioritized system your future team can inherit.</li>
-          </ul>
         </section>
 
         <section class="growth-section section-reveal" id="problem" aria-labelledby="problem-title">
           <div class="growth-heading">
-            <p class="section-index">03 / The Problem</p>
+            <p class="section-index">02 / The Problem</p>
             <h2 id="problem-title">Your product has grown.<br />Your ecommerce system hasn't.</h2>
           </div>
           <div class="growth-copy">
+            <p>You've invested in better products, branding, photography and marketing.</p>
+            <p>But customers still land on pages that don't carry that same quality.</p>
+            <p>Instead of building momentum, every launch feels like starting over.</p>
             <p class="list-label">Common signs</p>
             <ul class="plain-list">
-              <li>Your store does not match your product quality.</li>
-              <li>Customers are interested but hesitate to buy.</li>
-              <li>Your campaigns, pages and offers feel disconnected.</li>
-              <li>Every launch starts from scratch.</li>
-              <li>Different people improve different pieces.</li>
-              <li>You still coordinate every page, promotion and decision.</li>
+              <li>Homepage doesn't match your ads</li>
+              <li>Product pages create hesitation</li>
+              <li>Every launch feels different</li>
+              <li>Freelancers improve separate pieces</li>
+              <li>You're coordinating everything yourself</li>
             </ul>
-          </div>
-        </section>
-
-        <section class="growth-section growth-section--paper section-reveal" id="cost" aria-labelledby="cost-title">
-          <div class="growth-heading">
-            <p class="section-index">04 / The Cost of Waiting</p>
-            <h2 id="cost-title">Becomes expensive over time.</h2>
-          </div>
-          <div class="growth-copy">
-            <p>Every new campaign, freelancer and tool adds more to manage.</p>
-            <p>Without a clear system, you keep paying to fix symptoms while staying responsible for connecting every moving part.</p>
-          </div>
-        </section>
-
-        <section class="growth-section section-reveal" id="before-after" aria-labelledby="before-after-title">
-          <div class="growth-heading">
-            <p class="section-index">05 / Before and After</p>
-            <h2 id="before-after-title">From disconnected execution to clarity.</h2>
-          </div>
-          <div class="change-table" aria-label="Before and after Growth Sprint">
-            <div class="change-row">
-              <span data-label="Before"><strong>Before</strong><ul><li>Mixed messages across ads, pages and emails.</li><li>Customers hesitate before buying.</li><li>Freelancers work in separate lanes.</li><li>Every launch starts from scratch.</li><li>No clear record of what worked.</li></ul></span>
-              <span data-label="After"><strong>After</strong><ul><li>One clear path to purchase.</li><li>Campaign traffic lands on aligned pages.</li><li>Specialists work from shared priorities.</li><li>Launches follow a repeatable process.</li><li>Your future team inherits clear direction.</li></ul></span>
-            </div>
           </div>
         </section>
 
         <section class="growth-section growth-section--paper section-reveal" id="sprint" aria-labelledby="sprint-title">
           <div class="growth-heading">
-            <p class="section-index">06 / The Solution</p>
+            <p class="section-index">03 / The Solution</p>
             <h2 id="sprint-title">Build the system before the team.</h2>
           </div>
           <div class="wrong-way-intro">
-            <p>Growing ecommerce brands eventually need specialists across the customer journey.</p>
+            <p>Most growing brands eventually need:</p>
             <ul class="wrong-way-list">
-              <li>Design.</li>
-              <li>Development.</li>
-              <li>Media.</li>
+              <li>Designer.</li>
+              <li>Media Buyer.</li>
               <li>Email.</li>
+              <li>Developer.</li>
               <li>CRO.</li>
-              <li>Strategy.</li>
               <li>Analytics.</li>
+              <li>Creative.</li>
+              <li>Project Manager.</li>
             </ul>
-            <p>Hire too early and you add roles before the system is ready. The Growth Sprint builds the system first.</p>
+            <p>But hiring all of them too early creates complexity before you have the foundation.</p>
+            <p>The Growth Sprint builds that foundation first.</p>
           </div>
-        </section>
-
-        <section class="growth-section section-reveal" id="why-it-works" aria-labelledby="why-it-works-title">
-          <div class="growth-heading">
-            <p class="section-index">07 / Why It Works</p>
-            <h2 id="why-it-works-title">Independent research.<br />Proven patterns.</h2>
-          </div>
-          <div class="research-proof">
-            <p>The Growth Sprint is built from independent research into high-performing ecommerce stores, offers, landing pages, ads, product pages and customer journeys.</p>
-            <p>Instead of guessing what looks good, the Sprint applies proven conversion patterns to your product, audience and stage of growth.</p>
-            <a href="#case-studies">See the research in practice <span>&rarr;</span></a>
-          </div>
-        </section>
-
-        <section class="growth-section growth-section--paper section-reveal" id="includes" aria-labelledby="includes-title">
-          <div class="growth-heading">
-            <p class="section-index">08 / What the Growth Sprint Can Include</p>
-            <h2 id="includes-title">The exact scope is prescribed after diagnosis.</h2>
-          </div>
+          <ol class="process-ladder" aria-label="Growth Sprint process">
+            <li>Diagnose</li>
+            <li>Prioritize</li>
+            <li>Build</li>
+            <li>Connect</li>
+            <li>Launch</li>
+            <li>Handoff</li>
+          </ol>
           <div class="growth-copy">
-            <p>The Sprint is not a package of random deliverables. It focuses on the work most likely to improve how customers experience and buy from your brand.</p>
-          </div>
-          <div class="capability-groups" aria-label="Possible Growth Sprint scope">
-            <article class="capability-group"><h3>Shopify Store</h3><p>Improve the pages and mobile journey that shape buying decisions.</p></article>
-            <article class="capability-group"><h3>Offer</h3><p>Clarify positioning, incentives and how products are presented.</p></article>
-            <article class="capability-group"><h3>Creative</h3><p>Align campaign direction, product storytelling and testing ideas.</p></article>
-            <article class="capability-group"><h3>Landing Pages</h3><p>Connect campaign messages to focused buying paths.</p></article>
-            <article class="capability-group"><h3>Email and SMS</h3><p>Bring key retention and launch messages into the same journey.</p></article>
-            <article class="capability-group"><h3>Launch System</h3><p>Set priorities, tracking, documentation and next steps.</p></article>
-          </div>
-          <div class="growth-copy">
-            <p>The Sprint is prioritized around the highest-leverage problems. It is not a promise to rebuild every channel in 30 days.</p>
-          </div>
-        </section>
-
-        <section class="growth-section section-reveal" id="process" aria-labelledby="process-title">
-          <div class="growth-heading">
-            <p class="section-index">09 / The 30-Day Process</p>
-            <h2 id="process-title">Four weeks. One focused system.</h2>
-          </div>
-          <div class="capability-groups sprint-timeline" aria-label="30-day Growth Sprint process">
-            <article class="capability-group sprint-week" data-step="1"><h3>Week 1</h3><div><h4>Diagnose</h4><p>Understand what's actually limiting growth.</p></div></article>
-            <article class="capability-group sprint-week" data-step="2"><h3>Week 2</h3><div><h4>Build</h4><p>Improve the highest-impact parts of the customer journey.</p></div></article>
-            <article class="capability-group sprint-week" data-step="3"><h3>Week 3</h3><div><h4>Connect</h4><p>Align your store, creative and campaigns.</p></div></article>
-            <article class="capability-group sprint-week" data-step="4"><h3>Week 4</h3><div><h4>Launch &amp; Handoff</h4><p>Launch, document everything and hand the system over.</p></div></article>
-          </div>
-          <div class="growth-copy">
-            <p>You leave with a functioning system, not a folder of disconnected deliverables.</p>
-          </div>
-        </section>
-
-        <section class="growth-section growth-section--paper case-studies section-reveal section-reveal--work" id="case-studies" aria-labelledby="case-studies-title">
-          <div class="growth-heading">
-            <p class="section-index">10 / Selected Transformations</p>
-            <h2 id="case-studies-title">Work that connects strategy, creative and commerce.</h2>
-          </div>
-          <div class="work-grid" aria-label="Selected work grid">
-            <article class="work-card"><img src="assets/projects/client-showcase-obsidian.png" alt="Streetwear product campaign shoot" loading="lazy" /><div><span>Founder-Led Apparel Brand</span><h3>Launch journey</h3><p>Repositioned the launch offer, developed campaign creative, improved the visual product story and simplified the path from promotion to product.</p></div></article>
-            <article class="work-card"><img src="assets/projects/beauty-water-wide.png" alt="Cosmetics campaign with gold packaging on rippling blue water" loading="lazy" /><div><span>Premium Beauty Brand</span><h3>Store clarity</h3><p>Refined homepage direction, improved visual hierarchy, clarified product presentation and connected campaign imagery with the shopping experience.</p></div></article>
-            <article class="work-card"><img src="assets/projects/client-showcase-lumine.png" alt="Purple serum product campaign creative" loading="lazy" /><div><span>Hair and Beauty Brand</span><h3>Product decisions</h3><p>Reorganized product information, clarified option selection and simplified mobile decision-making across product, length and customization choices.</p></div></article>
-            <article class="work-card"><img src="assets/projects/client-showcase-voiden.png" alt="Streetwear brand poster design" loading="lazy" /><div><span>Streetwear Launch</span><h3>Release system</h3><p>Established launch art direction, created campaign visuals, improved promotional hierarchy and connected the drop creative to the product experience.</p></div></article>
-            <article class="work-card"><img src="assets/projects/client-showcase-kaira.png" alt="Natural skincare Shopify homepage concept" loading="lazy" /><div><span>Customer Journey</span><h3>Connected system</h3><p>The campaign, offer and storefront present one intentional customer journey instead of separate marketing pieces.</p></div></article>
-          </div>
-        </section>
-
-        <section class="growth-section section-reveal" id="leave-with" aria-labelledby="leave-title">
-          <div class="growth-heading">
-            <p class="section-index">11 / What You Leave With</p>
-            <h2 id="leave-title">What you leave with after 30 days.</h2>
-          </div>
-          <ul class="leave-list">
-            <li>A store that better reflects your product quality.</li>
-            <li>A clearer offer and buying journey.</li>
-            <li>Campaigns connected from ad to landing page to checkout.</li>
-            <li>A repeatable launch and testing system.</li>
-            <li>Documentation your future team can inherit.</li>
-          </ul>
-          <div class="growth-copy">
-            <p>A system you understand instead of a service you remain dependent on.</p>
-          </div>
-        </section>
-
-        <section class="growth-section growth-section--paper section-reveal" id="alternatives" aria-labelledby="alternatives-title">
-          <div class="growth-heading">
-            <p class="section-index">12 / Growth Sprint vs. The Alternatives</p>
-            <h2 id="alternatives-title">Growth Sprint vs. the alternatives.</h2>
-          </div>
-          <div class="capability-groups comparison-groups" aria-label="Growth Sprint compared with alternatives">
-            <article class="capability-group comparison-option--risk"><h3>Hiring Internally</h3><ul><li>Multiple salaries</li><li>Long hiring process</li><li>Management responsibility</li><li>Unclear roles without an established system</li><li>High commitment before the foundation is ready</li></ul></article>
-            <article class="capability-group comparison-option--risk"><h3>Hiring Separate Freelancers</h3><ul><li>Each person owns one task</li><li>No one owns the full customer journey</li><li>More coordination for the founder</li><li>Different strategies across each channel</li><li>Knowledge disappears when the project ends</li></ul></article>
-            <article class="capability-group comparison-option--risk"><h3>Traditional Agency</h3><ul><li>Larger retainers</li><li>Longer commitments</li><li>Multiple account layers</li><li>Less direct involvement from senior talent</li><li>The brand may still not understand or own the system</li></ul></article>
-            <article class="capability-group comparison-option--sprint"><h3>Growth Sprint</h3><ul><li>One prioritized engagement</li><li>Direct founder involvement</li><li>Store, offer, creative and retention considered together</li><li>Defined 30-day scope</li><li>Implementation and documentation</li><li>Built to support your future team, not replace it forever</li></ul></article>
+            <p>So when you eventually hire, they're inheriting a system, not chaos.</p>
           </div>
         </section>
 
         <section class="growth-section section-reveal" id="founder" aria-labelledby="founder-title">
           <div class="growth-heading">
-            <p class="section-index">13 / Founder Perspective</p>
+            <p class="section-index">04 / Founder Perspective</p>
             <h2 id="founder-title">I built the studio I wish growing brands had.</h2>
           </div>
           <div class="founder-panel">
@@ -551,100 +361,91 @@
             <div class="founder-note">
               <p>Too many founders think they need more people.</p>
               <p>Another designer. Another freelancer. Another specialist.</p>
-              <p>Usually, they do not need more activity.</p>
-              <p>They need someone to identify what matters, connect the customer experience and build a system others can eventually operate.</p>
+              <p>Usually they don't.</p>
+              <p class="founder-note__closing">They need someone to connect everything customers already experience.</p>
               <p class="founder-note__closing">That's what every Growth Sprint is designed to do.</p>
             </div>
           </div>
           <div class="experience-grid" aria-label="Studio experience">
-            <article><h3>20+</h3><p>Growing brands supported</p></article>
-            <article><h3>6+</h3><p>Years across design and digital commerce</p></article>
-            <article><h3>Founder-led</h3><p>Direct strategy and implementation involvement</p></article>
-            <article><h3>Agency Ecommerce Experience</h3><p>Experience working inside ecommerce teams, campaigns and client operations</p></article>
-            <article><h3>OCAD University</h3><p>Product design, digital experience and creative technology background</p></article>
+            <article><h3>20+</h3><p>Growing brands</p></article>
+            <article><h3>6+</h3><p>Years</p></article>
+            <article><h3>Founder-led</h3><p>Direct involvement</p></article>
+            <article><h3>Agency Ecommerce Experience</h3><p>Inside growth teams and campaigns</p></article>
+            <article><h3>OCAD U</h3><p>University product design</p></article>
           </div>
         </section>
 
-        <section class="growth-section growth-section--paper section-reveal" id="fit" aria-labelledby="fit-title">
+        <section class="growth-section case-studies section-reveal section-reveal--work" id="case-studies" aria-labelledby="case-studies-title">
           <div class="growth-heading">
-            <p class="section-index">14 / Who the Sprint Is For</p>
-            <h2 id="fit-title">Are you a good fit?</h2>
+            <p class="section-index">05 / Selected Work</p>
+            <h2 id="case-studies-title">Selected work.</h2>
           </div>
-          <div class="growth-copy">
-            <p class="list-label">A strong fit if you</p>
-            <ul class="plain-list">
-              <li>Already have a real product.</li>
-              <li>Have launched or generated some customer interest.</li>
-              <li>Know your store or customer journey is underperforming.</li>
-              <li>Are preparing for a launch, relaunch or next stage of growth.</li>
-              <li>Have multiple disconnected freelancers or tools.</li>
-              <li>Need clearer priorities before increasing ad spend.</li>
-              <li>Want a system you can understand and eventually operate internally.</li>
-              <li>Can make timely decisions during the 30-day engagement.</li>
-            </ul>
-            <p class="list-label">It may not be the right fit if</p>
-            <ul class="plain-list plain-list--negative">
-              <li>You are still deciding what product to sell.</li>
-              <li>You need unlimited ongoing execution across every channel.</li>
-              <li>You want a guaranteed revenue or ROAS outcome.</li>
-              <li>You are looking for someone to run the company without founder involvement.</li>
-              <li>You are not prepared to provide access, information or feedback during the Sprint.</li>
-            </ul>
-            <p class="fit-note">If the Sprint is not the right next step, I will tell you.</p>
+          <div class="work-grid" aria-label="Selected work grid">
+            <article class="work-card"><img src="assets/projects/beauty-water-wide.png" alt="Cosmetics campaign with gold packaging on rippling blue water" loading="lazy" /><div><span>Beauty</span><p>Premium launch visuals with a clearer path from campaign to product.</p></div></article>
+            <article class="work-card"><img src="assets/projects/client-showcase-obsidian.png" alt="Streetwear product campaign shoot" loading="lazy" /><div><span>Fashion</span><p>Drop creative that makes the brand feel intentional, not improvised.</p></div></article>
+            <article class="work-card"><img src="assets/projects/client-showcase-kaira.png" alt="Natural skincare Shopify homepage concept" loading="lazy" /><div><span>Skincare</span><p>A calmer storefront system for customers arriving from content and ads.</p></div></article>
+            <article class="work-card"><img src="assets/projects/client-showcase-lumine.png" alt="Purple serum product campaign creative" loading="lazy" /><div><span>Hair</span><p>Product storytelling designed to reduce hesitation before purchase.</p></div></article>
+            <article class="work-card"><img src="assets/projects/client-showcase-frutio.png" alt="Fruit-powered makeup ecommerce campaign layout" loading="lazy" /><div><span>Lifestyle</span><p>Offer, creative and page direction aligned around an obvious customer choice.</p></div></article>
           </div>
         </section>
 
-        <section class="growth-section section-reveal" id="expectations" aria-labelledby="expectations-title">
+        <section class="growth-section section-reveal" id="leave-with" aria-labelledby="leave-title">
           <div class="growth-heading">
-            <p class="section-index">15 / What Is Expected From You</p>
-            <h2 id="expectations-title">Less coordination.<br />Still collaborative.</h2>
+            <p class="section-index">06 / What You Leave With</p>
+            <h2 id="leave-title">Outcomes your next stage can build on.</h2>
           </div>
-          <div class="growth-copy">
-            <p>You provide the access, context, feedback and timely decisions needed to keep the Sprint moving.</p>
-            <p>You do not manage separate specialists or translate between teams. The studio manages the connected diagnosis, priorities and build process.</p>
-          </div>
+          <ul class="leave-list">
+            <li>A Shopify store that reflects your products.</li>
+            <li>Campaigns connected from ad to checkout.</li>
+            <li>Customers who understand what to buy.</li>
+            <li>A repeatable launch process.</li>
+            <li>Documentation your future team can inherit.</li>
+            <li>Clear priorities instead of guesswork.</li>
+          </ul>
         </section>
 
-        <section class="growth-section growth-section--paper section-reveal" id="risk" aria-labelledby="risk-title">
+        <section class="growth-section section-reveal" id="why" aria-labelledby="why-title">
           <div class="growth-heading">
-            <p class="section-index">16 / Risk Reversal</p>
-            <h2 id="risk-title">Know the plan before the main build begins.</h2>
+            <p class="section-index">07 / Why Jason Fung Studio</p>
+            <h2 id="why-title">One partner.<br />Not six disconnected freelancers.</h2>
           </div>
           <div class="growth-copy">
-            <p>The first stage gives you a written diagnosis, prioritized scope, clear deliverables and the reasoning behind each recommendation before the main build begins.</p>
-            <p>If the Growth Sprint is not the right solution, the project will not be forced forward.</p>
-            <p>No credible partner can guarantee revenue. The Sprint guarantees a defined process, direct involvement, prioritized work and a documented handoff.</p>
+            <p>Most freelancers improve one piece.</p>
+            <p>This studio improves how customers experience everything together.</p>
           </div>
+          <ol class="process-ladder system-ladder" aria-label="Connected commerce system">
+            <li>Store</li>
+            <li>Offer</li>
+            <li>Creative</li>
+            <li>Landing Page</li>
+            <li>Email</li>
+            <li>SMS</li>
+            <li>Launch</li>
+          </ol>
         </section>
 
         <section class="growth-section section-reveal" id="faq" aria-labelledby="faq-title">
           <div class="growth-heading">
-            <p class="section-index">17 / FAQ</p>
+            <p class="section-index">08 / FAQ</p>
             <h2 id="faq-title">Frequently asked questions.</h2>
           </div>
           <div class="faq-list">
-            <details><summary>Why not hire internally?</summary><p>You may eventually need to. The problem is not hiring a team. The problem is hiring people before the customer journey, roles and priorities are clear. The Sprint creates a stronger foundation for future hires to inherit.</p></details>
-            <details><summary>What if I already have freelancers?</summary><p>They can remain involved. The Growth Sprint can create a clearer strategy and shared customer journey for their work. The objective is not necessarily to replace good partners. It is to prevent every person from working toward a different outcome.</p></details>
-            <details><summary>What if I only need a website redesign?</summary><p>A visual redesign may be part of the Sprint, but design decisions are made around the customer journey and business priorities. If the diagnosis shows that you only need a focused redesign, the scope can remain focused.</p></details>
-            <details><summary>Do you manage paid advertising?</summary><p>Paid campaign strategy, creative direction, setup or launch support may be included when relevant to the Sprint. Ongoing media buying is not automatically included. The exact responsibility is defined before work begins.</p></details>
-            <details><summary>What if I need ongoing support?</summary><p>Ongoing support may be available after the Sprint. However, the initial goal is to leave you with a system, documentation and next-step roadmap you can understand and own.</p></details>
-            <details><summary>Can everything be completed in 30 days?</summary><p>The prioritized Sprint scope can be completed within the agreed 30-day engagement when access, content and approvals are provided on time. The purpose is to identify and complete the highest-leverage work first.</p></details>
-            <details><summary>How much time will I need to contribute?</summary><p>Most founder involvement happens during onboarding, strategic decisions and approvals. You will not need to be present every day, but delayed access, content or decisions can affect the timeline.</p></details>
-            <details><summary>Do you guarantee results?</summary><p>No credible studio can guarantee a specific amount of revenue or ROAS. Results are influenced by product demand, pricing, margins, traffic quality, inventory and many other factors. The studio guarantees the agreed scope, direct involvement, clear priorities and documented delivery.</p></details>
-            <details><summary>What happens after I apply?</summary><p>You will answer a short set of questions about your brand, current challenges and next launch or growth objective. If there appears to be a fit, we will schedule a conversation. If the Growth Sprint is not the right next step, I will tell you and recommend a more appropriate direction where possible.</p></details>
+            <details><summary>Why not hire internally?</summary><p>Hiring internally makes sense when the business is ready to support a full ecommerce team. The sprint builds a stronger foundation first, so future hires inherit clear priorities, systems and documentation.</p></details>
+            <details><summary>What if I already have freelancers?</summary><p>That can work. The sprint gives existing specialists clearer direction, priorities and customer experience context so every piece supports the same system.</p></details>
+            <details><summary>What if we need ongoing support?</summary><p>The sprint starts with the foundation. If there is a clear ongoing priority afterward, we can discuss continued support separately.</p></details>
+            <details><summary>Do you guarantee results?</summary><p>No responsible partner can guarantee sales because demand, traffic, pricing, inventory and fulfillment all matter. The sprint focuses on the parts we can improve directly: the Shopify experience, campaign connection, customer clarity and operating foundation.</p></details>
           </div>
         </section>
 
         <section class="audit-section section-reveal section-reveal--audit" id="apply" aria-labelledby="apply-title">
-          <div><p class="section-index">18 / Final CTA</p><h2 id="apply-title">Ready to start?</h2></div>
+          <div><p class="section-index">09 / Final CTA</p><h2 id="apply-title">Build the Shopify growth system your business needs<br />before hiring a $300K ecommerce team.</h2></div>
           <div>
+            <p>30-Day Growth Sprint. Starting from $3,000.</p>
             <div class="audit-note cta-price">
-              <p><span>Growth Sprint</span>Starting from $3,000</p>
-              <p><span>Timeline</span>30 days</p>
-              <p><span>Scope</span>Defined scope, implementation included, documentation and handoff</p>
+              <p><span>Founder-led engagement</span>If a Growth Sprint isn't the right fit, I'll tell you and recommend the next best step.</p>
+              <p class="apply-eyebrow">30 days &middot; Diagnosis &middot; Build &middot; Launch &middot; Handoff</p>
             </div>
-            <a class="light-cta" href="mailto:cptjason.jf@gmail.com?subject=Growth%20Sprint%20Application">Apply to reserve your Sprint <span>&rarr;</span></a>
-            <p>Founder-led. 2 Growth Sprints per month.</p>
+            <a class="light-cta" href="book.html">Apply for a Growth Sprint <span>&rarr;</span></a>
           </div>
         </section>
       </main>
@@ -652,112 +453,17 @@
       <footer class="studio-footer">
         <div class="studio-footer__main">
           <a class="studio-footer__brand" href="getstarted3.html">Jason Fung Studio</a>
-          <p class="studio-footer__line">Connected Shopify growth for founder-led beauty, fashion and lifestyle brands.</p>
+          <p class="studio-footer__line">Build the Shopify growth system your business needs.</p>
         </div>
         <div class="studio-footer__legal">
-          <span>&copy; 2026 Jason Fung Studio. All rights reserved.</span>
+          <span>&copy; 2026 Jason Fung Studio</span>
           <nav aria-label="Legal links">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
-            <span>Accessibility</span>
-            <a href="mailto:cptjason.jf@gmail.com">cptjason.jf@gmail.com</a>
-            <span>Toronto, Canada</span>
-            <span>Instagram</span>
-            <span>LinkedIn</span>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="cookies.html">Cookies</a>
           </nav>
         </div>
       </footer>
     </div>
-    <script>
-      (() => {
-        const stats = document.querySelectorAll('.hero-stat[data-count], .hero-stat[data-text]');
-        if (!stats.length) return;
-
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const formatter = new Intl.NumberFormat('en-US');
-
-        const finalValue = (stat) => {
-          if (stat.dataset.text) return stat.dataset.text;
-          const prefix = stat.dataset.prefix || '';
-          const suffix = stat.dataset.suffix || '';
-          return `${prefix}${formatter.format(Number(stat.dataset.count || 0))}${suffix}`;
-        };
-
-        const setFinalValues = () => {
-          stats.forEach((stat) => {
-            stat.textContent = finalValue(stat);
-          });
-        };
-
-        if (reduceMotion) {
-          setFinalValues();
-          return;
-        }
-
-        const animateCount = (stat, delay) => {
-          const target = Number(stat.dataset.count || 0);
-          const prefix = stat.dataset.prefix || '';
-          const suffix = stat.dataset.suffix || '';
-          const duration = 900;
-          const startTime = performance.now() + delay;
-
-          stat.classList.add('is-flickering');
-
-          const tick = (now) => {
-            if (now < startTime) {
-              requestAnimationFrame(tick);
-              return;
-            }
-
-            const progress = Math.min((now - startTime) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const value = Math.round(target * eased);
-            stat.textContent = `${prefix}${formatter.format(value)}${suffix}`;
-
-            if (progress < 1) {
-              requestAnimationFrame(tick);
-              return;
-            }
-
-            stat.textContent = finalValue(stat);
-            stat.classList.remove('is-flickering');
-          };
-
-          requestAnimationFrame(tick);
-        };
-
-        const animateText = (stat, delay) => {
-          setTimeout(() => {
-            stat.textContent = finalValue(stat);
-            stat.classList.add('is-flickering');
-            setTimeout(() => stat.classList.remove('is-flickering'), 700);
-          }, delay);
-        };
-
-        const runStats = () => {
-          stats.forEach((stat, index) => {
-            const delay = index * 160;
-            if (stat.dataset.count) {
-              animateCount(stat, delay);
-            } else {
-              animateText(stat, delay);
-            }
-          });
-        };
-
-        if ('IntersectionObserver' in window) {
-          const note = document.querySelector('.hero-sprint-note');
-          const observer = new IntersectionObserver((entries) => {
-            if (entries.some((entry) => entry.isIntersecting)) {
-              runStats();
-              observer.disconnect();
-            }
-          }, { threshold: 0.45 });
-          observer.observe(note);
-        } else {
-          runStats();
-        }
-      })();
-    </script>
   </body>
 </html>
