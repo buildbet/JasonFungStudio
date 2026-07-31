@@ -8,17 +8,19 @@ const projects = [
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-nav');
 if (menuButton && navigation) {
+  const setMenuOpen = (open) => {
+    menuButton.setAttribute('aria-expanded', String(open));
+    navigation.classList.toggle('is-open', open);
+    document.body.classList.toggle('menu-open', open);
+  };
+
   menuButton.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', String(!open));
-    navigation.classList.toggle('is-open', !open);
-    document.body.classList.toggle('menu-open', !open);
+    setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
   });
-  navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-    menuButton.setAttribute('aria-expanded', 'false');
-    navigation.classList.remove('is-open');
-    document.body.classList.remove('menu-open');
-  }));
+  navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenuOpen(false);
+  });
 }
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

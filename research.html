@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080908" />
+    <meta name="description" content="Jason Fung Studio ecommerce buying-experience research for founder-led apparel, hair, beauty, skincare and lifestyle brands." />
+    <title>Ecommerce Buying-Experience Research | Jason Fung Studio</title>
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .research-page{background:#080908;color:#f6f3ed}
+      .research-page .site-header{position:sticky;background:rgba(8,9,8,.92);border-bottom:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px)}
+      .research-page main{background:#080908}
+      .research-hero{padding:clamp(88px,10vw,138px) clamp(28px,6vw,82px) clamp(68px,7vw,96px);border-bottom:1px solid rgba(255,255,255,.14);background:radial-gradient(circle at 78% 16%,rgba(200,192,174,.13),transparent 34%),#080908}
+      .research-hero__inner,.research-section__inner{width:min(1080px,100%);margin:0 auto}
+      .research-hero h1{max-width:980px;margin:28px 0 24px;font-family:var(--serif);font-size:clamp(54px,7.2vw,104px);font-weight:400;letter-spacing:-.03em;line-height:.9}
+      .research-hero__lede{max-width:760px;margin:0;color:#d8d4ca;font-size:clamp(19px,1.6vw,24px);line-height:1.55}
+      .research-meta{margin:38px 0 0;padding:22px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-top:1px solid rgba(255,255,255,.14)}
+      .research-meta span{display:block;color:#96958f;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+      .research-meta strong{display:block;margin-top:8px;color:#f6f3ed;font-size:15px;font-weight:600;line-height:1.4}
+      .research-section{padding:clamp(70px,8vw,112px) clamp(28px,6vw,82px);border-bottom:1px solid rgba(255,255,255,.12)}
+      .research-section--paper{background:#f1eee7;color:#11120f;border-bottom-color:rgba(12,13,12,.14)}
+      .research-kicker{margin:0 0 18px;color:#c8c0ae;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+      .research-section--paper .research-kicker{color:#74643a}
+      .research-section h2{max-width:880px;margin:0 0 32px;font-family:var(--serif);font-size:clamp(42px,5vw,76px);font-weight:400;letter-spacing:-.025em;line-height:.96}
+      .research-section p{max-width:760px;margin:0 0 22px;color:#cac7bf;font-size:clamp(17px,1.35vw,20px);line-height:1.65}
+      .research-section--paper p{color:#3f403b}
+      .finding-grid,.category-grid,.score-grid{display:grid;gap:14px}
+      .finding-grid{grid-template-columns:repeat(5,1fr);margin-top:44px}
+      .finding-card,.category-card,.score-card{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.025)}
+      .finding-card{min-height:230px;padding:24px;display:flex;flex-direction:column}
+      .finding-card span,.score-card span{color:#c8c0ae;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+      .finding-card h3,.category-card h3,.score-card h3{margin:26px 0 14px;font-family:var(--serif);font-size:clamp(28px,2.6vw,38px);font-weight:400;letter-spacing:-.015em;line-height:1}
+      .finding-card p,.category-card p,.score-card p{margin:0;color:#aaa9a3;font-size:14px;line-height:1.55}
+      .research-section--paper .finding-card,.research-section--paper .category-card,.research-section--paper .score-card{border-color:rgba(12,13,12,.16);background:rgba(12,13,12,.035)}
+      .research-section--paper .finding-card p,.research-section--paper .category-card p,.research-section--paper .score-card p{color:#4b4c47}
+      .method-list{max-width:820px;margin:38px 0 0;padding:0;display:grid;gap:12px;list-style:none}
+      .method-list li{padding:17px 0 0;display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;border-top:1px solid rgba(12,13,12,.16);color:#343530;font-size:clamp(16px,1.2vw,19px);line-height:1.5}
+      .method-list li::before{color:#777872;font-size:11px;font-weight:700;letter-spacing:.12em;content:attr(data-step)}
+      .brand-research-grid{margin:44px 0 0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(12,13,12,.16);border-left:1px solid rgba(12,13,12,.14)}
+      .brand-research-group{min-height:250px;padding:24px;border-right:1px solid rgba(12,13,12,.14);border-bottom:1px solid rgba(12,13,12,.14)}
+      .brand-research-group h3{margin:0 0 22px;color:#777872;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+      .brand-cloud{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+      .brand-cloud li{padding:8px 11px;border:1px solid rgba(12,13,12,.16);background:rgba(255,255,255,.24);color:#11120f;font-family:var(--serif);font-size:clamp(24px,2.2vw,34px);line-height:1}
+      .brand-cloud li:nth-child(2n){font-family:var(--sans);font-size:clamp(13px,1.1vw,16px);font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+      .brand-cloud li:nth-child(3n){font-family:"Caveat",cursive;font-size:clamp(28px,2.5vw,38px);font-weight:600}
+      .brand-cloud li:nth-child(4n){color:#5f5a4d;font-family:var(--serif);font-style:italic}
+      .category-grid{grid-template-columns:repeat(5,1fr);margin-top:42px}
+      .category-card{padding:24px}
+      .category-card h3{margin-top:0;font-size:clamp(26px,2.2vw,34px)}
+      .score-grid{grid-template-columns:repeat(4,1fr);margin-top:42px}
+      .score-card{min-height:180px;padding:24px}
+      .score-card h3{font-family:var(--sans);font-size:clamp(18px,1.5vw,23px);font-weight:600;letter-spacing:.02em;line-height:1.15}
+      .research-note{max-width:850px;margin:44px 0 0;padding:24px 0 0;border-top:1px solid rgba(255,255,255,.14);color:#aaa9a3!important;font-size:15px!important}
+      .research-section--paper .research-note{border-color:rgba(12,13,12,.16);color:#565752!important}
+      .research-cta{padding:clamp(76px,8vw,108px) clamp(28px,6vw,82px);display:grid;grid-template-columns:1fr minmax(280px,420px);gap:clamp(34px,5vw,70px);align-items:center;background:#090a09}
+      .research-cta h2{margin:0;font-family:var(--serif);font-size:clamp(48px,5.6vw,82px);font-weight:400;line-height:.95}
+      .research-cta p{margin:0 0 28px;color:#c9c6bd;font-size:clamp(17px,1.35vw,20px);line-height:1.6}
+      .research-cta .light-cta{width:100%;justify-content:space-between}
+      .studio-footer{padding:34px clamp(28px,6vw,82px);border-top:1px solid rgba(255,255,255,.12);display:grid;gap:22px;background:#050605;color:#aaa9a3}
+      .studio-footer__main{display:flex;justify-content:space-between;gap:28px;align-items:flex-start}
+      .studio-footer__brand{color:#f1ede3;font-family:var(--serif);font-size:clamp(25px,2.1vw,34px);line-height:1;text-decoration:none}
+      .studio-footer__line{max-width:410px;margin:0;color:#c5c1b8;font-size:14px;line-height:1.55;text-align:right}
+      .studio-footer__legal{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;color:#7f7d77;font-size:12px}
+      .studio-footer__legal nav{display:flex;flex-wrap:wrap;gap:12px 22px}
+      .studio-footer__legal a{color:#aaa9a3;text-decoration:none}
+      .studio-footer__legal a:hover{color:#f1ede3}
+      @media(max-width:1100px){.finding-grid,.category-grid,.brand-research-grid{grid-template-columns:repeat(2,1fr)}.score-grid{grid-template-columns:repeat(2,1fr)}}
+      @media(max-width:760px){.research-page .site-header{grid-template-columns:1fr auto}.research-page .site-header nav{display:none}.research-meta,.finding-grid,.category-grid,.score-grid,.brand-research-grid,.research-cta{grid-template-columns:1fr}.research-hero{padding-top:72px}.research-section{padding-inline:24px}.research-hero{padding-inline:24px}.research-cta{padding-inline:24px}.finding-card{min-height:0}.brand-research-group{min-height:0}.research-page .header-cta{display:inline-flex;min-height:44px;padding:0 16px;font-size:11px}.studio-footer__main{display:grid;gap:16px}.studio-footer__line{text-align:left}}
+    </style>
+    <script src="analytics.js" defer></script>
+  </head>
+  <body class="research-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Jason Fung Studio home"><img class="brand-logo" src="assets/jf-logo-white.png" alt="" width="28" height="28" />Jason Fung Studio</a>
+        <nav aria-label="Primary navigation">
+          <a href="index.html#sprint">The Growth Sprint</a>
+          <a href="index.html#case-studies">Work</a>
+          <a href="index.html#faq">FAQ</a>
+        </nav>
+        <a class="header-cta" href="book.html">Book a Sprint Call <span>&nearr;</span></a>
+      </header>
+
+      <main id="main">
+        <section class="research-hero" aria-labelledby="research-title">
+          <div class="research-hero__inner">
+            <p class="research-kicker">Research library</p>
+            <h1 id="research-title">Ecommerce Buying-Experience Research</h1>
+            <p class="research-hero__lede">Jason Fung Studio studies how founder-led apparel, hair, beauty and skincare brands can help customers understand, trust and purchase products online.</p>
+            <div class="research-meta" aria-label="Research details">
+              <div><span>Updated</span><strong>July 31, 2026</strong></div>
+              <div><span>Categories</span><strong>Apparel, streetwear, hair, cosmetics and skincare</strong></div>
+              <div><span>Purpose</span><strong>Turn category research into better customer journeys</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="research-section research-section--paper">
+          <div class="research-section__inner">
+            <p class="research-kicker">Central finding</p>
+            <h2>The strongest ecommerce experiences reduce the uncertainty blocking the purchase.</h2>
+            <p>Conversion problems are often confidence problems. Customers hesitate when they cannot answer basic questions about fit, shade, ingredients, installation, authenticity, delivery, returns or whether the product is meant for them.</p>
+            <p>The Growth Sprint uses this research to diagnose the parts of the buying experience customers currently struggle to understand, trust or act on.</p>
+          </div>
+        </section>
+
+        <section class="research-section">
+          <div class="research-section__inner">
+            <p class="research-kicker">Five conclusions</p>
+            <h2>What the research changes about how a store should be built.</h2>
+            <div class="finding-grid">
+              <article class="finding-card"><span>01</span><h3>Confidence beats decoration.</h3><p>A better store does more than look elevated. It makes the buying decision easier.</p></article>
+              <article class="finding-card"><span>02</span><h3>Each niche has different doubt.</h3><p>Apparel, hair, cosmetics and skincare shoppers do not evaluate risk the same way.</p></article>
+              <article class="finding-card"><span>03</span><h3>Product pages replace the store visit.</h3><p>Online pages must compensate for what customers cannot touch, try, test or ask in person.</p></article>
+              <article class="finding-card"><span>04</span><h3>Offers should simplify choice.</h3><p>The best bundles, sets and routines clarify the right complete purchase, not just the discount.</p></article>
+              <article class="finding-card"><span>05</span><h3>Every change should be testable.</h3><p>Research creates a hypothesis. Client analytics decide what actually worked.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="research-section research-section--paper">
+          <div class="research-section__inner">
+            <p class="research-kicker">Method</p>
+            <h2>Observed patterns are useful. They are not magic formulas.</h2>
+            <p>The research reviewed representative leading and high-visibility ecommerce brands, including SKIMS, Gymshark, Alo, Represent, UNice, Luvme Hair, Mayvenn, Indique, Rhode, Rare Beauty, Fenty Beauty, Glossier, The Ordinary and Tower 28.</p>
+            <ul class="method-list">
+              <li data-step="01">Record what the brand does across navigation, offers, product pages, education, proof, policies and mobile journeys.</li>
+              <li data-step="02">Identify the customer question or buying objection each pattern appears to solve.</li>
+              <li data-step="03">Cross-check the pattern against independent ecommerce usability research where possible.</li>
+              <li data-step="04">Apply the pattern only when the same problem exists in the client's customer journey.</li>
+              <li data-step="05">Measure the effect using analytics, baseline data and future experiments.</li>
+            </ul>
+            <div class="brand-research-grid" aria-label="Companies included in the research sample">
+              <article class="brand-research-group">
+                <h3>Apparel and streetwear</h3>
+                <ul class="brand-cloud">
+                  <li>Gymshark</li>
+                  <li>SKIMS</li>
+                  <li>Represent</li>
+                  <li>Alo Yoga</li>
+                </ul>
+              </article>
+              <article class="brand-research-group">
+                <h3>Hair and wigs</h3>
+                <ul class="brand-cloud">
+                  <li>UNice</li>
+                  <li>Luvme Hair</li>
+                  <li>Mayvenn</li>
+                  <li>Indique Hair</li>
+                </ul>
+              </article>
+              <article class="brand-research-group">
+                <h3>Cosmetics</h3>
+                <ul class="brand-cloud">
+                  <li>Rare Beauty</li>
+                  <li>Fenty Beauty</li>
+                  <li>Glossier</li>
+                  <li>Tower 28</li>
+                </ul>
+              </article>
+              <article class="brand-research-group">
+                <h3>Skincare</h3>
+                <ul class="brand-cloud">
+                  <li>Rhode</li>
+                  <li>The Ordinary</li>
+                  <li>Tower 28</li>
+                  <li>Glossier</li>
+                </ul>
+              </article>
+            </div>
+            <p class="research-note">Repeated use by large brands does not prove causation. Internal brand analytics are unavailable, and every recommendation still has to fit the client's product, audience, stage and traffic source.</p>
+          </div>
+        </section>
+
+        <section class="research-section">
+          <div class="research-section__inner">
+            <p class="research-kicker">Category findings</p>
+            <h2>Different products create different buying questions.</h2>
+            <div class="category-grid">
+              <article class="category-card"><h3>Apparel</h3><p>Fit, sizing, quality, fabric, body compatibility, styling and return confidence.</p></article>
+              <article class="category-card"><h3>Streetwear</h3><p>Identity, cultural legitimacy, drop logic, material quality and product context.</p></article>
+              <article class="category-card"><h3>Hair and wigs</h3><p>Installation, lace appearance, density, texture, cap construction, authenticity and care.</p></article>
+              <article class="category-card"><h3>Cosmetics</h3><p>Shade, finish, appearance on different people, application and identity fit.</p></article>
+              <article class="category-card"><h3>Skincare</h3><p>Skin compatibility, ingredients, routine order, safety, efficacy and expected results.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="research-section research-section--paper">
+          <div class="research-section__inner">
+            <p class="research-kicker">Diagnostic framework</p>
+            <h2>The Buying Experience Score looks at the whole path to purchase.</h2>
+            <p>A store is scored around the customer journey, not a checklist of design trends. The goal is to identify what should change first and what can wait.</p>
+            <div class="score-grid">
+              <article class="score-card"><span>20 pts</span><h3>Offer clarity</h3><p>What is being sold, who it is for, why it matters and what to buy next.</p></article>
+              <article class="score-card"><span>20 pts</span><h3>Product confidence</h3><p>Suitability, fit, quality, use, appearance, delivery and returns.</p></article>
+              <article class="score-card"><span>15 pts</span><h3>Journey alignment</h3><p>Consistency from ad to landing page, store, product page, cart, email and SMS.</p></article>
+              <article class="score-card"><span>15 pts</span><h3>Mobile usability</h3><p>A clear path for customers arriving through social, email, SMS and paid traffic.</p></article>
+              <article class="score-card"><span>15 pts</span><h3>Trust and risk</h3><p>Proof, policies, company information, customer evidence and support access.</p></article>
+              <article class="score-card"><span>10 pts</span><h3>Merchandising</h3><p>Logical bundles, sets, complete looks, routines and cross-sells.</p></article>
+              <article class="score-card"><span>5 pts</span><h3>Measurement readiness</h3><p>Analytics, campaign tracking, events, baselines and experiment documentation.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="research-cta">
+          <div>
+            <p class="research-kicker">Applied research</p>
+            <h2>Research only matters when it improves your customer's decision.</h2>
+          </div>
+          <div>
+            <p>The Growth Sprint turns this research into a prioritized diagnosis, focused implementation and documented handoff for your Shopify business.</p>
+            <a class="light-cta" href="book.html">Request a Store Diagnosis <span>&rarr;</span></a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="studio-footer">
+        <div class="studio-footer__main">
+          <a class="studio-footer__brand" href="index.html">Jason Fung Studio</a>
+          <p class="studio-footer__line">Connected Shopify growth for founder-led beauty, fashion and lifestyle brands.</p>
+        </div>
+        <div class="studio-footer__legal">
+          <span>&copy; 2026 Jason Fung Studio. All rights reserved.</span>
+          <nav aria-label="Legal links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="mailto:cptjason.jf@gmail.com">cptjason.jf@gmail.com</a>
+            <span>Toronto, Canada</span>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

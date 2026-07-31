@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080908" />
-    <meta name="description" content="Book a free demo with Jason Fung Studio. Choose a time directly on the calendar or email us if you need help scheduling." />
-    <title>Book a Free Demo - Jason Fung Studio</title>
+    <meta name="description" content="Book a Growth Sprint fit call with Jason Fung Studio. Choose a time directly on the calendar or email us if you need help scheduling." />
+    <title>Book a Growth Sprint Fit Call - Jason Fung Studio</title>
     <link rel="icon" href="assets/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="analytics.js" defer></script>
+    <script src="site-data.js" defer></script>
     <script src="book-form.js" defer></script>
   </head>
   <body class="booking-page">
@@ -22,23 +23,30 @@
         <a class="brand" href="index.html"><img class="brand-logo" src="assets/jf-logo-white.png" alt="" width="28" height="28" />Jason Fung Studio</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Menu</span></button>
         <nav id="site-nav" aria-label="Primary navigation">
-          <a href="index.html#work">Work</a>
-          <a href="index.html#services">Services</a>
-          <a href="index.html#about">About</a>
-          <a href="index.html#why">Why Jason</a>
+          <a href="index.html#case-studies">Work</a>
+          <a href="index.html#sprint">The Growth Sprint</a>
+          <a href="research.html">Research</a>
+          <a href="index.html#founder">About</a>
+          <a href="index.html#faq">FAQ</a>
         </nav>
-        <a class="header-cta" href="book.html">Book a free demo <span>-&gt;</span></a>
+        <a class="header-cta" href="book.html">Book a Sprint Call <span>-&gt;</span></a>
       </header>
 
       <main id="main">
         <section class="booking-hero" aria-labelledby="booking-title">
           <p class="section-index">Free consultation</p>
-          <h1 id="booking-title">Book a Free Demo</h1>
-          <p class="booking-lede">I will reach out via text message or call to schedule a time!</p>
+          <h1 id="booking-title">Book a Growth Sprint Fit Call</h1>
+          <p class="booking-lede">Choose a time on the calendar and we will use the call to confirm fit, timeline and the highest-impact sprint scope.</p>
         </section>
 
         <section class="booking-form-section" aria-labelledby="calendar-heading">
           <h2 id="calendar-heading" class="sr-only">Book a consultation calendar</h2>
+
+          <div class="booking-next" aria-label="What happens after booking">
+            <article><span>01</span><h3>Fit call</h3><p>We look at your current store, growth stage and what is blocking the buying journey.</p></article>
+            <article><span>02</span><h3>Sprint scope</h3><p>You get a focused recommendation for what should be fixed first and what can wait.</p></article>
+            <article><span>03</span><h3>Start date</h3><p>If the fit is right, we reserve one of the available monthly sprint slots.</p></article>
+          </div>
 
           <div class="cal-embed-wrap" id="cal-embed-wrap" aria-busy="true">
             <div class="cal-loading" id="cal-loading" role="status">
