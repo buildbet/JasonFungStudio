@@ -1,25 +1,9 @@
-const menuButton = document.querySelector('.menu-toggle');
-const navigation = document.querySelector('#site-nav');
-
-if (menuButton && navigation) {
-  menuButton.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', String(!open));
-    navigation.classList.toggle('is-open', !open);
-    document.body.classList.toggle('menu-open', !open);
-  });
-
-  navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-    menuButton.setAttribute('aria-expanded', 'false');
-    navigation.classList.remove('is-open');
-    document.body.classList.remove('menu-open');
-  }));
-}
-
-const CAL_LINK = 'https://cal.com/jason-fung-zndb6x';
+(() => {
+const DEFAULT_CAL_LINK = 'https://cal.com/jason-fung-zndb6x';
 const calContainer = document.getElementById('cal-inline-embed');
 const calWrap = document.getElementById('cal-embed-wrap');
 const calLoading = document.getElementById('cal-loading');
+const configuredCalLink = calContainer?.dataset.calLink || document.body.dataset.calLink || DEFAULT_CAL_LINK;
 
 const getCalLink = (value) => {
   if (!value || value === 'replace-with-provided-cal-link') {
@@ -60,6 +44,7 @@ const watchForCalendarFrame = () => {
   }
 
   const bindFrameLoad = (frame) => {
+    setCalendarLoaded();
     frame.addEventListener('load', setCalendarLoaded, { once: true });
   };
   const existingFrame = calContainer.querySelector('iframe');
@@ -81,7 +66,7 @@ const watchForCalendarFrame = () => {
 };
 
 const loadCalEmbed = () => {
-  const calLink = getCalLink(CAL_LINK);
+  const calLink = getCalLink(configuredCalLink);
 
   if (!calContainer || !calLink) {
     showCalendarFallback();
@@ -150,3 +135,4 @@ const loadCalEmbed = () => {
 };
 
 loadCalEmbed();
+})();

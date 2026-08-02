@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080908" />
+    <meta name="description" content="Partner with Jason Fung Studio when your agency needs Shopify campaign-to-checkout delivery, white-label support, protected referrals or backup ecommerce capacity." />
+    <title>Agency Partners | Jason Fung Studio</title>
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .partners-page{background:#080908;color:#f6f3ed}
+      .partners-page .site-header{position:sticky;background:rgba(8,9,8,.92);border-bottom:1px solid rgba(255,255,255,.13);backdrop-filter:blur(14px)}
+      .partners-page main{background:#080908}
+      .partner-hero,.partner-section,.partner-final{padding:92px 72px}
+      .partner-hero{min-height:calc(100svh - 104px);display:grid;align-items:center;border-bottom:1px solid rgba(255,255,255,.14);background:#080908}
+      .partner-inner{width:min(1040px,100%);margin:0 auto}
+      .partner-hero .partner-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,430px);gap:56px;align-items:center}
+      .partner-kicker,.section-index{color:#c8c0ae}
+      .partner-kicker{margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+      .partner-hero .partner-kicker{font-size:10px;color:#9c9b95}
+      .partner-hero h1{max-width:980px;margin:0;font-family:var(--serif);font-size:82px;font-weight:400;letter-spacing:0;line-height:.9}
+      .partner-hero p{max-width:720px;margin:28px 0 0;color:#dedbd2;font-size:22px;line-height:1.52}
+      .partner-note{max-width:620px!important;margin-top:18px!important;color:#aaa9a3!important;font-size:15px!important;line-height:1.6!important}
+      .partner-actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center}
+      .partner-actions .text-cta{padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.24)}
+      .partner-hero__reel{width:100%;height:520px;min-height:520px;margin:0;border-color:rgba(255,255,255,.14);background:radial-gradient(circle at 20% 0,rgba(255,255,255,.08),transparent 32%),#10110f}
+      .partner-hero__reel.testimonial-carousel::before{background:linear-gradient(90deg,#080908 0,rgba(8,9,8,.72) 30%,transparent 100%)}
+      .partner-hero__reel.testimonial-carousel::after{background:linear-gradient(270deg,#080908 0,rgba(8,9,8,.72) 30%,transparent 100%)}
+      .partners-page .brand-marquee{padding:30px 0;border-bottom:1px solid rgba(255,255,255,.12);overflow:hidden;background:#080908}
+      .partners-page .brand-marquee__label{margin:0 0 22px;padding:0 72px;display:grid;gap:6px;justify-items:center;color:#aaa9a3;font-size:12px;font-weight:600;letter-spacing:.08em;line-height:1.4;text-align:center;text-transform:uppercase}
+      .partners-page .brand-marquee__label span{color:#f0d28a;letter-spacing:.08em}
+      .partners-page .brand-marquee__row{--duration:38s;--offset:0px;--fade:.42;margin:8px 0;display:flex;overflow:hidden;opacity:var(--fade);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+      .partners-page .brand-marquee__row:nth-child(2){--duration:46s;--offset:-140px;--fade:.62}
+      .partners-page .brand-marquee__row:nth-child(3){--duration:34s;--offset:-260px;--fade:.36}
+      .partners-page .brand-marquee__track{min-width:max-content;display:flex;gap:42px;transform:translateX(var(--offset));animation:brand-marquee var(--duration) linear infinite}
+      .partners-page .brand-marquee__row:nth-child(2) .brand-marquee__track{animation-direction:reverse}
+      .partners-page .brand-marquee span{white-space:nowrap;color:#e8e5dc;font-size:16px;line-height:1;text-transform:none}
+      .partners-page .brand-marquee .brand-style--serif{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:0}
+      .partners-page .brand-marquee .brand-style--sans{font-family:var(--sans);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+      .partners-page .brand-marquee .brand-style--quiet{color:#aaa9a3;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.02em}
+      .partners-page .brand-marquee .brand-style--script{font-family:"Caveat",cursive;font-size:32px;font-weight:600;letter-spacing:0}
+      .partners-page .brand-marquee .brand-style--wide{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+      .partners-page .brand-marquee .brand-style--italic{font-family:var(--serif);font-size:27px;font-style:italic;font-weight:400;letter-spacing:0}
+      @keyframes brand-marquee{to{transform:translateX(calc(var(--offset) - 50%))}}
+      .partner-section{border-bottom:1px solid rgba(255,255,255,.12)}
+      .partner-section--paper{background:#f1eee7;color:#11120f;border-color:rgba(12,13,12,.14)}
+      .partner-heading{display:grid;grid-template-columns:180px minmax(0,760px);gap:58px;align-items:start}
+      .partner-heading h2{margin:0;font-family:var(--serif);font-size:58px;font-weight:400;letter-spacing:0;line-height:.96}
+      .simple-list{max-width:820px;margin:42px auto 0;padding:0;display:grid;gap:0;list-style:none;border-top:1px solid rgba(255,255,255,.14)}
+      .partner-section--paper .simple-list{border-color:rgba(12,13,12,.18)}
+      .simple-list li{padding:18px 0;display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;border-bottom:1px solid rgba(255,255,255,.11);color:#d7d3ca;font-size:18px;line-height:1.45}
+      .partner-section--paper .simple-list li{border-color:rgba(12,13,12,.14);color:#383936}
+      .simple-list li::before{color:#c8c0ae;content:"+"}
+      .work-grid,.model-grid{margin-top:46px;display:grid;gap:14px}
+      .work-grid{grid-template-columns:repeat(4,1fr)}
+      .model-grid{grid-template-columns:1.15fr 1fr 1fr}
+      .work-card,.model-card,.pilot-panel{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.025)}
+      .partner-section--paper .work-card,.partner-section--paper .model-card{border-color:rgba(12,13,12,.16);background:rgba(12,13,12,.035)}
+      .work-card,.model-card{padding:24px}
+      .work-card span,.model-card span,.pilot-meta span{display:block;color:#c8c0ae;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+      .partner-section--paper .work-card span,.partner-section--paper .model-card span{color:#74643a}
+      .work-card h3,.model-card h3{margin:26px 0 14px;font-family:var(--serif);font-size:32px;font-weight:400;letter-spacing:0;line-height:1}
+      .work-card p,.model-card p{margin:0;color:#aaa9a3;font-size:14px;line-height:1.55}
+      .partner-section--paper .work-card p,.partner-section--paper .model-card p{color:#4b4c47}
+      .model-card--recommended{background:linear-gradient(180deg,rgba(200,192,174,.2),rgba(255,255,255,.035));border-color:rgba(200,192,174,.52)}
+      .partner-section--paper .model-card--recommended{background:rgba(200,192,174,.25);border-color:rgba(12,13,12,.28)}
+      .model-card .text-cta{margin-top:24px}
+      .backup-note{max-width:820px;margin:20px auto 0;padding:24px 0 0;border-top:1px solid rgba(12,13,12,.16);color:#4b4c47;font-size:16px;line-height:1.6}
+      .pilot-panel{margin-top:48px;display:grid;grid-template-columns:minmax(0,1fr) 330px;background:radial-gradient(circle at 82% 10%,rgba(200,192,174,.12),transparent 32%),#0b0c0b}
+      .pilot-main{padding:42px;border-right:1px solid rgba(255,255,255,.12)}
+      .pilot-main h3{margin:0 0 18px;font-family:var(--serif);font-size:54px;font-weight:400;letter-spacing:0;line-height:.96}
+      .pilot-main p{max-width:650px;margin:0 0 26px;color:#c9c6bd;font-size:18px;line-height:1.6}
+      .pilot-meta{padding:34px;display:grid;align-content:center;gap:20px}
+      .pilot-meta div{padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.12)}
+      .pilot-meta strong{display:block;margin-top:8px;font-family:var(--serif);font-size:35px;font-weight:400;line-height:1}
+      .partner-final{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:64px;align-items:center;background:#090a09}
+      .partner-final h2{margin:0;font-family:var(--serif);font-size:64px;font-weight:400;letter-spacing:0;line-height:.95}
+      .partner-final p{max-width:640px;margin:22px 0 0;color:#c9c6bd;font-size:19px;line-height:1.6}
+      .partner-final .light-cta{width:100%;justify-content:space-between}
+      .studio-footer{padding:34px 72px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:22px;background:#050605;color:#aaa9a3}
+      .studio-footer__main{display:flex;justify-content:space-between;gap:28px;align-items:flex-start}
+      .studio-footer__brand{color:#f1ede3;font-family:var(--serif);font-size:30px;line-height:1;text-decoration:none}
+      .studio-footer__line{max-width:410px;margin:0;color:#c5c1b8;font-size:14px;line-height:1.55;text-align:right}
+      .studio-footer__legal{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;color:#7f7d77;font-size:12px}
+      .studio-footer__legal nav{display:flex;flex-wrap:wrap;gap:12px 22px}
+      .studio-footer__legal a{color:#aaa9a3;text-decoration:none}
+      .studio-footer__legal a:hover{color:#f1ede3}
+      @media(max-width:1100px){.partner-hero .partner-inner{grid-template-columns:1fr}.partner-hero h1{font-size:66px}.partner-hero__reel{height:430px;min-height:430px}.partner-heading h2,.partner-final h2{font-size:52px}.work-grid,.model-grid{grid-template-columns:repeat(2,1fr)}.model-card--recommended{grid-column:1/-1}.pilot-panel,.partner-final{grid-template-columns:1fr}.pilot-main{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}}
+      @media(max-width:760px){body.menu-open.partners-page{overflow:hidden}.partners-page .site-header{height:72px;grid-template-columns:1fr auto;padding:0 24px;background:#050605}.partners-page .brand{position:relative;z-index:45}.partners-page .header-cta{display:none}.partners-page .menu-toggle{position:relative;z-index:45;width:38px;height:38px;padding:0;display:grid;place-content:center;gap:6px;border:0;background:#050605}.partners-page .menu-toggle span:not(.sr-only){width:22px;height:1px;background:#fff}.partners-page .site-header nav{position:fixed;z-index:40;inset:0;width:100vw;height:100vh;height:100dvh;padding:112px 25px 32px;display:none;flex-direction:column;align-items:flex-start;background:#050605;box-shadow:0 0 0 100vmax #050605;overflow:auto;isolation:isolate}.partners-page .site-header nav::before{position:fixed;z-index:-1;inset:0;background:#050605;content:""}.partners-page .site-header nav.is-open{display:flex}.partners-page .site-header nav a{width:100%;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#f6f3ed;font-family:var(--serif);font-size:30px;line-height:1.05}.partner-hero,.partner-section,.partner-final{padding:64px 24px}.partner-hero{min-height:720px}.partner-hero h1{font-size:47px}.partner-hero p{font-size:18px}.partner-hero__reel{height:340px;min-height:340px}.partners-page .brand-marquee__label{padding:0 24px}.partners-page .brand-marquee__track{gap:30px}.partners-page .brand-marquee span{font-size:13px}.partners-page .brand-marquee .brand-style--serif,.partners-page .brand-marquee .brand-style--italic{font-size:23px}.partners-page .brand-marquee .brand-style--script{font-size:28px}.partner-heading,.work-grid,.model-grid{grid-template-columns:1fr}.partner-heading{gap:28px}.partner-heading h2,.partner-final h2,.pilot-main h3{font-size:40px}.simple-list li{font-size:16px}.work-card h3,.model-card h3{font-size:29px}.pilot-main,.pilot-meta{padding:28px}.pilot-meta strong{font-size:31px}.studio-footer{padding:32px 24px}.studio-footer__main{display:grid;gap:16px}.studio-footer__line{text-align:left}}
+    </style>
+    <script src="analytics.js" defer></script>
+    <script src="site-data.js" defer></script>
+  </head>
+  <body class="partners-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Back to top of the partners page"><img class="brand-logo" src="assets/jf-logo-white.png" alt="" width="28" height="28" />Jason Fung Studio</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Menu</span></button>
+        <nav id="site-nav" aria-label="Primary navigation">
+          <a href="#when">When</a>
+          <a href="#why">Why Jason</a>
+          <a href="#does">What Jason Does</a>
+          <a href="#models">Ways to Work</a>
+          <a href="#pilot">Pilot</a>
+        </nav>
+        <a class="header-cta" href="partner-call.html">Book a Partner Call <span>-&gt;</span></a>
+      </header>
+
+      <main id="main">
+        <section class="partner-hero" aria-labelledby="partner-title">
+          <div class="partner-inner">
+            <div class="partner-hero__copy">
+              <p class="partner-kicker">For agencies and growth teams</p>
+              <h1 id="partner-title">Need a trusted Shopify partner for client work?</h1>
+              <p>Bring Jason Fung Studio in when a client campaign needs a stronger Shopify path to purchase.</p>
+              <p class="partner-note">Start with one paid pilot. Collaborate directly, stay white-label, or send a protected referral.</p>
+              <div class="partner-actions">
+                <a class="light-cta" href="partner-call.html">Book a partner call <span>-&gt;</span></a>
+                <a class="text-cta" href="#models">See ways to work together <span>-&gt;</span></a>
+              </div>
+            </div>
+            <figure class="partner-hero__reel testimonial-preview testimonial-carousel" aria-label="Rotating client creative examples">
+              <div class="testimonial-carousel-track">
+                <div class="testimonial-carousel-set">
+                  <img src="assets/projects/client-showcase-vitamin-c.png" alt="Premium vitamin C serum Shopify creative" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-lumine.png" alt="Purple serum product campaign creative" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-kaira.png" alt="Natural skincare Shopify homepage concept" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-frutio.png" alt="Fruit-powered makeup ecommerce campaign layout" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-obsidian.png" alt="Streetwear product campaign shoot" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-voiden.png" alt="Streetwear brand poster design" loading="eager" decoding="async" />
+                </div>
+                <div class="testimonial-carousel-set" aria-hidden="true">
+                  <img src="assets/projects/client-showcase-vitamin-c.png" alt="" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-lumine.png" alt="" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-kaira.png" alt="" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-frutio.png" alt="" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-obsidian.png" alt="" loading="eager" decoding="async" />
+                  <img src="assets/projects/client-showcase-voiden.png" alt="" loading="eager" decoding="async" />
+                </div>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <section class="brand-marquee" aria-label="Brand names">
+          <p class="brand-marquee__label"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>20+ growing brands supported</p>
+          <div class="brand-marquee__row">
+            <div class="brand-marquee__track">
+              <span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">Atb Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span>
+              <span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">Atb Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span>
+            </div>
+          </div>
+          <div class="brand-marquee__row">
+            <div class="brand-marquee__track">
+              <span class="brand-style--italic">Luxury Hair Edit</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--quiet">Perfection Beauty Vault</span><span class="brand-style--wide">Society777</span><span class="brand-style--script">The Hair Bakery Co</span><span class="brand-style--sans">The NYC Retail</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Unbreakable</span><span class="brand-style--italic">Xscape</span>
+              <span class="brand-style--italic">Luxury Hair Edit</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--quiet">Perfection Beauty Vault</span><span class="brand-style--wide">Society777</span><span class="brand-style--script">The Hair Bakery Co</span><span class="brand-style--sans">The NYC Retail</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Unbreakable</span><span class="brand-style--italic">Xscape</span>
+            </div>
+          </div>
+          <div class="brand-marquee__row">
+            <div class="brand-marquee__track">
+              <span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--script">Glowani</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--wide">Society777</span><span class="brand-style--sans">Blixed</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--script">Amourlyah Beauty</span>
+              <span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--script">Glowani</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--wide">Society777</span><span class="brand-style--sans">Blixed</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--script">Amourlyah Beauty</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="partner-section partner-section--paper" id="when" aria-labelledby="when-title">
+          <div class="partner-inner">
+            <div class="partner-heading">
+              <p class="section-index">01 / When to bring Jason in</p>
+              <h2 id="when-title">When Shopify is the part slowing things down.</h2>
+            </div>
+            <ul class="simple-list">
+              <li>The campaign is ready, but the landing page is not.</li>
+              <li>A client asks for Shopify work your team does not usually take on.</li>
+              <li>Your team is already full, but the launch still has to happen.</li>
+              <li>A PDP or landing page is holding up media, email or SMS.</li>
+              <li>You are hiring or staffing up, but this project cannot wait.</li>
+              <li>A good client could grow if the Shopify work had a clear owner.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="partner-section" id="why" aria-labelledby="why-title">
+          <div class="partner-inner">
+            <div class="partner-heading">
+              <p class="section-index">02 / Why teams bring Jason in</p>
+              <h2 id="why-title">Keep the project moving without building a new department.</h2>
+            </div>
+            <ul class="simple-list">
+              <li>Keep client momentum without hiring.</li>
+              <li>Protect campaign performance after the click.</li>
+              <li>Add Shopify capacity without building a new department.</li>
+              <li>Give one person clear ownership of the store work.</li>
+              <li>Expand project scope without expanding internal overhead.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="partner-section" id="does" aria-labelledby="does-title">
+          <div class="partner-inner">
+            <div class="partner-heading">
+              <p class="section-index">03 / What Jason does</p>
+              <h2 id="does-title">Turns campaign traffic into a clearer path to buy.</h2>
+            </div>
+            <div class="work-grid">
+              <article class="work-card"><span>Diagnosis</span><h3>What should this page do?</h3><p>Clarify the campaign, offer, product and shopper decision before anything gets built.</p></article>
+              <article class="work-card"><span>Page direction</span><h3>Landing pages and PDPs</h3><p>Plan the page so customers understand the product, the reason to buy and the next step.</p></article>
+              <article class="work-card"><span>Production</span><h3>Build or handoff</h3><p>Build in Shopify or prepare a clean direction your team can produce from.</p></article>
+              <article class="work-card"><span>Launch</span><h3>Mobile QA and tracking</h3><p>Check the page before traffic goes live and make sure the launch basics are covered.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="partner-section partner-section--paper" aria-labelledby="protect-title">
+          <div class="partner-inner">
+            <div class="partner-heading">
+              <p class="section-index">04 / Agency protection</p>
+              <h2 id="protect-title">Your client stays your client.</h2>
+            </div>
+            <ul class="simple-list">
+              <li>You keep the client relationship and the context.</li>
+              <li>The delivery model is agreed before work starts.</li>
+              <li>Jason does not go around you to sell more work.</li>
+              <li>White-label and confidential work stays confidential.</li>
+              <li>Public proof only happens with written approval.</li>
+              <li>Scope, revisions, communication and ownership are written down.</li>
+              <li>If the project is not a fit, you hear that before money is wasted.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="partner-section partner-section--paper" id="models" aria-labelledby="models-title">
+          <div class="partner-inner">
+            <div class="partner-heading">
+              <p class="section-index">05 / Ways to work together</p>
+              <h2 id="models-title">Use the setup that fits the client situation.</h2>
+            </div>
+            <div class="model-grid">
+              <article class="model-card model-card--recommended"><span>Recommended</span><h3>Work together</h3><p>Your team stays close to the client. Jason owns the Shopify part and keeps the work moving.</p><a class="text-cta" href="#pilot">Discuss a paid pilot <span>-&gt;</span></a></article>
+              <article class="model-card"><span>White-label</span><h3>Stay behind your agency</h3><p>You manage the client and pricing. Jason delivers under the boundaries you agree to.</p><a class="text-cta" href="mailto:cptjason.jf@gmail.com?subject=Partner%20pricing%20request">Request pricing <span>-&gt;</span></a></article>
+              <article class="model-card"><span>Referral</span><h3>Send it somewhere useful</h3><p>When the work is not right for your team, your contact gets help and you receive 10% of collected first-project revenue.</p><a class="text-cta" href="mailto:cptjason.jf@gmail.com?subject=Protected%20referral%20opportunity">Refer an opportunity <span>-&gt;</span></a></article>
+            </div>
+            <p class="backup-note">Nothing active right now? Keep Jason Fung Studio as backup for the next launch, client request or Shopify gap.</p>
+          </div>
+        </section>
+
+        <section class="partner-section" id="pilot" aria-labelledby="pilot-title">
+          <div class="partner-inner">
+            <div class="partner-heading">
+              <p class="section-index">06 / Smallest safe test</p>
+              <h2 id="pilot-title">Try one small paid project first.</h2>
+            </div>
+            <div class="pilot-panel">
+              <div class="pilot-main">
+                <h3>Campaign-to-Checkout Pilot</h3>
+                <p>Outcome: one campaign gets a clearer Shopify path from click to purchase.</p>
+                <ul class="simple-list">
+                  <li>Campaign and offer review</li>
+                  <li>Landing page or PDP structure</li>
+                  <li>Buying-path direction</li>
+                  <li>Shopify implementation or build-ready handoff</li>
+                  <li>Mobile QA</li>
+                  <li>Launch and tracking checklist</li>
+                  <li>One revision</li>
+                  <li>Short handoff note with what to fix next</li>
+                </ul>
+              </div>
+              <aside class="pilot-meta" aria-label="Pilot details">
+                <div><span>Timeline</span><strong>7-10 business days</strong></div>
+                <div><span>Starting at</span><strong>CAD $1,500</strong></div>
+                <div><span>Commitment</span><strong>None beyond the pilot</strong></div>
+                <div><span>Afterward</span><strong>Repeat, expand or stop</strong></div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="partner-final" aria-labelledby="final-title">
+          <div>
+            <p class="partner-kicker">Next step</p>
+            <h2 id="final-title">Have a client project in mind?</h2>
+            <p>Send the situation, deadline and what is stuck. Jason Fung Studio will reply with whether it is a fit, what the scope should be and what happens next.</p>
+          </div>
+          <div>
+            <a class="light-cta" href="partner-call.html">Book a partner call <span>-&gt;</span></a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="studio-footer">
+        <div class="studio-footer__main">
+          <a class="studio-footer__brand" href="#top">Jason Fung Studio</a>
+          <p class="studio-footer__line">Connected Shopify growth for founder-led beauty, fashion and lifestyle brands.</p>
+        </div>
+        <div class="studio-footer__legal">
+          <span>&copy; 2026 Jason Fung Studio. All rights reserved.</span>
+          <nav aria-label="Legal links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="research.html">Research</a>
+            <a href="partners.html">Partners</a>
+            <a href="book.html">Book a Call</a>
+            <a href="mailto:cptjason.jf@gmail.com">cptjason.jf@gmail.com</a>
+            <span>Toronto, Canada</span>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
