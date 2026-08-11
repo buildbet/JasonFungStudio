@@ -11,13 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=booking-nav" />
     <style>
       .partner-booking-page .booking-hero{padding-bottom:40px}
       .partner-booking-page .booking-form-section{padding-top:38px}
-      .partner-booking-page .booking-next{margin-bottom:24px}
-      .partner-booking-page .booking-next article{min-height:118px}
-      .partner-booking-page .booking-next h3{margin-top:20px}
       @media(max-width:640px){
         body.menu-open.partner-booking-page{overflow:hidden}
         .partner-booking-page .site-header{z-index:50;grid-template-columns:1fr auto;padding:0 24px;background:#050605;backdrop-filter:none}
@@ -31,10 +28,6 @@
         .partner-booking-page .booking-hero h1{font-size:39px}
         .partner-booking-page .booking-lede{font-size:16px;line-height:1.45}
         .partner-booking-page .booking-form-section{padding-top:28px}
-        .partner-booking-page .booking-next{margin-bottom:18px}
-        .partner-booking-page .booking-next article{padding:14px 0;min-height:0}
-        .partner-booking-page .booking-next h3{margin:8px 0 5px;font-size:28px}
-        .partner-booking-page .booking-next p{font-size:14px;line-height:1.4}
       }
     </style>
     <script src="analytics.js" defer></script>
@@ -67,18 +60,64 @@
         <section class="booking-form-section" aria-labelledby="calendar-heading">
           <h2 id="calendar-heading" class="sr-only">Book a partner project review calendar</h2>
 
-          <div class="booking-next" aria-label="What happens after booking">
-            <article><span>01</span><h3>Context</h3><p>Client, campaign, deadline and what is stuck.</p></article>
-            <article><span>02</span><h3>Fit</h3><p>Collaborative, white-label or referral.</p></article>
-            <article><span>03</span><h3>Scope</h3><p>Timeline, inputs, pricing and next step.</p></article>
-          </div>
+          <form class="booking-questionnaire" id="booking-questionnaire" data-booking-kind="partner" data-web3forms-key="4c3114a9-927a-4868-8ed3-d05caa783418" aria-labelledby="questionnaire-heading">
+            <div class="booking-questionnaire__intro">
+              <p class="section-index">Before the calendar</p>
+              <h3 id="questionnaire-heading">Share the partner context first.</h3>
+              <p>These answers help focus the review around the client, delivery model and next decision. After this, you will choose a time.</p>
+            </div>
 
-          <div class="cal-embed-wrap" id="cal-embed-wrap" aria-busy="true">
+            <div class="booking-questionnaire__grid">
+              <label>
+                <span>Your name</span>
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+              <label>
+                <span>Agency or company</span>
+                <input type="text" name="partner_company" autocomplete="organization" required />
+              </label>
+              <label>
+                <span>Client or store URL</span>
+                <input type="url" name="client_url" autocomplete="url" placeholder="https://" required />
+              </label>
+              <label class="booking-questionnaire__full">
+                <span>What is the client situation?</span>
+                <textarea name="client_context" rows="4" required></textarea>
+              </label>
+              <label>
+                <span>Likely collaboration model</span>
+                <select name="collaboration_model" required>
+                  <option value="">Select one</option>
+                  <option>Collaborative delivery</option>
+                  <option>White-label support</option>
+                  <option>Referral</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+            </div>
+
+            <input type="checkbox" name="botcheck" class="booking-questionnaire__botcheck" tabindex="-1" autocomplete="off" />
+            <button class="booking-questionnaire__submit" type="submit">Continue to calendar <span>-&gt;</span></button>
+            <p class="booking-questionnaire__status" id="booking-questionnaire-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="booking-calendar-step" id="booking-calendar-step" hidden>
+            <div class="booking-step-heading">
+              <p class="section-index">Next step</p>
+              <h3>Choose a time.</h3>
+            </div>
+
+            <div class="cal-embed-wrap" id="cal-embed-wrap" aria-busy="true">
             <div class="cal-loading" id="cal-loading" role="status">
               <span></span>
               Loading available times...
             </div>
             <div class="cal-inline-embed" id="cal-inline-embed" data-cal-theme="dark" data-cal-link="https://cal.com/jason-fung-zndb6x/partner-project-review?overlayCalendar=true"></div>
+            </div>
           </div>
 
           <p class="booking-fallback">

@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=booking-nav" />
     <style>
       .growth-page{--cream:#ebe6da;--warm:#c8c0ae;--ink:#080908;--muted:#aaa9a3;--paper:#ebe6da}
       .growth-page .site-header{position:fixed;background:rgba(8,9,8,.84);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(14px)}
@@ -291,8 +291,9 @@
     </style>
     <script src="analytics.js" defer></script>
     <script src="site-data.js" defer></script>
+    <script src="book-form.js" defer></script>
   </head>
-  <body class="growth-page">
+  <body class="growth-page" data-cal-link="https://cal.com/jason-fung-zndb6x/free-consultation?overlayCalendar=true">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell" id="top">
       <header class="site-header">
@@ -634,12 +635,74 @@
           <div><p class="section-index">18 / Final CTA</p><h2 id="apply-title">Ready to start?</h2></div>
           <div>
             <div class="audit-note cta-price">
-              <p><span>Growth Sprint</span>Starting from $3,000</p>
+              <p><span>30-Day Shopify Growth Sprint</span>Founder-led. Limited monthly capacity.</p>
               <p><span>Timeline</span>30 days</p>
-              <p><span>Scope</span>Defined scope, implementation included, documentation and handoff</p>
+              <p><span>Scope and investment</span>Prescribed around your highest-priority growth opportunity.</p>
             </div>
-            <a class="light-cta" href="book.html">Apply to reserve your Sprint <span>&rarr;</span></a>
-            <p>Founder-led. 2 Growth Sprints per month.</p>
+            <form class="booking-questionnaire" id="booking-questionnaire" data-booking-kind="client" data-web3forms-key="1795d87a-1dd7-42b5-85c4-36cad41e0c05" aria-labelledby="questionnaire-heading">
+              <div class="booking-questionnaire__intro">
+                <p class="section-index">Before the calendar</p>
+                <h3 id="questionnaire-heading">Share the quick context first.</h3>
+                <p>These answers help make the fit call useful from the first minute. After this, you will choose a time.</p>
+              </div>
+
+              <div class="booking-questionnaire__grid">
+                <label>
+                  <span>Your name</span>
+                  <input type="text" name="name" autocomplete="name" required />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+                <label>
+                  <span>Brand or company</span>
+                  <input type="text" name="brand" autocomplete="organization" required />
+                </label>
+                <label>
+                  <span>Website or store URL</span>
+                  <input type="url" name="website" autocomplete="url" placeholder="https://" required />
+                </label>
+                <label class="booking-questionnaire__full">
+                  <span>What are you hoping to improve first?</span>
+                  <textarea name="goal" rows="4" required></textarea>
+                </label>
+                <label>
+                  <span>Timeline</span>
+                  <select name="timeline" required>
+                    <option value="">Select one</option>
+                    <option>As soon as possible</option>
+                    <option>Within 30 days</option>
+                    <option>1-3 months</option>
+                    <option>Still exploring</option>
+                  </select>
+                </label>
+              </div>
+
+              <input type="checkbox" name="botcheck" class="booking-questionnaire__botcheck" tabindex="-1" autocomplete="off" />
+              <button class="booking-questionnaire__submit" type="submit">Continue to calendar <span>&rarr;</span></button>
+              <p class="booking-questionnaire__status" id="booking-questionnaire-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="booking-calendar-step" id="booking-calendar-step" hidden>
+              <div class="booking-step-heading">
+                <p class="section-index">Next step</p>
+                <h3>Choose a time.</h3>
+              </div>
+
+              <div class="cal-embed-wrap" id="cal-embed-wrap" aria-busy="true">
+                <div class="cal-loading" id="cal-loading" role="status">
+                  <span></span>
+                  Loading available times...
+                </div>
+                <div class="cal-inline-embed" id="cal-inline-embed" data-cal-theme="dark" data-cal-link="https://cal.com/jason-fung-zndb6x/free-consultation?overlayCalendar=true"></div>
+              </div>
+            </div>
+
+            <p class="booking-fallback">
+              Prefer email?
+              <a href="mailto:cptjason.jf@gmail.com">Email cptjason.jf@gmail.com</a>
+            </p>
           </div>
         </section>
       </main>

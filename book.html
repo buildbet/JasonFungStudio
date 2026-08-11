@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=booking-nav" />
     <script src="analytics.js" defer></script>
     <script src="site-data.js" defer></script>
     <script src="book-form.js" defer></script>
@@ -43,18 +43,64 @@
         <section class="booking-form-section" aria-labelledby="calendar-heading">
           <h2 id="calendar-heading" class="sr-only">Book a consultation calendar</h2>
 
-          <div class="booking-next" aria-label="What happens after booking">
-            <article><span>01</span><h3>Fit call</h3><p>We look at your current store, growth stage and what is blocking the buying journey.</p></article>
-            <article><span>02</span><h3>Sprint scope</h3><p>You get a focused recommendation for what should be fixed first and what can wait.</p></article>
-            <article><span>03</span><h3>Start date</h3><p>If the fit is right, we reserve one of the available monthly sprint slots.</p></article>
-          </div>
+          <form class="booking-questionnaire" id="booking-questionnaire" data-booking-kind="client" data-web3forms-key="1795d87a-1dd7-42b5-85c4-36cad41e0c05" aria-labelledby="questionnaire-heading">
+            <div class="booking-questionnaire__intro">
+              <p class="section-index">Before the calendar</p>
+              <h3 id="questionnaire-heading">Share the quick context first.</h3>
+              <p>These answers help make the fit call useful from the first minute. After this, you will choose a time.</p>
+            </div>
 
-          <div class="cal-embed-wrap" id="cal-embed-wrap" aria-busy="true">
+            <div class="booking-questionnaire__grid">
+              <label>
+                <span>Your name</span>
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+              <label>
+                <span>Brand or company</span>
+                <input type="text" name="brand" autocomplete="organization" required />
+              </label>
+              <label>
+                <span>Website or store URL</span>
+                <input type="url" name="website" autocomplete="url" placeholder="https://" required />
+              </label>
+              <label class="booking-questionnaire__full">
+                <span>What are you hoping to improve first?</span>
+                <textarea name="goal" rows="4" required></textarea>
+              </label>
+              <label>
+                <span>Timeline</span>
+                <select name="timeline" required>
+                  <option value="">Select one</option>
+                  <option>As soon as possible</option>
+                  <option>Within 30 days</option>
+                  <option>1-3 months</option>
+                  <option>Still exploring</option>
+                </select>
+              </label>
+            </div>
+
+            <input type="checkbox" name="botcheck" class="booking-questionnaire__botcheck" tabindex="-1" autocomplete="off" />
+            <button class="booking-questionnaire__submit" type="submit">Continue to calendar <span>-&gt;</span></button>
+            <p class="booking-questionnaire__status" id="booking-questionnaire-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="booking-calendar-step" id="booking-calendar-step" hidden>
+            <div class="booking-step-heading">
+              <p class="section-index">Next step</p>
+              <h3>Choose a time.</h3>
+            </div>
+
+            <div class="cal-embed-wrap" id="cal-embed-wrap" aria-busy="true">
             <div class="cal-loading" id="cal-loading" role="status">
               <span></span>
               Loading available times...
             </div>
             <div class="cal-inline-embed" id="cal-inline-embed" data-cal-theme="dark" data-cal-link="https://cal.com/jason-fung-zndb6x/free-consultation?overlayCalendar=true"></div>
+            </div>
           </div>
 
           <p class="booking-fallback">

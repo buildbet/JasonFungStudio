@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=booking-nav" />
     <style>
       .partners-page{background:#080908;color:#f6f3ed}
       .partners-page .site-header{position:sticky;background:rgba(8,9,8,.92);border-bottom:1px solid rgba(255,255,255,.13);backdrop-filter:blur(14px)}
@@ -95,8 +95,9 @@
     </style>
     <script src="analytics.js" defer></script>
     <script src="site-data.js" defer></script>
+    <script src="book-form.js" defer></script>
   </head>
-  <body class="partners-page">
+  <body class="partners-page" data-cal-link="https://cal.com/jason-fung-zndb6x/partner-project-review?overlayCalendar=true">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell" id="top">
       <header class="site-header">
@@ -244,7 +245,7 @@
             </div>
             <div class="model-grid">
               <article class="model-card model-card--recommended"><span>Recommended</span><h3>Work together</h3><p>Your team stays close to the client. Jason owns the Shopify part and keeps the work moving.</p><a class="text-cta" href="#pilot">Discuss a paid pilot <span>-&gt;</span></a></article>
-              <article class="model-card"><span>White-label</span><h3>Stay behind your agency</h3><p>You manage the client and pricing. Jason delivers under the boundaries you agree to.</p><a class="text-cta" href="mailto:cptjason.jf@gmail.com?subject=Partner%20pricing%20request">Request pricing <span>-&gt;</span></a></article>
+              <article class="model-card"><span>White-label</span><h3>Stay behind your agency</h3><p>You manage the client relationship. Jason delivers under the scope, investment and boundaries you agree to.</p><a class="text-cta" href="mailto:cptjason.jf@gmail.com?subject=Partner%20project%20scope">Discuss scope <span>-&gt;</span></a></article>
               <article class="model-card"><span>Referral</span><h3>Send it somewhere useful</h3><p>When the work is not right for your team, your contact gets help and you receive 10% of collected first-project revenue.</p><a class="text-cta" href="mailto:cptjason.jf@gmail.com?subject=Protected%20referral%20opportunity">Refer an opportunity <span>-&gt;</span></a></article>
             </div>
             <p class="backup-note">Nothing active right now? Keep Jason Fung Studio as backup for the next launch, client request or Shopify gap.</p>
@@ -274,7 +275,7 @@
               </div>
               <aside class="pilot-meta" aria-label="Pilot details">
                 <div><span>Timeline</span><strong>7-10 business days</strong></div>
-                <div><span>Starting at</span><strong>CAD $1,500</strong></div>
+                <div><span>Scope and investment</span><strong>Prescribed around the client priority</strong></div>
                 <div><span>Commitment</span><strong>None beyond the pilot</strong></div>
                 <div><span>Afterward</span><strong>Repeat, expand or stop</strong></div>
               </aside>
@@ -289,7 +290,70 @@
             <p>Send the situation, deadline and what is stuck. Jason Fung Studio will reply with whether it is a fit, what the scope should be and what happens next.</p>
           </div>
           <div>
-            <a class="light-cta" href="partner-call.html">Book a partner call <span>-&gt;</span></a>
+            <form class="booking-questionnaire" id="booking-questionnaire" data-booking-kind="partner" data-web3forms-key="4c3114a9-927a-4868-8ed3-d05caa783418" aria-labelledby="questionnaire-heading">
+              <div class="booking-questionnaire__intro">
+                <p class="section-index">Before the calendar</p>
+                <h3 id="questionnaire-heading">Share the partner context first.</h3>
+                <p>These answers help focus the review around the client, delivery model and next decision. After this, you will choose a time.</p>
+              </div>
+
+              <div class="booking-questionnaire__grid">
+                <label>
+                  <span>Your name</span>
+                  <input type="text" name="name" autocomplete="name" required />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+                <label>
+                  <span>Agency or company</span>
+                  <input type="text" name="partner_company" autocomplete="organization" required />
+                </label>
+                <label>
+                  <span>Client or store URL</span>
+                  <input type="url" name="client_url" autocomplete="url" placeholder="https://" required />
+                </label>
+                <label class="booking-questionnaire__full">
+                  <span>What is the client situation?</span>
+                  <textarea name="client_context" rows="4" required></textarea>
+                </label>
+                <label>
+                  <span>Likely collaboration model</span>
+                  <select name="collaboration_model" required>
+                    <option value="">Select one</option>
+                    <option>Collaborative delivery</option>
+                    <option>White-label support</option>
+                    <option>Referral</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </label>
+              </div>
+
+              <input type="checkbox" name="botcheck" class="booking-questionnaire__botcheck" tabindex="-1" autocomplete="off" />
+              <button class="booking-questionnaire__submit" type="submit">Continue to calendar <span>-&gt;</span></button>
+              <p class="booking-questionnaire__status" id="booking-questionnaire-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="booking-calendar-step" id="booking-calendar-step" hidden>
+              <div class="booking-step-heading">
+                <p class="section-index">Next step</p>
+                <h3>Choose a time.</h3>
+              </div>
+
+              <div class="cal-embed-wrap" id="cal-embed-wrap" aria-busy="true">
+                <div class="cal-loading" id="cal-loading" role="status">
+                  <span></span>
+                  Loading available times...
+                </div>
+                <div class="cal-inline-embed" id="cal-inline-embed" data-cal-theme="dark" data-cal-link="https://cal.com/jason-fung-zndb6x/partner-project-review?overlayCalendar=true"></div>
+              </div>
+            </div>
+
+            <p class="booking-fallback">
+              Prefer email?
+              <a href="mailto:cptjason.jf@gmail.com">Email cptjason.jf@gmail.com</a>
+            </p>
           </div>
         </section>
       </main>
