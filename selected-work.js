@@ -95,6 +95,7 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
   carousel.classList.add('is-js');
 
   let cycleWidth = 1;
+  let scrollPosition = 0;
   let previousTime = 0;
   let isDragging = false;
   let startX = 0;
@@ -104,18 +105,20 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const wrapScroll = () => {
-    if (carousel.scrollLeft < cycleWidth * 0.5) {
-      carousel.scrollLeft += cycleWidth;
-    } else if (carousel.scrollLeft > cycleWidth * 1.5) {
-      carousel.scrollLeft -= cycleWidth;
+    if (scrollPosition < cycleWidth * 0.5) {
+      scrollPosition += cycleWidth;
+    } else if (scrollPosition > cycleWidth * 1.5) {
+      scrollPosition -= cycleWidth;
     }
+    carousel.scrollLeft = scrollPosition;
   };
 
   const measure = () => {
     const styles = window.getComputedStyle(track);
     const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
     cycleWidth = Math.max(firstSet.offsetWidth + gap, 1);
-    carousel.scrollLeft = cycleWidth;
+    scrollPosition = cycleWidth;
+    carousel.scrollLeft = scrollPosition;
   };
 
   const animate = (time) => {
@@ -124,7 +127,7 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
     previousTime = time;
 
     if (!reduceMotion && !isDragging && time >= resumeAt) {
-      carousel.scrollLeft += delta * speed;
+      scrollPosition += delta * speed;
       wrapScroll();
     }
 
@@ -147,6 +150,7 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
     isDragging = true;
     startX = event.clientX;
     startScrollLeft = carousel.scrollLeft;
+    scrollPosition = carousel.scrollLeft;
     carousel.classList.add('is-dragging');
     carousel.setPointerCapture(event.pointerId);
   });
@@ -154,7 +158,7 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
   carousel.addEventListener('pointermove', (event) => {
     if (!isDragging) return;
     event.preventDefault();
-    carousel.scrollLeft = startScrollLeft - (event.clientX - startX);
+    scrollPosition = startScrollLeft - (event.clientX - startX);
     wrapScroll();
   });
 
@@ -163,10 +167,12 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
   carousel.addEventListener('lostpointercapture', stopDragging);
   carousel.addEventListener('touchstart', () => {
     isDragging = true;
+    scrollPosition = carousel.scrollLeft;
     carousel.classList.add('is-dragging');
   }, { passive: true });
   carousel.addEventListener('touchend', stopDragging, { passive: true });
   carousel.addEventListener('scroll', () => {
+    scrollPosition = carousel.scrollLeft;
     if (isDragging) wrapScroll();
   }, { passive: true });
   window.addEventListener('resize', measure, { passive: true });
