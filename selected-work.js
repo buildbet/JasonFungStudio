@@ -2,6 +2,8 @@ document.querySelectorAll('.pandaii-scroll').forEach((scroller) => {
   const slides = [...scroller.querySelectorAll('figure')];
   let dots = [];
 
+  const getSlideLeft = (slide) => slide.offsetLeft - scroller.offsetLeft;
+
   if (slides.length > 1) {
     const dotsWrap = document.createElement('div');
     dotsWrap.className = 'scroll-dots';
@@ -14,7 +16,7 @@ document.querySelectorAll('.pandaii-scroll').forEach((scroller) => {
       dot.setAttribute('aria-label', `Show image ${index + 1}`);
       dot.addEventListener('click', () => {
         scroller.scrollTo({
-          left: slide.offsetLeft - scroller.offsetLeft,
+          left: getSlideLeft(slide),
           behavior: 'smooth',
         });
       });
@@ -27,13 +29,12 @@ document.querySelectorAll('.pandaii-scroll').forEach((scroller) => {
 
   const setActiveDot = () => {
     if (!dots.length) return;
-    const scrollerCenter = scroller.scrollLeft + scroller.clientWidth / 2;
+    const currentLeft = scroller.scrollLeft;
     let activeIndex = 0;
     let closestDistance = Infinity;
 
     slides.forEach((slide, index) => {
-      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-      const distance = Math.abs(slideCenter - scrollerCenter);
+      const distance = Math.abs(getSlideLeft(slide) - currentLeft);
       if (distance < closestDistance) {
         closestDistance = distance;
         activeIndex = index;
@@ -83,6 +84,7 @@ document.querySelectorAll('.pandaii-scroll').forEach((scroller) => {
 
   window.addEventListener('resize', setActiveDot, { passive: true });
   setActiveDot();
+  window.addEventListener('load', setActiveDot, { once: true, passive: true });
 });
 
 document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
@@ -92,27 +94,28 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
 
   carousel.classList.add('is-js');
 
-  let position = 0;
   let cycleWidth = 1;
   let previousTime = 0;
   let isDragging = false;
   let startX = 0;
-  let startPosition = 0;
+  let startScrollLeft = 0;
   let resumeAt = 0;
   const speed = 0.035;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const wrapPosition = () => {
-    while (position <= -cycleWidth) position += cycleWidth;
-    while (position > 0) position -= cycleWidth;
+  const wrapScroll = () => {
+    if (carousel.scrollLeft < cycleWidth * 0.5) {
+      carousel.scrollLeft += cycleWidth;
+    } else if (carousel.scrollLeft > cycleWidth * 1.5) {
+      carousel.scrollLeft -= cycleWidth;
+    }
   };
 
   const measure = () => {
     const styles = window.getComputedStyle(track);
     const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
     cycleWidth = Math.max(firstSet.offsetWidth + gap, 1);
-    wrapPosition();
-    track.style.transform = `translate3d(${position}px, 0, 0)`;
+    carousel.scrollLeft = cycleWidth;
   };
 
   const animate = (time) => {
@@ -121,9 +124,8 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
     previousTime = time;
 
     if (!reduceMotion && !isDragging && time >= resumeAt) {
-      position -= delta * speed;
-      wrapPosition();
-      track.style.transform = `translate3d(${position}px, 0, 0)`;
+      carousel.scrollLeft += delta * speed;
+      wrapScroll();
     }
 
     window.requestAnimationFrame(animate);
@@ -140,10 +142,11 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
   };
 
   carousel.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (event.pointerType !== 'mouse') return;
+    if (event.button !== 0) return;
     isDragging = true;
     startX = event.clientX;
-    startPosition = position;
+    startScrollLeft = carousel.scrollLeft;
     carousel.classList.add('is-dragging');
     carousel.setPointerCapture(event.pointerId);
   });
@@ -151,15 +154,23 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
   carousel.addEventListener('pointermove', (event) => {
     if (!isDragging) return;
     event.preventDefault();
-    position = startPosition + event.clientX - startX;
-    wrapPosition();
-    track.style.transform = `translate3d(${position}px, 0, 0)`;
+    carousel.scrollLeft = startScrollLeft - (event.clientX - startX);
+    wrapScroll();
   });
 
   carousel.addEventListener('pointerup', stopDragging);
   carousel.addEventListener('pointercancel', stopDragging);
   carousel.addEventListener('lostpointercapture', stopDragging);
+  carousel.addEventListener('touchstart', () => {
+    isDragging = true;
+    carousel.classList.add('is-dragging');
+  }, { passive: true });
+  carousel.addEventListener('touchend', stopDragging, { passive: true });
+  carousel.addEventListener('scroll', () => {
+    if (isDragging) wrapScroll();
+  }, { passive: true });
   window.addEventListener('resize', measure, { passive: true });
+  window.addEventListener('load', measure, { once: true, passive: true });
 
   measure();
   window.requestAnimationFrame(animate);

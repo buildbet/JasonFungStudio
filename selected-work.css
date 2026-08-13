@@ -83,6 +83,7 @@ img {
   padding: 0 clamp(22px, 5vw, 72px);
   display: grid;
   grid-template-columns: auto 1fr auto;
+  grid-template-areas: "brand nav cta";
   gap: clamp(12px, 2vw, 28px);
   align-items: center;
   border-bottom: 1px solid var(--line);
@@ -92,6 +93,8 @@ img {
 
 .selected-brand {
   order: 0;
+  grid-area: brand;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -109,6 +112,7 @@ img {
 
 .selected-nav {
   order: 1;
+  grid-area: nav;
   justify-self: center;
   display: flex;
   gap: clamp(18px, 3vw, 36px);
@@ -130,6 +134,7 @@ img {
 
 .selected-cta {
   order: 2;
+  grid-area: cta;
   min-height: 42px;
   padding: 0 18px;
   display: inline-flex;
@@ -137,10 +142,12 @@ img {
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 999px;
+  -webkit-border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .selected-hero {
@@ -271,12 +278,19 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   background: radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.08), transparent 32%), #10110f;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   cursor: grab;
   user-select: none;
-  touch-action: pan-y;
+  touch-action: pan-x pan-y;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+}
+
+.testimonial-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .testimonial-carousel.is-dragging {
@@ -310,7 +324,6 @@ img {
   align-items: stretch;
   gap: 18px;
   animation: testimonial-reel 44s linear infinite;
-  will-change: transform;
 }
 
 .testimonial-carousel.is-js .testimonial-carousel-track {
@@ -1259,28 +1272,28 @@ img {
 @media (max-width: 1120px) {
   .selected-header {
     grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand cta"
+      "nav nav";
     justify-content: space-between;
     padding-block: 16px;
   }
 
   .selected-brand {
     order: 0;
-    grid-column: 1;
-    grid-row: 1;
+    grid-area: brand;
   }
 
   .selected-cta {
     order: 1;
-    grid-column: 2;
-    grid-row: 1;
+    grid-area: cta;
     width: max-content;
     justify-self: end;
   }
 
   .selected-nav {
     order: 2;
-    grid-column: 1 / -1;
-    grid-row: 2;
+    grid-area: nav;
     width: 100%;
     justify-self: stretch;
     justify-content: space-between;
@@ -1327,6 +1340,12 @@ img {
   .selected-brand {
     gap: 8px;
     font-size: clamp(10px, 2.8vw, 12px);
+    letter-spacing: 0.04em;
+  }
+
+  .selected-brand img {
+    width: 24px;
+    height: 24px;
   }
 
   .selected-nav {
@@ -1339,6 +1358,7 @@ img {
   .selected-cta {
     min-height: 34px;
     padding-inline: 13px;
+    border-radius: 999px;
     font-size: 10px;
   }
 
