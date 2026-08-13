@@ -82,8 +82,8 @@ img {
   min-height: 84px;
   padding: 0 clamp(22px, 5vw, 72px);
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 28px;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(12px, 2vw, 28px);
   align-items: center;
   border-bottom: 1px solid var(--line);
   background: rgba(8, 9, 8, 0.92);
@@ -91,6 +91,7 @@ img {
 }
 
 .selected-brand {
+  order: 0;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -107,6 +108,8 @@ img {
 }
 
 .selected-nav {
+  order: 1;
+  justify-self: center;
   display: flex;
   gap: clamp(18px, 3vw, 36px);
   color: #d5d2ca;
@@ -126,14 +129,18 @@ img {
 }
 
 .selected-cta {
-  min-height: 48px;
-  padding: 0 22px;
+  order: 2;
+  min-height: 42px;
+  padding: 0 18px;
   display: inline-flex;
   align-items: center;
-  gap: 26px;
+  justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .selected-hero {
@@ -265,8 +272,15 @@ img {
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   background: radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.08), transparent 32%), #10110f;
   overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+}
+
+.testimonial-carousel.is-dragging {
+  cursor: grabbing;
 }
 
 .testimonial-carousel::before,
@@ -275,19 +289,19 @@ img {
   z-index: 2;
   top: 0;
   bottom: 0;
-  width: 18%;
+  width: min(24%, 220px);
   pointer-events: none;
   content: "";
 }
 
 .testimonial-carousel::before {
   left: 0;
-  background: linear-gradient(90deg, #080908 0, rgba(8, 9, 8, 0.72) 30%, transparent 100%);
+  background: linear-gradient(90deg, #080908 0, rgba(8, 9, 8, 0.82) 34%, transparent 100%);
 }
 
 .testimonial-carousel::after {
   right: 0;
-  background: linear-gradient(270deg, #080908 0, rgba(8, 9, 8, 0.72) 30%, transparent 100%);
+  background: linear-gradient(270deg, #080908 0, rgba(8, 9, 8, 0.82) 34%, transparent 100%);
 }
 
 .testimonial-carousel-track {
@@ -296,6 +310,11 @@ img {
   align-items: stretch;
   gap: 18px;
   animation: testimonial-reel 44s linear infinite;
+  will-change: transform;
+}
+
+.testimonial-carousel.is-js .testimonial-carousel-track {
+  animation: none;
 }
 
 .testimonial-carousel-set {
@@ -316,6 +335,7 @@ img {
   border-radius: 20px;
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34);
   filter: saturate(0.98) contrast(1.02);
+  pointer-events: none;
 }
 
 .brand-marquee {
@@ -1238,16 +1258,33 @@ img {
 
 @media (max-width: 1120px) {
   .selected-header {
-    grid-template-columns: 1fr;
-    padding-block: 20px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-content: space-between;
+    padding-block: 16px;
   }
 
-  .selected-nav {
-    flex-wrap: wrap;
+  .selected-brand {
+    order: 0;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .selected-cta {
+    order: 1;
+    grid-column: 2;
+    grid-row: 1;
     width: max-content;
+    justify-self: end;
+  }
+
+  .selected-nav {
+    order: 2;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    justify-self: stretch;
+    justify-content: space-between;
+    flex-wrap: nowrap;
   }
 
   .selected-hero,
@@ -1283,21 +1320,26 @@ img {
 @media (max-width: 700px) {
   .selected-header {
     min-height: 0;
-    gap: 18px;
+    padding-inline: 16px;
+    gap: 12px 14px;
   }
 
   .selected-brand {
-    font-size: 12px;
+    gap: 8px;
+    font-size: clamp(10px, 2.8vw, 12px);
   }
 
   .selected-nav {
-    gap: 12px 18px;
-    font-size: 11px;
+    gap: clamp(5px, 1.6vw, 12px);
+    font-size: clamp(8px, 2.35vw, 11px);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .selected-cta {
-    width: 100%;
-    justify-content: space-between;
+    min-height: 34px;
+    padding-inline: 13px;
+    font-size: 10px;
   }
 
   .selected-hero {
@@ -1329,13 +1371,13 @@ img {
   .testimonial-carousel {
     min-height: 340px;
     padding: 12px;
-    -webkit-mask-image: none;
-    mask-image: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%);
   }
 
   .testimonial-carousel::before,
   .testimonial-carousel::after {
-    display: none;
+    width: 19%;
   }
 
   .testimonial-carousel-track,

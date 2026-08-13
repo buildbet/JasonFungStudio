@@ -85,6 +85,86 @@ document.querySelectorAll('.pandaii-scroll').forEach((scroller) => {
   setActiveDot();
 });
 
+document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
+  const track = carousel.querySelector('.testimonial-carousel-track');
+  const firstSet = carousel.querySelector('.testimonial-carousel-set');
+  if (!track || !firstSet) return;
+
+  carousel.classList.add('is-js');
+
+  let position = 0;
+  let cycleWidth = 1;
+  let previousTime = 0;
+  let isDragging = false;
+  let startX = 0;
+  let startPosition = 0;
+  let resumeAt = 0;
+  const speed = 0.035;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const wrapPosition = () => {
+    while (position <= -cycleWidth) position += cycleWidth;
+    while (position > 0) position -= cycleWidth;
+  };
+
+  const measure = () => {
+    const styles = window.getComputedStyle(track);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+    cycleWidth = Math.max(firstSet.offsetWidth + gap, 1);
+    wrapPosition();
+    track.style.transform = `translate3d(${position}px, 0, 0)`;
+  };
+
+  const animate = (time) => {
+    if (!previousTime) previousTime = time;
+    const delta = time - previousTime;
+    previousTime = time;
+
+    if (!reduceMotion && !isDragging && time >= resumeAt) {
+      position -= delta * speed;
+      wrapPosition();
+      track.style.transform = `translate3d(${position}px, 0, 0)`;
+    }
+
+    window.requestAnimationFrame(animate);
+  };
+
+  const stopDragging = (event) => {
+    if (!isDragging) return;
+    isDragging = false;
+    resumeAt = performance.now() + 900;
+    carousel.classList.remove('is-dragging');
+    if (event?.pointerId && carousel.hasPointerCapture(event.pointerId)) {
+      carousel.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  carousel.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    isDragging = true;
+    startX = event.clientX;
+    startPosition = position;
+    carousel.classList.add('is-dragging');
+    carousel.setPointerCapture(event.pointerId);
+  });
+
+  carousel.addEventListener('pointermove', (event) => {
+    if (!isDragging) return;
+    event.preventDefault();
+    position = startPosition + event.clientX - startX;
+    wrapPosition();
+    track.style.transform = `translate3d(${position}px, 0, 0)`;
+  });
+
+  carousel.addEventListener('pointerup', stopDragging);
+  carousel.addEventListener('pointercancel', stopDragging);
+  carousel.addEventListener('lostpointercapture', stopDragging);
+  window.addEventListener('resize', measure, { passive: true });
+
+  measure();
+  window.requestAnimationFrame(animate);
+});
+
 document.querySelectorAll('.comparison-slider').forEach((slider) => {
   const range = slider.querySelector('.comparison-slider__range');
   if (!range) return;
