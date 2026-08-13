@@ -61,12 +61,22 @@
 
       .split-home__brand {
         margin: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
         color: var(--muted);
         font-size: 12px;
         font-weight: 600;
         letter-spacing: 0.12em;
         line-height: 1;
         text-transform: uppercase;
+      }
+
+      .split-home__logo {
+        width: 34px;
+        height: 34px;
+        display: block;
+        object-fit: contain;
       }
 
       .split-home h1 {
@@ -130,9 +140,51 @@
         outline-offset: 4px;
       }
 
+      .split-home__work {
+        width: max-content;
+        max-width: 100%;
+        min-height: 58px;
+        padding: 0 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 999px;
+        background: rgba(241, 238, 231, 0.08);
+        color: var(--paper);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition:
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease,
+          transform 180ms ease;
+      }
+
+      .split-home__work:hover,
+      .split-home__work:focus-visible {
+        border-color: var(--paper);
+        background: var(--paper);
+        color: var(--ink);
+        transform: translateY(-2px);
+      }
+
+      .split-home__work span:last-child {
+        font-family: var(--serif);
+        font-size: 1.15em;
+        line-height: 0.8;
+      }
+
       @media (max-width: 680px) {
         main {
           align-items: end;
+        }
+
+        .split-home__logo {
+          width: 30px;
+          height: 30px;
         }
 
         .split-home__paths {
@@ -148,7 +200,16 @@
   <body>
     <main aria-labelledby="split-home-title">
       <section class="split-home">
-        <p class="split-home__brand">Jason Fung Studio</p>
+        <p class="split-home__brand">
+          <img
+            class="split-home__logo"
+            src="assets/jf-logo-white.png"
+            alt=""
+            width="34"
+            height="34"
+          />
+          <span>Jason Fung Studio</span>
+        </p>
         <h1 id="split-home-title">Who are you here for?</h1>
         <div class="split-home__paths" aria-label="Choose your path">
           <a class="split-home__path" href="brands.html">
@@ -160,6 +221,10 @@
             <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
+        <a class="split-home__work" href="selected-work.html">
+          <span>View selected work</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
       </section>
     </main>
   </body>
