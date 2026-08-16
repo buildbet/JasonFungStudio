@@ -63,6 +63,70 @@
         border-color: rgba(255, 255, 255, 0.42);
       }
 
+      .shopify-growth-page .apply-now-cta {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        animation: apply-now-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .shopify-growth-page .apply-now-cta::before {
+        position: absolute;
+        z-index: 1;
+        inset: -2px;
+        background: linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.46) 48%, transparent 62% 100%);
+        opacity: 0;
+        transform: translateX(-130%);
+        content: "";
+        pointer-events: none;
+      }
+
+      .shopify-growth-page .apply-now-cta span {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+      }
+
+      .shopify-growth-page .apply-now-cta span:last-child {
+        animation: apply-now-arrow-enter-right 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-delay: 140ms;
+      }
+
+      .shopify-growth-page .apply-now-cta span:first-child:not(:last-child) {
+        animation: apply-now-arrow-enter-left 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-delay: 240ms;
+      }
+
+      .shopify-growth-page .apply-now-cta:hover::before,
+      .shopify-growth-page .apply-now-cta:focus-visible::before {
+        animation: apply-now-shine 720ms ease;
+      }
+
+      .shopify-growth-page .apply-now-cta:hover span,
+      .shopify-growth-page .apply-now-cta:focus-visible span {
+        animation: apply-now-arrow 560ms ease;
+      }
+
+      .shopify-growth-page .header-cta.apply-now-cta {
+        animation-delay: 100ms;
+      }
+
+      .shopify-growth-page .header-cta.apply-now-cta span:last-child {
+        animation-delay: 220ms;
+      }
+
+      .growth-actions .apply-now-cta {
+        animation-delay: 220ms, 860ms;
+      }
+
+      .growth-actions .apply-now-cta span:last-child {
+        animation-delay: 380ms;
+      }
+
+      .growth-actions .apply-now-cta span:first-child:not(:last-child) {
+        animation-delay: 340ms;
+      }
+
       .growth-hero {
         min-height: 760px;
         padding: 148px 48px 72px;
@@ -162,6 +226,13 @@
       .growth-button--primary:focus-visible {
         background: #ffffff;
         color: #050605;
+      }
+
+      .growth-button--primary.apply-now-cta {
+        box-shadow: 0 0 0 0 rgba(239, 234, 224, 0.36);
+        animation:
+          apply-now-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both,
+          apply-now-pulse 3.6s ease-in-out 860ms infinite;
       }
 
       .growth-proof {
@@ -308,6 +379,107 @@
       @keyframes brand-marquee {
         to {
           transform: translateX(calc(var(--offset) - 50%));
+        }
+      }
+
+      @keyframes apply-now-shine {
+        0% {
+          opacity: 0;
+          transform: translateX(-130%);
+        }
+
+        20%,
+        65% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+          transform: translateX(130%);
+        }
+      }
+
+      @keyframes apply-now-arrow {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+
+        45% {
+          transform: translateX(4px);
+        }
+      }
+
+      @keyframes apply-now-arrow-enter-left {
+        0% {
+          opacity: 0;
+          transform: translateX(-18px);
+        }
+
+        70% {
+          opacity: 1;
+          transform: translateX(3px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes apply-now-arrow-enter-right {
+        0% {
+          opacity: 0;
+          transform: translateX(18px);
+        }
+
+        70% {
+          opacity: 1;
+          transform: translateX(-3px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes apply-now-enter {
+        0% {
+          opacity: 0;
+          transform: translateY(16px) scale(0.96);
+        }
+
+        62% {
+          opacity: 1;
+          transform: translateY(-2px) scale(1.015);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes apply-now-pulse {
+        0%,
+        62%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(239, 234, 224, 0);
+        }
+
+        72% {
+          box-shadow: 0 0 0 7px rgba(239, 234, 224, 0.18);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .shopify-growth-page .apply-now-cta,
+        .shopify-growth-page .apply-now-cta::before,
+        .shopify-growth-page .apply-now-cta span {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
         }
       }
 
@@ -1287,7 +1459,7 @@
           <a href="#founder">Meet Jason</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a class="header-cta" href="https://buy.stripe.com/eVqaEW3HXbmh1ma2k6dQQ00">Apply Now <span>→</span></a>
+        <a class="header-cta apply-now-cta" href="https://buy.stripe.com/eVqaEW3HXbmh1ma2k6dQQ00">Apply Now <span>→</span></a>
       </header>
 
       <main id="main">
@@ -1299,7 +1471,7 @@
             <p class="growth-hero__lede">We help growing ecommerce brands improve their Shopify store, launch better campaigns, and follow up with customers without hiring a full ecommerce team.</p>
             <p class="growth-hero__note">From $500/month</p>
             <div class="growth-actions">
-              <a class="growth-button growth-button--primary" href="https://buy.stripe.com/eVqaEW3HXbmh1ma2k6dQQ00"><span aria-hidden="true">→</span> Apply Now <span aria-hidden="true">←</span></a>
+              <a class="growth-button growth-button--primary apply-now-cta" href="https://buy.stripe.com/eVqaEW3HXbmh1ma2k6dQQ00"><span aria-hidden="true">→</span> Apply Now <span aria-hidden="true">←</span></a>
               <a class="growth-button" href="book.html">Book a Free Growth Call <span aria-hidden="true">→</span></a>
             </div>
           </div>
@@ -1630,7 +1802,7 @@
           </div>
           <div class="final-cta__panel">
             <p class="final-cta__price">Plans from $500/month.</p>
-            <a class="growth-button growth-button--primary" href="https://buy.stripe.com/eVqaEW3HXbmh1ma2k6dQQ00">Apply Now <span aria-hidden="true">→</span></a>
+            <a class="growth-button growth-button--primary apply-now-cta" href="https://buy.stripe.com/eVqaEW3HXbmh1ma2k6dQQ00">Apply Now <span aria-hidden="true">→</span></a>
             <p class="final-cta__capacity">Founder-led. Limited client capacity.</p>
             <p class="final-cta__note">Use the email you want us to contact you at during Stripe checkout. We will reach out using your Stripe payment email for onboarding and next-step communication.</p>
             <div class="final-cta__consult">
