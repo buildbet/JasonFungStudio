@@ -13,10 +13,12 @@
     if (!form.reportValidity()) return;
     const data = new FormData(form);
     data.set("access_key", WEB3FORMS_KEY);
-    data.set("subject", `Shopify Growth onboarding — ${lead.plan || "plan not recorded"}`);
+    const serviceNames = Array.isArray(lead.services) ? lead.services.join(", ") : "services not recorded";
+    data.set("subject", `Shopify Growth onboarding — ${serviceNames}`);
     data.set("from_name", "Jason Fung Studio onboarding");
     data.set("lead_id", lead.id || "not available");
-    data.set("checkout_plan", lead.plan || "not available");
+    data.set("selected_services", serviceNames);
+    data.set("weekly_total_usd", String(lead.weeklyTotal || "not available"));
     data.set("applicant_name", lead.name || "not available");
     data.set("applicant_email", lead.email || "not available");
     data.set("store_url_from_application", lead.storeUrl || "not available");
@@ -28,7 +30,7 @@
       const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
       const result = await response.json();
       if (!response.ok || !result.success) throw new Error(result.message || "Your onboarding information could not be saved.");
-      document.dispatchEvent(new CustomEvent("shopify_growth_onboarding_submitted", { detail: { leadId: lead.id || null, plan: lead.plan || null } }));
+      document.dispatchEvent(new CustomEvent("shopify_growth_onboarding_submitted", { detail: { leadId: lead.id || null, services: lead.services || [] } }));
       try { localStorage.removeItem("jfs_shopify_growth_lead"); } catch (_) {}
       card.hidden = true;
       complete.classList.add("is-visible");
