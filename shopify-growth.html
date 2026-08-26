@@ -4,1856 +4,278 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080908" />
-    <meta
-      name="description"
-      content="Store, ads and follow-up support for growing Shopify brands from Jason Fung Studio."
-    />
+    <meta name="description" content="Practical founder-led Shopify and marketing support from $125/week. No setup fee, long contract, commission, or mandatory sales call." />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Shopify Growth Support | Jason Fung Studio" />
-    <meta
-      property="og:description"
-      content="We help Shopify brands turn more attention into sales with store improvements, campaigns and follow-ups."
-    />
+    <meta property="og:title" content="Shopify + Marketing Help | Jason Fung Studio" />
+    <meta property="og:description" content="Start small with practical Shopify, ads, creative, email, offer, and launch support from $125/week." />
     <meta name="twitter:card" content="summary" />
-    <title>Shopify Growth Support | Jason Fung Studio</title>
+    <title>Shopify + Marketing Help | Jason Fung Studio</title>
     <link rel="icon" href="assets/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css?v=booking-nav" />
-    <style>
-      .shopify-growth-page {
-        --growth-ink: #080908;
-        --growth-panel: #10110f;
-        --growth-paper: #efeae0;
-        --growth-paper-2: #ddd4c6;
-        --growth-sage: #9eb39c;
-        --growth-rose: #d9aaa0;
-        --growth-gold: #d9bd75;
-        --growth-muted: #a9a69e;
-        background: #050605;
-      }
-
-      .shopify-growth-page .site-shell {
-        max-width: none;
-        border: 0;
-        background: var(--growth-ink);
-      }
-
-      .shopify-growth-page .site-header {
-        position: fixed;
-        z-index: 40;
-        height: 92px;
-        padding: 0 34px;
-        background: rgba(8, 9, 8, 0.86);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(14px);
-      }
-
-      .shopify-growth-page .site-header nav {
-        gap: 32px;
-      }
-
-      .shopify-growth-page .header-cta {
-        min-height: 50px;
-        border-color: rgba(255, 255, 255, 0.42);
-      }
-
-      .shopify-growth-page .apply-now-cta {
-        position: relative;
-        isolation: isolate;
-        overflow: hidden;
-        animation: apply-now-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
-      }
-
-      .shopify-growth-page .apply-now-cta::before {
-        position: absolute;
-        z-index: 1;
-        inset: -2px;
-        background: linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.46) 48%, transparent 62% 100%);
-        opacity: 0;
-        transform: translateX(-130%);
-        content: "";
-        pointer-events: none;
-      }
-
-      .shopify-growth-page .apply-now-cta span {
-        position: relative;
-        z-index: 2;
-        display: inline-block;
-      }
-
-      .shopify-growth-page .apply-now-cta span:last-child {
-        animation: apply-now-arrow-enter-right 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
-        animation-delay: 140ms;
-      }
-
-      .shopify-growth-page .apply-now-cta span:first-child:not(:last-child) {
-        animation: apply-now-arrow-enter-left 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
-        animation-delay: 240ms;
-      }
-
-      .shopify-growth-page .apply-now-cta:hover::before,
-      .shopify-growth-page .apply-now-cta:focus-visible::before {
-        animation: apply-now-shine 720ms ease;
-      }
-
-      .shopify-growth-page .apply-now-cta:hover span,
-      .shopify-growth-page .apply-now-cta:focus-visible span {
-        animation: apply-now-arrow 560ms ease;
-      }
-
-      .shopify-growth-page .header-cta.apply-now-cta {
-        animation-delay: 100ms;
-      }
-
-      .shopify-growth-page .header-cta.apply-now-cta span:last-child {
-        animation-delay: 220ms;
-      }
-
-      .growth-actions .apply-now-cta {
-        animation-delay: 220ms, 860ms;
-      }
-
-      .growth-actions .apply-now-cta span:last-child {
-        animation-delay: 380ms;
-      }
-
-      .growth-actions .apply-now-cta span:first-child:not(:last-child) {
-        animation-delay: 340ms;
-      }
-
-      .growth-hero {
-        min-height: 760px;
-        padding: 148px 48px 72px;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
-        gap: 56px;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-        background:
-          radial-gradient(circle at 74% 22%, rgba(158, 179, 156, 0.18), transparent 30%),
-          linear-gradient(180deg, #080908 0%, #0b0c0b 100%);
-      }
-
-      .growth-kicker,
-      .growth-index {
-        margin: 0;
-        color: var(--growth-gold);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        line-height: 1.3;
-        text-transform: uppercase;
-      }
-
-      .growth-hero h1 {
-        max-width: 820px;
-        margin: 28px 0 24px;
-        font-family: var(--serif);
-        font-size: 5.25rem;
-        font-weight: 400;
-        line-height: 0.94;
-      }
-
-      .growth-hero__subhead {
-        margin: 0 0 22px;
-        color: #f2eee6;
-        font-size: 1.55rem;
-        font-weight: 600;
-        line-height: 1.25;
-      }
-
-      .growth-hero__lede,
-      .growth-hero__note {
-        max-width: 690px;
-        margin: 0;
-        color: #d7d3cb;
-        font-size: 1.08rem;
-        line-height: 1.7;
-      }
-
-      .growth-hero__note {
-        margin-top: 22px;
-        color: var(--growth-muted);
-      }
-
-      .growth-actions {
-        margin-top: 34px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        align-items: center;
-      }
-
-      .growth-button {
-        min-height: 58px;
-        padding: 0 26px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 22px;
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        background: transparent;
-        color: #f7f3ea;
-        font-size: 0.95rem;
-        font-weight: 700;
-        line-height: 1;
-        transition:
-          transform 180ms ease,
-          border-color 180ms ease,
-          background 180ms ease,
-          color 180ms ease;
-      }
-
-      .growth-button:hover,
-      .growth-button:focus-visible {
-        transform: translateY(-2px);
-        border-color: var(--growth-paper);
-      }
-
-      .growth-button--primary {
-        border-color: var(--growth-paper);
-        background: var(--growth-paper);
-        color: #10110f;
-      }
-
-      .growth-button--primary:hover,
-      .growth-button--primary:focus-visible {
-        background: #ffffff;
-        color: #050605;
-      }
-
-      .growth-button--primary.apply-now-cta {
-        box-shadow: 0 0 0 0 rgba(239, 234, 224, 0.36);
-        animation:
-          apply-now-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both,
-          apply-now-pulse 3.6s ease-in-out 860ms infinite;
-      }
-
-      .growth-proof {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        height: min(58vh, 540px);
-        min-height: 420px;
-        margin: 0;
-        aspect-ratio: auto;
-      }
-
-      .growth-proof.testimonial-carousel {
-        border-color: rgba(255, 255, 255, 0.14);
-        background:
-          radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.08), transparent 32%),
-          #10110f;
-      }
-
-      .growth-proof.testimonial-carousel::before {
-        background: linear-gradient(90deg, #080908 0, rgba(8, 9, 8, 0.72) 30%, transparent 100%);
-      }
-
-      .growth-proof.testimonial-carousel::after {
-        background: linear-gradient(270deg, #080908 0, rgba(8, 9, 8, 0.72) 30%, transparent 100%);
-      }
-
-      .brand-marquee {
-        padding: 30px 0;
-        border-bottom: 1px solid var(--line);
-        overflow: hidden;
-        background: #080908;
-      }
-
-      .brand-marquee__label {
-        margin: 0 0 22px;
-        padding: 0 clamp(28px, 6vw, 82px);
-        display: grid;
-        gap: 6px;
-        justify-items: center;
-        color: #aaa9a3;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        line-height: 1.4;
-        text-align: center;
-        text-transform: uppercase;
-      }
-
-      .brand-marquee__label span {
-        color: #f0d28a;
-        letter-spacing: 0.08em;
-      }
-
-      .brand-marquee__row {
-        --duration: 38s;
-        --offset: 0px;
-        --fade: 0.42;
-        margin: 8px 0;
-        display: flex;
-        overflow: hidden;
-        opacity: var(--fade);
-        mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-        -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-      }
-
-      .brand-marquee__row:nth-child(2) {
-        --duration: 46s;
-        --offset: -140px;
-        --fade: 0.62;
-      }
-
-      .brand-marquee__row:nth-child(3) {
-        --duration: 34s;
-        --offset: -260px;
-        --fade: 0.36;
-      }
-
-      .brand-marquee__track {
-        min-width: max-content;
-        display: flex;
-        gap: clamp(28px, 4vw, 62px);
-        transform: translateX(var(--offset));
-        animation: brand-marquee var(--duration) linear infinite;
-      }
-
-      .brand-marquee__row:nth-child(2) .brand-marquee__track {
-        animation-direction: reverse;
-      }
-
-      .brand-marquee span {
-        white-space: nowrap;
-        color: #e8e5dc;
-        font-size: clamp(13px, 1.3vw, 18px);
-        line-height: 1;
-        text-transform: none;
-      }
-
-      .brand-marquee .brand-style--serif {
-        font-family: var(--serif);
-        font-size: clamp(21px, 2.1vw, 34px);
-        font-weight: 400;
-        letter-spacing: 0;
-      }
-
-      .brand-marquee .brand-style--sans {
-        font-family: var(--sans);
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .brand-marquee .brand-style--quiet {
-        color: #aaa9a3;
-        font-family: var(--sans);
-        font-size: clamp(12px, 1.1vw, 15px);
-        font-weight: 500;
-        letter-spacing: 0.02em;
-      }
-
-      .brand-marquee .brand-style--script {
-        font-family: "Caveat", cursive;
-        font-size: clamp(24px, 2.4vw, 38px);
-        font-weight: 600;
-        letter-spacing: 0;
-      }
-
-      .brand-marquee .brand-style--wide {
-        font-family: var(--sans);
-        font-size: clamp(12px, 1.1vw, 16px);
-        font-weight: 600;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
-
-      .brand-marquee .brand-style--italic {
-        font-family: var(--serif);
-        font-size: clamp(21px, 2vw, 32px);
-        font-style: italic;
-        font-weight: 400;
-        letter-spacing: 0;
-      }
-
-      @keyframes brand-marquee {
-        to {
-          transform: translateX(calc(var(--offset) - 50%));
-        }
-      }
-
-      @keyframes apply-now-shine {
-        0% {
-          opacity: 0;
-          transform: translateX(-130%);
-        }
-
-        20%,
-        65% {
-          opacity: 1;
-        }
-
-        100% {
-          opacity: 0;
-          transform: translateX(130%);
-        }
-      }
-
-      @keyframes apply-now-arrow {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-
-        45% {
-          transform: translateX(4px);
-        }
-      }
-
-      @keyframes apply-now-arrow-enter-left {
-        0% {
-          opacity: 0;
-          transform: translateX(-18px);
-        }
-
-        70% {
-          opacity: 1;
-          transform: translateX(3px);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes apply-now-arrow-enter-right {
-        0% {
-          opacity: 0;
-          transform: translateX(18px);
-        }
-
-        70% {
-          opacity: 1;
-          transform: translateX(-3px);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes apply-now-enter {
-        0% {
-          opacity: 0;
-          transform: translateY(16px) scale(0.96);
-        }
-
-        62% {
-          opacity: 1;
-          transform: translateY(-2px) scale(1.015);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      @keyframes apply-now-pulse {
-        0%,
-        62%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(239, 234, 224, 0);
-        }
-
-        72% {
-          box-shadow: 0 0 0 7px rgba(239, 234, 224, 0.18);
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .shopify-growth-page .apply-now-cta,
-        .shopify-growth-page .apply-now-cta::before,
-        .shopify-growth-page .apply-now-cta span {
-          animation: none !important;
-          transition: none !important;
-          transform: none !important;
-        }
-      }
-
-      .growth-section {
-        padding: 92px 48px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        background: var(--growth-ink);
-      }
-
-      .growth-section--paper {
-        border-color: rgba(12, 13, 12, 0.14);
-        background: var(--growth-paper);
-        color: #10110f;
-      }
-
-      .growth-section--tint {
-        background:
-          linear-gradient(90deg, rgba(217, 170, 160, 0.08), transparent 42%),
-          #0b0c0b;
-      }
-
-      .growth-heading {
-        max-width: 1120px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 190px minmax(0, 1fr);
-        gap: 54px;
-        align-items: start;
-      }
-
-      .growth-heading h2 {
-        max-width: 880px;
-        margin: 0;
-        font-family: var(--serif);
-        font-size: 4rem;
-        font-weight: 400;
-        line-height: 0.98;
-      }
-
-      .growth-copy {
-        max-width: 800px;
-        margin: 42px auto 0;
-      }
-
-      .growth-copy p {
-        margin: 0 0 22px;
-        color: #d8d4cc;
-        font-size: 1.18rem;
-        line-height: 1.68;
-      }
-
-      .growth-section--paper .growth-copy p {
-        color: #3d3e39;
-      }
-
-      .growth-list {
-        margin: 30px 0 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px 28px;
-        list-style: none;
-      }
-
-      .growth-list li {
-        display: grid;
-        grid-template-columns: 22px minmax(0, 1fr);
-        gap: 10px;
-        color: #e4dfd6;
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-
-      .growth-list li::before {
-        color: var(--growth-sage);
-        font-weight: 700;
-        content: "+";
-      }
-
-      .growth-quote {
-        position: relative;
-        max-width: 760px;
-        margin: 42px 0 0;
-        padding: clamp(28px, 4vw, 42px);
-        border: 1px solid rgba(12, 13, 12, 0.14);
-        border-radius: 28px 28px 28px 6px;
-        background:
-          radial-gradient(circle at 14% 0, rgba(158, 179, 156, 0.24), transparent 36%),
-          #e4ded2;
-        box-shadow: 0 24px 70px rgba(12, 13, 12, 0.1);
-        color: #11120f;
-        font-family: var(--sans);
-        font-size: clamp(1.45rem, 2.7vw, 2.35rem);
-        font-weight: 700;
-        line-height: 1.12;
-      }
-
-      .growth-quote::before {
-        display: block;
-        margin-bottom: 18px;
-        color: #7d7568;
-        font-family: var(--sans);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.13em;
-        line-height: 1;
-        text-transform: uppercase;
-        content: "Studio promise";
-      }
-
-      .growth-quote::after {
-        position: absolute;
-        bottom: -18px;
-        left: 34px;
-        width: 34px;
-        height: 34px;
-        border-right: 1px solid rgba(12, 13, 12, 0.14);
-        border-bottom: 1px solid rgba(12, 13, 12, 0.14);
-        background: #e4ded2;
-        transform: rotate(45deg);
-        content: "";
-      }
-
-      .growth-quote p {
-        position: relative;
-        z-index: 1;
-        margin: 0;
-      }
-
-      .growth-section--paper .growth-list li {
-        color: #353631;
-      }
-
-      .compare-grid,
-      .handle-grid,
-      .fit-grid,
-      .work-grid {
-        max-width: 1120px;
-        margin: 48px auto 0;
-        display: grid;
-        gap: 18px;
-      }
-
-      .compare-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .compare-panel,
-      .handle-item,
-      .fit-item,
-      .work-item {
-        padding: 28px;
-        border: 1px solid rgba(255, 255, 255, 0.13);
-        background: rgba(255, 255, 255, 0.025);
-      }
-
-      .growth-section--paper .compare-panel,
-      .growth-section--paper .handle-item,
-      .growth-section--paper .fit-item,
-      .growth-section--paper .work-item {
-        border-color: rgba(12, 13, 12, 0.14);
-        background: rgba(12, 13, 12, 0.035);
-      }
-
-      .compare-panel--studio {
-        border-color: rgba(158, 179, 156, 0.46);
-        background: rgba(158, 179, 156, 0.08);
-      }
-
-      .compare-panel h3,
-      .handle-item h3,
-      .fit-item h3,
-      .work-item h3 {
-        margin: 0 0 22px;
-        font-family: var(--serif);
-        font-size: 2.25rem;
-        font-weight: 400;
-        line-height: 1;
-      }
-
-      .compare-panel ul,
-      .fit-item ul {
-        margin: 0;
-        padding: 0;
-        display: grid;
-        gap: 12px;
-        list-style: none;
-      }
-
-      .compare-panel li,
-      .fit-item li {
-        display: grid;
-        grid-template-columns: 22px minmax(0, 1fr);
-        gap: 10px;
-        color: #d7d3cb;
-        font-size: 0.98rem;
-        line-height: 1.5;
-      }
-
-      .compare-panel li::before,
-      .fit-item li::before {
-        color: #8c8982;
-        font-weight: 700;
-        content: "x";
-      }
-
-      .compare-panel--studio li::before,
-      .fit-item li::before {
-        color: var(--growth-sage);
-        content: "+";
-      }
-
-      .growth-section--paper .compare-panel li,
-      .growth-section--paper .fit-item li {
-        color: #3d3e39;
-      }
-
-      .handle-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .handle-item p,
-      .work-item p {
-        margin: 0;
-        color: #aaa69e;
-        font-size: 0.96rem;
-        line-height: 1.65;
-      }
-
-      .journey {
-        max-width: 980px;
-        margin: 50px auto 0;
-        display: grid;
-        gap: 14px;
-      }
-
-      .journey-row {
-        min-height: 86px;
-        padding: 22px 24px;
-        display: grid;
-        grid-template-columns: 92px minmax(0, 1fr);
-        gap: 20px;
-        align-items: center;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .journey-row span {
-        color: var(--growth-gold);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .journey-row strong {
-        color: #f3efe6;
-        font-family: var(--serif);
-        font-size: 2.2rem;
-        font-weight: 400;
-        line-height: 1;
-      }
-
-      .process-grid {
-        max-width: 1060px;
-        margin: 50px auto 0;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 34px;
-        align-items: start;
-      }
-
-      .process-step {
-        position: relative;
-        min-width: 0;
-        padding-top: 84px;
-      }
-
-      .process-step:not(:last-child)::after {
-        position: absolute;
-        top: 27px;
-        left: 58px;
-        right: -26px;
-        height: 1px;
-        background: rgba(12, 13, 12, 0.24);
-        content: "";
-      }
-
-      .process-step:not(:last-child)::before {
-        position: absolute;
-        z-index: 1;
-        top: 18px;
-        right: -32px;
-        width: 18px;
-        height: 18px;
-        border-top: 1px solid rgba(12, 13, 12, 0.42);
-        border-right: 1px solid rgba(12, 13, 12, 0.42);
-        transform: rotate(45deg);
-        content: "";
-      }
-
-      .process-step span {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 56px;
-        height: 56px;
-        display: grid;
-        place-items: center;
-        border: 1px solid rgba(12, 13, 12, 0.24);
-        border-radius: 50%;
-        background: #11120f;
-        color: var(--growth-paper);
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .process-step h3 {
-        margin: 0 0 16px;
-        font-family: var(--serif);
-        font-size: 2.2rem;
-        font-weight: 400;
-      }
-
-      .process-step p {
-        margin: 0;
-        color: #4a4b45;
-        font-size: 0.94rem;
-        line-height: 1.55;
-      }
-
-      .fit-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .founder-panel {
-        max-width: 1120px;
-        margin: 48px auto 0;
-        display: grid;
-        grid-template-columns: minmax(260px, 0.48fr) minmax(0, 1fr);
-        gap: 48px;
-        align-items: stretch;
-      }
-
-      .founder-panel img {
-        width: 100%;
-        height: 100%;
-        min-height: 520px;
-        display: block;
-        object-fit: cover;
-        object-position: center top;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-      }
-
-      .founder-panel__copy {
-        align-self: center;
-      }
-
-      .founder-panel__copy p {
-        margin: 0 0 22px;
-        color: #d8d4cc;
-        font-size: 1.12rem;
-        line-height: 1.7;
-      }
-
-      .founder-stats {
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        border-top: 1px solid rgba(255, 255, 255, 0.14);
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .founder-stats span {
-        min-height: 112px;
-        padding: 22px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--growth-muted);
-        font-size: 0.82rem;
-        line-height: 1.35;
-      }
-
-      .founder-stats strong {
-        color: #f3efe6;
-        font-family: var(--serif);
-        font-size: 2.05rem;
-        font-weight: 400;
-        line-height: 1;
-      }
-
-      .work-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .selected-index {
-        margin: 0;
-        color: #b1b1ad;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.13em;
-        line-height: 1.2;
-        text-transform: uppercase;
-      }
-
-      .work-menu {
-        padding: clamp(70px, 8vw, 112px) clamp(22px, 6vw, 82px);
-        border-bottom: 1px solid rgba(12, 13, 12, 0.14);
-        background: var(--growth-paper);
-        color: #10110f;
-      }
-
-      .work-menu .selected-index {
-        color: #7d7568;
-        text-align: center;
-      }
-
-      .work-menu h2 {
-        margin: 22px 0 48px;
-        color: #11120f;
-        font-family: var(--serif);
-        font-size: clamp(52px, 7.5vw, 100px);
-        font-weight: 400;
-        line-height: 0.9;
-        text-align: center;
-      }
-
-      .work-menu__list {
-        width: min(920px, 100%);
-        margin: 0 auto;
-        display: grid;
-        gap: 18px;
-      }
-
-      .work-menu-card {
-        min-height: 138px;
-        padding: clamp(16px, 2.8vw, 24px);
-        display: grid;
-        grid-template-columns: 44px 92px minmax(0, 1fr) 72px;
-        gap: clamp(14px, 2.5vw, 26px);
-        align-items: center;
-        overflow: hidden;
-        border: 1px solid rgba(12, 13, 12, 0.08);
-        border-radius: 8px;
-        background: #e7e2d7;
-        box-shadow: 0 18px 55px rgba(12, 13, 12, 0.08);
-        transition:
-          background 180ms ease,
-          border-color 180ms ease,
-          transform 180ms ease;
-      }
-
-      .work-menu-card:hover,
-      .work-menu-card:focus-visible {
-        border-color: rgba(12, 13, 12, 0.2);
-        background: #ddd6c8;
-        transform: translateY(-3px);
-      }
-
-      .work-menu-card__number {
-        color: #8b8376;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-      }
-
-      .work-menu-card img {
-        width: 92px;
-        height: 92px;
-        display: block;
-        border: 1px solid rgba(12, 13, 12, 0.12);
-        border-radius: 50%;
-        object-fit: cover;
-        background: #11120f;
-      }
-
-      .work-menu-card__text {
-        min-width: 0;
-        display: grid;
-        gap: 9px;
-      }
-
-      .work-menu-card__text strong {
-        color: #10110f;
-        font-family: var(--serif);
-        font-size: clamp(31px, 3.8vw, 48px);
-        font-weight: 400;
-        line-height: 0.95;
-      }
-
-      .work-menu-card__text small {
-        max-width: 520px;
-        color: #55554e;
-        font-size: 14px;
-        line-height: 1.45;
-      }
-
-      .work-menu-card__arrow {
-        width: 64px;
-        height: 64px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background: #11120f;
-        color: var(--growth-paper);
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      .faq-list {
-        max-width: 900px;
-        margin: 52px auto 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.14);
-      }
-
-      .faq-list details {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-      }
-
-      .faq-list summary {
-        position: relative;
-        padding: 24px 44px 24px 0;
-        cursor: pointer;
-        color: #f2eee6;
-        font-family: var(--serif);
-        font-size: 1.75rem;
-        list-style: none;
-      }
-
-      .faq-list summary::-webkit-details-marker {
-        display: none;
-      }
-
-      .faq-list summary::after {
-        position: absolute;
-        top: 25px;
-        right: 8px;
-        color: var(--growth-muted);
-        content: "+";
-      }
-
-      .faq-list details[open] summary::after {
-        content: "-";
-      }
-
-      .faq-list p {
-        max-width: 740px;
-        margin: 0;
-        padding: 0 0 26px;
-        color: #aaa69e;
-        font-size: 1rem;
-        line-height: 1.7;
-      }
-
-      .final-cta {
-        padding: 98px 48px;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.52fr);
-        gap: 44px;
-        align-items: center;
-        background:
-          linear-gradient(90deg, rgba(158, 179, 156, 0.14), transparent 54%),
-          #0b0c0b;
-      }
-
-      .final-cta h2 {
-        max-width: 820px;
-        margin: 0 0 24px;
-        font-family: var(--serif);
-        font-size: 4.5rem;
-        font-weight: 400;
-        line-height: 0.96;
-      }
-
-      .final-cta p {
-        max-width: 650px;
-        margin: 0;
-        color: #d8d4cc;
-        font-size: 1.16rem;
-        line-height: 1.65;
-      }
-
-      .final-cta__panel {
-        padding: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.035);
-      }
-
-      .final-cta__price {
-        margin: 0 0 24px;
-        color: var(--growth-sage);
-        font-family: var(--serif);
-        font-size: 2.4rem;
-        line-height: 1;
-      }
-
-      .final-cta .final-cta__capacity {
-        max-width: 340px;
-        margin: 14px 0 0;
-        color: var(--growth-muted);
-        font-size: 0.84rem;
-        line-height: 1.3;
-      }
-
-      .final-cta .final-cta__note {
-        max-width: 360px;
-        margin: 4px 0 0;
-        color: #bdb8ae;
-        font-size: 0.76rem;
-        line-height: 1.42;
-      }
-
-      .final-cta__consult {
-        margin-top: 22px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .final-cta .final-cta__consult-label {
-        margin: 0 0 12px;
-        color: #f7f3ea;
-        font-size: 0.95rem;
-        font-weight: 700;
-        line-height: 1.2;
-      }
-
-      .final-cta__consult .growth-button {
-        min-height: 52px;
-        padding: 0 20px;
-        font-size: 0.82rem;
-      }
-
-      .shopify-growth-page .studio-footer {
-        padding: 34px 48px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        display: grid;
-        gap: 22px;
-        background: #050605;
-        color: #aaa69e;
-      }
-
-      .shopify-growth-page .studio-footer__main {
-        display: flex;
-        justify-content: space-between;
-        gap: 28px;
-      }
-
-      .shopify-growth-page .studio-footer__brand {
-        color: #f1ede3;
-        font-family: var(--serif);
-        font-size: 2rem;
-        line-height: 1;
-      }
-
-      .shopify-growth-page .studio-footer__line {
-        max-width: 420px;
-        margin: 0;
-        color: #c5c1b8;
-        font-size: 0.95rem;
-        line-height: 1.55;
-        text-align: right;
-      }
-
-      .shopify-growth-page .studio-footer__legal {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px 22px;
-        color: #807d76;
-        font-size: 0.82rem;
-      }
-
-      .shopify-growth-page .studio-footer__legal nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px 22px;
-      }
-
-      .shopify-growth-page .studio-footer__legal a:hover {
-        color: #f1ede3;
-      }
-
-      @media (max-width: 1040px) {
-        .growth-hero {
-          grid-template-columns: 1fr;
-        }
-
-        .growth-proof {
-          min-height: 460px;
-        }
-
-        .handle-grid,
-        .work-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .growth-heading {
-          grid-template-columns: 1fr;
-          gap: 22px;
-        }
-
-        .final-cta,
-        .founder-panel {
-          grid-template-columns: 1fr;
-        }
-
-        .founder-panel img {
-          max-height: 620px;
-        }
-      }
-
-      @media (max-width: 760px) {
-        body.menu-open.shopify-growth-page {
-          overflow: hidden;
-        }
-
-        .shopify-growth-page .site-header {
-          height: 82px;
-          padding: 0 24px;
-          grid-template-columns: 1fr auto;
-          background: #050605;
-        }
-
-        .shopify-growth-page .brand {
-          font-size: 0;
-        }
-
-        .shopify-growth-page .brand-logo {
-          width: 34px;
-          height: 34px;
-        }
-
-        .shopify-growth-page .menu-toggle {
-          position: relative;
-          z-index: 45;
-          width: 38px;
-          height: 38px;
-          padding: 0;
-          display: grid;
-          place-content: center;
-          gap: 6px;
-          border: 0;
-          background: transparent;
-        }
-
-        .shopify-growth-page .menu-toggle span:not(.sr-only) {
-          width: 24px;
-          height: 2px;
-          background: #fff;
-        }
-
-        .shopify-growth-page .site-header nav {
-          position: fixed;
-          z-index: 40;
-          inset: 0;
-          width: 100vw;
-          height: 100vh;
-          height: 100svh;
-          padding: 106px 24px 32px;
-          display: none;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0;
-          background: #050605;
-        }
-
-        .shopify-growth-page .site-header nav.is-open {
-          display: flex;
-        }
-
-        .shopify-growth-page .site-header nav a {
-          width: 100%;
-          padding: 16px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-          color: #f6f3ed;
-          font-family: var(--serif);
-          font-size: 2rem;
-        }
-
-        .shopify-growth-page .header-cta {
-          display: none;
-        }
-
-        .growth-hero,
-        .growth-section,
-        .final-cta {
-          padding-right: 24px;
-          padding-left: 24px;
-        }
-
-        .growth-hero {
-          min-height: 0;
-          padding-top: 122px;
-          padding-bottom: 52px;
-          gap: 36px;
-        }
-
-        .growth-hero h1 {
-          font-size: 3.7rem;
-        }
-
-        .growth-hero__subhead {
-          font-size: 1.28rem;
-        }
-
-        .growth-hero__lede,
-        .growth-hero__note,
-        .growth-copy p,
-        .final-cta p,
-        .founder-panel__copy p {
-          font-size: 1rem;
-          line-height: 1.62;
-        }
-
-        .growth-proof {
-          height: 82vw;
-          min-height: 330px;
-          max-height: 560px;
-          margin: 48px 0 0;
-          border: 1px solid rgba(255, 255, 255, 0.16);
-          border-radius: 26px;
-          -webkit-mask-image: none;
-          mask-image: none;
-        }
-
-        .growth-proof.testimonial-carousel::before,
-        .growth-proof.testimonial-carousel::after {
-          display: none;
-        }
-
-        .growth-heading h2,
-        .final-cta h2 {
-          font-size: 3.05rem;
-        }
-
-        .growth-list,
-        .compare-grid,
-        .handle-grid,
-        .process-grid,
-        .fit-grid,
-        .work-grid,
-        .founder-stats {
-          grid-template-columns: 1fr;
-        }
-
-        .journey-row {
-          grid-template-columns: 1fr;
-        }
-
-        .journey-row strong {
-          font-size: 1.65rem;
-        }
-
-        .process-step {
-          padding: 0 0 34px 74px;
-        }
-
-        .process-step:not(:last-child)::after {
-          top: 58px;
-          left: 27px;
-          right: auto;
-          bottom: -10px;
-          width: 1px;
-          height: auto;
-        }
-
-        .process-step:not(:last-child)::before {
-          top: auto;
-          right: auto;
-          bottom: 4px;
-          left: 18px;
-          transform: rotate(135deg);
-        }
-
-        .process-step span {
-          width: 56px;
-          height: 56px;
-        }
-
-        .founder-panel img {
-          min-height: 420px;
-        }
-
-        .shopify-growth-page .studio-footer {
-          padding: 34px 24px;
-        }
-
-        .shopify-growth-page .studio-footer__main {
-          display: grid;
-        }
-
-        .shopify-growth-page .studio-footer__line {
-          text-align: left;
-        }
-
-        .work-menu {
-          padding-inline: 24px;
-        }
-
-        .work-menu h2 {
-          margin-bottom: 34px;
-          font-size: 58px;
-        }
-
-        .work-menu__list {
-          gap: 14px;
-        }
-
-        .work-menu-card {
-          min-height: 116px;
-          padding: 14px;
-          grid-template-columns: 58px minmax(0, 1fr) 54px;
-          gap: 14px;
-        }
-
-        .work-menu-card__number {
-          display: none;
-        }
-
-        .work-menu-card img {
-          width: 58px;
-          height: 58px;
-        }
-
-        .work-menu-card__text strong {
-          font-family: var(--sans);
-          font-size: clamp(20px, 5.8vw, 25px);
-          font-weight: 500;
-          line-height: 1.08;
-        }
-
-        .work-menu-card__text small {
-          font-size: 12px;
-        }
-
-        .work-menu-card__arrow {
-          width: 50px;
-          height: 50px;
-        }
-      }
-
-      @media (max-width: 420px) {
-        .growth-hero h1,
-        .growth-heading h2,
-        .final-cta h2 {
-          font-size: 2.75rem;
-        }
-
-        .growth-button {
-          width: 100%;
-          justify-content: space-between;
-        }
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shopify-growth-rework.css?v=apply-portrait-16" />
     <script src="analytics.js" defer></script>
+    <script src="shopify-growth-rework.js" defer></script>
   </head>
-  <body class="shopify-growth-page">
+  <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div class="site-shell" id="top">
-      <header class="site-header">
-        <a class="brand" href="index.html" aria-label="Jason Fung Studio homepage">
-          <img class="brand-logo" src="assets/jf-logo-white.png" alt="" width="28" height="28" />
-          Jason Fung Studio
-        </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-          <span></span>
-          <span></span>
-          <span class="sr-only">Menu</span>
-        </button>
-        <nav id="site-nav" aria-label="Primary navigation">
-          <a href="#handle">What We Handle</a>
-          <a href="#how">How It Works</a>
-          <a href="#fit">Fit</a>
-          <a href="#founder">Meet Jason</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-        <a class="header-cta apply-now-cta" href="https://buy.stripe.com/9B614m1zP9e9e8W6AmdQQ01">Apply Now <span>→</span></a>
-      </header>
+    <header class="growth-header">
+      <a class="brand" href="index.html" aria-label="Jason Fung Studio homepage">
+        <img src="assets/jf-logo-white.png" alt="" width="29" height="29" />
+        Jason Fung Studio
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="growth-nav">
+        <span></span><span></span><span class="sr-only">Menu</span>
+      </button>
+      <nav class="growth-nav" id="growth-nav" aria-label="Primary navigation">
+        <a href="#help">What we help with</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#work">Proof</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="button button--primary button--small header-apply" href="#apply" data-apply data-plan="essentials">Quick Apply <span aria-hidden="true">→</span></a>
+    </header>
 
-      <main id="main">
-        <section class="growth-hero" aria-labelledby="growth-title">
-          <div class="growth-hero__copy">
-            <p class="growth-kicker">Shopify growth support</p>
-            <h1 id="growth-title">We help brands grow without a big team</h1>
-            <p class="growth-hero__subhead">Store + Ads + Follow-ups, handled for you.</p>
-            <p class="growth-hero__lede">We help growing ecommerce brands improve their Shopify store, launch better campaigns, and follow up with customers without hiring a full ecommerce team.</p>
-            <p class="growth-hero__note">From $125/week</p>
-            <div class="growth-actions">
-              <a class="growth-button growth-button--primary apply-now-cta" href="https://buy.stripe.com/9B614m1zP9e9e8W6AmdQQ01"><span aria-hidden="true">→</span> Apply Now <span aria-hidden="true">←</span></a>
-              <a class="growth-button" href="book.html">Book a Free Growth Call <span aria-hidden="true">→</span></a>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <h1 id="hero-title">Ready to grow your Shopify business?</h1>
+          <p class="hero__reassurance">No big upfront fee. No long contract. No mandatory sales call.</p>
+          <p class="hero__price">From <strong>$125/week</strong>.</p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#apply" data-apply data-plan="essentials">Quick Apply <span aria-hidden="true">→</span></a>
+            <div class="hero-message"><img src="assets/jason-portrait.png" alt="Jason Fung" width="44" height="44" /><a class="text-link text-link--message" href="https://www.instagram.com/direct/t/18164380366399175/" target="_blank" rel="noopener">Have a question? Message Jason.</a></div>
+          </div>
+        </div>
+
+        <figure class="growth-proof testimonial-preview testimonial-carousel" aria-label="Rotating client creative examples">
+          <div class="testimonial-carousel-track">
+            <div class="testimonial-carousel-set">
+              <img src="assets/projects/client-showcase-vitamin-c.png" alt="Vitamin C serum ecommerce creative" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-lumine.png" alt="Purple serum campaign creative" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-kaira.png" alt="Natural skincare Shopify concept" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-frutio.png" alt="Fruit-powered cosmetics campaign" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-obsidian.png" alt="Streetwear campaign shoot" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-voiden.png" alt="Streetwear brand poster" loading="eager" decoding="async" />
+            </div>
+            <div class="testimonial-carousel-set" aria-hidden="true">
+              <img src="assets/projects/client-showcase-vitamin-c.png" alt="" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-lumine.png" alt="" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-kaira.png" alt="" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-frutio.png" alt="" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-obsidian.png" alt="" loading="eager" decoding="async" />
+              <img src="assets/projects/client-showcase-voiden.png" alt="" loading="eager" decoding="async" />
             </div>
           </div>
+        </figure>
+      </section>
 
-          <figure class="growth-proof testimonial-preview testimonial-carousel" aria-label="Rotating client creative examples">
-            <div class="testimonial-carousel-track">
-              <div class="testimonial-carousel-set">
-                <img src="assets/projects/client-showcase-vitamin-c.png" alt="Premium vitamin C serum Shopify creative" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-lumine.png" alt="Purple serum product campaign creative" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-kaira.png" alt="Natural skincare Shopify homepage concept" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-frutio.png" alt="Fruit-powered makeup ecommerce campaign layout" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-obsidian.png" alt="Streetwear product campaign shoot" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-voiden.png" alt="Streetwear brand poster design" loading="eager" decoding="async" />
-              </div>
-              <div class="testimonial-carousel-set" aria-hidden="true">
-                <img src="assets/projects/client-showcase-vitamin-c.png" alt="" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-lumine.png" alt="" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-kaira.png" alt="" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-frutio.png" alt="" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-obsidian.png" alt="" loading="eager" decoding="async" />
-                <img src="assets/projects/client-showcase-voiden.png" alt="" loading="eager" decoding="async" />
-              </div>
-            </div>
-          </figure>
-        </section>
+      <section class="brand-marquee" aria-label="Brand names">
+        <p class="brand-marquee__label"><span aria-hidden="true">★★★★★</span>50+ growing brands supported</p>
+        <div class="brand-marquee__row">
+          <div class="brand-marquee__track">
+            <span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">Atb Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span>
+            <span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">Atb Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span>
+          </div>
+        </div>
+        <div class="brand-marquee__row">
+          <div class="brand-marquee__track">
+            <span class="brand-style--italic">Luxury Hair Edit</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--quiet">Perfection Beauty Vault</span><span class="brand-style--wide">Society777</span><span class="brand-style--script">The Hair Bakery Co</span><span class="brand-style--sans">The NYC Retail</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Unbreakable</span><span class="brand-style--italic">Xscape</span>
+            <span class="brand-style--italic">Luxury Hair Edit</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--quiet">Perfection Beauty Vault</span><span class="brand-style--wide">Society777</span><span class="brand-style--script">The Hair Bakery Co</span><span class="brand-style--sans">The NYC Retail</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Unbreakable</span><span class="brand-style--italic">Xscape</span>
+          </div>
+        </div>
+        <div class="brand-marquee__row">
+          <div class="brand-marquee__track">
+            <span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--script">Glowani</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--wide">Society777</span><span class="brand-style--sans">Blixed</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--script">Amourlyah Beauty</span>
+            <span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--script">Glowani</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--wide">Society777</span><span class="brand-style--sans">Blixed</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--script">Amourlyah Beauty</span>
+          </div>
+        </div>
+      </section>
 
-        <section class="brand-marquee" aria-label="Brand names">
-          <p class="brand-marquee__label"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>50+ growing brands supported</p>
-          <div class="brand-marquee__row">
-            <div class="brand-marquee__track">
-              <span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">Atb Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span>
-              <span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">Atb Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span>
-            </div>
-          </div>
-          <div class="brand-marquee__row">
-            <div class="brand-marquee__track">
-              <span class="brand-style--italic">Luxury Hair Edit</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--quiet">Perfection Beauty Vault</span><span class="brand-style--wide">Society777</span><span class="brand-style--script">The Hair Bakery Co</span><span class="brand-style--sans">The NYC Retail</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Unbreakable</span><span class="brand-style--italic">Xscape</span>
-              <span class="brand-style--italic">Luxury Hair Edit</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--quiet">Perfection Beauty Vault</span><span class="brand-style--wide">Society777</span><span class="brand-style--script">The Hair Bakery Co</span><span class="brand-style--sans">The NYC Retail</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Unbreakable</span><span class="brand-style--italic">Xscape</span>
-            </div>
-          </div>
-          <div class="brand-marquee__row">
-            <div class="brand-marquee__track">
-              <span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--script">Glowani</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--wide">Society777</span><span class="brand-style--sans">Blixed</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--script">Amourlyah Beauty</span>
-              <span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--script">Glowani</span><span class="brand-style--serif">Don Lucci</span><span class="brand-style--sans">Overseas Baby</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--wide">Society777</span><span class="brand-style--sans">Blixed</span><span class="brand-style--wide">Troopny</span><span class="brand-style--serif">Pangea Files</span><span class="brand-style--script">Amourlyah Beauty</span>
-            </div>
-          </div>
-        </section>
+      <section class="section section--paper" aria-labelledby="advantages-title">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">A lower-friction way to get help</p>
+          <h2 id="advantages-title">Start without the agency leap.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="feature-card"><span class="feature-card__num">01</span><h3>Start for $125/week</h3><p>No setup fee or large upfront agency retainer. Get hands-on help without making a big initial commitment.</p></article>
+          <article class="feature-card"><span class="feature-card__num">02</span><h3>Cancel anytime</h3><p>No long contract or commission. Upgrade or cancel as your support needs change.</p></article>
+          <article class="feature-card"><span class="feature-card__num">03</span><h3>No sales call required</h3><p>Quick Apply, choose your plan, and checkout securely. If you have a question, message Jason directly.</p></article>
+        </div>
+      </section>
 
-        <section class="growth-section growth-section--paper" aria-labelledby="problem-title">
-          <div class="growth-heading">
-            <p class="growth-index">01 / The Problem</p>
-            <h2 id="problem-title">Your brand should not need 5 different people to grow.</h2>
-          </div>
-          <div class="growth-copy">
-            <p>Running an ecommerce brand quickly gets complicated.</p>
-            <p>That is where we come in.</p>
-            <p>Jason Fung Studio helps connect the pieces that directly affect how customers discover, understand, and buy from your brand.</p>
-            <ul class="growth-list">
-              <li>Shopify improvements</li>
-              <li>Product and landing pages</li>
-              <li>Offers and promotions</li>
-              <li>Meta advertising</li>
-              <li>Campaign creative</li>
-              <li>Email and SMS follow-ups</li>
-              <li>Conversion improvements</li>
-              <li>Launches and promotions</li>
-            </ul>
-            <blockquote class="growth-quote">
-              <p>You focus on the brand. We help run the growth side.</p>
-            </blockquote>
-            <div class="growth-actions">
-              <a class="growth-button growth-button--primary" href="book.html">Book a Call <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-        </section>
+      <section class="section" id="help" aria-labelledby="help-title">
+        <div class="section__head">
+          <p class="eyebrow">What we can help with</p>
+          <h2 id="help-title">One studio for the work around the sale.</h2>
+          <p>We focus the support around the most useful priority rather than making you coordinate several specialists.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card"><span class="service-card__icon" aria-hidden="true">S</span><h3>Shopify</h3><p>Product pages, homepage improvements, mobile experience, store setup, and conversion improvements.</p></article>
+          <article class="service-card"><span class="service-card__icon" aria-hidden="true">A</span><h3>Ads</h3><p>Meta ad setup, troubleshooting, campaign setup, and optimization. <strong>Ad spend is separate.</strong></p></article>
+          <article class="service-card"><span class="service-card__icon" aria-hidden="true">L</span><h3>Landing Pages &amp; Offers</h3><p>Campaign pages, promotions, offers, and clearer reasons to buy.</p></article>
+          <article class="service-card"><span class="service-card__icon" aria-hidden="true">E</span><h3>Email</h3><p>Essential follow-up such as welcome, abandoned cart, and campaign emails.</p></article>
+          <article class="service-card"><span class="service-card__icon" aria-hidden="true">C</span><h3>Creative</h3><p>Ad concepts, campaign assets, and AI-assisted creative where appropriate.</p></article>
+          <article class="service-card"><span class="service-card__icon" aria-hidden="true">P</span><h3>Launches</h3><p>Product launches, promotions, and coordinated campaign support.</p></article>
+        </div>
+        <p class="priority-note">You do not need to know which one you need. We help identify what deserves attention first.</p>
+      </section>
 
-        <section class="growth-section" aria-labelledby="why-title">
-          <div class="growth-heading">
-            <p class="growth-index">02 / Why Jason Fung Studio</p>
-            <h2 id="why-title">One partner across the customer journey.</h2>
-          </div>
-          <div class="compare-grid">
-            <article class="compare-panel">
-              <h3>Other Agencies</h3>
-              <ul>
-                <li>Lock you into long-term contracts</li>
-                <li>Charge you regardless of results</li>
-                <li>Slow response times or no response at all</li>
-                <li>Take days or weeks to implement feedback</li>
-                <li>Only run ads with no lead follow-up</li>
-                <li>Generate low-quality customers who cannot afford your products</li>
-                <li>No help with sales or retention</li>
-                <li>Treat you like just another customer, not a partner</li>
-              </ul>
-            </article>
-            <article class="compare-panel compare-panel--studio">
-              <h3>Jason Fung Studio</h3>
-              <ul>
-                <li>One partner across your Shopify growth</li>
-                <li>Store, ads and follow-ups work together</li>
-                <li>Direct communication</li>
-                <li>Fast implementation</li>
-                <li>Clear priorities</li>
-                <li>Founder-led support</li>
-                <li>Flexible ongoing service</li>
-                <li>No need to build a full ecommerce team yet</li>
-              </ul>
-            </article>
-          </div>
-        </section>
+      <section class="section section--paper" id="how" aria-labelledby="how-title">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-title">Getting started should be simple.</h2>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Quick Apply</h3><p>Tell us about your store and what you are struggling with. It takes about one minute.</p></article>
+          <article class="step"><h3>Choose your plan</h3><p>Start at the level of support that makes sense. You can upgrade later.</p></article>
+          <article class="step"><h3>Checkout securely</h3><p>Pay through Stripe. No sales call is required to purchase.</p></article>
+          <article class="step"><h3>Complete onboarding</h3><p>After successful payment, the onboarding form appears immediately in your browser.</p></article>
+          <article class="step"><h3>We review everything</h3><p>Jason reviews your store, current marketing, and priorities.</p></article>
+          <article class="step"><h3>We start with what matters most</h3><p>The first useful priority is identified, agreed, and work begins.</p></article>
+        </div>
+      </section>
 
-        <section class="growth-section growth-section--paper" id="handle" aria-labelledby="handle-title">
-          <div class="growth-heading">
-            <p class="growth-index">03 / What We Handle</p>
-            <h2 id="handle-title">Store, campaigns and follow-ups working together.</h2>
-          </div>
-          <div class="handle-grid">
-            <article class="handle-item">
-              <h3>Shopify Store</h3>
-              <p>We improve the parts of your store that affect buying decisions, including product pages, homepage, mobile experience, offers, trust, navigation, cart experience and more.</p>
-            </article>
-            <article class="handle-item">
-              <h3>Ads &amp; Campaigns</h3>
-              <p>We help turn your products and offers into campaigns designed to bring the right customers to your store, from campaign ideas to creative and Meta ads.</p>
-            </article>
-            <article class="handle-item">
-              <h3>Follow-Ups</h3>
-              <p>Most visitors do not buy the first time. We help set up email and SMS journeys that bring interested shoppers back and keep customers connected to your brand.</p>
-            </article>
-            <article class="handle-item">
-              <h3>Offers &amp; Launches</h3>
-              <p>Product launch? Sale? New collection? We help connect the offer, creative, advertising and Shopify experience so the campaign feels like one clear journey.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="growth-section growth-section--tint" aria-labelledby="journey-title">
-          <div class="growth-heading">
-            <p class="growth-index">04 / Customer Journey</p>
-            <h2 id="journey-title">One team. One customer journey.</h2>
-          </div>
-          <div class="journey" aria-label="Customer journey comparison">
-            <div class="journey-row">
-              <span>Instead of</span>
-              <strong>Ad → random product page → no follow-up</strong>
-            </div>
-            <div class="journey-row">
-              <span>We build</span>
-              <strong>Ad → clear offer → strong Shopify experience → follow-up → next purchase</strong>
-            </div>
-          </div>
-          <div class="growth-copy">
-            <p>Because getting traffic is only part of ecommerce. What happens after the click matters too.</p>
-          </div>
-        </section>
-
-        <section class="growth-section growth-section--paper" id="how" aria-labelledby="how-title">
-          <div class="growth-heading">
-            <p class="growth-index">05 / How It Works</p>
-            <h2 id="how-title">Clear priorities before more activity.</h2>
-          </div>
-          <div class="process-grid">
-            <article class="process-step">
-              <span>1</span>
-              <h3>Understand</h3>
-              <p>We look at your store, products, customers, marketing and current priorities.</p>
-            </article>
-            <article class="process-step">
-              <span>2</span>
-              <h3>Prioritize</h3>
-              <p>We identify what should actually be improved first. No giant list of random recommendations.</p>
-            </article>
-            <article class="process-step">
-              <span>3</span>
-              <h3>Build</h3>
-              <p>We implement the agreed Shopify, campaign and follow-up improvements.</p>
-            </article>
-            <article class="process-step">
-              <span>4</span>
-              <h3>Improve</h3>
-              <p>We review what is happening and continue testing what makes sense for your brand.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="growth-section" id="fit" aria-labelledby="fit-title">
-          <div class="growth-heading">
-            <p class="growth-index">06 / Fit</p>
-            <h2 id="fit-title">Built for growing Shopify brands.</h2>
-          </div>
-          <div class="fit-grid">
-            <article class="fit-item">
-              <h3>Jason Fung Studio is a good fit if:</h3>
-              <ul>
-                <li>You already have a Shopify store</li>
-                <li>You have a real product</li>
-                <li>You are trying to grow sales</li>
-                <li>You are running ads or preparing to</li>
-                <li>Your website could perform better</li>
-                <li>Marketing feels disconnected</li>
-                <li>You are doing too much yourself</li>
-                <li>You are not ready to hire an entire ecommerce team</li>
-              </ul>
-            </article>
-            <article class="fit-item">
-              <h3>What you do not need</h3>
-              <ul>
-                <li>You do not need another person giving you a list of things to do.</li>
-                <li>You need someone who can help get them done.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="growth-section" id="founder" aria-labelledby="founder-title">
-          <div class="growth-heading">
-            <p class="growth-index">07 / Meet Jason</p>
-            <h2 id="founder-title">Founder of Jason Fung Studio.</h2>
-          </div>
-          <div class="founder-panel">
-            <img src="assets/jason-portrait.png" alt="Jason Fung, founder of Jason Fung Studio" loading="lazy" decoding="async" />
-            <div class="founder-panel__copy">
-              <p>I started Jason Fung Studio after working at a scaling agency and seeing the gap between what clients actually needed and what large agencies were built to provide.</p>
-              <p>I understood what clients were asking for, but I also saw how easily brands could feel neglected, overcharged, or pushed through a process that did not give them the results they needed.</p>
-              <p>So I decided to build my own studio around a different kind of support: direct, founder-led, and focused on doing the work that was actually promised.</p>
-              <p>Instead of treating Shopify, campaigns, creative and follow-ups as separate pieces, I help connect them into one customer journey that brands can understand and improve.</p>
-              <div class="founder-stats">
-                <span><strong>50+</strong>Ecommerce brands supported</span>
-                <span><strong>6+ years</strong>Across design and digital commerce</span>
-                <span><strong>Founder-led</strong>Strategy and execution</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="work-menu" id="selected-work" aria-labelledby="directory-title">
-          <p class="selected-index">Work Menu</p>
-          <h2 id="directory-title">Selected Work</h2>
-          <div class="work-menu__list">
-            <a class="work-menu-card" href="work/shopify-2.html">
-              <span class="work-menu-card__number">01</span>
-              <img src="assets/selected-work/shopify/store1.1.png" alt="Mobile Shopify page preview" loading="lazy" decoding="async" />
-              <span class="work-menu-card__text">
-                <strong>Shopify Stores</strong>
-                <small>Store design, PDPs, mobile UX and ecommerce implementation.</small>
-              </span>
-              <span class="work-menu-card__arrow" aria-hidden="true">→</span>
-            </a>
-
-            <a class="work-menu-card" href="work/campaigns-2.html">
-              <span class="work-menu-card__number">02</span>
-              <img src="assets/selected-work/campaigns/offer-02.png" alt="Campaign offer creative" loading="lazy" decoding="async" />
-              <span class="work-menu-card__text">
-                <strong>Campaigns &amp; Offers</strong>
-                <small>Launches, promos, ad angles, offer graphics and popup flows.</small>
-              </span>
-              <span class="work-menu-card__arrow" aria-hidden="true">→</span>
-            </a>
-
-            <a class="work-menu-card" href="work/creative-2.html">
-              <span class="work-menu-card__number">03</span>
-              <img src="assets/selected-work/creative/cosmetics1.png" alt="AI-assisted beauty product creative" loading="lazy" decoding="async" />
-              <span class="work-menu-card__text">
-                <strong>Creative &amp; AI</strong>
-                <small>Product visuals, campaign imagery and AI-assisted production.</small>
-              </span>
-              <span class="work-menu-card__arrow" aria-hidden="true">→</span>
-            </a>
-
-            <a class="work-menu-card" href="work/pandaii-2.html">
-              <span class="work-menu-card__number">04</span>
-              <img src="assets/selected-work/pandaii/photographer top.jpg" alt="PANDA-II fashion brand visual" loading="lazy" decoding="async" />
-              <span class="work-menu-card__text">
-                <strong>PANDA-II</strong>
-                <small>Founder project: brand, ecommerce, content and growth proof.</small>
-              </span>
-              <span class="work-menu-card__arrow" aria-hidden="true">→</span>
-            </a>
-          </div>
-        </section>
-
-        <section class="growth-section" id="faq" aria-labelledby="faq-title">
-          <div class="growth-heading">
-            <p class="growth-index">09 / FAQ</p>
-            <h2 id="faq-title">Frequently asked questions.</h2>
-          </div>
-          <div class="faq-list">
-            <details>
-              <summary>What exactly do you do?</summary>
-              <p>We help Shopify brands with the areas that directly affect online growth, including the store, campaigns, advertising, offers and customer follow-up. Your exact priorities depend on where your biggest opportunities are.</p>
-            </details>
-            <details>
-              <summary>Does the $125/week plan include everything?</summary>
-              <p>No. The starting plan is designed for brands that need focused ongoing support. We will agree on the priorities and scope before starting. Larger brands or more involved advertising, redesigns and campaign work may require a larger plan.</p>
-            </details>
-            <details>
-              <summary>Do I need to be running ads already?</summary>
-              <p>No. We can help improve your store first, prepare your campaigns, or work with advertising you already have running.</p>
-            </details>
-            <details>
-              <summary>Do you guarantee sales or ROAS?</summary>
-              <p>No. There are too many factors outside any agency's control, including product demand, pricing, inventory and customer behaviour. What we can control is the quality of the strategy, execution, testing and improvement process.</p>
-            </details>
-            <details>
-              <summary>Do I have to sign a long-term contract?</summary>
-              <p>We can start small. The goal is to prove that working together is useful before making the relationship bigger.</p>
-            </details>
-            <details>
-              <summary>Can you work with my existing team?</summary>
-              <p>Yes. If you already have a designer, media buyer, photographer or another specialist, Jason Fung Studio can work alongside them and help connect the ecommerce execution.</p>
-            </details>
-            <details>
-              <summary>What platforms do you work with?</summary>
-              <p>Our primary ecommerce platform is Shopify.</p>
-            </details>
-            <details>
-              <summary>What happens first?</summary>
-              <p>Book a short call. We will learn about your business, look at what you are currently doing, and determine where we can actually help.</p>
-            </details>
-          </div>
-        </section>
-
-        <section class="final-cta" aria-labelledby="final-title">
+      <section class="section section--sage" aria-labelledby="week-title">
+        <div class="week-panel">
           <div>
-            <p class="growth-kicker">Want us to help grow your Shopify brand?</p>
-            <h2 id="final-title">Store + Ads + Follow-ups.</h2>
-            <p>One partner helping you turn more of your ecommerce activity into a clear customer journey.</p>
+            <p class="eyebrow">Your first week</p>
+            <h2 id="week-title">Designed to create momentum.</h2>
+            <p class="week-panel__line">Every week, something important should move forward.</p>
           </div>
-          <div class="final-cta__panel">
-            <p class="final-cta__price">Plans from $125/week.</p>
-            <a class="growth-button growth-button--primary apply-now-cta" href="https://buy.stripe.com/9B614m1zP9e9e8W6AmdQQ01">Apply Now <span aria-hidden="true">→</span></a>
-            <p class="final-cta__capacity">Founder-led. Limited client capacity.</p>
-            <p class="final-cta__note">Use the email you want us to contact you at during Stripe checkout. We will reach out using your Stripe payment email for onboarding and next-step communication.</p>
-            <div class="final-cta__consult">
-              <p class="final-cta__consult-label">Still unsure?</p>
-              <a class="growth-button" href="book.html">Book a Free Growth Call <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-        </section>
-      </main>
+          <ul class="check-list">
+            <li>Store + marketing review</li>
+            <li>Top 3 recommended priorities</li>
+            <li>One priority actively worked on</li>
+            <li>Direct communication</li>
+            <li>A clear recommendation for what should happen next</li>
+          </ul>
+        </div>
+      </section>
 
-      <footer class="studio-footer">
-        <div class="studio-footer__main">
-          <a class="studio-footer__brand" href="index.html">Jason Fung Studio</a>
-          <p class="studio-footer__line">Store, ads and follow-up support for growing Shopify brands.</p>
+      <section class="section section--soft" id="pricing" aria-labelledby="pricing-title">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Simple weekly plans</p>
+          <h2 id="pricing-title">Choose the level of involvement.</h2>
+          <p>No setup fee. No commission. No long-term contract. All amounts below are USD and recur weekly until cancelled.</p>
         </div>
-        <div class="studio-footer__legal">
-          <span>&copy; 2026 Jason Fung Studio. All rights reserved.</span>
-          <nav aria-label="Legal links">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
-            <a href="research.html">Research</a>
-            <a href="partners.html">Partners</a>
-            <a href="book.html">Book a Call</a>
-            <a href="mailto:cptjason.jf@gmail.com">cptjason.jf@gmail.com</a>
-          </nav>
+        <div class="pricing-grid">
+          <article class="price-card price-card--featured">
+            <span class="price-card__tag">Best place to start</span>
+            <h3>Essentials</h3><p class="price">$125 <small>USD / week</small></p><p class="price-card__headline">One priority at a time.</p>
+            <ul><li>Focus on the most useful priority first</li><li>Shopify, ads, landing pages, email, offers, or creative</li><li>Work through priorities in order</li><li>1 optional consultation call per month</li></ul>
+            <a class="button button--primary" href="#apply" data-apply data-plan="essentials">Quick Apply <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="price-card">
+            <h3>Growth</h3><p class="price">$300 <small>USD / week</small></p><p class="price-card__headline">Ongoing weekly marketing execution.</p>
+            <ul><li>Everything in Essentials</li><li>Active campaigns, ads, Shopify, email, and landing page support</li><li>Creative direction, offer ideas, and promotions</li><li>2 optional strategy calls per month</li></ul>
+            <a class="button" href="#apply" data-apply data-plan="growth">Quick Apply <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="price-card">
+            <h3>Partner</h3><p class="price">$600 <small>USD / week</small></p><p class="price-card__headline">Deeper collaboration with reserved capacity.</p>
+            <ul><li>Everything in Growth</li><li>Brand, campaign, launch, and offer direction</li><li>Conversion strategy, testing priorities, and multi-channel coordination</li><li>Reserved weekly capacity and faster turnaround</li><li>Up to 1 optional strategy call per week</li></ul>
+            <a class="button" href="#apply" data-apply data-plan="partner">Quick Apply <span aria-hidden="true">→</span></a>
+          </article>
         </div>
-      </footer>
+        <div class="pricing-notes"><strong>Not sure? Start at $125 and upgrade anytime.</strong><br />All plans use the same studio. The difference is the level of involvement and ongoing support.</div>
+      </section>
+
+      <section class="section section--paper" aria-labelledby="consult-title">
+        <div class="consult-box">
+          <div><h2 id="consult-title">Have a question before you start?</h2><p>Message Jason directly on Instagram. If a call would be useful, he will send you the scheduling link after learning what you need.</p></div>
+          <div class="consult-box__actions"><a class="button button--dark" href="https://www.instagram.com/direct/t/18164380366399175/" target="_blank" rel="noopener">Message Jason <span aria-hidden="true">→</span></a></div>
+        </div>
+      </section>
+
+      <section class="work-menu" id="work" aria-labelledby="work-title">
+        <p class="eyebrow">Work Menu</p>
+        <h2 id="work-title">Selected Work</h2>
+        <p class="work-menu__intro">Choose a category to see more of the work, thinking, and execution behind it.</p>
+        <div class="work-menu__list">
+          <a class="work-menu-card" href="work/shopify-2.html">
+            <span class="work-menu-card__number">01</span>
+            <img src="assets/selected-work/shopify/store1.1.png" alt="Mobile Shopify page preview" loading="lazy" decoding="async" />
+            <span class="work-menu-card__text"><strong>Shopify Stores</strong><small>Store design, PDPs, mobile UX and ecommerce implementation.</small></span>
+            <span class="work-menu-card__arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="work-menu-card" href="work/campaigns-2.html">
+            <span class="work-menu-card__number">02</span>
+            <img src="assets/selected-work/campaigns/offer-02.png" alt="Campaign offer creative" loading="lazy" decoding="async" />
+            <span class="work-menu-card__text"><strong>Campaigns &amp; Offers</strong><small>Launches, promos, ad angles, offer graphics and popup flows.</small></span>
+            <span class="work-menu-card__arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="work-menu-card" href="work/creative-2.html">
+            <span class="work-menu-card__number">03</span>
+            <img src="assets/selected-work/creative/cosmetics1.png" alt="AI-assisted beauty product creative" loading="lazy" decoding="async" />
+            <span class="work-menu-card__text"><strong>Creative &amp; AI</strong><small>Product visuals, campaign imagery and AI-assisted production.</small></span>
+            <span class="work-menu-card__arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="work-menu-card" href="work/pandaii-2.html">
+            <span class="work-menu-card__number">04</span>
+            <img src="assets/selected-work/pandaii/photographer top.jpg" alt="PANDA-II fashion brand visual" loading="lazy" decoding="async" />
+            <span class="work-menu-card__text"><strong>PANDA-II</strong><small>Founder project: brand, ecommerce, content and growth proof.</small></span>
+            <span class="work-menu-card__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section section--soft" aria-labelledby="founder-title">
+        <div class="founder">
+          <img src="assets/jason-portrait.png" alt="Jason Fung, founder of Jason Fung Studio" loading="lazy" decoding="async" />
+          <div><p class="eyebrow">Founder</p><h2 id="founder-title">Why Jason Fung Studio</h2><p>I started Jason Fung Studio after working at a scaling agency and seeing the gap between what clients actually needed and what large agencies were built to provide.</p><p>I understood what clients were asking for, but I also saw how easily brands could feel neglected, overcharged, or pushed through a process that did not give them the results they needed.</p><p>So I decided to build my own studio around a different kind of support: direct, founder-led, and focused on doing the work that was actually promised.</p><p>Instead of treating Shopify, campaigns, creative and follow-ups as separate pieces, I help connect them into one customer journey that brands can understand and improve.</p><div class="founder-facts"><span><strong>50+</strong>Ecommerce brands supported</span><span><strong>6+ years</strong>Across design and digital commerce</span><span><strong>Founder-led</strong>Strategy and execution</span></div></div>
+        </div>
+      </section>
+
+      <section class="section section--paper" id="faq" aria-labelledby="faq-title">
+        <div class="section__head section__head--center"><p class="eyebrow">FAQ</p><h2 id="faq-title">Questions before you start.</h2></div>
+        <div class="faq">
+          <details><summary>Do I need a consultation call?</summary><p>No. The Quick Apply form and Stripe checkout let you purchase without a sales call. If you have a question, message Jason first. He will suggest a call only if it would be useful.</p></details>
+          <details><summary>What happens after I pay?</summary><p>Stripe returns you to an onboarding page where the full onboarding form appears immediately. Jason then reviews your store, marketing, and priorities.</p></details>
+          <details><summary>Is ad spend included?</summary><p>No. Ad spend is paid separately to the advertising platform and is not included in any studio plan.</p></details>
+          <details><summary>Can I cancel anytime?</summary><p>Yes. There is no long-term contract. You can cancel the recurring weekly subscription when you no longer need the support.</p></details>
+          <details><summary>Is this a weekly subscription?</summary><p>Yes. Each plan is a recurring weekly subscription billed by Stripe until cancelled.</p></details>
+          <details><summary>What if I do not know what I need?</summary><p>That is normal. We review the store and current marketing, identify the top priorities, and recommend what deserves attention first.</p></details>
+          <details><summary>Can you set up my ads?</summary><p>Yes. Support can include Meta ad account and campaign setup, tracking review, campaign structure, and initial optimization. Ad spend remains separate.</p></details>
+          <details><summary>What if I already tried ads and they did not work?</summary><p>We review the campaign, creative, offer, audience, tracking, and landing experience to identify likely problems. Sometimes the most useful first step is outside the ad account.</p></details>
+          <details><summary>What can you work on?</summary><p>Shopify improvements, ads, landing pages, offers, email follow-up, campaign creative, and launches. The exact work follows the agreed priorities and plan capacity.</p></details>
+          <details><summary>How quickly do you start?</summary><p>After payment and onboarding, Jason reviews your information and follows up with the first recommended priority. Timing can vary with current capacity and the information provided.</p></details>
+          <details><summary>Can I upgrade later?</summary><p>Yes. Start with Essentials and move to Growth or Partner when you want more ongoing involvement.</p></details>
+          <details><summary>Is this unlimited work?</summary><p>No. Every plan has limited capacity. Priorities are worked through in order, and larger standalone projects may need separate scope.</p></details>
+          <details><summary>Does $125 include every service at the same time?</summary><p>No. Essentials provides access to the listed areas, but it is designed around one useful priority at a time—not every service simultaneously.</p></details>
+          <details><summary>What does brand direction mean?</summary><p>It means guidance that keeps campaigns, offers, and growth work visually and strategically coherent. It does not include a full logo, identity, or branding package; those are separately scoped.</p></details>
+          <details><summary>Do you guarantee sales or ROAS?</summary><p>No. Product demand, pricing, inventory, competition, and market conditions affect results. We commit to thoughtful prioritization, execution, and improvement—not guaranteed revenue or advertising returns.</p></details>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="final-title">
+        <div><p class="eyebrow">Ready when you are</p><h2 id="final-title">Start small. Get something moving.</h2><p>Tell us about your store, choose your level of support, and get started without a mandatory sales call.</p></div>
+        <div class="final-cta__actions"><a class="button button--primary" href="#apply" data-apply data-plan="essentials">Quick Apply <span aria-hidden="true">→</span></a><a class="button" href="https://www.instagram.com/direct/t/18164380366399175/" target="_blank" rel="noopener">Message Jason <span aria-hidden="true">→</span></a></div>
+      </section>
+    </main>
+
+    <footer class="footer"><span>&copy; 2026 Jason Fung Studio</span><nav aria-label="Footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:cptjason.jf@gmail.com">Email</a></nav></footer>
+    <a class="button button--primary mobile-apply" href="#apply" data-apply data-plan="essentials"><span class="mobile-apply__arrow mobile-apply__arrow--left" aria-hidden="true">→</span><span class="mobile-apply__copy"><strong>Quick Apply</strong><small>Takes about 1 minute · No call required</small></span><span class="mobile-apply__arrow mobile-apply__arrow--right" aria-hidden="true">←</span></a>
+
+    <div class="modal" id="apply-modal" aria-hidden="true">
+      <button class="modal__backdrop" type="button" data-close-modal aria-label="Close Quick Apply"></button>
+      <section class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="apply-title">
+        <button class="modal__close" type="button" data-close-modal aria-label="Close">×</button>
+        <p class="eyebrow">Takes about 1 minute</p><h2 id="apply-title">Quick Apply</h2><p class="modal__intro">Tell us the basics. We save your application before sending you to secure Stripe checkout. No call required.</p>
+        <form class="apply-form" id="quick-apply-form">
+          <div class="field"><label for="apply-name">Name</label><input id="apply-name" name="name" autocomplete="name" required /></div>
+          <div class="field"><label for="apply-email">Email</label><input id="apply-email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field field--full"><label for="apply-store">Shopify / store URL</label><input id="apply-store" name="store_url" type="url" inputmode="url" autocomplete="url" placeholder="https://yourstore.com" required /></div>
+          <div class="field field--full"><label for="apply-problem">Main problem</label><select id="apply-problem" name="main_problem" required><option value="">Choose one</option><option>I do not know how to set up ads</option><option>I tried ads but they are not working</option><option>My Shopify store needs improvement</option><option>I need better creative/content</option><option>I need email/customer follow-up</option><option>I need help with a launch/promotion</option><option>I need more customers but I am not sure what is wrong</option><option>I am not sure — help me figure it out</option></select></div>
+          <div class="field field--full"><label for="apply-plan">Selected plan</label><select id="apply-plan" name="plan" required><option value="essentials">Essentials — $125 USD/week</option><option value="growth">Growth — $300 USD/week</option><option value="partner">Partner — $600 USD/week</option></select></div>
+          <p class="form-status" id="apply-status" role="status" aria-live="polite"></p>
+          <button class="button button--primary button--full" type="submit">Save &amp; Continue to Stripe <span aria-hidden="true">→</span></button>
+          <p class="form-fineprint">Plans renew weekly until cancelled. By continuing, you agree to the Terms of Service and Privacy Policy.</p>
+        </form>
+        <div class="apply-help"><p>Have a question before applying?</p><div class="apply-help__contact"><img src="assets/jason-portrait.png" alt="Jason Fung" width="38" height="38" /><a class="text-link text-link--message" href="https://www.instagram.com/direct/t/18164380366399175/" target="_blank" rel="noopener">Message Jason on Instagram <span aria-hidden="true">→</span></a></div><small>If a call would help, Jason will send you the scheduling link.</small></div>
+      </section>
     </div>
-
-    <script>
-      (() => {
-        const menuButton = document.querySelector(".menu-toggle");
-        const nav = document.querySelector("#site-nav");
-        if (!menuButton || !nav) return;
-
-        const closeMenu = () => {
-          document.body.classList.remove("menu-open");
-          nav.classList.remove("is-open");
-          menuButton.setAttribute("aria-expanded", "false");
-        };
-
-        menuButton.addEventListener("click", () => {
-          const isOpen = nav.classList.toggle("is-open");
-          document.body.classList.toggle("menu-open", isOpen);
-          menuButton.setAttribute("aria-expanded", String(isOpen));
-        });
-
-        nav.addEventListener("click", (event) => {
-          if (event.target instanceof HTMLAnchorElement) closeMenu();
-        });
-      })();
-    </script>
   </body>
 </html>
