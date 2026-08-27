@@ -5,22 +5,41 @@
   const complete = document.querySelector("#onboarding-complete");
   const status = document.querySelector("#onboarding-status");
   const submit = form?.querySelector("button[type='submit']");
+  const SERVICE_NAMES = {
+    paid_ads: "Paid Ads",
+    shopify: "Shopify Improvements",
+    creative: "Creative",
+    email_sms: "Email + SMS",
+    offers: "Offers + Campaigns",
+    growth: "Growth Direction",
+    brand: "Brand Design + Direction",
+    priority: "Priority",
+  };
   let lead = {};
   try { lead = JSON.parse(localStorage.getItem("jfs_shopify_growth_lead") || "{}"); } catch (_) {}
+
+  const nameInput = form?.querySelector("[name='name']");
+  const emailInput = form?.querySelector("[name='email']");
+  const storeInput = form?.querySelector("[name='store_url']");
+  if (nameInput) nameInput.value = lead.name || "";
+  if (emailInput) emailInput.value = lead.email || "";
+  if (storeInput) storeInput.value = lead.storeUrl || "";
 
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = new FormData(form);
     data.set("access_key", WEB3FORMS_KEY);
-    const serviceNames = Array.isArray(lead.services) ? lead.services.join(", ") : "services not recorded";
+    const serviceNames = Array.isArray(lead.services) && lead.services.length
+      ? lead.services.map((key) => SERVICE_NAMES[key] || key).join(", ")
+      : "services not recorded";
     data.set("subject", `Shopify Growth onboarding — ${serviceNames}`);
     data.set("from_name", "Jason Fung Studio onboarding");
     data.set("lead_id", lead.id || "not available");
     data.set("selected_services", serviceNames);
     data.set("weekly_total_usd", String(lead.weeklyTotal || "not available"));
-    data.set("applicant_name", lead.name || "not available");
-    data.set("applicant_email", lead.email || "not available");
+    data.set("applicant_name", String(data.get("name") || "not available"));
+    data.set("applicant_email", String(data.get("email") || "not available"));
     data.set("store_url_from_application", lead.storeUrl || "not available");
     data.set("page_url", window.location.href);
     submit.disabled = true;
@@ -30,7 +49,9 @@
       const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
       const result = await response.json();
       if (!response.ok || !result.success) throw new Error(result.message || "Your onboarding information could not be saved.");
-      document.dispatchEvent(new CustomEvent("shopify_growth_onboarding_submitted", { detail: { leadId: lead.id || null, services: lead.services || [] } }));
+      document.dispatchEvent(new CustomEvent("shopify_growth_onboarding_submitted", {
+        detail: { leadId: lead.id || null, services: lead.services || [], total: lead.weeklyTotal }
+      }));
       try { localStorage.removeItem("jfs_shopify_growth_lead"); } catch (_) {}
       card.hidden = true;
       complete.classList.add("is-visible");

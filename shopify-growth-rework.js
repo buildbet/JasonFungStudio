@@ -46,6 +46,7 @@
   const submit = form?.querySelector("button[type='submit']");
   let currentStep = 0;
   let lastFocus = null;
+  let recommendationTracked = false;
 
   const makeLeadId = () => `JFS-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
   const setStatus = (message, error = false) => {
@@ -82,6 +83,7 @@
       selected.add("creative"); selected.add("offers"); selected.add("email_sms");
     }
     if (data.get("help") === "involved") selected.add("growth");
+    if (selected.size === 1 && selected.has("priority")) selected.delete("priority");
     return selected;
   };
 
@@ -109,7 +111,15 @@
     if (!steps.length) return;
     currentStep = Math.max(0, Math.min(index, steps.length - 1));
     steps.forEach((step, stepIndex) => step.classList.toggle("is-active", stepIndex === currentStep));
-    if (currentStep === steps.length - 1) renderServices();
+    if (currentStep === steps.length - 1) {
+      renderServices();
+      if (!recommendationTracked) {
+        recommendationTracked = true;
+        document.dispatchEvent(new CustomEvent("shopify_growth_recommendation_viewed", {
+          detail: { services: selectedServiceKeys(), total: updateTotal() }
+        }));
+      }
+    }
     const questionCount = steps.length - 1;
     const progressIndex = Math.min(currentStep + 1, questionCount);
     if (progressBar) progressBar.style.width = `${(progressIndex / questionCount) * 100}%`;
@@ -124,12 +134,14 @@
     showStep(currentStep + 1);
   };
 
-  const openModal = () => {
+  const openModal = (location = "unknown") => {
     if (!modal) return;
     lastFocus = document.activeElement;
+    recommendationTracked = false;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
+    document.dispatchEvent(new CustomEvent("shopify_growth_apply_opened", { detail: { location } }));
     showStep(0);
   };
 
@@ -142,7 +154,14 @@
   };
 
   document.querySelectorAll("[data-apply]").forEach((trigger) => trigger.addEventListener("click", (event) => {
-    event.preventDefault(); openModal();
+    event.preventDefault();
+    const location = trigger.classList.contains("header-apply") ? "header"
+      : trigger.classList.contains("mobile-apply") ? "mobile_sticky"
+        : trigger.closest(".hero__actions") ? "hero"
+          : trigger.closest(".pricing-apply") ? "pricing"
+            : trigger.closest(".final-cta") ? "final_cta"
+              : "unknown";
+    openModal(location);
   }));
   modal?.querySelectorAll("[data-close-modal]").forEach((button) => button.addEventListener("click", closeModal));
   form?.querySelectorAll("[data-next]").forEach((button) => button.addEventListener("click", nextStep));
@@ -151,7 +170,7 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
-    if (event.key === "Enter" && modal?.classList.contains("is-open") && currentStep < 2 && document.activeElement?.tagName === "INPUT") {
+    if (event.key === "Enter" && modal?.classList.contains("is-open") && currentStep < 3 && document.activeElement?.tagName === "INPUT") {
       event.preventDefault(); nextStep();
     }
     if (event.key !== "Tab" || !modal?.classList.contains("is-open") || !panel) return;
@@ -167,6 +186,10 @@
     event.preventDefault();
     const serviceKeys = selectedServiceKeys();
     if (!serviceKeys.length) { setStatus("Select at least one service to continue.", true); return; }
+    if (serviceKeys.length === 1 && serviceKeys[0] === "priority") {
+      setStatus("Priority is an add-on. Select at least one regular service to continue.", true);
+      return;
+    }
     const data = new FormData(form);
     const leadId = makeLeadId();
     const total = updateTotal();
@@ -183,6 +206,7 @@
     });
     const lead = {
       id: leadId, name: String(data.get("name") || ""), email: String(data.get("email") || ""),
+      storeUrl: String(data.get("store_url") || ""),
       services: serviceKeys, weeklyTotal: total,
       answers: Object.fromEntries([...data.entries()].filter(([key]) => key !== "access_key")),
       createdAt: new Date().toISOString(),
@@ -200,6 +224,7 @@
       checkoutUrl.searchParams.set("prefilled_email", lead.email);
       checkoutUrl.searchParams.set("client_reference_id", leadId);
       document.dispatchEvent(new CustomEvent("shopify_growth_apply_submitted", { detail: { services: serviceKeys, total, leadId } }));
+      document.dispatchEvent(new CustomEvent("shopify_growth_checkout_started", { detail: { services: serviceKeys, total, leadId } }));
       window.location.assign(checkoutUrl.toString());
     } catch (error) {
       setStatus(error.message || "Something went wrong. Please message Jason.", true);

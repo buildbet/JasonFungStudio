@@ -13,8 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="shopify-growth-success-rework.css" />
-    <script src="analytics.js" defer></script>
-    <script src="shopify-growth-onboarding.js" defer></script>
+    <script src="jfs-core.js?v=growth-funnel-1" defer></script>
+    <script src="shopify-growth-onboarding.js?v=application-reliability-1" defer></script>
   </head>
   <body class="onboarding-page">
     <header class="onboarding-header"><a class="brand" href="shopify-growth.html"><img src="assets/jf-logo-white.png" alt="" width="29" height="29" />Jason Fung Studio</a></header>
@@ -23,6 +23,9 @@
       <section class="onboarding-card" id="onboarding-card" aria-labelledby="form-title">
         <h2 id="form-title">Tell us what is happening now.</h2><p class="onboarding-card__note">Share what you know. It is okay if some answers are uncertain.</p>
         <form class="onboarding-form" id="onboarding-form">
+          <div class="field"><label for="onboarding-name">Your name</label><input id="onboarding-name" name="name" autocomplete="name" required /></div>
+          <div class="field"><label for="onboarding-email">Your email</label><input id="onboarding-email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field field--full"><label for="onboarding-store">Shopify store URL</label><input id="onboarding-store" name="store_url" type="url" inputmode="url" autocomplete="url" placeholder="https://yourstore.com" required /></div>
           <div class="field field--full"><label for="business">Business and product description</label><textarea id="business" name="business_description" required placeholder="What do you sell, and who is it for?"></textarea></div>
           <div class="field field--full"><label for="goals">Main goals</label><textarea id="goals" name="main_goals" required placeholder="What would you most like to improve right now?"></textarea></div>
           <div class="field"><label for="tried">What have you tried?</label><textarea id="tried" name="what_you_tried" placeholder="Changes, campaigns, agencies, freelancers, tools…"></textarea></div>
@@ -36,7 +39,7 @@
           <div class="onboarding-security field--full"><strong>Do not send passwords or private access credentials here.</strong> If platform access is needed, Jason will request it manually through a secure method later.</div>
           <p class="form-status" id="onboarding-status" role="status" aria-live="polite"></p>
           <button class="button button--primary button--full" type="submit">Complete Onboarding <span aria-hidden="true">→</span></button>
-          <p class="form-fineprint">No additional email is required to submit this form.</p>
+          <p class="form-fineprint">Review your contact details before submitting. Jason will follow up by email.</p>
         </form>
       </section>
       <section class="onboarding-complete" id="onboarding-complete" tabindex="-1" aria-live="polite"><p class="eyebrow">Onboarding complete</p><h2>You’re all set.</h2><p>Jason will review your information and follow up with the first recommended priority.</p></section>
