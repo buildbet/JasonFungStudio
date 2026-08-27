@@ -1,4 +1,4 @@
-const GA_MEASUREMENT_ID = 'G-FFKLXDL68E';
+const GA_MEASUREMENT_ID = 'G-3W5FPCSZQQ';
 
 const analyticsIsConfigured = /^G-[A-Z0-9]+$/.test(GA_MEASUREMENT_ID)
   && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX';
