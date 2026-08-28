@@ -42,6 +42,9 @@
   const progressCopy = document.querySelector("#apply-progress-copy");
   const serviceList = document.querySelector("#apply-service-list");
   const totalOutput = document.querySelector("#apply-total");
+  const eligibility = document.querySelector("#apply-eligibility");
+  const eligibilityTitle = document.querySelector("#apply-eligibility-title");
+  const eligibilityCopy = document.querySelector("#apply-eligibility-copy");
   const status = document.querySelector("#apply-status");
   const submit = form?.querySelector("button[type='submit']");
   let currentStep = 0;
@@ -107,11 +110,24 @@
     updateTotal();
   };
 
+  const renderEligibility = () => {
+    if (!form || !eligibility || !eligibilityTitle || !eligibilityCopy) return;
+    const eligible = new FormData(form).get("revenue") === "10k-plus";
+    eligibility.classList.toggle("is-eligible", eligible);
+    eligibilityTitle.textContent = eligible
+      ? "Performance-based pricing may be available."
+      : "Not eligible for performance-based pricing yet.";
+    eligibilityCopy.textContent = eligible
+      ? "To show our commitment to driving results."
+      : "Grow into it as your revenue increases.";
+  };
+
   const showStep = (index) => {
     if (!steps.length) return;
     currentStep = Math.max(0, Math.min(index, steps.length - 1));
     steps.forEach((step, stepIndex) => step.classList.toggle("is-active", stepIndex === currentStep));
     if (currentStep === steps.length - 1) {
+      renderEligibility();
       renderServices();
       if (!recommendationTracked) {
         recommendationTracked = true;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080908" />
-    <meta name="description" content="Practical founder-led Shopify and marketing support from $40/week. Choose only the services you need, with no setup fee, long contract, commission, or mandatory sales call." />
+    <meta name="description" content="Practical founder-led Shopify and marketing support from $40/week. Choose only the services you need, with no setup fee, long contract, or mandatory sales call." />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Shopify + Marketing Help | Jason Fung Studio" />
     <meta property="og:description" content="Choose practical Shopify, ads, creative, email, offer, and growth support from $40/week." />
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="shopify-growth-rework.css?v=service-wizard-3" />
+    <link rel="stylesheet" href="shopify-growth-rework.css?v=revenue-eligibility-2" />
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -32,7 +32,7 @@
     </script>
     <!-- End Meta Pixel Code -->
     <script src="jfs-core.js?v=meta-pixel-2" defer></script>
-    <script src="shopify-growth-rework.js?v=application-reliability-1" defer></script>
+    <script src="shopify-growth-rework.js?v=revenue-eligibility-1" defer></script>
   </head>
   <body>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1987381435535989&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -118,7 +118,7 @@
         </div>
         <div class="card-grid">
           <article class="feature-card"><span class="feature-card__num">01</span><h3>Start from $40/week</h3><p>Choose only the support you need. Your weekly price is the total of the services you select.</p></article>
-          <article class="feature-card"><span class="feature-card__num">02</span><h3>Cancel anytime</h3><p>No long contract or commission. Upgrade or cancel as your support needs change.</p></article>
+          <article class="feature-card"><span class="feature-card__num">02</span><h3>Cancel anytime</h3><p>No long contract. Upgrade or cancel as your support needs change.</p></article>
           <article class="feature-card"><span class="feature-card__num">03</span><h3>No sales call required</h3><p>Quick Apply, choose your services, and checkout securely. If you have a question, message Jason directly.</p></article>
         </div>
       </section>
@@ -190,6 +190,25 @@
         </div>
         <div class="pricing-notes"><strong>Not sure what to select?</strong><br />Quick Apply recommends a starting combination based on your answers. You can edit it before checkout.</div>
         <div class="pricing-apply"><a class="button button--primary" href="#apply" data-apply>Quick Apply <span aria-hidden="true">→</span></a></div>
+      </section>
+
+      <section class="section section--sage" aria-labelledby="results-pricing-title">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Pricing that grows with you</p>
+          <h2 id="results-pricing-title">Committed to results.</h2>
+        </div>
+        <div class="results-pricing-grid">
+          <article>
+            <p class="results-pricing-grid__stage">Emerging brands</p>
+            <h3>Simple pricing for emerging brands</h3>
+            <p>Start with a straightforward weekly fee. No commission, no complicated formulas, no long-term commitment.</p>
+          </article>
+          <article>
+            <p class="results-pricing-grid__stage">Established brands</p>
+            <h3>Performance-aligned pricing for established brands</h3>
+            <p>If your brand is doing $10K+/month, performance-based pricing may be available. Part of the fee could be tied to our commitment for results.</p>
+          </article>
+        </div>
       </section>
 
       <section class="section section--paper" aria-labelledby="consult-title">
@@ -273,11 +292,12 @@
       <section class="modal__panel" role="dialog" aria-modal="true" aria-label="Quick Apply">
         <button class="modal__close" type="button" data-close-modal aria-label="Close">×</button>
         <div class="apply-progress" aria-label="Application progress"><span id="apply-progress-bar"></span></div>
-        <p class="apply-progress__copy" id="apply-progress-copy">Step 1 of 11</p>
+        <p class="apply-progress__copy" id="apply-progress-copy">Step 1 of 13</p>
         <form class="apply-form apply-wizard" id="quick-apply-form">
           <section class="apply-step is-active" data-step data-key="name"><label for="apply-name">What’s your name?</label><input id="apply-name" name="name" autocomplete="name" required /><button class="button button--primary" type="button" data-next>Continue <span aria-hidden="true">→</span></button></section>
           <section class="apply-step" data-step data-key="email"><label for="apply-email">What’s your email?</label><input id="apply-email" name="email" type="email" autocomplete="email" required /><button class="button button--primary" type="button" data-next>Continue <span aria-hidden="true">→</span></button></section>
           <section class="apply-step" data-step data-key="store"><label for="apply-store">What’s your Shopify store URL?</label><input id="apply-store" name="store_url" type="url" inputmode="url" autocomplete="url" placeholder="https://yourstore.com" required /><button class="button button--primary" type="button" data-next>Continue <span aria-hidden="true">→</span></button></section>
+          <section class="apply-step" data-step data-key="revenue"><fieldset><legend>What is your average monthly online revenue?</legend><p class="apply-step__hint">Just getting started? We have options for every stage.</p><label><input type="radio" name="revenue" value="pre-revenue" required /> Just getting started / pre-revenue</label><label><input type="radio" name="revenue" value="under-1k" /> Under $1K/month</label><label><input type="radio" name="revenue" value="1k-10k" /> $1K–$10K/month</label><label><input type="radio" name="revenue" value="10k-plus" /> $10K+/month — performance-based pricing may be available</label></fieldset></section>
           <section class="apply-step" data-step data-key="ads"><fieldset><legend>Are you currently running paid ads?</legend><label><input type="radio" name="ads" value="want" required /> No, but I want to</label><label><input type="radio" name="ads" value="poor" /> Yes, but they’re not working well</label><label><input type="radio" name="ads" value="okay" /> Yes, and they’re working okay</label><label><input type="radio" name="ads" value="no-interest" /> I’m not interested in ads right now</label></fieldset></section>
           <section class="apply-step" data-step data-key="shopify"><fieldset><legend>How confident are you in your Shopify store right now?</legend><label><input type="radio" name="shopify" value="strong" required /> It feels strong</label><label><input type="radio" name="shopify" value="improvements" /> It needs some improvements</label><label><input type="radio" name="shopify" value="work" /> It needs a lot of work</label><label><input type="radio" name="shopify" value="unsure" /> I’m not sure what’s wrong</label></fieldset></section>
           <section class="apply-step" data-step data-key="creative"><fieldset><legend>Do you have enough marketing creative to keep promoting the brand?</legend><label><input type="radio" name="creative" value="yes" required /> Yes</label><label><input type="radio" name="creative" value="more" /> I need more ad/content creative</label><label><input type="radio" name="creative" value="direction" /> I need help deciding what creative to make</label><label><input type="radio" name="creative" value="both" /> I need both direction and production</label></fieldset></section>
@@ -287,7 +307,7 @@
           <section class="apply-step" data-step data-key="brand"><fieldset><legend>How established is your brand identity?</legend><label><input type="radio" name="brand" value="clear" required /> Very clear and consistent</label><label><input type="radio" name="brand" value="refine" /> Mostly there, but needs refinement</label><label><input type="radio" name="brand" value="inconsistent" /> It feels inconsistent</label><label><input type="radio" name="brand" value="define" /> I need help defining the look, feel, fonts, colors, messaging and overall direction</label></fieldset></section>
           <section class="apply-step" data-step data-key="priority"><fieldset><legend>How quickly do you need things moving?</legend><label><input type="radio" name="priority" value="normal" required /> Normal pace is fine</label><label><input type="radio" name="priority" value="deadline" /> I have an upcoming launch/deadline</label><label><input type="radio" name="priority" value="fast" /> I want faster turnaround and multiple things moving at once</label></fieldset></section>
           <section class="apply-step" data-step data-key="help"><fieldset><legend>What best describes the help you want?</legend><label><input type="radio" name="help" value="biggest" required /> Fix the biggest problem first</label><label><input type="radio" name="help" value="consistent" /> Help me consistently market the business</label><label><input type="radio" name="help" value="involved" /> I want someone more involved across the brand</label><label><input type="radio" name="help" value="recommend" /> I’m not sure — recommend what makes sense</label></fieldset></section>
-          <section class="apply-step apply-results" data-step data-key="results"><h3>Choose your weekly services.</h3><p>Based on your answers, these are the best places to start. Edit the checklist before checkout.</p><div class="apply-service-list" id="apply-service-list"></div><div class="apply-total"><span>Weekly total</span><strong id="apply-total">$0 USD/week</strong></div><p class="form-status" id="apply-status" role="status" aria-live="polite"></p><button class="button button--primary button--full" type="submit">Save &amp; Continue to Stripe <span aria-hidden="true">→</span></button><p class="form-fineprint">Selected services renew weekly until cancelled. By continuing, you agree to the Terms of Service and Privacy Policy.</p></section>
+          <section class="apply-step apply-results" data-step data-key="results"><h3>Choose your weekly services.</h3><p>Based on your answers, these are the best places to start. Edit the checklist before checkout.</p><div class="apply-eligibility" id="apply-eligibility" role="status" aria-live="polite"><strong id="apply-eligibility-title"></strong><span id="apply-eligibility-copy"></span></div><div class="apply-service-list" id="apply-service-list"></div><div class="apply-total"><span>Weekly total</span><strong id="apply-total">$0 USD/week</strong></div><p class="form-status" id="apply-status" role="status" aria-live="polite"></p><button class="button button--primary button--full" type="submit">Save &amp; Continue to Stripe <span aria-hidden="true">→</span></button><p class="form-fineprint">Selected services renew weekly until cancelled. By continuing, you agree to the Terms of Service and Privacy Policy.</p></section>
           <div class="apply-wizard__nav"><button class="apply-back" type="button" data-back>← Back</button></div>
         </form>
         <div class="apply-help"><div class="apply-help__contact"><img src="assets/jason-portrait.png" alt="Jason Fung" width="38" height="38" /><a class="text-link text-link--message" href="https://www.instagram.com/direct/t/18164380366399175/" target="_blank" rel="noopener">Have a question? Message Jason <span aria-hidden="true">→</span></a></div></div>

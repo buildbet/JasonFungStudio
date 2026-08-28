@@ -110,6 +110,7 @@ button { color: inherit; }
 .section--paper { background: var(--paper); color: var(--ink); }
 .section--soft { background: #141512; }
 .section--sage { background: var(--sage); color: var(--ink); }
+.section--sage .section__head .eyebrow { color: #171a16; font-weight: 800; }
 .section__head { max-width: 850px; margin-bottom: clamp(38px, 5vw, 68px); }
 .section__head--center { margin-inline: auto; text-align: center; }
 .section__head h2 { margin: 17px 0 0; font-family: var(--serif); font-size: clamp(46px, 6vw, 78px); font-weight: 400; line-height: .98; }
@@ -166,6 +167,11 @@ button { color: inherit; }
 .service-pricing-grid h3 { margin: 0; font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.05; }
 .service-pricing-grid p { margin: 22px 0 0; color: var(--muted); font-size: 13px; }
 .service-pricing-grid strong { color: #fff; font-family: var(--serif); font-size: 34px; font-weight: 400; }
+.results-pricing-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: rgba(17,18,15,.18); }
+.results-pricing-grid article { min-height: 300px; padding: clamp(28px,4vw,48px); display: flex; flex-direction: column; background: rgba(239,234,224,.48); }
+.results-pricing-grid__stage { margin: 0 0 auto; color: #625e55; font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.results-pricing-grid h3 { margin: 42px 0 16px; font-family: var(--serif); font-size: clamp(34px,4vw,48px); font-weight: 400; line-height: 1; }
+.results-pricing-grid article > p:last-child { margin: 0; color: #4f5049; line-height: 1.65; }
 .pricing-apply { margin-top: 24px; display: flex; justify-content: center; }
 
 .consult-box { max-width: 920px; margin: 0 auto; padding: clamp(30px,5vw,60px); display: grid; grid-template-columns: 1fr auto; gap: 35px; align-items: center; border: 1px solid var(--dark-line); }
@@ -243,6 +249,7 @@ button { color: inherit; }
 .apply-step > .button { width: 100%; margin-top: 8px; }
 .apply-step fieldset { min-width: 0; margin: 0; padding: 0; display: grid; gap: 10px; border: 0; }
 .apply-step legend { margin-bottom: 22px; }
+.apply-step__hint { margin: -12px 0 12px; color: #9f9c94; font-size: 13px; line-height: 1.5; }
 .apply-step fieldset label { min-height: 55px; padding: 14px 16px; display: flex; gap: 13px; align-items: center; border: 1px solid rgba(255,255,255,.18); color: #d8d5cd; cursor: pointer; line-height: 1.4; transition: border-color .18s ease, background .18s ease; }
 .apply-step fieldset label:hover, .apply-step fieldset label:has(input:checked) { border-color: var(--gold); background: rgba(217,189,117,.08); color: #fff; }
 .apply-step input[type="radio"], .apply-service input { width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--gold); }
@@ -251,6 +258,10 @@ button { color: inherit; }
 .apply-back:hover { color: #fff; }
 .apply-results { min-height: 0; }
 .apply-results > p:not(.eyebrow):not(.form-status):not(.form-fineprint) { margin: -10px 0 2px; color: #aaa8a0; line-height: 1.55; }
+.apply-eligibility { padding: 16px 18px; display: grid; gap: 5px; border-left: 3px solid #77766f; background: rgba(255,255,255,.045); }
+.apply-eligibility.is-eligible { border-left-color: var(--gold); background: rgba(217,189,117,.08); }
+.apply-eligibility strong { color: #f1ede4; font-size: 14px; line-height: 1.4; }
+.apply-eligibility span { color: #9f9c94; font-size: 12px; line-height: 1.45; }
 .apply-service-list { display: grid; gap: 8px; }
 .apply-service { min-height: 62px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; border: 1px solid rgba(255,255,255,.17); cursor: pointer; }
 .apply-service:has(input:checked) { border-color: var(--gold); background: rgba(217,189,117,.07); }
@@ -300,7 +311,8 @@ button { color: inherit; }
   .brand-proof { padding-block: 19px; }
   .marquee-track span { margin-right: 28px; }
   .section { padding: 70px 18px; }
-  .card-grid, .services-grid, .pricing-grid, .service-pricing-grid { grid-template-columns: 1fr; }
+  .card-grid, .services-grid, .pricing-grid, .service-pricing-grid, .results-pricing-grid { grid-template-columns: 1fr; }
+  .results-pricing-grid article { min-height: 250px; }
   .service-pricing-grid article { min-height: 0; padding: 20px; flex-direction: row; gap: 18px; align-items: center; }
   .service-pricing-grid h3 { font-size: 24px; }
   .service-pricing-grid p { margin: 0 0 0 auto; text-align: right; white-space: nowrap; }
