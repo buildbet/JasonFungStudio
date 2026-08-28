@@ -1,7 +1,10 @@
 const GA_MEASUREMENT_ID = 'G-3W5FPCSZQQ';
+const META_PIXEL_ID = '1987381435535989';
 
 const analyticsIsConfigured = /^G-[A-Z0-9]+$/.test(GA_MEASUREMENT_ID)
   && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX';
+
+const metaPixelIsConfigured = /^\d+$/.test(META_PIXEL_ID);
 
 const sendAnalyticsEvent = (eventName, parameters = {}) => {
   if (typeof window.gtag !== 'function') {
@@ -13,6 +16,16 @@ const sendAnalyticsEvent = (eventName, parameters = {}) => {
     page_path: window.location.pathname,
     transport_type: 'beacon'
   });
+};
+
+const sendMetaEvent = (eventName, parameters = {}, options = {}) => {
+  if (typeof window.fbq !== 'function') {
+    return;
+  }
+
+  const command = options.custom ? 'trackCustom' : 'track';
+  const eventOptions = options.eventId ? { eventID: options.eventId } : undefined;
+  window.fbq(command, eventName, parameters, eventOptions);
 };
 
 const serviceParameters = (detail = {}) => {
@@ -45,6 +58,33 @@ if (analyticsIsConfigured) {
   document.head.appendChild(analyticsScript);
 }
 
+if (metaPixelIsConfigured) {
+  if (typeof window.fbq !== 'function') {
+    const fbq = function fbq() {
+      if (fbq.callMethod) {
+        fbq.callMethod.apply(fbq, arguments);
+      } else {
+        fbq.queue.push(arguments);
+      }
+    };
+
+    window.fbq = fbq;
+    if (!window._fbq) window._fbq = fbq;
+    fbq.push = fbq;
+    fbq.loaded = true;
+    fbq.version = '2.0';
+    fbq.queue = [];
+
+    const pixelScript = document.createElement('script');
+    pixelScript.async = true;
+    pixelScript.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(pixelScript);
+  }
+
+  window.fbq('init', META_PIXEL_ID);
+  window.fbq('track', 'PageView');
+}
+
 document.addEventListener('click', (event) => {
   const bookLink = event.target.closest('a[href]');
   if (!bookLink) {
@@ -69,12 +109,18 @@ document.addEventListener('booking_questionnaire_submitted', (event) => {
   sendAnalyticsEvent('generate_lead', {
     lead_type: event.detail?.bookingKind || 'client'
   });
+  sendMetaEvent('Lead', {
+    content_name: event.detail?.bookingKind || 'client'
+  });
 });
 
 document.addEventListener('shopify_growth_apply_opened', (event) => {
   sendAnalyticsEvent('quick_apply_open', {
     button_location: event.detail?.location || 'unknown'
   });
+  sendMetaEvent('ApplyOpened', {
+    button_location: event.detail?.location || 'unknown'
+  }, { custom: true });
 });
 
 document.addEventListener('shopify_growth_recommendation_viewed', (event) => {
@@ -82,19 +128,32 @@ document.addEventListener('shopify_growth_recommendation_viewed', (event) => {
 });
 
 document.addEventListener('shopify_growth_apply_submitted', (event) => {
+  const leadId = event.detail?.leadId || 'not_set';
   sendAnalyticsEvent('generate_lead', {
     lead_type: 'shopify_growth',
-    lead_id: event.detail?.leadId || 'not_set',
+    lead_id: leadId,
     ...serviceParameters(event.detail)
   });
+  sendMetaEvent('Lead', {
+    content_name: 'shopify_growth',
+    ...serviceParameters(event.detail)
+  }, { eventId: leadId });
 });
 
 document.addEventListener('shopify_growth_checkout_started', (event) => {
+  const leadId = event.detail?.leadId || 'not_set';
   sendAnalyticsEvent('begin_checkout', {
-    lead_id: event.detail?.leadId || 'not_set',
+    lead_id: leadId,
     value: Number(event.detail?.total) || 0,
     ...serviceParameters(event.detail)
   });
+  sendMetaEvent('InitiateCheckout', {
+    value: Number(event.detail?.total) || 0,
+    currency: 'USD',
+    content_category: 'shopify_growth_services',
+    content_ids: Array.isArray(event.detail?.services) ? event.detail.services : [],
+    num_items: Array.isArray(event.detail?.services) ? event.detail.services.length : 0
+  }, { eventId: `${leadId}-checkout` });
 });
 
 document.addEventListener('shopify_growth_onboarding_submitted', (event) => {
@@ -102,6 +161,9 @@ document.addEventListener('shopify_growth_onboarding_submitted', (event) => {
     lead_id: event.detail?.leadId || 'not_set',
     ...serviceParameters(event.detail)
   });
+  sendMetaEvent('OnboardingComplete', {
+    ...serviceParameters(event.detail)
+  }, { custom: true, eventId: `${event.detail?.leadId || 'not_set'}-onboarding` });
 });
 
 if (/\/shopify-growth-success\.html$/.test(window.location.pathname)) {
