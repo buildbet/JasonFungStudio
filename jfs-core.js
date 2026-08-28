@@ -58,7 +58,7 @@ if (analyticsIsConfigured) {
   document.head.appendChild(analyticsScript);
 }
 
-if (metaPixelIsConfigured) {
+if (metaPixelIsConfigured && !window.jfsMetaPixelBaseLoaded) {
   if (typeof window.fbq !== 'function') {
     const fbq = function fbq() {
       if (fbq.callMethod) {
@@ -83,6 +83,7 @@ if (metaPixelIsConfigured) {
 
   window.fbq('init', META_PIXEL_ID);
   window.fbq('track', 'PageView');
+  window.jfsMetaPixelBaseLoaded = true;
 }
 
 document.addEventListener('click', (event) => {
