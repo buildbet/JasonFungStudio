@@ -165,12 +165,6 @@ document.querySelectorAll('.testimonial-carousel').forEach((carousel) => {
   carousel.addEventListener('pointerup', stopDragging);
   carousel.addEventListener('pointercancel', stopDragging);
   carousel.addEventListener('lostpointercapture', stopDragging);
-  carousel.addEventListener('touchstart', () => {
-    isDragging = true;
-    scrollPosition = carousel.scrollLeft;
-    carousel.classList.add('is-dragging');
-  }, { passive: true });
-  carousel.addEventListener('touchend', stopDragging, { passive: true });
   carousel.addEventListener('scroll', () => {
     scrollPosition = carousel.scrollLeft;
     if (isDragging) wrapScroll();

@@ -1373,6 +1373,9 @@ img {
   .testimonial-carousel {
     min-height: 340px;
     padding: 12px;
+    overflow-x: hidden;
+    cursor: default;
+    touch-action: pan-y;
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%);
   }
