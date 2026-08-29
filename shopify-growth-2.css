@@ -147,6 +147,12 @@
 .growth2-page .growth2-email-consent { margin: -4px 0 0; color: #718096; font-size: 11px; line-height: 1.55; }
 .growth2-page .growth2-email-consent a { color: var(--growth2-blue); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
 .growth2-page .growth2-onboarding-note { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--growth2-blue-soft); color: #42526b; font-size: 12px; line-height: 1.55; text-align: center; }
+.growth2-page .growth2-capacity-note { margin: 0; padding: 12px 14px; border: 1px solid #bfdbfe; border-radius: 12px; background: #fff; color: #526078; font-size: 12px; line-height: 1.55; text-align: center; }
+.growth2-page .growth2-capacity-note strong { color: var(--growth2-blue-dark); }
+.growth2-page .growth2-terms-consent { margin: 0; padding: 14px; display: flex; gap: 11px; align-items: flex-start; border: 1px solid var(--growth2-border); border-radius: 12px; background: #f8fafc; color: #526078; font-size: 11px; line-height: 1.55; cursor: pointer; }
+.growth2-page .growth2-terms-consent:has(input:checked) { border-color: #93c5fd; background: var(--growth2-blue-soft); }
+.growth2-page .growth2-terms-consent input { width: 18px; height: 18px; margin: 0; flex: 0 0 auto; accent-color: var(--growth2-blue); }
+.growth2-page .growth2-terms-consent a { color: var(--growth2-blue-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
 .growth2-page .apply-help { border-color: var(--growth2-border); }
 .growth2-page .apply-help p { color: var(--growth2-text); }
 .growth2-page .apply-help .text-link { color: var(--growth2-blue); }
@@ -170,6 +176,7 @@
   .growth2-page .apply-step > label,
   .growth2-page .apply-step legend,
   .growth2-page .apply-results h3 { font-size: 31px; }
+  .growth2-page .apply-step > .growth2-terms-consent { font-size: 11px; font-weight: 500; letter-spacing: 0; line-height: 1.55; }
   .growth2-page .apply-step fieldset label { border-radius: 14px; }
   .growth2-page .growth2-coverflow img { border-radius: 20px; }
   .growth2-page .growth2-proof-title { max-width: calc(100vw - 36px); padding-inline: 4px; font-size: 30px; letter-spacing: -.03em; }

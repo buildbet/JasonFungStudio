@@ -341,6 +341,7 @@
     data.set("lead_id", leadId);
     data.set("assessment_id", assessmentId);
     data.set("funnel_status", "Checkout started");
+    data.set("terms_accepted_at", new Date().toISOString());
     data.set("selected_services", serviceKeys.map((key) => SERVICES[key].name).join(", "));
     data.set("weekly_total_usd", String(total));
     data.set("page_url", window.location.href);

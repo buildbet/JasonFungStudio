@@ -209,6 +209,20 @@
   background: radial-gradient(circle at 80% 20%,rgba(37,99,235,.14),transparent 30%),#eff6ff;
 }
 .growth-modern-page .final-cta p:not(.eyebrow) { color: #64748b; }
+.growth-modern-page .final-cta .capacity-note {
+  max-width: 620px;
+  margin-top: 24px;
+  padding: 16px 18px;
+  display: grid;
+  gap: 4px;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  background: rgba(255,255,255,.72);
+  color: #526078;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.growth-modern-page .final-cta .capacity-note strong { color: #1d4ed8; }
 .growth-modern-page .footer { border-color: #e2e8f0; background: #fff; color: #64748b; }
 .growth-modern-page .footer a:hover { color: #2563eb; }
 
