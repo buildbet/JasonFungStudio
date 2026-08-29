@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="shopify-growth-rework.css?v=revenue-eligibility-2" />
-    <link rel="stylesheet" href="shopify-growth-2.css?v=checkout-consent-2" />
+    <link rel="stylesheet" href="shopify-growth-2.css?v=direct-entry-1" />
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -27,7 +27,7 @@
     </script>
     <script src="jfs-core.js?v=funnel-tracking-1" defer></script>
     <script src="shopify-growth-rework.js?v=checkout-consent-1" defer></script>
-    <script src="shopify-growth-2.js?v=funnel-tracking-1" defer></script>
+    <script src="shopify-growth-2.js?v=direct-entry-1" defer></script>
   </head>
   <body class="growth2-page">
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1987381435535989&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -38,18 +38,6 @@
       <nav class="growth-nav" id="growth-nav" aria-label="Primary navigation"><a href="#assessment">Assessment</a><a href="shopify-growth.html">Learn more</a></nav>
       <a class="button button--primary button--small header-apply" href="#assessment">Quick Apply <span aria-hidden="true">→</span></a>
     </header>
-
-    <div class="growth2-welcome" id="growth2-welcome" aria-hidden="true">
-      <button class="growth2-welcome__backdrop" type="button" data-welcome-close aria-label="Skip introduction"></button>
-      <section class="growth2-welcome__panel" role="dialog" aria-modal="true" aria-labelledby="growth2-welcome-title">
-        <button class="growth2-welcome__close" type="button" data-welcome-close aria-label="Close">×</button>
-        <h2 id="growth2-welcome-title">Easy, flexible, and low risk.</h2>
-        <ul><li>Pay only for the support you need</li><li>Cancel anytime</li><li>No sales call required</li></ul>
-        <p>Choose where you want help, review your weekly total, then decide.</p>
-        <button class="button button--primary" type="button" data-welcome-start>See my options <span aria-hidden="true">→</span></button>
-        <p class="growth2-welcome__question">Feel free to <a href="https://www.instagram.com/direct/t/18164380366399175/" target="_blank" rel="noopener">message Jason</a> if you have any questions.</p>
-      </section>
-    </div>
 
     <main id="main">
       <h1 class="sr-only">Shopify Growth Assessment</h1>
@@ -81,8 +69,8 @@
               <section class="apply-step" data-step data-key="brand"><fieldset><legend>Brand Direction</legend><label class="apply-choice"><input type="radio" name="brand" value="clear" required /><span class="apply-choice__copy"><span class="apply-choice__main"><strong>My brand direction is established</strong><b>$0</b></span></span></label><label class="apply-choice"><input type="radio" name="brand" value="refine" /><span class="apply-choice__copy"><span class="apply-choice__main"><strong>I need brand direction</strong><b>+$100/week</b></span><small>Refine the existing identity<br />Make things more consistent<br />Help define the overall direction</small></span></label></fieldset></section>
               <section class="apply-step" data-step data-key="priority"><fieldset><legend>Speed / Priority</legend><label class="apply-choice"><input type="radio" name="priority" value="normal" required /><span class="apply-choice__copy"><span class="apply-choice__main"><strong>Normal turnaround</strong><b>$0</b></span></span></label><label class="apply-choice"><input type="radio" name="priority" value="deadline" /><span class="apply-choice__copy"><span class="apply-choice__main"><strong>Priority support</strong><b>+$50/week</b></span><small>Upcoming launch or deadline<br />Faster turnaround<br />Multiple things moving at once</small></span></label></fieldset></section>
               <section class="apply-step" data-step data-key="revenue"><fieldset><legend>What is your average monthly online revenue?</legend><p class="apply-step__hint">This helps us determine which pricing approach may fit your current stage.</p><label class="apply-revenue-choice"><input type="radio" name="revenue" value="under-10k" required /><span>Below $10K/month</span></label><label class="apply-revenue-choice"><input type="radio" name="revenue" value="10k-plus" /><span>$10K+/month — <strong>performance-based pricing may be available</strong></span></label></fieldset></section>
-              <section class="apply-step" data-step data-key="name"><label for="apply-name">What’s your name?</label><input id="apply-name" name="name" autocomplete="name" required /><button class="button button--primary" type="button" data-next>Continue <span aria-hidden="true">→</span></button></section>
-              <section class="apply-step" data-step data-key="email"><label for="apply-email">What’s your email?</label><input id="apply-email" name="email" type="email" autocomplete="email" required /><p class="growth2-email-consent">By continuing, you agree that Jason Fung Studio may save your answers and email you about this recommendation. <a href="privacy.html" target="_blank">Privacy Policy</a></p><button class="button button--primary" type="button" data-next>See my recommendation <span aria-hidden="true">→</span></button></section>
+              <section class="apply-step" data-step data-key="name"><label for="apply-name">What’s your name?</label><input id="apply-name" name="name" autocomplete="name" required /><button class="button button--primary" type="button" data-next>Continue <span aria-hidden="true">→</span></button><p class="growth2-step-note">Almost there.</p></section>
+              <section class="apply-step" data-step data-key="email"><label for="apply-email">What’s your email?</label><input id="apply-email" name="email" type="email" autocomplete="email" required /><p class="growth2-email-consent">By continuing, you agree that Jason Fung Studio may save your answers and email you about this recommendation. <a href="privacy.html" target="_blank">Privacy Policy</a></p><button class="button button--primary" type="button" data-next>See my recommendation <span aria-hidden="true">→</span></button><p class="growth2-step-note">Last step.</p></section>
               <section class="apply-step apply-results" data-step data-key="results"><h3>Choose your weekly services.</h3><p>Based on your answers, these are the best places to start. Edit the checklist before checkout.</p><div class="apply-eligibility" id="apply-eligibility" role="status" aria-live="polite"><strong id="apply-eligibility-title"></strong><span id="apply-eligibility-copy"></span></div><div class="apply-service-list" id="apply-service-list"></div><div class="apply-total"><span>Weekly total</span><strong id="apply-total">$0 USD/week</strong></div><p class="form-status" id="apply-status" role="status" aria-live="polite"></p><p class="growth2-capacity-note"><strong>Limited weekly capacity.</strong> Start this week while space is available.</p><p class="form-fineprint growth2-onboarding-note">After payment, you’ll continue to a short onboarding form so we can get started.</p><input type="hidden" name="terms_version" value="2026-08-28" /><label class="growth2-terms-consent"><input type="checkbox" name="terms_accepted" value="yes" required /><span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>, including the selected scope, recurring weekly billing, cancellation terms, and applicable payment terms.</span></label><button class="button button--primary button--full" type="submit">Save &amp; Continue to Stripe <span aria-hidden="true">→</span></button><p class="form-fineprint">Selected services renew weekly until cancelled.</p></section>
               <div class="apply-wizard__nav"><button class="apply-back" type="button" data-back hidden>← Back</button></div>
             </form>

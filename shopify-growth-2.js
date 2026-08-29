@@ -1,46 +1,4 @@
 (() => {
-  const welcome = document.querySelector("#growth2-welcome");
-  const welcomeStart = welcome?.querySelector("[data-welcome-start]");
-  const welcomeKey = "jfs_growth2_welcome_seen_v4";
-  const firstAssessmentChoice = document.querySelector("#quick-apply-form input[name='ads']");
-
-  const beginAssessment = (source) => document.dispatchEvent(new CustomEvent("shopify_growth_assessment_begin", { detail: { source } }));
-
-  const closeWelcome = (source = "popup_skip") => {
-    if (!welcome) return;
-    const wasOpen = welcome.classList.contains("is-open");
-    welcome.classList.remove("is-open");
-    welcome.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("welcome-open");
-    try { sessionStorage.setItem(welcomeKey, "1"); } catch (_) {}
-    window.setTimeout(() => firstAssessmentChoice?.focus(), 30);
-    if (wasOpen) beginAssessment(source);
-  };
-
-  let welcomeSeen = false;
-  try { welcomeSeen = sessionStorage.getItem(welcomeKey) === "1"; } catch (_) {}
-  if (welcome && !welcomeSeen) {
-    welcome.classList.add("is-open");
-    welcome.setAttribute("aria-hidden", "false");
-    document.body.classList.add("welcome-open");
-    window.setTimeout(() => welcomeStart?.focus(), 30);
-  } else {
-    window.setTimeout(() => beginAssessment("returning_session"), 0);
-  }
-  welcome?.querySelectorAll("[data-welcome-close]").forEach((button) => button.addEventListener("click", () => closeWelcome("popup_skip")));
-  welcomeStart?.addEventListener("click", () => closeWelcome("popup_cta"));
-  document.addEventListener("keydown", (event) => {
-    if (!welcome?.classList.contains("is-open")) return;
-    if (event.key === "Escape") { closeWelcome("popup_escape"); return; }
-    if (event.key !== "Tab") return;
-    const focusable = [...welcome.querySelectorAll(".growth2-welcome__panel button")];
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-    if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-  });
-
   const viewport = document.querySelector("#growth2-coverflow");
   const images = [...(viewport?.querySelectorAll("img") || [])];
   const previous = document.querySelector("[data-coverflow-prev]");
