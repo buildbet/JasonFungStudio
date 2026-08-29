@@ -35,8 +35,10 @@
 
   const modal = document.querySelector("#apply-modal");
   const panel = modal?.querySelector(".modal__panel");
+  const inlineAssessment = modal?.classList.contains("inline-assessment") || false;
   const form = document.querySelector("#quick-apply-form");
   const steps = [...(form?.querySelectorAll("[data-step]") || [])];
+  const questionSteps = steps.filter((step) => !step.hasAttribute("data-intro") && step.dataset.key !== "results");
   const backButton = form?.querySelector("[data-back]");
   const progressBar = document.querySelector("#apply-progress-bar");
   const progressCopy = document.querySelector("#apply-progress-copy");
@@ -50,8 +52,46 @@
   let currentStep = 0;
   let lastFocus = null;
   let recommendationTracked = false;
+  let assessmentStarted = false;
+  let abandonmentTracked = false;
+  let lastAnsweredStep = null;
+  let partialLeadSavedEmail = "";
+  let partialLeadSaving = false;
+  const viewedSteps = new Set();
+  const answeredSteps = new Set();
 
   const makeLeadId = () => `JFS-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+  const makeAssessmentId = () => `JFS-A-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+  let assessmentId = "";
+  try {
+    assessmentId = sessionStorage.getItem("jfs_shopify_growth_assessment_id") || makeAssessmentId();
+    sessionStorage.setItem("jfs_shopify_growth_assessment_id", assessmentId);
+  } catch (_) { assessmentId = makeAssessmentId(); }
+
+  const stepDetail = (step) => {
+    const questionNumber = questionSteps.indexOf(step) + 1;
+    return {
+      assessmentId,
+      flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal",
+      questionKey: step?.dataset.key || "unknown",
+      questionNumber: Math.max(questionNumber, 0),
+      totalQuestions: questionSteps.length,
+    };
+  };
+
+  const markAssessmentStarted = (source = "answer") => {
+    if (assessmentStarted) return;
+    assessmentStarted = true;
+    document.dispatchEvent(new CustomEvent("shopify_growth_assessment_started", {
+      detail: { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", source }
+    }));
+  };
+
+  const trackStepView = (step) => {
+    if (!step?.dataset.key || step.dataset.key === "results" || viewedSteps.has(step.dataset.key)) return;
+    viewedSteps.add(step.dataset.key);
+    document.dispatchEvent(new CustomEvent("shopify_growth_step_viewed", { detail: stepDetail(step) }));
+  };
   const setStatus = (message, error = false) => {
     if (!status) return;
     status.textContent = message;
@@ -90,6 +130,59 @@
     return selected;
   };
 
+  const SERVICE_FOR_QUESTION = Object.freeze({
+    ads: "paid_ads", shopify: "shopify", creative: "creative", followup: "email_sms",
+    offers: "offers", growth: "growth", brand: "brand", priority: "priority",
+  });
+
+  const trackAnswer = (step, answerValue) => {
+    if (!step?.dataset.key) return;
+    markAssessmentStarted();
+    trackStepView(step);
+    answeredSteps.add(step.dataset.key);
+    lastAnsweredStep = step;
+    const serviceKey = SERVICE_FOR_QUESTION[step.dataset.key];
+    const priceImpact = serviceKey && recommendedServices().has(serviceKey) ? SERVICES[serviceKey].price : 0;
+    document.dispatchEvent(new CustomEvent("shopify_growth_answered", {
+      detail: { ...stepDetail(step), answerValue: String(answerValue || "not_set"), priceImpact }
+    }));
+  };
+
+  const savePartialLead = async () => {
+    if (!inlineAssessment || !form || partialLeadSaving) return;
+    const data = new FormData(form);
+    const email = String(data.get("email") || "").trim().toLowerCase();
+    if (!email || email === partialLeadSavedEmail) return;
+    partialLeadSaving = true;
+    const recommended = [...recommendedServices()];
+    const recommendedTotal = recommended.reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
+    const params = new URLSearchParams(window.location.search);
+    data.set("access_key", WEB3FORMS_KEY);
+    data.set("subject", `Shopify Growth lead ${assessmentId} — checkout not started`);
+    data.set("from_name", "Jason Fung Studio website");
+    data.set("assessment_id", assessmentId);
+    data.set("funnel_status", "Recommendation requested — checkout not started");
+    data.set("recommended_services", recommended.map((key) => SERVICES[key].name).join(", ") || "None selected");
+    data.set("recommended_weekly_total_usd", String(recommendedTotal));
+    data.set("follow_up_permission", "Visitor entered their email and continued to view their recommendation");
+    data.set("page_url", window.location.href);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+      if (params.get(key)) data.set(key, params.get(key));
+    });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data, keepalive: true });
+      const result = await response.json();
+      if (response.ok && result.success) {
+        partialLeadSavedEmail = email;
+        document.dispatchEvent(new CustomEvent("shopify_growth_partial_lead_saved", {
+          detail: { assessmentId, flowVariant: "shopify_growth_2_inline", services: recommended, total: recommendedTotal }
+        }));
+      }
+    } catch (_) {
+      // The full application submission remains a second opportunity to save this lead.
+    } finally { partialLeadSaving = false; }
+  };
+
   const selectedServiceKeys = () => [...(serviceList?.querySelectorAll("input[type='checkbox']:checked") || [])].map((input) => input.value);
   const updateTotal = () => {
     const total = selectedServiceKeys().reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
@@ -106,7 +199,12 @@
         <span><strong>${service.name}</strong>${recommended.has(key) ? "<small>Recommended</small>" : ""}</span>
         <b>$${service.price}/week</b>
       </label>`).join("");
-    serviceList.querySelectorAll("input").forEach((input) => input.addEventListener("change", updateTotal));
+    serviceList.querySelectorAll("input").forEach((input) => input.addEventListener("change", () => {
+      const total = updateTotal();
+      document.dispatchEvent(new CustomEvent("shopify_growth_service_changed", {
+        detail: { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", serviceKey: input.value, selected: input.checked, total }
+      }));
+    }));
     updateTotal();
   };
 
@@ -126,27 +224,36 @@
     if (!steps.length) return;
     currentStep = Math.max(0, Math.min(index, steps.length - 1));
     steps.forEach((step, stepIndex) => step.classList.toggle("is-active", stepIndex === currentStep));
+    const activeStep = steps[currentStep];
+    if (assessmentStarted) trackStepView(activeStep);
     if (currentStep === steps.length - 1) {
       renderEligibility();
       renderServices();
       if (!recommendationTracked) {
         recommendationTracked = true;
         document.dispatchEvent(new CustomEvent("shopify_growth_recommendation_viewed", {
-          detail: { services: selectedServiceKeys(), total: updateTotal() }
+          detail: { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", services: selectedServiceKeys(), total: updateTotal() }
         }));
       }
     }
-    const questionCount = steps.length - 1;
-    const progressIndex = Math.min(currentStep + 1, questionCount);
+    const isIntro = activeStep?.hasAttribute("data-intro");
+    const questionCount = questionSteps.length;
+    const progressIndex = isIntro ? 0 : questionSteps.filter((step) => steps.indexOf(step) <= currentStep).length;
     if (progressBar) progressBar.style.width = `${(progressIndex / questionCount) * 100}%`;
-    if (progressCopy) progressCopy.textContent = currentStep === steps.length - 1 ? "Your recommendation" : `Step ${currentStep + 1} of ${questionCount}`;
+    if (progressCopy) progressCopy.textContent = currentStep === steps.length - 1 ? "Your recommendation" : isIntro ? "About 2 minutes" : `Step ${progressIndex} of ${questionCount}`;
     if (backButton) backButton.hidden = currentStep === 0;
     const focusTarget = fieldForStep(steps[currentStep]) || steps[currentStep].querySelector("input,button");
     window.setTimeout(() => focusTarget?.focus(), 30);
   };
 
   const nextStep = () => {
-    if (!validateStep(steps[currentStep])) return;
+    const step = steps[currentStep];
+    if (!validateStep(step)) return;
+    const textInput = step?.querySelector("input:not([type='radio']):not([type='checkbox'])");
+    if (textInput) {
+      trackAnswer(step, "provided");
+      if (step.dataset.key === "email") void savePartialLead();
+    }
     showStep(currentStep + 1);
   };
 
@@ -158,6 +265,7 @@
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
     document.dispatchEvent(new CustomEvent("shopify_growth_apply_opened", { detail: { location } }));
+    markAssessmentStarted(`modal_${location}`);
     showStep(0);
   };
 
@@ -181,15 +289,32 @@
   }));
   modal?.querySelectorAll("[data-close-modal]").forEach((button) => button.addEventListener("click", closeModal));
   form?.querySelectorAll("[data-next]").forEach((button) => button.addEventListener("click", nextStep));
+  form?.querySelectorAll("input[type='radio']").forEach((input) => input.addEventListener("change", () => {
+    trackAnswer(input.closest("[data-step]"), input.value);
+  }));
   form?.querySelectorAll("input[type='radio']").forEach((input) => input.addEventListener("click", () => window.setTimeout(nextStep, 170)));
   backButton?.addEventListener("click", () => showStep(currentStep - 1));
+  document.addEventListener("shopify_growth_assessment_begin", (event) => {
+    markAssessmentStarted(event.detail?.source || "inline_page");
+    trackStepView(steps[currentStep]);
+  });
+
+  window.addEventListener("pagehide", () => {
+    if (!assessmentStarted || recommendationTracked || abandonmentTracked) return;
+    abandonmentTracked = true;
+    const detail = lastAnsweredStep ? stepDetail(lastAnsweredStep) : stepDetail(steps[currentStep]);
+    document.dispatchEvent(new CustomEvent("shopify_growth_assessment_abandoned", {
+      detail: { ...detail, answeredCount: answeredSteps.size, completionPercent: Math.round((answeredSteps.size / Math.max(questionSteps.length, 1)) * 100) }
+    }));
+  });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
-    if (event.key === "Enter" && modal?.classList.contains("is-open") && currentStep < 3 && document.activeElement?.tagName === "INPUT") {
+    if (event.key === "Escape" && modal?.classList.contains("is-open") && !inlineAssessment) closeModal();
+    const activeTextInput = steps[currentStep]?.querySelector("input:not([type='radio']):not([type='checkbox'])");
+    if (event.key === "Enter" && modal?.classList.contains("is-open") && currentStep < steps.length - 1 && document.activeElement === activeTextInput) {
       event.preventDefault(); nextStep();
     }
-    if (event.key !== "Tab" || !modal?.classList.contains("is-open") || !panel) return;
+    if (event.key !== "Tab" || !modal?.classList.contains("is-open") || !panel || inlineAssessment) return;
     const focusable = [...panel.querySelectorAll("button:not([hidden]),input,a[href]")].filter((el) => !el.disabled && el.offsetParent !== null);
     if (!focusable.length) return;
     const first = focusable[0];
@@ -211,9 +336,11 @@
     const total = updateTotal();
     const params = new URLSearchParams(window.location.search);
     data.set("access_key", WEB3FORMS_KEY);
-    data.set("subject", `New Shopify Growth quick apply — $${total}/week`);
+    data.set("subject", `Shopify Growth checkout ${assessmentId} — $${total}/week`);
     data.set("from_name", "Jason Fung Studio website");
     data.set("lead_id", leadId);
+    data.set("assessment_id", assessmentId);
+    data.set("funnel_status", "Checkout started");
     data.set("selected_services", serviceKeys.map((key) => SERVICES[key].name).join(", "));
     data.set("weekly_total_usd", String(total));
     data.set("page_url", window.location.href);
@@ -239,8 +366,9 @@
       const checkoutUrl = new URL(stripeLink);
       checkoutUrl.searchParams.set("prefilled_email", lead.email);
       checkoutUrl.searchParams.set("client_reference_id", leadId);
-      document.dispatchEvent(new CustomEvent("shopify_growth_apply_submitted", { detail: { services: serviceKeys, total, leadId } }));
-      document.dispatchEvent(new CustomEvent("shopify_growth_checkout_started", { detail: { services: serviceKeys, total, leadId } }));
+      const funnelDetail = { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", services: serviceKeys, total, leadId };
+      document.dispatchEvent(new CustomEvent("shopify_growth_apply_submitted", { detail: funnelDetail }));
+      document.dispatchEvent(new CustomEvent("shopify_growth_checkout_started", { detail: funnelDetail }));
       window.location.assign(checkoutUrl.toString());
     } catch (error) {
       setStatus(error.message || "Something went wrong. Please message Jason.", true);

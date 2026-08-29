@@ -124,8 +124,65 @@ document.addEventListener('shopify_growth_apply_opened', (event) => {
   }, { custom: true });
 });
 
+document.addEventListener('shopify_growth_assessment_started', (event) => {
+  sendAnalyticsEvent('assessment_started', {
+    flow_variant: event.detail?.flowVariant || 'unknown',
+    start_source: event.detail?.source || 'unknown'
+  });
+});
+
+document.addEventListener('shopify_growth_step_viewed', (event) => {
+  sendAnalyticsEvent('assessment_step_viewed', {
+    flow_variant: event.detail?.flowVariant || 'unknown',
+    question_key: event.detail?.questionKey || 'unknown',
+    question_number: Number(event.detail?.questionNumber) || 0,
+    total_questions: Number(event.detail?.totalQuestions) || 0
+  });
+});
+
+document.addEventListener('shopify_growth_answered', (event) => {
+  sendAnalyticsEvent('assessment_answered', {
+    flow_variant: event.detail?.flowVariant || 'unknown',
+    question_key: event.detail?.questionKey || 'unknown',
+    question_number: Number(event.detail?.questionNumber) || 0,
+    answer_value: event.detail?.answerValue || 'not_set',
+    price_impact: Number(event.detail?.priceImpact) || 0,
+    currency: 'USD'
+  });
+});
+
+document.addEventListener('shopify_growth_assessment_abandoned', (event) => {
+  sendAnalyticsEvent('assessment_abandoned', {
+    flow_variant: event.detail?.flowVariant || 'unknown',
+    last_question_key: event.detail?.questionKey || 'unknown',
+    last_question_number: Number(event.detail?.questionNumber) || 0,
+    answered_count: Number(event.detail?.answeredCount) || 0,
+    completion_percent: Number(event.detail?.completionPercent) || 0
+  });
+});
+
+document.addEventListener('shopify_growth_service_changed', (event) => {
+  sendAnalyticsEvent('recommendation_service_changed', {
+    flow_variant: event.detail?.flowVariant || 'unknown',
+    service_key: event.detail?.serviceKey || 'unknown',
+    selected: event.detail?.selected ? 1 : 0,
+    weekly_total: Number(event.detail?.total) || 0,
+    currency: 'USD'
+  });
+});
+
 document.addEventListener('shopify_growth_recommendation_viewed', (event) => {
-  sendAnalyticsEvent('quick_apply_recommendation_view', serviceParameters(event.detail));
+  sendAnalyticsEvent('quick_apply_recommendation_view', {
+    flow_variant: event.detail?.flowVariant || 'unknown',
+    ...serviceParameters(event.detail)
+  });
+});
+
+document.addEventListener('shopify_growth_partial_lead_saved', (event) => {
+  sendAnalyticsEvent('partial_lead_saved', {
+    flow_variant: event.detail?.flowVariant || 'unknown',
+    ...serviceParameters(event.detail)
+  });
 });
 
 document.addEventListener('shopify_growth_apply_submitted', (event) => {
@@ -133,6 +190,7 @@ document.addEventListener('shopify_growth_apply_submitted', (event) => {
   sendAnalyticsEvent('generate_lead', {
     lead_type: 'shopify_growth',
     lead_id: leadId,
+    flow_variant: event.detail?.flowVariant || 'unknown',
     ...serviceParameters(event.detail)
   });
   sendMetaEvent('Lead', {
@@ -145,6 +203,7 @@ document.addEventListener('shopify_growth_checkout_started', (event) => {
   const leadId = event.detail?.leadId || 'not_set';
   sendAnalyticsEvent('begin_checkout', {
     lead_id: leadId,
+    flow_variant: event.detail?.flowVariant || 'unknown',
     value: Number(event.detail?.total) || 0,
     ...serviceParameters(event.detail)
   });
