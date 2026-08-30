@@ -78,3 +78,27 @@
 
   update();
 })();
+
+(() => {
+  const item = document.querySelector("[data-benefit-strip]");
+  if (!item) return;
+
+  const benefits = ["Simple pricing", "Flexible support", "No sales call", "Cancel anytime"];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reducedMotion) {
+    item.textContent = benefits.join(" · ");
+    return;
+  }
+
+  let index = 0;
+  window.setInterval(() => {
+    item.classList.add("is-exiting");
+    window.setTimeout(() => {
+      index = (index + 1) % benefits.length;
+      item.textContent = benefits[index];
+      item.classList.remove("is-exiting");
+      item.classList.add("is-entering");
+      window.requestAnimationFrame(() => window.requestAnimationFrame(() => item.classList.remove("is-entering")));
+    }, 260);
+  }, 1000);
+})();

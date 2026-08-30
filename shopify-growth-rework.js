@@ -42,6 +42,11 @@
   const backButton = form?.querySelector("[data-back]");
   const progressBar = document.querySelector("#apply-progress-bar");
   const progressCopy = document.querySelector("#apply-progress-copy");
+  const assessmentIntro = document.querySelector(".growth2-assessment-intro");
+  const serviceInfoModal = document.querySelector("#service-info-modal");
+  const serviceInfoTitle = document.querySelector("#service-info-title");
+  const serviceInfoDescription = document.querySelector("#service-info-description");
+  const contactModal = document.querySelector("#contact-chooser-modal");
   const serviceList = document.querySelector("#apply-service-list");
   const totalOutput = document.querySelector("#apply-total");
   const eligibility = document.querySelector("#apply-eligibility");
@@ -49,6 +54,8 @@
   const eligibilityCopy = document.querySelector("#apply-eligibility-copy");
   const status = document.querySelector("#apply-status");
   const submit = form?.querySelector("button[type='submit']");
+  const detailsForm = document.querySelector("#growth2-details-form");
+  const detailsStatus = document.querySelector("#growth2-details-status");
   let currentStep = 0;
   let lastFocus = null;
   let recommendationTracked = false;
@@ -57,6 +64,8 @@
   let lastAnsweredStep = null;
   let partialLeadSavedEmail = "";
   let partialLeadSaving = false;
+  let lastServiceInfoTrigger = null;
+  let lastContactTrigger = null;
   const viewedSteps = new Set();
   const answeredSteps = new Set();
 
@@ -98,10 +107,12 @@
     status.classList.toggle("is-error", error);
   };
 
-  const fieldForStep = (step) => step?.querySelector("input:not([type='radio']):not([type='checkbox']), input[type='radio']:checked");
+  const fieldForStep = (step) => step?.querySelector("input:not([type='radio']):not([type='checkbox']), input[type='radio']:checked, input[type='checkbox']:checked");
   const validateStep = (step) => {
-    const textInput = step?.querySelector("input:not([type='radio']):not([type='checkbox'])");
-    if (textInput && !textInput.reportValidity()) return false;
+    const textInputs = [...(step?.querySelectorAll("input:not([type='radio']):not([type='checkbox'])") || [])];
+    for (const textInput of textInputs) {
+      if (!textInput.reportValidity()) return false;
+    }
     const requiredRadio = step?.querySelector("input[type='radio'][required]");
     if (requiredRadio && !step.querySelector(`input[name="${requiredRadio.name}"]:checked`)) {
       requiredRadio.reportValidity();
@@ -114,6 +125,12 @@
     if (!form) return new Set();
     const data = new FormData(form);
     const selected = new Set();
+    const groupedServices = data.getAll("support_services").map(String).filter((key) => SERVICES[key]);
+    if (groupedServices.length || form.querySelector("[name='support_services']")) {
+      groupedServices.forEach((key) => selected.add(key));
+      if (selected.size === 1 && selected.has("priority")) selected.delete("priority");
+      return selected;
+    }
     if (["want", "poor", "okay"].includes(String(data.get("ads")))) selected.add("paid_ads");
     if (["improvements", "work", "unsure"].includes(String(data.get("shopify")))) selected.add("shopify");
     if (["more", "direction", "both"].includes(String(data.get("creative")))) selected.add("creative");
@@ -135,14 +152,16 @@
     offers: "offers", growth: "growth", brand: "brand", priority: "priority",
   });
 
-  const trackAnswer = (step, answerValue) => {
+  const trackAnswer = (step, answerValue, explicitPriceImpact) => {
     if (!step?.dataset.key) return;
     markAssessmentStarted();
     trackStepView(step);
     answeredSteps.add(step.dataset.key);
     lastAnsweredStep = step;
     const serviceKey = SERVICE_FOR_QUESTION[step.dataset.key];
-    const priceImpact = serviceKey && recommendedServices().has(serviceKey) ? SERVICES[serviceKey].price : 0;
+    const priceImpact = Number.isFinite(explicitPriceImpact)
+      ? explicitPriceImpact
+      : serviceKey && recommendedServices().has(serviceKey) ? SERVICES[serviceKey].price : 0;
     document.dispatchEvent(new CustomEvent("shopify_growth_answered", {
       detail: { ...stepDetail(step), answerValue: String(answerValue || "not_set"), priceImpact }
     }));
@@ -225,6 +244,7 @@
     currentStep = Math.max(0, Math.min(index, steps.length - 1));
     steps.forEach((step, stepIndex) => step.classList.toggle("is-active", stepIndex === currentStep));
     const activeStep = steps[currentStep];
+    if (assessmentIntro) assessmentIntro.hidden = currentStep !== 0;
     if (assessmentStarted) trackStepView(activeStep);
     if (currentStep === steps.length - 1) {
       renderEligibility();
@@ -240,7 +260,17 @@
     const questionCount = questionSteps.length;
     const progressIndex = isIntro ? 0 : questionSteps.filter((step) => steps.indexOf(step) <= currentStep).length;
     if (progressBar) progressBar.style.width = `${(progressIndex / questionCount) * 100}%`;
-    if (progressCopy) progressCopy.textContent = currentStep === steps.length - 1 ? "Your recommendation" : isIntro ? "About 2 minutes" : `Step ${progressIndex} of ${questionCount}`;
+    if (progressCopy && inlineAssessment) {
+      progressCopy.textContent = currentStep === steps.length - 1
+        ? "Your recommendation"
+        : isIntro
+          ? "Choose your support"
+          : activeStep?.hasAttribute("data-service-group")
+            ? "Choose your support"
+            : activeStep?.dataset.key === "revenue"
+              ? "About your business"
+              : "Final details";
+    } else if (progressCopy) progressCopy.textContent = currentStep === steps.length - 1 ? "Your recommendation" : isIntro ? "About 2 minutes" : `Step ${progressIndex} of ${questionCount}`;
     if (backButton) backButton.hidden = currentStep === 0;
     const focusTarget = fieldForStep(steps[currentStep]) || steps[currentStep].querySelector("input,button");
     window.setTimeout(() => focusTarget?.focus(), 30);
@@ -249,10 +279,13 @@
   const nextStep = () => {
     const step = steps[currentStep];
     if (!validateStep(step)) return;
-    const textInput = step?.querySelector("input:not([type='radio']):not([type='checkbox'])");
-    if (textInput) {
+    if (step?.hasAttribute("data-service-group")) {
+      const selected = [...step.querySelectorAll("input[name='support_services']:checked")].map((input) => input.value);
+      const priceImpact = selected.reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
+      trackAnswer(step, selected.join(",") || "none", priceImpact);
+    } else if (step?.querySelector("input:not([type='radio']):not([type='checkbox'])")) {
       trackAnswer(step, "provided");
-      if (step.dataset.key === "email") void savePartialLead();
+      if (step.querySelector("input[type='email']")) void savePartialLead();
     }
     showStep(currentStep + 1);
   };
@@ -293,6 +326,60 @@
     trackAnswer(input.closest("[data-step]"), input.value);
   }));
   form?.querySelectorAll("input[type='radio']").forEach((input) => input.addEventListener("click", () => window.setTimeout(nextStep, 170)));
+  form?.querySelectorAll("input[name='support_services']").forEach((input) => input.addEventListener("change", () => {
+    const step = input.closest("[data-step]");
+    markAssessmentStarted("service_selection");
+    trackStepView(step);
+    const selected = [...recommendedServices()];
+    const total = selected.reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
+    document.dispatchEvent(new CustomEvent("shopify_growth_service_changed", {
+      detail: { assessmentId, flowVariant: "shopify_growth_2_inline", serviceKey: input.value, selected: input.checked, total }
+    }));
+  }));
+  const closeServiceInfo = () => {
+    if (!serviceInfoModal || serviceInfoModal.hidden) return;
+    serviceInfoModal.hidden = true;
+    document.body.classList.remove("is-service-info-open");
+    form?.querySelectorAll("[data-service-info]").forEach((button) => button.setAttribute("aria-expanded", "false"));
+    lastServiceInfoTrigger?.focus();
+    lastServiceInfoTrigger = null;
+  };
+
+  form?.querySelectorAll("[data-service-info]").forEach((button) => button.addEventListener("click", () => {
+    const detailsId = button.getAttribute("aria-controls");
+    const details = detailsId ? document.getElementById(detailsId) : null;
+    const serviceOption = button.closest(".growth2-service-option");
+    const title = serviceOption?.querySelector(".apply-choice__main strong")?.textContent;
+    const price = serviceOption?.querySelector(".apply-choice__main b")?.textContent;
+    if (!details || !serviceInfoModal || !serviceInfoTitle || !serviceInfoDescription) return;
+    lastServiceInfoTrigger = button;
+    serviceInfoTitle.textContent = [title, price].filter(Boolean).join(" — ") || "Service information";
+    serviceInfoDescription.textContent = details.textContent.trim();
+    form.querySelectorAll("[data-service-info]").forEach((infoButton) => infoButton.setAttribute("aria-expanded", String(infoButton === button)));
+    serviceInfoModal.hidden = false;
+    document.body.classList.add("is-service-info-open");
+    serviceInfoModal.querySelector("[data-service-info-close]")?.focus();
+  }));
+  serviceInfoModal?.addEventListener("click", (event) => {
+    if (event.target.closest("[data-service-info-close]")) closeServiceInfo();
+  });
+  const closeContactModal = () => {
+    if (!contactModal || contactModal.hidden) return;
+    contactModal.hidden = true;
+    document.body.classList.remove("is-contact-modal-open");
+    lastContactTrigger?.focus();
+    lastContactTrigger = null;
+  };
+  document.querySelectorAll("[data-contact-open]").forEach((trigger) => trigger.addEventListener("click", () => {
+    if (!contactModal) return;
+    lastContactTrigger = trigger;
+    contactModal.hidden = false;
+    document.body.classList.add("is-contact-modal-open");
+    contactModal.querySelector("[data-contact-close]")?.focus();
+  }));
+  contactModal?.addEventListener("click", (event) => {
+    if (event.target === contactModal || event.target.closest("[data-contact-close],.growth2-contact-modal__options a")) closeContactModal();
+  });
   backButton?.addEventListener("click", () => showStep(currentStep - 1));
   document.addEventListener("shopify_growth_assessment_begin", (event) => {
     markAssessmentStarted(event.detail?.source || "inline_page");
@@ -302,16 +389,44 @@
   window.addEventListener("pagehide", () => {
     if (!assessmentStarted || recommendationTracked || abandonmentTracked) return;
     abandonmentTracked = true;
-    const detail = lastAnsweredStep ? stepDetail(lastAnsweredStep) : stepDetail(steps[currentStep]);
+    const detail = stepDetail(steps[currentStep] || lastAnsweredStep);
     document.dispatchEvent(new CustomEvent("shopify_growth_assessment_abandoned", {
       detail: { ...detail, answeredCount: answeredSteps.size, completionPercent: Math.round((answeredSteps.size / Math.max(questionSteps.length, 1)) * 100) }
     }));
   });
 
   document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && contactModal && !contactModal.hidden) {
+      closeContactModal();
+      return;
+    }
+    if (event.key === "Tab" && contactModal && !contactModal.hidden) {
+      const contactFocusable = [...contactModal.querySelectorAll("button:not([disabled]),a[href]")].filter((element) => element.offsetParent !== null);
+      if (contactFocusable.length) {
+        const firstContactControl = contactFocusable[0];
+        const lastContactControl = contactFocusable[contactFocusable.length - 1];
+        if (event.shiftKey && document.activeElement === firstContactControl) { event.preventDefault(); lastContactControl.focus(); }
+        if (!event.shiftKey && document.activeElement === lastContactControl) { event.preventDefault(); firstContactControl.focus(); }
+      }
+      return;
+    }
+    if (event.key === "Escape" && serviceInfoModal && !serviceInfoModal.hidden) {
+      closeServiceInfo();
+      return;
+    }
+    if (event.key === "Tab" && serviceInfoModal && !serviceInfoModal.hidden) {
+      const infoFocusable = [...serviceInfoModal.querySelectorAll("button:not([disabled]),a[href]")].filter((element) => element.offsetParent !== null);
+      if (infoFocusable.length) {
+        const firstInfoControl = infoFocusable[0];
+        const lastInfoControl = infoFocusable[infoFocusable.length - 1];
+        if (event.shiftKey && document.activeElement === firstInfoControl) { event.preventDefault(); lastInfoControl.focus(); }
+        if (!event.shiftKey && document.activeElement === lastInfoControl) { event.preventDefault(); firstInfoControl.focus(); }
+      }
+      return;
+    }
     if (event.key === "Escape" && modal?.classList.contains("is-open") && !inlineAssessment) closeModal();
-    const activeTextInput = steps[currentStep]?.querySelector("input:not([type='radio']):not([type='checkbox'])");
-    if (event.key === "Enter" && modal?.classList.contains("is-open") && currentStep < steps.length - 1 && document.activeElement === activeTextInput) {
+    const activeTextInputs = [...(steps[currentStep]?.querySelectorAll("input:not([type='radio']):not([type='checkbox'])") || [])];
+    if (event.key === "Enter" && modal?.classList.contains("is-open") && currentStep < steps.length - 1 && activeTextInputs.includes(document.activeElement)) {
       event.preventDefault(); nextStep();
     }
     if (event.key !== "Tab" || !modal?.classList.contains("is-open") || !panel || inlineAssessment) return;
@@ -379,11 +494,56 @@
 
   const menu = document.querySelector("#growth-nav");
   const toggle = document.querySelector(".menu-toggle");
+  const closeMenu = () => {
+    menu?.classList.remove("is-open");
+    toggle?.setAttribute("aria-expanded", "false");
+  };
   toggle?.addEventListener("click", () => {
     const open = menu?.classList.toggle("is-open") || false;
     toggle.setAttribute("aria-expanded", String(open));
   });
-  menu?.addEventListener("click", () => {
-    menu.classList.remove("is-open"); toggle?.setAttribute("aria-expanded", "false");
+  menu?.addEventListener("click", (event) => { if (event.target.closest("a")) closeMenu(); });
+  document.addEventListener("click", (event) => {
+    if (!menu?.classList.contains("is-open") || event.target.closest("#growth-nav,.menu-toggle")) return;
+    closeMenu();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !menu?.classList.contains("is-open")) return;
+    closeMenu();
+    toggle?.focus();
+  });
+  window.addEventListener("resize", () => { if (window.innerWidth > 980) closeMenu(); });
+
+  detailsForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const emailInput = detailsForm.querySelector("input[type='email']");
+    const detailsSubmit = detailsForm.querySelector("button[type='submit']");
+    if (!emailInput?.checkValidity()) {
+      emailInput?.reportValidity();
+      return;
+    }
+    const detailsData = new FormData(detailsForm);
+    detailsData.set("access_key", WEB3FORMS_KEY);
+    detailsData.set("subject", "Shopify Growth details request");
+    detailsData.set("from_name", "Jason Fung Studio website");
+    detailsData.set("funnel_status", "Requested details by email");
+    detailsData.set("page_url", window.location.href);
+    detailsData.set("email_permission", "Visitor requested service details by email");
+    detailsSubmit.disabled = true;
+    detailsStatus?.classList.remove("is-error");
+    if (detailsStatus) detailsStatus.textContent = "Sending your request…";
+    try {
+      const detailsResponse = await fetch("https://api.web3forms.com/submit", { method: "POST", body: detailsData });
+      const detailsResult = await detailsResponse.json();
+      if (!detailsResponse.ok || !detailsResult.success) throw new Error(detailsResult.message || "Could not send your request.");
+      detailsForm.reset();
+      if (detailsStatus) detailsStatus.textContent = "Thanks — Jason will email you the details.";
+      document.dispatchEvent(new CustomEvent("shopify_growth_details_requested", { detail: { assessmentId, flowVariant: "shopify_growth_2_inline" } }));
+    } catch (error) {
+      detailsStatus?.classList.add("is-error");
+      if (detailsStatus) detailsStatus.textContent = error.message || "Something went wrong. Please message Jason instead.";
+    } finally {
+      detailsSubmit.disabled = false;
+    }
   });
 })();
