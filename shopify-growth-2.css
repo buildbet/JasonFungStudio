@@ -245,13 +245,26 @@ html { scroll-behavior: smooth; }
 .growth2-page .growth2-coverflow__hint { color: #748197; }
 .growth2-page .growth2-values-line { margin: 38px 0 0; color: var(--growth2-text); font-family: var(--sans); font-size: clamp(30px, 5vw, 52px); font-weight: 650; letter-spacing: -.04em; line-height: 1.08; text-align: center; }
 .growth2-page .growth2-values-line span { color: var(--growth2-blue); }
-.growth2-page .growth2-testimonial { position: relative; width: min(760px, calc(100vw - 36px)); margin: 20px 0 0; padding: 68px clamp(24px, 5vw, 52px) 42px; overflow: hidden; border: 1px solid var(--growth2-border); border-radius: 24px; background: #fff; box-shadow: 0 18px 50px rgba(15,23,42,.08); text-align: left; }
+.growth2-page .growth2-testimonials { width: min(760px, calc(100vw - 36px)); margin: 20px 0 0; }
+.growth2-page .growth2-testimonials__track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 14px; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
+.growth2-page .growth2-testimonials__track::-webkit-scrollbar { display: none; }
+.growth2-page .growth2-testimonials__track:focus-visible { outline: 3px solid rgba(37,99,235,.18); outline-offset: 5px; border-radius: 24px; }
+.growth2-page .growth2-testimonial { position: relative; width: 100%; height: 100%; margin: 0; padding: 68px clamp(24px, 5vw, 52px) 42px; overflow: hidden; scroll-snap-align: start; scroll-snap-stop: always; border: 1px solid var(--growth2-border); border-radius: 24px; background: #fff; box-shadow: 0 18px 50px rgba(15,23,42,.08); text-align: left; }
 .growth2-page .growth2-testimonial::before,
 .growth2-page .growth2-testimonial::after { position: absolute; color: #bfdbfe; font-family: Georgia, serif; font-weight: 700; line-height: 1; pointer-events: none; }
 .growth2-page .growth2-testimonial::before { content: "“"; top: 12px; left: 24px; font-size: 88px; }
 .growth2-page .growth2-testimonial::after { content: "”"; right: 24px; bottom: -12px; font-size: 72px; opacity: .65; }
 .growth2-page .growth2-testimonial p { position: relative; margin: 0; color: #334155; font-size: clamp(16px, 2vw, 19px); font-weight: 500; line-height: 1.7; }
-.growth2-page .growth2-testimonial cite { position: relative; display: block; margin-top: 22px; color: var(--growth2-blue-dark); font-size: 12px; font-style: normal; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.growth2-page .growth2-testimonial__brand { position: relative; margin-top: 22px; display: flex; align-items: center; gap: 12px; }
+.growth2-page .growth2-testimonial__brand img { width: 52px; height: 52px; flex: 0 0 auto; border: 1px solid #d8cfe1; border-radius: 13px; object-fit: cover; box-shadow: 0 6px 16px rgba(66,49,80,.14); }
+.growth2-page .growth2-testimonial cite { display: block; margin: 0; color: var(--growth2-blue-dark); font-size: 12px; font-style: normal; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.growth2-page .growth2-testimonials__controls { margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+.growth2-page .growth2-testimonials__controls > button { width: 36px; height: 36px; padding: 0; display: grid; place-items: center; border: 1px solid #cbd5e1; border-radius: 50%; background: #fff; color: var(--growth2-blue-dark); font-size: 16px; cursor: pointer; }
+.growth2-page .growth2-testimonials__controls > button:hover { border-color: var(--growth2-blue); background: var(--growth2-blue-soft); }
+.growth2-page .growth2-testimonials__dots { display: flex; align-items: center; gap: 7px; }
+.growth2-page .growth2-testimonials__dots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: #cbd5e1; cursor: pointer; transition: width .18s ease, background .18s ease; }
+.growth2-page .growth2-testimonials__dots button.is-active { width: 22px; border-radius: 999px; background: var(--growth2-blue); }
+.growth2-page .growth2-assessment-intro p.growth2-testimonials__hint { margin: 7px auto 0; color: #7c8799; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-align: center; text-transform: uppercase; }
 .growth2-page .growth2-faq { width: min(820px, calc(100vw - 36px)); margin-top: 54px; text-align: left; }
 .growth2-page .growth2-faq p.growth2-faq__eyebrow { color: var(--growth2-blue); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .growth2-page .growth2-faq h2 { margin: 8px 0 22px; color: var(--growth2-text); font-family: var(--sans); font-size: clamp(32px, 4.5vw, 46px); font-weight: 650; letter-spacing: -.04em; line-height: 1.05; }
@@ -331,10 +344,12 @@ html { scroll-behavior: smooth; }
   .growth2-page .growth2-proof-title { max-width: calc(100vw - 36px); padding-inline: 4px; font-size: 30px; letter-spacing: -.03em; }
   .growth2-page .growth2-coverflow { width: 100%; max-width: calc(100vw - 36px); }
   .growth2-page .growth2-values-line { margin-top: 28px; font-size: 30px; }
-  .growth2-page .growth2-testimonial { margin-top: 14px; padding: 58px 22px 36px; border-radius: 20px; }
+  .growth2-page .growth2-testimonials { margin-top: 14px; }
+  .growth2-page .growth2-testimonial { padding: 58px 22px 36px; border-radius: 20px; }
   .growth2-page .growth2-testimonial::before { top: 9px; left: 18px; font-size: 74px; }
   .growth2-page .growth2-testimonial::after { right: 18px; bottom: -10px; font-size: 62px; }
   .growth2-page .growth2-testimonial p { font-size: 15px; line-height: 1.65; }
+  .growth2-page .growth2-testimonial__brand img { width: 46px; height: 46px; border-radius: 12px; }
   .growth2-page .growth2-faq { margin-top: 42px; }
   .growth2-page .growth2-faq h2 { font-size: 32px; }
   .growth2-page .growth2-faq summary { min-height: 54px; padding: 14px 48px 14px 16px; font-size: 13px; }
@@ -357,6 +372,7 @@ html { scroll-behavior: smooth; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .growth2-page .growth2-testimonials__track { scroll-behavior: auto; }
   .growth2-page .growth2-founder-intro,
   .growth2-page .growth2-growth-card { animation: none; }
 }
