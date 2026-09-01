@@ -22,16 +22,67 @@
     420: "https://buy.stripe.com/6oU14memB7613ui0bYdQQ0E", 430: "https://buy.stripe.com/14A8wOguJeyte8W4sedQQ0F",
     470: "https://buy.stripe.com/fZu9AS6U9cqlaWK9MydQQ0G",
   });
+  const STRIPE_LINKS_CAD = Object.freeze({
+    55: "https://buy.stripe.com/4gMeVca6l8a52qe6AmdQQ0J", 70: "https://buy.stripe.com/6oU14m3HX7610i66AmdQQ0I",
+    85: "https://buy.stripe.com/6oU5kC4M10HDe8WgaWdQQ0K", 99: "https://buy.stripe.com/3cI9AS3HXaid0i60bYdQQ0H",
+    125: "https://buy.stripe.com/3cIbJ06U91LHc0O0bYdQQ0L", 140: "https://buy.stripe.com/9B628qa6l0HDfd02k6dQQ0M",
+    154: "https://buy.stripe.com/9B6eVcdix8a5gh44sedQQ0P", 155: "https://buy.stripe.com/3cI4gycet9e98OCbUGdQQ0Q",
+    169: "https://buy.stripe.com/6oUbJ01zP3TP1maaQCdQQ0O", 184: "https://buy.stripe.com/cNi9AS1zPaid8OCcYKdQQ0N",
+    195: "https://buy.stripe.com/aFaaEW1zP0HD1mabUGdQQ0R", 210: "https://buy.stripe.com/28E3cu7Ydeyt6GucYKdQQ0S",
+    224: "https://buy.stripe.com/8x26oGfqF4XTc0O7EqdQQ0T", 225: "https://buy.stripe.com/bJe8wObapfCxc0O8IudQQ0U",
+    239: "https://buy.stripe.com/dRm14m1zPbmhgh47EqdQQ0V", 254: "https://buy.stripe.com/dRm14ma6l9e9c0O0bYdQQ0W",
+    265: "https://buy.stripe.com/28E14ma6l8a5aWKe2OdQQ0X", 280: "https://buy.stripe.com/00weVcfqF3TP4ym0bYdQQ0Y",
+    294: "https://buy.stripe.com/14AfZg5Q53TP4ymaQCdQQ0Z", 295: "https://buy.stripe.com/bJe7sKemBgGB2qe7EqdQQ14",
+    309: "https://buy.stripe.com/28E14m7Ydeyt6Gue2OdQQ12", 324: "https://buy.stripe.com/5kQaEWa6l3TP9SG8IudQQ11",
+    335: "https://buy.stripe.com/9B65kC1zP7615Cq8IudQQ13", 350: "https://buy.stripe.com/aFaeVca6lcql8OC4sedQQ10",
+    364: "https://buy.stripe.com/dRmeVca6lgGB1mabUGdQQ16", 365: "https://buy.stripe.com/5kQ14m2DT2PL4yme2OdQQ15",
+    379: "https://buy.stripe.com/6oU4gy92hdupaWK2k6dQQ17", 394: "https://buy.stripe.com/14A7sK5Q5fCxgh4aQCdQQ18",
+    405: "https://buy.stripe.com/6oU6oGcet1LH1macYKdQQ19", 420: "https://buy.stripe.com/4gM00i0vL7612qebUGdQQ1a",
+    434: "https://buy.stripe.com/00w00i5Q5eyt9SG7EqdQQ1b", 435: "https://buy.stripe.com/aFabJ04M14XT4yme2OdQQ1c",
+    449: "https://buy.stripe.com/4gM6oG7Yd9e91maf6SdQQ1f", 464: "https://buy.stripe.com/bJecN46U9eyt7Ky5widQQ1e",
+    475: "https://buy.stripe.com/bJe5kC3HX8a5e8W2k6dQQ1d", 490: "https://buy.stripe.com/4gMdR82DT8a5gh4f6SdQQ1g",
+    504: "https://buy.stripe.com/9B628q0vL1LHd4S1g2dQQ1h", 505: "https://buy.stripe.com/dRm4gya6l3TPe8WgaWdQQ1i",
+    519: "https://buy.stripe.com/cNi6oGcetdup6Gu6AmdQQ1j", 534: "https://buy.stripe.com/28EcN4dix1LHfd0aQCdQQ1k",
+    560: "https://buy.stripe.com/7sYdR80vLgGBc0OgaWdQQ1m", 574: "https://buy.stripe.com/cNi28q0vL2PL0i6bUGdQQ1n",
+    589: "https://buy.stripe.com/dRm28qa6l3TP0i61g2dQQ1l", 604: "https://buy.stripe.com/00weVc1zP8a53uiaQCdQQ1o",
+    659: "https://buy.stripe.com/aFa14m4M12PLaWK5widQQ1p",
+  });
   const SERVICES = {
-    paid_ads: { name: "Paid Ads", price: 70 },
-    shopify: { name: "Shopify Improvements", price: 50 },
-    creative: { name: "Creative", price: 50 },
-    email_sms: { name: "Email + SMS", price: 40 },
-    offers: { name: "Offers + Campaigns", price: 50 },
-    growth: { name: "Growth Direction", price: 60 },
-    brand: { name: "Brand Design + Direction", price: 100 },
-    priority: { name: "Priority", price: 50 },
+    paid_ads: { name: "Paid Ads", price: 70, cadPrice: 99 },
+    shopify: { name: "Shopify Improvements", price: 50, cadPrice: 70 },
+    creative: { name: "Creative", price: 50, cadPrice: 70 },
+    email_sms: { name: "Email + SMS", price: 40, cadPrice: 55 },
+    offers: { name: "Offers + Campaigns", price: 50, cadPrice: 70 },
+    growth: { name: "Growth Direction", price: 60, cadPrice: 85 },
+    brand: { name: "Brand Design + Direction", price: 100, cadPrice: 140 },
+    priority: { name: "Priority", price: 50, cadPrice: 70 },
   };
+
+  const CANADIAN_TIMEZONES = new Set([
+    "America/Atikokan", "America/Blanc-Sablon", "America/Cambridge_Bay", "America/Creston",
+    "America/Dawson", "America/Dawson_Creek", "America/Edmonton", "America/Fort_Nelson",
+    "America/Glace_Bay", "America/Goose_Bay", "America/Halifax", "America/Inuvik",
+    "America/Iqaluit", "America/Moncton", "America/Nipigon", "America/Rankin_Inlet",
+    "America/Rainy_River", "America/Regina", "America/Resolute", "America/St_Johns",
+    "America/Swift_Current", "America/Thunder_Bay", "America/Toronto", "America/Vancouver",
+    "America/Whitehorse", "America/Winnipeg", "America/Yellowknife",
+  ]);
+  const normalizeCurrency = (value) => ["CAD", "USD"].includes(String(value || "").toUpperCase()) ? String(value).toUpperCase() : "";
+  const detectCurrency = () => {
+    const queryCurrency = normalizeCurrency(new URLSearchParams(window.location.search).get("currency"));
+    if (queryCurrency) return queryCurrency;
+    try {
+      const storedCurrency = normalizeCurrency(localStorage.getItem("jfs_shopify_growth_currency"));
+      if (storedCurrency) return storedCurrency;
+    } catch (_) {}
+    const locale = String(navigator.language || "");
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return /-CA$/i.test(locale) || CANADIAN_TIMEZONES.has(timezone) ? "CAD" : "USD";
+  };
+  let pricingCurrency = detectCurrency();
+  const getServicePrice = (key, currency = pricingCurrency) => currency === "CAD" ? SERVICES[key]?.cadPrice || 0 : SERVICES[key]?.price || 0;
+  const totalForKeys = (keys, currency = pricingCurrency) => keys.reduce((sum, key) => sum + getServicePrice(key, currency), 0);
+  const formatWeeklyPrice = (amount, currency = pricingCurrency, includePlus = false) => `${includePlus ? "+" : ""}${currency === "CAD" ? "CA$" : "$"}${amount}${currency === "CAD" ? " CAD" : ""}/week`;
 
   const modal = document.querySelector("#apply-modal");
   const panel = modal?.querySelector(".modal__panel");
@@ -56,6 +107,7 @@
   const submit = form?.querySelector("button[type='submit']");
   const detailsForm = document.querySelector("#growth2-details-form");
   const detailsStatus = document.querySelector("#growth2-details-status");
+  const currencyButtons = [...document.querySelectorAll("[data-currency]")];
   let currentStep = 0;
   let lastFocus = null;
   let recommendationTracked = false;
@@ -161,7 +213,7 @@
     const serviceKey = SERVICE_FOR_QUESTION[step.dataset.key];
     const priceImpact = Number.isFinite(explicitPriceImpact)
       ? explicitPriceImpact
-      : serviceKey && recommendedServices().has(serviceKey) ? SERVICES[serviceKey].price : 0;
+      : serviceKey && recommendedServices().has(serviceKey) ? getServicePrice(serviceKey) : 0;
     document.dispatchEvent(new CustomEvent("shopify_growth_answered", {
       detail: { ...stepDetail(step), answerValue: String(answerValue || "not_set"), priceImpact }
     }));
@@ -174,7 +226,9 @@
     if (!email || email === partialLeadSavedEmail) return;
     partialLeadSaving = true;
     const recommended = [...recommendedServices()];
-    const recommendedTotal = recommended.reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
+    const recommendedTotal = totalForKeys(recommended);
+    const recommendedTotalUsd = totalForKeys(recommended, "USD");
+    const recommendedTotalCad = totalForKeys(recommended, "CAD");
     const params = new URLSearchParams(window.location.search);
     data.set("access_key", WEB3FORMS_KEY);
     data.set("subject", `Shopify Growth lead ${assessmentId} — checkout not started`);
@@ -182,7 +236,9 @@
     data.set("assessment_id", assessmentId);
     data.set("funnel_status", "Recommendation requested — checkout not started");
     data.set("recommended_services", recommended.map((key) => SERVICES[key].name).join(", ") || "None selected");
-    data.set("recommended_weekly_total_usd", String(recommendedTotal));
+    data.set("recommended_weekly_total_usd", String(recommendedTotalUsd));
+    data.set("recommended_weekly_total_cad", String(recommendedTotalCad));
+    data.set("display_currency", pricingCurrency);
     data.set("follow_up_permission", "Visitor entered their email and continued to view their recommendation");
     data.set("page_url", window.location.href);
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
@@ -194,7 +250,7 @@
       if (response.ok && result.success) {
         partialLeadSavedEmail = email;
         document.dispatchEvent(new CustomEvent("shopify_growth_partial_lead_saved", {
-          detail: { assessmentId, flowVariant: "shopify_growth_2_inline", services: recommended, total: recommendedTotal }
+          detail: { assessmentId, flowVariant: "shopify_growth_2_inline", services: recommended, total: recommendedTotal, currency: pricingCurrency }
         }));
       }
     } catch (_) {
@@ -204,9 +260,36 @@
 
   const selectedServiceKeys = () => [...(serviceList?.querySelectorAll("input[type='checkbox']:checked") || [])].map((input) => input.value);
   const updateTotal = () => {
-    const total = selectedServiceKeys().reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
-    if (totalOutput) totalOutput.textContent = `$${total} USD/week`;
+    const total = totalForKeys(selectedServiceKeys());
+    if (totalOutput) totalOutput.textContent = formatWeeklyPrice(total);
     return total;
+  };
+
+  const updateCurrencyDisplay = () => {
+    document.documentElement.dataset.pricingCurrency = pricingCurrency;
+    document.querySelectorAll("[data-starting-price]").forEach((output) => {
+      output.textContent = pricingCurrency === "CAD" ? "From CA$55/week." : "From $40/week.";
+    });
+    currencyButtons.forEach((button) => {
+      const active = button.dataset.currency === pricingCurrency;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    document.querySelectorAll("[data-service-price]").forEach((output) => {
+      output.textContent = formatWeeklyPrice(getServicePrice(output.dataset.servicePrice), pricingCurrency, true);
+    });
+    if (serviceList?.children.length) renderServices();
+  };
+
+  const setPricingCurrency = (currency, source = "selector") => {
+    const nextCurrency = normalizeCurrency(currency);
+    if (!nextCurrency) return;
+    pricingCurrency = nextCurrency;
+    try { localStorage.setItem("jfs_shopify_growth_currency", pricingCurrency); } catch (_) {}
+    updateCurrencyDisplay();
+    document.dispatchEvent(new CustomEvent("shopify_growth_currency_changed", {
+      detail: { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", currency: pricingCurrency, source }
+    }));
   };
 
   const renderServices = () => {
@@ -216,12 +299,12 @@
       <label class="apply-service${recommended.has(key) ? " is-recommended" : ""}">
         <input type="checkbox" name="services" value="${key}" ${recommended.has(key) ? "checked" : ""} />
         <span><strong>${service.name}</strong>${recommended.has(key) ? "<small>Recommended</small>" : ""}</span>
-        <b>$${service.price}/week</b>
+        <b>${formatWeeklyPrice(getServicePrice(key))}</b>
       </label>`).join("");
     serviceList.querySelectorAll("input").forEach((input) => input.addEventListener("change", () => {
       const total = updateTotal();
       document.dispatchEvent(new CustomEvent("shopify_growth_service_changed", {
-        detail: { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", serviceKey: input.value, selected: input.checked, total }
+        detail: { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", serviceKey: input.value, selected: input.checked, total, currency: pricingCurrency }
       }));
     }));
     updateTotal();
@@ -281,7 +364,7 @@
     if (!validateStep(step)) return;
     if (step?.hasAttribute("data-service-group")) {
       const selected = [...step.querySelectorAll("input[name='support_services']:checked")].map((input) => input.value);
-      const priceImpact = selected.reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
+      const priceImpact = totalForKeys(selected);
       trackAnswer(step, selected.join(",") || "none", priceImpact);
     } else if (step?.querySelector("input:not([type='radio']):not([type='checkbox'])")) {
       trackAnswer(step, "provided");
@@ -331,11 +414,13 @@
     markAssessmentStarted("service_selection");
     trackStepView(step);
     const selected = [...recommendedServices()];
-    const total = selected.reduce((sum, key) => sum + (SERVICES[key]?.price || 0), 0);
+    const total = totalForKeys(selected);
     document.dispatchEvent(new CustomEvent("shopify_growth_service_changed", {
-      detail: { assessmentId, flowVariant: "shopify_growth_2_inline", serviceKey: input.value, selected: input.checked, total }
+      detail: { assessmentId, flowVariant: "shopify_growth_2_inline", serviceKey: input.value, selected: input.checked, total, currency: pricingCurrency }
     }));
   }));
+  currencyButtons.forEach((button) => button.addEventListener("click", () => setPricingCurrency(button.dataset.currency)));
+  updateCurrencyDisplay();
   const closeServiceInfo = () => {
     if (!serviceInfoModal || serviceInfoModal.hidden) return;
     serviceInfoModal.hidden = true;
@@ -449,16 +534,21 @@
     const data = new FormData(form);
     const leadId = makeLeadId();
     const total = updateTotal();
+    const totalUsd = totalForKeys(serviceKeys, "USD");
+    const totalCad = totalForKeys(serviceKeys, "CAD");
     const params = new URLSearchParams(window.location.search);
     data.set("access_key", WEB3FORMS_KEY);
-    data.set("subject", `Shopify Growth checkout ${assessmentId} — $${total}/week`);
+    data.set("subject", `Shopify Growth checkout ${assessmentId} — ${formatWeeklyPrice(total)}`);
     data.set("from_name", "Jason Fung Studio website");
     data.set("lead_id", leadId);
     data.set("assessment_id", assessmentId);
     data.set("funnel_status", "Checkout started");
     data.set("terms_accepted_at", new Date().toISOString());
     data.set("selected_services", serviceKeys.map((key) => SERVICES[key].name).join(", "));
-    data.set("weekly_total_usd", String(total));
+    data.set("weekly_total_usd", String(totalUsd));
+    data.set("weekly_total_cad", String(totalCad));
+    data.set("checkout_currency", pricingCurrency);
+    data.set("checkout_total", String(total));
     data.set("page_url", window.location.href);
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
       if (params.get(key)) data.set(key, params.get(key));
@@ -466,7 +556,7 @@
     const lead = {
       id: leadId, name: String(data.get("name") || ""), email: String(data.get("email") || ""),
       storeUrl: String(data.get("store_url") || ""),
-      services: serviceKeys, weeklyTotal: total,
+      services: serviceKeys, weeklyTotal: total, weeklyTotalUsd: totalUsd, weeklyTotalCad: totalCad, currency: pricingCurrency,
       answers: Object.fromEntries([...data.entries()].filter(([key]) => key !== "access_key")),
       createdAt: new Date().toISOString(),
     };
@@ -477,12 +567,12 @@
       const saved = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
       const savedResult = await saved.json();
       if (!saved.ok || !savedResult.success) throw new Error(savedResult.message || "Your application could not be saved.");
-      const stripeLink = STRIPE_LINKS[total];
+      const stripeLink = pricingCurrency === "CAD" ? STRIPE_LINKS_CAD[totalCad] : STRIPE_LINKS[totalUsd];
       if (!stripeLink) throw new Error(`Your application was saved, but this weekly total is not configured. Please message Jason and reference ${leadId}.`);
       const checkoutUrl = new URL(stripeLink);
       checkoutUrl.searchParams.set("prefilled_email", lead.email);
       checkoutUrl.searchParams.set("client_reference_id", leadId);
-      const funnelDetail = { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", services: serviceKeys, total, leadId };
+      const funnelDetail = { assessmentId, flowVariant: inlineAssessment ? "shopify_growth_2_inline" : "shopify_growth_modal", services: serviceKeys, total, currency: pricingCurrency, totalUsd, totalCad, leadId };
       document.dispatchEvent(new CustomEvent("shopify_growth_apply_submitted", { detail: funnelDetail }));
       document.dispatchEvent(new CustomEvent("shopify_growth_checkout_started", { detail: funnelDetail }));
       window.location.assign(checkoutUrl.toString());

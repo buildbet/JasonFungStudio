@@ -245,6 +245,11 @@ if (questionnaire) {
 
     try {
       await submitLead();
+      document.dispatchEvent(new CustomEvent('booking_questionnaire_submitted', {
+        detail: {
+          bookingKind: questionnaire.dataset.bookingKind || 'client',
+        },
+      }));
       setQuestionnaireStatus('');
       revealCalendar();
       loadCalEmbed(getQuestionnaireConfig());

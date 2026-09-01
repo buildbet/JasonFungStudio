@@ -1,3 +1,4 @@
+html { scroll-behavior: smooth; }
 .growth2-header .growth-nav { justify-content: flex-end; }
 .growth2-page .brand-marquee { padding-top: 108px; padding-bottom: 8px; border-bottom: 0; background: #000; }
 
@@ -114,21 +115,33 @@
 .growth2-page .growth2-offer-title__service { color: var(--growth2-text); font-family: var(--sans); font-size: clamp(35px, 5vw, 52px); font-weight: 700; letter-spacing: -.05em; line-height: .98; }
 .growth2-page .growth2-offer-title__outcome { color: var(--growth2-blue-dark); font-family: var(--serif); font-size: clamp(32px, 4.6vw, 48px); font-style: italic; font-weight: 400; letter-spacing: -.025em; line-height: 1; }
 .growth2-page .growth2-assessment-intro p { max-width: 610px; margin: 10px 0 0; color: #42526b; font-size: 14px; line-height: 1.55; }
-.growth2-page .growth2-founder-intro { max-width: 650px; margin-top: 15px; display: flex; gap: 12px; align-items: center; animation: growth2-intro-reveal .45s ease .15s both; }
+.growth2-page .growth2-founder-intro { max-width: 650px; margin-top: 22px; display: flex; gap: 12px; align-items: center; animation: growth2-intro-reveal .45s ease .15s both; }
 .growth2-page .growth2-founder-intro img { width: 50px; height: 50px; flex: 0 0 auto; border: 2px solid #fff; border-radius: 50%; object-fit: cover; object-position: center 18%; box-shadow: 0 0 0 1px #bfdbfe, 0 7px 18px rgba(15,23,42,.12); }
 .growth2-page .growth2-assessment-intro .growth2-founder-intro p { margin: 0; color: #334155; font-size: 14px; line-height: 1.45; }
 .growth2-page .growth2-founder-intro strong { display: block; color: var(--growth2-blue-dark); font-size: 12px; font-weight: 700; }
 .growth2-page .growth2-founder-intro p span { display: block; margin-top: 2px; color: #334155; font-size: 14px; font-weight: 400; }
-.growth2-page .growth2-growth-card { max-width: 590px; margin-top: 19px; padding: 22px 24px; display: grid; gap: 15px; border: 1px solid #1e293b; border-radius: 18px; background: #0f172a; box-shadow: 0 16px 36px rgba(15,23,42,.18); animation: growth2-intro-reveal .45s ease .3s both; }
+.growth2-page .growth2-growth-card { max-width: 590px; margin-top: 26px; padding: 22px 24px; display: grid; gap: 15px; border: 1px solid #1e293b; border-radius: 18px; background: #0f172a; box-shadow: 0 16px 36px rgba(15,23,42,.18); animation: growth2-intro-reveal .45s ease .3s both; }
 .growth2-page .growth2-growth-card__headline { display: grid; gap: 2px; }
 .growth2-page .growth2-growth-card__headline strong { color: #fff; font-family: var(--sans); font-size: clamp(23px, 3.2vw, 31px); font-weight: 700; letter-spacing: -.035em; line-height: 1.08; }
+.growth2-page .growth2-growth-card__headline span { color: #93c5fd; font-family: var(--sans); font-size: clamp(22px, 3vw, 29px); font-weight: 550; letter-spacing: -.03em; line-height: 1.08; }
 .growth2-page .growth2-growth-card__offer { padding-top: 14px; display: grid; gap: 4px; border-top: 1px solid rgba(147,197,253,.25); }
 .growth2-page .growth2-assessment-intro .growth2-growth-card__offer p { margin: 0; color: #e2e8f0; font-size: 13px; }
 .growth2-page .growth2-growth-card__offer b { color: #93c5fd; font-size: 18px; }
-.growth2-page .growth2-assessment-intro .growth2-growth-card__close { margin: 0; color: #bfdbfe; font-size: 12px; font-weight: 700; }
+.growth2-page .growth2-growth-card__cta { width: 100%; min-height: 46px; padding: 12px 18px; justify-content: center; border-color: #fff; border-radius: 12px; background: #fff; color: #0f172a; font-size: 13px; font-weight: 750; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+.growth2-page .growth2-growth-card__cta:hover { border-color: #dbeafe; background: #dbeafe; color: #0f172a; transform: translateY(-1px); }
+.growth2-page #choose-support { scroll-margin-top: 88px; }
 @keyframes growth2-intro-reveal { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
 .growth2-page .growth2-assessment-intro .brand-marquee { margin-top: 22px; padding: 20px 0 2px; border-top: 1px solid #b7d2ff; background: transparent; }
 .growth2-page .growth2-assessment-intro .brand-marquee__label { margin-bottom: 16px; }
+.growth2-page .growth2-assessment-intro .brand-marquee__label + .brand-marquee__region { margin: -11px 0 16px; color: #64748b; font-size: 10px; font-weight: 700; letter-spacing: .08em; line-height: 1.3; text-align: center; text-transform: uppercase; }
+.growth2-page .growth2-trial-reminder { width: fit-content; max-width: 100%; margin: 0 auto 18px; padding: 8px 14px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; border: 1px solid #bfdbfe; border-radius: 999px; background: #eff6ff; color: #475569; font-size: 11px; font-weight: 650; letter-spacing: .01em; line-height: 1.25; text-align: center; }
+.growth2-page .growth2-trial-reminder strong { color: var(--growth2-blue-dark); }
+.growth2-page .growth2-currency-control { width: fit-content; max-width: 100%; margin: -8px auto 18px; display: flex; align-items: center; gap: 8px; color: #64748b; font-size: 11px; font-weight: 700; }
+.growth2-page .growth2-currency-toggle { padding: 3px; display: flex; gap: 2px; border: 1px solid #bfdbfe; border-radius: 999px; background: #eff6ff; }
+.growth2-page .growth2-currency-toggle button { min-width: 48px; padding: 6px 10px; border: 0; border-radius: 999px; background: transparent; color: #64748b; font: inherit; line-height: 1; cursor: pointer; }
+.growth2-page .growth2-currency-toggle button:hover { color: var(--growth2-blue-dark); }
+.growth2-page .growth2-currency-toggle button.is-active { background: var(--growth2-blue); color: #fff; box-shadow: 0 3px 9px rgba(37,99,235,.22); }
+.growth2-page .growth2-currency-toggle button:focus-visible { outline: 3px solid rgba(37,99,235,.2); outline-offset: 2px; }
 .growth2-page .apply-progress { border-radius: 999px; background: #e8edf5; }
 .growth2-page .apply-progress span { border-radius: inherit; background: var(--growth2-blue); }
 .growth2-page .apply-progress__copy { color: #64748b; }
@@ -342,6 +355,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .growth2-page .growth2-founder-intro,
   .growth2-page .growth2-growth-card { animation: none; }
 }
