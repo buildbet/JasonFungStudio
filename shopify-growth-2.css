@@ -284,6 +284,7 @@ html { scroll-behavior: smooth; }
 .growth2-page .growth2-learn-more__cta { width: min(820px, calc(100vw - 36px)); margin-top: 46px; padding-top: 34px; display: grid; gap: 16px; justify-items: center; border-top: 1px solid var(--growth2-border); }
 .growth2-page .growth2-learn-more__cta p { color: var(--growth2-text); font-size: 16px; font-weight: 650; }
 .growth2-page .footer { border-color: var(--growth2-border); background: #fff; color: #64748b; }
+.growth2-page .footer .footer-social__link:hover { color: var(--growth2-blue-dark); }
 .growth2-page .growth2-footer-contact { display: grid; gap: 4px; }
 .growth2-page .growth2-footer-contact span { color: #94a3b8; font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .growth2-page .growth2-footer-contact a { color: var(--growth2-blue-dark); overflow-wrap: anywhere; }
