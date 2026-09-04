@@ -181,6 +181,7 @@ img { display: block; max-width: 100%; }
   .section, .change, .scope, .final-cta { padding-block: 80px; }
   .change, .scope, .trust, .final-cta { padding-inline: 18px; }
   .section-heading h2, .scope h2, .control h2, .trust h2, .pricing h2, .final-cta h2 { font-size: clamp(2.35rem,12vw,3.5rem); }
+  .trust-photo img { height: min(68vw, 260px); aspect-ratio: auto; object-position: center 24%; }
   .before-after, .agency-table { overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
   .before-after__head, .agency-table__head { display: none; }
   .before-after__row, .agency-table__row { min-width: 0; margin-bottom: 12px; display: grid; grid-template-columns: 1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: #fff; box-shadow: 0 10px 28px rgba(20,50,90,.06); }
