@@ -57,11 +57,24 @@ img { display: block; max-width: 100%; }
 .handoff { min-height: 52px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; color: var(--blue); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
 .handoff span { height: 1px; background: #c7d6ea; }
 .support-grid { margin-top: 16px; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
-.support-grid span { padding: 9px 5px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.8); color: #516079; font-size: .72rem; font-weight: 600; text-align: center; }
+.support-grid > span { min-height: 54px; padding: 8px 7px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 9px; background: rgba(255,255,255,.86); color: #516079; font-size: .7rem; font-weight: 600; }
+.support-grid > span > b { font-weight: 700; line-height: 1.15; }
+.brand-mark { width: 24px; height: 24px; flex: 0 0 24px; display: grid; place-items: center; border-radius: 7px; background: #edf4ff; color: var(--blue); }
+.brand-mark svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.brand-mark--shopify { background: #eff8e8; color: #5f8f3d; }
+.brand-mark--shopify svg path:last-child { fill: currentColor; stroke: none; }
+.brand-mark--meta { background: #eaf2ff; color: #0866ff; }
+.brand-mark--instagram { background: #fff0f7; color: #c13584; }
+.brand-mark--instagram .brand-dot { fill: currentColor; stroke: none; }
+.brand-pair { width: 30px; height: 24px; flex: 0 0 30px; position: relative; display: block; font-style: normal; }
+.brand-pair b { position: absolute; width: 21px; height: 21px; display: grid; place-items: center; border: 2px solid #fff; border-radius: 7px; color: #fff; font-size: .58rem; line-height: 1; }
+.brand-pair b:first-child { left: 0; top: 0; background: #7047eb; }
+.brand-pair b:last-child { right: 0; bottom: 0; background: #2563eb; }
 .operator-note { margin: 22px 0 0; color: #43536c; font-family: var(--serif); font-size: 1.2rem; }
 
 .section { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; padding: clamp(88px,10vw,142px) 0; }
 .section-heading h2, .scope h2, .control h2, .trust h2, .pricing h2, .final-cta h2 { margin: 0; font-size: clamp(2.5rem,4.7vw,5rem); font-weight: 650; letter-spacing: -.055em; line-height: 1.02; }
+.statement-lead { font-weight: 800; }
 .section-heading > p:last-child { color: var(--muted); font-size: 1.05rem; }
 .section-heading--center { text-align: center; }
 
@@ -184,7 +197,8 @@ img { display: block; max-width: 100%; }
   .operator-card { padding: 22px; border-radius: 20px; }
   .role { grid-template-columns: 1fr; }
   .role span { grid-row: auto; }
-  .support-grid, .scope-list { grid-template-columns: 1fr; }
+  .support-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .scope-list { grid-template-columns: 1fr; }
   .section, .change, .scope, .final-cta { padding-block: 80px; }
   .change, .scope, .trust, .final-cta { padding-inline: 18px; }
   .section-heading h2, .scope h2, .control h2, .trust h2, .pricing h2, .final-cta h2 { font-size: clamp(2.35rem,12vw,3.5rem); }
