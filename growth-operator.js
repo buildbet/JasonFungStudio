@@ -1,4 +1,27 @@
 (() => {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector("#primary-nav");
+  if (!toggle || !nav) return;
+
+  const close = () => {
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.querySelector(".sr-only").textContent = "Open menu";
+    nav.classList.remove("is-open");
+  };
+
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.querySelector(".sr-only").textContent = open ? "Close menu" : "Open menu";
+    nav.classList.toggle("is-open", open);
+  });
+  nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") close();
+  });
+})();
+
+(() => {
   const track = document.querySelector("#reviews-track");
   const cards = [...(track?.querySelectorAll(".review-card") || [])];
   const previous = document.querySelector("[data-review-prev]");
