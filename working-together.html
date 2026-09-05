@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="working-together.css" />
     <script src="analytics.js" defer></script>
     <script src="growth-operator.js" defer></script>
+    <script src="working-together.js" defer></script>
   </head>
   <body class="working-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -35,21 +36,13 @@
           <div class="wt-hero__promise"><span>Simple</span><span>Clear</span><span>Low effort</span><span>You stay in control</span></div>
           <a class="button button-primary" href="#basics">Walk through the process <span aria-hidden="true">↓</span></a>
         </div>
-        <aside class="wt-overview" aria-label="Seven-step working process">
-          <p>From first message to weekly rhythm</p>
-          <ol>
-            <li><span>01</span>Send the basics</li>
-            <li><span>02</span>I do the homework</li>
-            <li><span>03</span>Get a handoff plan</li>
-            <li><span>04</span>Set boundaries</li>
-            <li><span>05</span>I take ownership</li>
-            <li><span>06</span>Get one update</li>
-            <li><span>07</span>Expand if useful</li>
-          </ol>
-        </aside>
       </section>
 
-      <section class="wt-step wt-step--light" id="basics" aria-labelledby="basics-title">
+      <div class="wt-process" aria-label="Seven-step working process">
+      <p class="wt-process__label">From first message to weekly rhythm</p>
+      <details class="wt-accordion" id="basics" name="working-process">
+        <summary><span>01</span><strong>Send me the basics</strong><i aria-hidden="true"></i></summary>
+      <section class="wt-step wt-step--light" aria-labelledby="basics-title">
         <div class="wt-step__copy">
           <p class="wt-step__number">01 / You send me the basics</p>
           <h2 id="basics-title">Two minutes of context.<br /><span>Not a homework assignment.</span></h2>
@@ -75,8 +68,11 @@
           </div>
         </div>
       </section>
+      </details>
 
-      <section class="wt-step wt-step--blue" id="homework" aria-labelledby="homework-title">
+      <details class="wt-accordion" id="homework" name="working-process">
+        <summary><span>02</span><strong>I do the homework</strong><i aria-hidden="true"></i></summary>
+      <section class="wt-step wt-step--blue" aria-labelledby="homework-title">
         <div class="review-desk" aria-label="Jason reviewing the business">
           <div class="review-desk__person"><img src="assets/jason-portrait.png" alt="Jason Fung" width="72" height="72" /><span><b>Jason is reviewing your business</b><small>Building context before asking questions</small></span></div>
           <div class="review-desk__grid">
@@ -91,8 +87,11 @@
           <p>I review the moving parts before deciding what deserves your attention. The goal is fewer questions for you—not more.</p>
         </div>
       </section>
+      </details>
 
-      <section class="wt-plan" id="handoff" aria-labelledby="handoff-title">
+      <details class="wt-accordion" id="handoff" name="working-process">
+        <summary><span>03</span><strong>Get a handoff plan</strong><i aria-hidden="true"></i></summary>
+      <section class="wt-plan" aria-labelledby="handoff-title">
         <div class="wt-section-heading">
           <p class="wt-step__number">03 / I send you a simple handoff plan</p>
           <h2 id="handoff-title">One page. Clear ownership.<br /><span>No vague retainer.</span></h2>
@@ -112,8 +111,11 @@
           <footer><span>Clear scope</span><span>Clear owner</span><span>Clear next step</span></footer>
         </article>
       </section>
+      </details>
 
-      <section class="wt-boundaries" id="boundaries" aria-labelledby="boundaries-title">
+      <details class="wt-accordion" id="boundaries" name="working-process">
+        <summary><span>04</span><strong>Set the boundaries</strong><i aria-hidden="true"></i></summary>
+      <section class="wt-boundaries" aria-labelledby="boundaries-title">
         <div class="wt-section-heading">
           <p class="wt-step__number">04 / We agree on boundaries</p>
           <h2 id="boundaries-title">You keep control without being pulled into every detail.</h2>
@@ -124,8 +126,11 @@
           <article><span class="boundary-icon boundary-icon--decide">◆</span><p>Founder decision</p><ul><li>Major pricing</li><li>Repositioning</li><li>Large spend</li><li>Big strategic change</li></ul></article>
         </div>
       </section>
+      </details>
 
-      <section class="wt-ownership" id="ownership" aria-labelledby="ownership-title">
+      <details class="wt-accordion" id="ownership" name="working-process">
+        <summary><span>05</span><strong>I take ownership</strong><i aria-hidden="true"></i></summary>
+      <section class="wt-ownership" aria-labelledby="ownership-title">
         <div class="wt-step__copy">
           <p class="wt-step__number">05 / I take ownership</p>
           <h2 id="ownership-title">You don’t manage the tasks.<br /><span>I do.</span></h2>
@@ -140,8 +145,11 @@
           </div>
         </div>
       </section>
+      </details>
 
-      <section class="wt-update" id="update" aria-labelledby="update-title">
+      <details class="wt-accordion" id="update" name="working-process">
+        <summary><span>06</span><strong>Get one clear update</strong><i aria-hidden="true"></i></summary>
+      <section class="wt-update" aria-labelledby="update-title">
         <div class="wt-section-heading">
           <p class="wt-step__number">06 / You get one update</p>
           <h2 id="update-title">Everything important.<br /><span>Nothing to chase.</span></h2>
@@ -156,8 +164,11 @@
           </div>
         </article>
       </section>
+      </details>
 
-      <section class="wt-expand" id="expand" aria-labelledby="expand-title">
+      <details class="wt-accordion" id="expand" name="working-process">
+        <summary><span>07</span><strong>Expand if useful</strong><i aria-hidden="true"></i></summary>
+      <section class="wt-expand" aria-labelledby="expand-title">
         <div>
           <p class="wt-step__number">07 / Then you decide whether to expand</p>
           <h2 id="expand-title">Start with one area.</h2>
@@ -170,6 +181,8 @@
           <small>A short conversation. No pressure.</small>
         </div>
       </section>
+      </details>
+      </div>
     </main>
 
     <footer class="site-footer"><a class="brand" href="https://jasonfung.studio/"><img src="assets/jf-logo-white.png" alt="" width="30" height="30" /><span>Jason Fung Studio</span></a><p>Simple. Clear. Less for you to manage.</p><nav aria-label="Footer"><a href="growth-operator.html">Growth Operator</a><a href="https://jasonfung.studio/privacy.html">Privacy</a><a href="https://jasonfung.studio/terms.html">Terms</a></nav><span>© 2026 Jason Fung Studio</span></footer>

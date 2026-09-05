@@ -7,7 +7,7 @@
 .working-page p { margin-top: 0; }
 .working-page main { overflow: hidden; }
 
-.wt-hero { width: min(var(--max),calc(100% - 48px)); min-height: calc(100svh - 76px); margin: 0 auto; padding: clamp(72px,9vw,124px) 0; display: grid; grid-template-columns: 1.04fr .72fr; align-items: center; gap: clamp(54px,9vw,132px); }
+.wt-hero { width: min(900px,calc(100% - 48px)); min-height: calc(100svh - 76px); margin: 0 auto; padding: clamp(72px,9vw,124px) 0; display: flex; align-items: center; }
 .wt-hero__copy { min-width: 0; }
 .wt-back { margin-bottom: 30px; display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-size: .8rem; font-weight: 700; }
 .wt-back:hover { color: var(--blue); }
@@ -17,11 +17,24 @@
 .wt-hero__promise { margin: 26px 0 34px; display: flex; flex-wrap: wrap; gap: 8px; }
 .wt-hero__promise span { padding: 7px 11px; border: 1px solid #d8e4f4; border-radius: 999px; background: var(--blue-soft); color: var(--blue-deep); font-size: .72rem; font-weight: 700; }
 
-.wt-overview { padding: 26px; border: 1px solid #cfddf0; border-radius: 25px; background: linear-gradient(145deg,#fff,#f1f7ff); box-shadow: 0 28px 70px rgba(31,72,126,.13); }
-.wt-overview > p { margin-bottom: 18px; color: #77869b; font-size: .7rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
-.wt-overview ol { margin: 0; padding: 0; list-style: none; }
-.wt-overview li { min-height: 50px; padding: 12px 4px; display: grid; grid-template-columns: 42px 1fr; align-items: center; border-top: 1px solid var(--line); color: #30415d; font-weight: 700; }
-.wt-overview li span { color: var(--blue); font-size: .68rem; letter-spacing: .08em; }
+.wt-process { border-top: 1px solid var(--line); }
+.wt-process__label { width: min(var(--max),calc(100% - 48px)); margin: 0 auto; padding: 34px 0 10px; color: #77869b; font-size: .72rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.wt-accordion { scroll-margin-top: 76px; border-bottom: 1px solid var(--line); background: #fff; }
+.wt-accordion > summary { width: min(var(--max),calc(100% - 48px)); min-height: 92px; margin: 0 auto; display: grid; grid-template-columns: 58px 1fr 38px; align-items: center; gap: 12px; color: var(--ink); cursor: pointer; list-style: none; }
+.wt-accordion > summary::-webkit-details-marker { display: none; }
+.wt-accordion > summary > span { color: var(--blue); font-size: .72rem; font-weight: 700; letter-spacing: .1em; }
+.wt-accordion > summary > strong { font-size: clamp(1.08rem,2vw,1.4rem); letter-spacing: -.02em; }
+.wt-accordion > summary > i { width: 34px; height: 34px; position: relative; display: grid; place-items: center; justify-self: end; border: 1px solid #cbd8e9; border-radius: 50%; background: #fff; }
+.wt-accordion > summary > i::before,
+.wt-accordion > summary > i::after { width: 13px; height: 1.5px; position: absolute; border-radius: 999px; background: var(--blue); content: ""; transition: transform .18s ease; }
+.wt-accordion > summary > i::after { transform: rotate(90deg); }
+.wt-accordion[open] > summary { color: var(--blue-deep); }
+.wt-accordion[open] > summary > i { border-color: var(--blue); background: var(--blue); }
+.wt-accordion[open] > summary > i::before,
+.wt-accordion[open] > summary > i::after { background: #fff; }
+.wt-accordion[open] > summary > i::after { transform: rotate(0); }
+.wt-accordion > summary:hover > strong { color: var(--blue); }
+.wt-accordion > summary:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
 
 .wt-step { padding: clamp(92px,11vw,150px) max(24px,calc((100vw - var(--max))/2)); display: grid; grid-template-columns: .88fr 1.12fr; align-items: center; gap: clamp(60px,9vw,130px); }
 .wt-step--light { background: var(--wash); }
@@ -162,7 +175,6 @@
   .wt-step--blue,
   .wt-ownership,
   .wt-expand { grid-template-columns: 1fr; }
-  .wt-overview { max-width: 650px; }
   .wt-step--blue .review-desk { order: 2; }
   .wt-step--blue .wt-step__copy { order: 1; }
   .boundary-grid { grid-template-columns: 1fr; }
@@ -174,7 +186,10 @@
   .wt-hero h1 { font-size: clamp(3.3rem,17vw,4.4rem); }
   .wt-back { margin-bottom: 24px; }
   .wt-hero__promise { gap: 6px; }
-  .wt-overview { padding: 20px; border-radius: 19px; }
+  .wt-process__label { width: calc(100% - 36px); padding-top: 26px; }
+  .wt-accordion { scroll-margin-top: 68px; }
+  .wt-accordion > summary { width: calc(100% - 36px); min-height: 78px; grid-template-columns: 38px 1fr 34px; gap: 8px; }
+  .wt-accordion > summary > i { width: 32px; height: 32px; }
   .wt-step,
   .wt-plan,
   .wt-boundaries,
