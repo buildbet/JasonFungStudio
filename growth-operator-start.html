@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Show Jason what you want off your plate, then choose a time for a focused Growth Operator call." />
-    <title>Start a Conversation | Jason Fung Studio</title>
+    <meta name="description" content="Book a 30-minute Growth Operator fit call with Jason Fung." />
+    <title>Book a Fit Call | Jason Fung Studio</title>
     <link rel="icon" href="assets/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,80 +27,29 @@
     </header>
 
     <main id="main">
-      <section class="start-shell" aria-labelledby="start-title">
+      <section class="start-shell start-shell--booking" aria-labelledby="start-title">
         <div class="start-intro">
           <a class="start-back" href="growth-operator.html"><span aria-hidden="true">←</span> Growth Operator</a>
-          <p class="eyebrow"><img class="eyebrow-avatar" src="assets/jason-portrait.png" alt="" width="32" height="32" /> Start here</p>
-          <h1 id="start-title">Show me what you want <span>off your plate.</span></h1>
-          <p>Share the basics. I’ll review your business before the call so we can spend our time discussing what I could realistically take ownership of.</p>
-          <div class="start-expectations">
-            <span><i>01</i>Two-minute form</span>
-            <span><i>02</i>Jason reviews first</span>
-            <span><i>03</i>Choose a call time</span>
+          <p class="eyebrow"><img class="eyebrow-avatar" src="assets/jason-portrait.png" alt="" width="32" height="32" /> Book a fit call</p>
+          <h1 id="start-title">Book your <span>30-minute fit call.</span></h1>
+          <p>Choose a time that works for you. I’ll review your website before we talk.</p>
+        </div>
+
+        <section class="calendar-section" id="calendar-section" aria-labelledby="calendar-title">
+          <div class="calendar-heading">
+            <p>Available times</p>
+            <h2 id="calendar-title">Choose your call time.</h2>
+            <span>After choosing a time, add your website and what you most want off your plate.</span>
           </div>
-        </div>
-
-        <div class="start-card">
-          <form class="operator-lead-form" id="operator-lead-form" data-web3forms-key="1795d87a-1dd7-42b5-85c4-36cad41e0c05" aria-labelledby="form-title">
-            <div class="start-card__heading">
-              <p>Quick context</p>
-              <h2 id="form-title">What should I take a look at?</h2>
-              <span>Four short answers. No proposal document needed.</span>
-            </div>
-            <div class="operator-lead-form__fields">
-              <label class="field-wide">
-                <span>Website</span>
-                <input type="url" name="website" autocomplete="url" placeholder="https://yourbrand.com" required />
-              </label>
-              <label class="field-wide">
-                <span>What are you still personally managing?</span>
-                <textarea name="personally_managing" rows="3" placeholder="Campaigns, pages, email, creative..." required></textarea>
-              </label>
-              <label class="field-wide">
-                <span>What do you most want off your plate?</span>
-                <textarea name="off_your_plate" rows="3" placeholder="The work you no longer want to manage..." required></textarea>
-              </label>
-              <label>
-                <span>Name</span>
-                <input type="text" name="name" autocomplete="name" required />
-              </label>
-              <label>
-                <span>Email</span>
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
-            </div>
-            <input type="checkbox" name="botcheck" class="form-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <button class="button button-primary operator-lead-form__submit" type="submit">Send this to Jason <span aria-hidden="true">→</span></button>
-            <p class="operator-lead-form__note"><span aria-hidden="true">◷</span> Takes about 2 minutes.</p>
-            <p class="operator-lead-form__privacy">By submitting, you agree that Jason Fung Studio may use these details to respond and prepare for your call. <a href="privacy.html" target="_blank">Privacy Policy</a></p>
-            <p class="operator-lead-form__status" id="operator-lead-status" role="status" aria-live="polite"></p>
-          </form>
-
-          <section class="lead-success" id="lead-success" aria-labelledby="success-title" hidden>
-            <div class="lead-success__check" aria-hidden="true">✓</div>
-            <p>Thanks, <span id="lead-first-name">there</span>.</p>
-            <h2 id="success-title">Next step is a quick call with Jason.</h2>
-            <p>I’ll look at your business first so we can spend the call talking about what I could realistically take ownership of.</p>
-            <div class="lead-success__review"><img src="assets/jason-portrait.png" alt="" width="46" height="46" /><span><strong>Jason reviews your context first</strong><small>No need to repeat these answers on the calendar.</small></span></div>
-            <button class="button button-primary" id="show-calendar" type="button">Book a 30-minute call <span aria-hidden="true">→</span></button>
-          </section>
-        </div>
-      </section>
-
-      <section class="calendar-section" id="calendar-section" aria-labelledby="calendar-title" hidden>
-        <div class="calendar-heading">
-          <p>Choose a time</p>
-          <h2 id="calendar-title">Book your call with Jason.</h2>
-          <span>Your form is already submitted. Just choose the time that works.</span>
-        </div>
-        <div class="calendar-wrap" id="calendar-wrap" aria-busy="true">
-          <div class="calendar-loading" id="calendar-loading" role="status"><i></i>Loading available times...</div>
-          <div class="cal-inline-embed" id="operator-cal-embed" data-cal-link="jason-fung-zndb6x/free-consultation"></div>
-        </div>
-        <p class="calendar-fallback">Calendar not loading? <a href="https://cal.com/jason-fung-zndb6x/free-consultation" target="_blank" rel="noopener">Open it directly <span aria-hidden="true">↗</span></a></p>
+          <div class="calendar-wrap" id="calendar-wrap" aria-busy="true">
+            <div class="calendar-loading" id="calendar-loading" role="status"><i></i>Loading available times...</div>
+            <div class="cal-inline-embed" id="operator-cal-embed" data-cal-link="jason-fung-zndb6x/free-consultation"></div>
+          </div>
+          <p class="calendar-fallback">Calendar not loading? <a href="https://cal.com/jason-fung-zndb6x/free-consultation" target="_blank" rel="noopener">Open it directly <span aria-hidden="true">↗</span></a></p>
+        </section>
       </section>
     </main>
 
-    <footer class="site-footer"><a class="brand" href="https://jasonfung.studio/"><img src="assets/jf-logo-white.png" alt="" width="30" height="30" /><span>Jason Fung Studio</span></a><p>A short form. A focused call. A clear next step.</p><nav aria-label="Footer"><a href="growth-operator.html">Growth Operator</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><span>© 2026 Jason Fung Studio</span></footer>
+    <footer class="site-footer"><a class="brand" href="https://jasonfung.studio/"><img src="assets/jf-logo-white.png" alt="" width="30" height="30" /><span>Jason Fung Studio</span></a><p>A focused call. A clear next step.</p><nav aria-label="Footer"><a href="growth-operator.html">Growth Operator</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><span>© 2026 Jason Fung Studio</span></footer>
   </body>
 </html>
