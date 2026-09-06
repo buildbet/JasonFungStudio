@@ -42,8 +42,11 @@ img { display: block; max-width: 100%; }
 .hero h1 { max-width: 780px; margin: 0; font-size: clamp(3rem,5.4vw,5.4rem); font-weight: 650; letter-spacing: -.06em; line-height: .96; }
 .hero-followup { margin-top: .18em; display: block; color: var(--blue); font-family: var(--sans); font-size: .72em; font-weight: 600; letter-spacing: -.04em; line-height: 1.06; }
 .hero-lede { max-width: 680px; margin: 28px 0 0; color: var(--muted); font-size: clamp(1.08rem,1.5vw,1.3rem); }
-.hero-proof { max-width: 420px; margin: 22px 0 30px; padding: 2px 0 2px 18px; display: grid; gap: 3px; border-left: 3px solid var(--blue); color: #30415d; font-weight: 600; line-height: 1.45; }
+.hero-proof { max-width: 520px; margin: 24px 0 32px; display: grid; justify-items: center; gap: 4px; color: #30415d; line-height: 1.25; text-align: center; }
 .hero-proof span { display: block; }
+.hero-proof span:first-child { color: var(--blue); font-size: clamp(1.35rem,2vw,1.65rem); font-weight: 800; letter-spacing: -.035em; }
+.hero-proof span:nth-child(2) { font-size: clamp(1.08rem,1.5vw,1.25rem); font-weight: 700; letter-spacing: -.02em; }
+.hero-proof span:last-child { color: #52627a; font-size: 1rem; font-weight: 600; }
 .button { min-height: 54px; padding: 0 22px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; border-radius: 10px; font-size: .95rem; font-weight: 700; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { background: var(--blue); color: #fff; box-shadow: 0 14px 32px rgba(37,99,235,.22); }
