@@ -1,3 +1,30 @@
+.growth-operator-page--minimal .operator-creative-reel {
+  height: clamp(190px, 24vw, 270px);
+  margin: 36px 0 0;
+  overflow: hidden;
+  border: 1px solid #d5e1f1;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #f8fafc, #eff6ff);
+  box-shadow: 0 22px 55px rgba(37, 99, 235, .12);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+
+.growth-operator-page--minimal .operator-creative-reel__track {
+  width: max-content;
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  animation: operator-creative-reel 38s linear infinite;
+}
+
+.growth-operator-page--minimal .operator-creative-reel__set { height: 100%; display: flex; gap: 12px; }
+.growth-operator-page--minimal .operator-creative-reel img { width: clamp(135px, 17vw, 190px); height: 100%; flex: 0 0 auto; object-fit: cover; object-position: center top; border: 1px solid #dce3ed; border-radius: 15px; box-shadow: 0 14px 32px rgba(15, 23, 42, .15); }
+.growth-operator-page--minimal .operator-creative-reel:hover .operator-creative-reel__track { animation-play-state: paused; }
+
+@keyframes operator-creative-reel { to { transform: translateX(calc(-50% - 6px)); } }
+
 .growth-operator-page--minimal .process--minimal {
   grid-template-columns: minmax(0, 820px);
   justify-content: center;
@@ -8,3 +35,12 @@
 .growth-operator-page--minimal .process--minimal .process-example { margin-top: 24px; }
 .growth-operator-page--minimal .final-cta--minimal { padding-top: clamp(72px, 8vw, 108px); }
 .growth-operator-page--minimal .final-cta--minimal .final-booking { margin-top: 0; }
+
+@media (max-width: 640px) {
+  .growth-operator-page--minimal .operator-creative-reel { height: 64vw; min-height: 250px; max-height: 360px; border-radius: 18px; -webkit-mask-image: none; mask-image: none; }
+  .growth-operator-page--minimal .operator-creative-reel img { width: min(58vw, 230px); border-radius: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .growth-operator-page--minimal .operator-creative-reel__track { animation: none; }
+}
