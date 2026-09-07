@@ -32,7 +32,7 @@
 }
 
 .growth-operator-page--minimal .process--minimal .section-heading { margin-inline: auto; }
-.growth-operator-page--minimal .process--minimal .process-example { margin-top: 24px; }
+.growth-operator-page--minimal .process--minimal .process-example { margin-top: 14px; }
 .growth-operator-page--minimal .final-cta--minimal { padding-top: clamp(72px, 8vw, 108px); }
 .growth-operator-page--minimal .final-cta--minimal .final-booking { margin-top: 0; }
 
