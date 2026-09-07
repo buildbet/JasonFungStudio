@@ -1,0 +1,51 @@
+.growth-operator-page--compact .hero-proof { margin-top: 36px; }
+
+.growth-operator-page--compact .outcome-list {
+  width: min(100%, 900px);
+  margin: 42px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(20, 50, 90, .08);
+}
+
+.growth-operator-page--compact .outcome-list strong {
+  min-height: 128px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--blue-deep);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.growth-operator-page--compact .outcome-list strong + strong { border-left: 1px solid var(--line); }
+
+.growth-operator-page--compact .scope--compact {
+  grid-template-columns: minmax(0, 820px);
+  justify-content: center;
+  text-align: center;
+}
+
+.growth-operator-page--compact .scope--compact .scope-note { max-width: 640px; margin-inline: auto; }
+
+.growth-operator-page--compact .control-card--compact {
+  grid-template-columns: minmax(0, 820px);
+  justify-content: center;
+  text-align: center;
+}
+
+.growth-operator-page--compact .control-card--compact .control-line { text-align: center; }
+.growth-operator-page--compact .process-list--compact li { align-items: center; }
+.growth-operator-page--compact .process-list--compact h3 { font-size: 1.18rem; }
+
+@media (max-width: 760px) {
+  .growth-operator-page--compact .outcome-list { grid-template-columns: 1fr; }
+  .growth-operator-page--compact .outcome-list strong { min-height: 0; padding: 22px; justify-content: flex-start; }
+  .growth-operator-page--compact .outcome-list strong + strong { border-top: 1px solid var(--line); border-left: 0; }
+}
