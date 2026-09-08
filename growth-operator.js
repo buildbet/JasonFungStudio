@@ -144,3 +144,30 @@
   });
   Cal("ui", { theme: "light", layout: "month_view", hideEventTypeDetails: true });
 })();
+
+(() => {
+  const modal = document.querySelector("#contact-chooser-modal");
+  const triggers = [...document.querySelectorAll("[data-contact-open]")];
+  const closeButton = modal?.querySelector("[data-contact-close]");
+  if (!modal || !triggers.length) return;
+
+  let lastTrigger = null;
+  const close = () => {
+    modal.hidden = true;
+    document.body.classList.remove("is-contact-modal-open");
+    lastTrigger?.focus();
+  };
+  const open = (trigger) => {
+    lastTrigger = trigger;
+    modal.hidden = false;
+    document.body.classList.add("is-contact-modal-open");
+    document.querySelector("#primary-nav")?.classList.remove("is-open");
+    document.querySelector(".menu-toggle")?.setAttribute("aria-expanded", "false");
+    closeButton?.focus();
+  };
+
+  triggers.forEach((trigger) => trigger.addEventListener("click", () => open(trigger)));
+  closeButton?.addEventListener("click", close);
+  modal.addEventListener("click", (event) => { if (event.target === modal) close(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !modal.hidden) close(); });
+})();
