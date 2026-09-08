@@ -340,7 +340,7 @@
 .growth-operator-page--minimal .final-cta--minimal .final-booking { margin-top: 0; }
 
 @media (max-width: 640px) {
-  .growth-operator-page--minimal .operator-creative-reel { height: 64vw; min-height: 250px; max-height: 360px; border-radius: 18px; -webkit-mask-image: none; mask-image: none; }
+  .growth-operator-page--minimal .operator-creative-reel { height: 64vw; min-height: 250px; max-height: 360px; border-radius: 18px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); }
   .growth-operator-page--minimal .operator-creative-reel img { width: min(58vw, 230px); border-radius: 13px; }
 }
 

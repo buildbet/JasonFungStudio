@@ -143,6 +143,14 @@
     config: { layout: "month_view", theme: "light" },
   });
   Cal("ui", { theme: "light", layout: "month_view", hideEventTypeDetails: true });
+  if (document.body.classList.contains("growth-operator-page--offer")) {
+    Cal("on", {
+      action: "bookingSuccessfulV2",
+      callback: () => {
+        window.location.assign("growth-operator-confirmed.html");
+      }
+    });
+  }
 })();
 
 (() => {

@@ -81,6 +81,12 @@
       config: { layout: "month_view", theme: "light", email }
     });
     Cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+    Cal("on", {
+      action: "bookingSuccessfulV2",
+      callback: () => {
+        window.location.assign("growth-operator-confirmed.html");
+      }
+    });
   };
 
   form.addEventListener("submit", async (event) => {
