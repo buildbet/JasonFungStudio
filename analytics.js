@@ -114,6 +114,33 @@ document.addEventListener('booking_questionnaire_submitted', (event) => {
   });
 });
 
+document.addEventListener('growth_operator_assessment_started', (event) => {
+  sendAnalyticsEvent('assessment_started', {
+    flow_variant: event.detail?.flow_variant || 'growth_operator_funnel'
+  });
+});
+
+document.addEventListener('growth_operator_assessment_step_viewed', (event) => {
+  sendAnalyticsEvent('assessment_step_viewed', {
+    flow_variant: 'growth_operator_funnel',
+    question_key: `step_${Number(event.detail?.step) || 1}`
+  });
+});
+
+document.addEventListener('growth_operator_assessment_answered', (event) => {
+  sendAnalyticsEvent('assessment_answered', {
+    flow_variant: 'growth_operator_funnel',
+    question_key: `step_${Number(event.detail?.step) || 1}`
+  });
+});
+
+document.addEventListener('growth_operator_assessment_cta_clicked', (event) => {
+  sendAnalyticsEvent('assessment_cta_click', {
+    flow_variant: 'growth_operator_funnel',
+    button_text: event.detail?.label || 'See if we are a fit'
+  });
+});
+
 document.addEventListener('shopify_growth_apply_opened', (event) => {
   sendAnalyticsEvent('quick_apply_open', {
     button_location: event.detail?.location || 'unknown'
