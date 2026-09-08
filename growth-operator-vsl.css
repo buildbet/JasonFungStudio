@@ -41,12 +41,17 @@ button, input { font: inherit; }
 .vsl-proof__arrow:hover, .vsl-proof__arrow:focus-visible { border-color: #93c5fd; background: #eff6ff; outline: none; transform: translateY(3px); }
 
 .vsl-reserve { margin-top: 42px; padding: clamp(28px, 5vw, 48px); border: 1px solid #cbdcf2; border-radius: 24px; background: #fff; box-shadow: 0 24px 65px rgba(25, 68, 130, .12); text-align: left; }
+.vsl-reserve--simple { margin-top: 24px; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+.vsl-capacity { margin: 0 0 14px; color: var(--muted); font-size: .9rem; text-align: center; }
+.vsl-capacity strong { color: var(--blue-deep); }
 .vsl-reserve__heading { text-align: center; }
 .vsl-reserve__heading > p, .vsl-calendar__heading > p { margin: 0 0 7px; color: var(--blue); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .vsl-reserve h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.045em; line-height: 1.05; }
 .vsl-reserve__heading > span { margin-top: 9px; display: block; color: var(--muted); }
 .vsl-form { max-width: 670px; margin: 26px auto 0; }
+.vsl-reserve--simple .vsl-form { margin-top: 0; }
 .vsl-form label { margin-bottom: 8px; display: block; color: var(--blue-deep); font-size: .78rem; font-weight: 800; }
+.vsl-visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .vsl-form__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
 .vsl-form input[type="email"] { min-width: 0; min-height: 56px; padding: 0 16px; border: 1px solid #c9d7ea; border-radius: 10px; background: #fff; color: var(--ink); outline: 0; }
 .vsl-form input[type="email"]:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(37, 99, 235, .12); }
@@ -55,6 +60,7 @@ button, input { font: inherit; }
 .vsl-form button:disabled { cursor: wait; opacity: .7; }
 .vsl-form__note { margin: 10px 0 0; color: #7a8799; font-size: .76rem; text-align: center; }
 .vsl-form__status { min-height: 23px; margin: 7px 0 0; color: #b42318; font-size: .82rem; font-weight: 600; text-align: center; }
+.vsl-form__status:empty { display: none; }
 .vsl-botcheck { position: absolute; left: -9999px; }
 
 .vsl-calendar[hidden] { display: none; }

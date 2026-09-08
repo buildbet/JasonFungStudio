@@ -38,28 +38,18 @@
           <p><strong>Your 30–60 second VSL goes here.</strong><span>Growth Operator overview</span></p>
         </div>
 
-        <ul class="vsl-proof" aria-label="Growth Operator offer highlights">
-          <li><strong>Only 3 new brands this month.</strong><span>Apply by September 15.</span></li>
-        </ul>
-        <a class="vsl-proof__arrow" href="#reserve" aria-label="Continue to reserve your spot"><span aria-hidden="true">↓</span></a>
-
-        <section class="vsl-reserve" id="reserve" aria-labelledby="reserve-title">
-          <div class="vsl-reserve__heading">
-            <p>Step 1 of 2</p>
-            <h2 id="reserve-title">Reserve your spot.</h2>
-            <span>Enter your email, then choose a time below.</span>
-          </div>
+        <section class="vsl-reserve vsl-reserve--simple" id="reserve" aria-label="Reserve your spot">
+          <p class="vsl-capacity"><strong>Only 2 spots left</strong> this month.</p>
 
           <form class="vsl-form" id="vsl-form" data-web3forms-key="1795d87a-1dd7-42b5-85c4-36cad41e0c05">
             <input type="hidden" name="subject" value="Growth Operator VSL reservation" />
             <input type="hidden" name="from_name" value="Jason Fung Studio website" />
             <input type="checkbox" name="botcheck" class="vsl-botcheck" tabindex="-1" autocomplete="off" />
-            <label for="vsl-email">Email address</label>
+            <label class="vsl-visually-hidden" for="vsl-email">Email address</label>
             <div class="vsl-form__row">
               <input id="vsl-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com" required />
               <button type="submit">Reserve my spot <span aria-hidden="true">→</span></button>
             </div>
-            <p class="vsl-form__note">No spam. Just your booking step.</p>
             <p class="vsl-form__status" id="vsl-form-status" role="status" aria-live="polite"></p>
           </form>
 
@@ -80,7 +70,7 @@
 
     <footer class="vsl-footer">
       <p>Jason Fung Studio</p>
-      <a href="mailto:cptjason.jf@gmail.com">cptjason.jf@gmail.com</a>
+      <a href="mailto:jasonfungstudio@gmail.com">jasonfungstudio@gmail.com</a>
     </footer>
   </body>
 </html>

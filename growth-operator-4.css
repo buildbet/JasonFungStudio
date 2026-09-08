@@ -147,6 +147,23 @@
   font-weight: 900;
 }
 
+.growth-operator-page--offer .offer-included > p {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.growth-operator-page--offer .offer-gift {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: #fb7185;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .growth-operator-page--offer .offer-deadline strong {
   margin-top: 10px;
   display: block;
