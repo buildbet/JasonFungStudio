@@ -33,6 +33,18 @@
 
 .growth-operator-page--minimal .process--minimal .section-heading { margin-inline: auto; }
 .growth-operator-page--minimal .process--minimal .process-example { margin-top: 14px; }
+.growth-operator-page--minimal .trust-photo-label {
+  right: auto;
+  bottom: 14px;
+  left: 14px;
+  width: auto;
+  padding: 8px 11px;
+  border-radius: 9px;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
 .growth-operator-page--minimal .final-cta--minimal { padding-top: clamp(72px, 8vw, 108px); }
 .growth-operator-page--minimal .final-cta--minimal .final-booking { margin-top: 0; }
 
