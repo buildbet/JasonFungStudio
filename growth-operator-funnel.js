@@ -57,10 +57,10 @@
       return false;
     }
 
-    const required = [...step.querySelectorAll("input[required]")];
+    const required = [...step.querySelectorAll("input[required], textarea[required]")];
     for (const input of required) {
       if (!input.checkValidity()) {
-        error.textContent = input.validity.typeMismatch ? "Enter a valid email or website address." : "Complete each field to continue.";
+        error.textContent = input.validity.typeMismatch ? "Enter a valid email or website address." : "Complete the required field to continue.";
         input.focus();
         return false;
       }
@@ -144,6 +144,7 @@
   backButton.addEventListener("click", () => updateStep(currentStep - 1));
 
   form.addEventListener("change", (event) => {
+    if (!event.target.matches("input[type='checkbox'], input[type='radio']")) return;
     const label = event.target.closest("label");
     if (label) label.classList.toggle("is-selected", event.target.checked);
     if (event.target.type === "radio") {

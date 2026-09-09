@@ -10,7 +10,7 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="growth-operator-funnel.css" />
     <script src="analytics.js" defer></script>
     <script src="growth-operator-funnel.js" defer></script>
@@ -22,13 +22,9 @@
       <section class="hero">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-inner">
-          <p class="eyebrow">For established founder-led brands</p>
+          <p class="eyebrow">For Existing Ecommerce Brand Owners Only</p>
           <h1>You set the direction.<br /><em>We handle the execution.</em></h1>
           <p class="hero-lede">Across Shopify, campaigns, paid ads, email/SMS, social, creative and the specialists involved.</p>
-          <div class="hero-terms">
-            <span>Start with 30 days</span>
-            <span>No long-term contract</span>
-          </div>
           <p class="vsl-cue">Here’s how it works for you <span aria-hidden="true">↓</span></p>
           <div class="video-stage" aria-label="Growth Operator 60-second video placeholder">
             <!-- Replace this placeholder with the final hosted 60-second video embed. -->
@@ -54,7 +50,7 @@
 
         <div class="assessment-card">
           <div class="assessment-progress" aria-hidden="true"><span id="assessment-progress-bar"></span></div>
-          <div class="assessment-meta"><span id="assessment-step-label">Question 1 of 5</span><span id="assessment-percent">20%</span></div>
+          <div class="assessment-meta"><span id="assessment-step-label">Question 1 of 10</span><span id="assessment-percent">10%</span></div>
 
           <form id="fit-assessment" data-web3forms-key="1795d87a-1dd7-42b5-85c4-36cad41e0c05" novalidate>
             <input type="hidden" name="subject" value="Growth Operator fit assessment" />
@@ -62,69 +58,130 @@
             <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" />
 
             <fieldset class="assessment-step is-active" data-step="1">
-              <legend>Your business is already operating, but you’re still involved in too much of the marketing.</legend>
-              <p class="step-help">Select everything that applies.</p>
-              <div class="choice-grid choice-grid--two">
-                <label><input type="checkbox" name="Current bottlenecks" value="I still manage campaigns myself" /><span>I still manage campaigns myself</span></label>
-                <label><input type="checkbox" name="Current bottlenecks" value="I coordinate multiple freelancers or specialists" /><span>I coordinate multiple freelancers or specialists</span></label>
-                <label><input type="checkbox" name="Current bottlenecks" value="I still make or approve most creative" /><span>I still make or approve most creative</span></label>
-                <label><input type="checkbox" name="Current bottlenecks" value="Shopify updates still come back to me" /><span>Shopify updates still come back to me</span></label>
-                <label><input type="checkbox" name="Current bottlenecks" value="I manage ads or the person running them" /><span>I manage ads or the person running them</span></label>
-                <label><input type="checkbox" name="Current bottlenecks" value="I still handle email/SMS decisions" /><span>I still handle email/SMS decisions</span></label>
-                <label><input type="checkbox" name="Current bottlenecks" value="Social media still needs my attention" /><span>Social media still needs my attention</span></label>
-                <label><input type="checkbox" name="Current bottlenecks" value="Marketing slows down when I get busy" /><span>Marketing slows down when I get busy</span></label>
-                <label class="choice-wide"><input type="checkbox" name="Current bottlenecks" value="I want one person to keep all of this moving" /><span>I want one person to keep all of this moving</span></label>
+              <legend>Do you currently own or run an ecommerce brand or business?</legend>
+              <div class="choice-grid">
+                <label><input type="radio" name="Owns or runs an ecommerce business" value="Yes" /><span>Yes</span></label>
+                <label><input type="radio" name="Owns or runs an ecommerce business" value="No" /><span>No</span></label>
               </div>
+              <p class="step-help">We work best with businesses that are already operating, not idea-stage projects.</p>
               <p class="step-error" role="alert"></p>
             </fieldset>
 
             <fieldset class="assessment-step" data-step="2" hidden>
-              <legend>What would you want taken off your plate?</legend>
-              <p class="step-help">Select everything that applies.</p>
+              <legend>What is your business currently doing in monthly revenue?</legend>
               <div class="choice-grid choice-grid--two">
-                <label><input type="checkbox" name="Support needed" value="Day-to-day marketing execution" /><span>Day-to-day marketing execution</span></label>
-                <label><input type="checkbox" name="Support needed" value="Managing specialists" /><span>Managing specialists</span></label>
-                <label><input type="checkbox" name="Support needed" value="Campaign launches" /><span>Campaign launches</span></label>
-                <label><input type="checkbox" name="Support needed" value="Paid ads" /><span>Paid ads</span></label>
-                <label><input type="checkbox" name="Support needed" value="Shopify" /><span>Shopify</span></label>
-                <label><input type="checkbox" name="Support needed" value="Email/SMS" /><span>Email / SMS</span></label>
-                <label><input type="checkbox" name="Support needed" value="Creative production" /><span>Creative production</span></label>
-                <label><input type="checkbox" name="Support needed" value="Social media" /><span>Social media</span></label>
-                <label class="choice-wide"><input type="checkbox" name="Support needed" value="Most of the above" /><span>Most of the above</span></label>
+                <label><input type="radio" name="Monthly revenue" value="Under $5K/month" /><span>Under $5K/month</span></label>
+                <label><input type="radio" name="Monthly revenue" value="$5K–$10K/month" /><span>$5K–$10K/month</span></label>
+                <label><input type="radio" name="Monthly revenue" value="$10K–$25K/month" /><span>$10K–$25K/month</span></label>
+                <label><input type="radio" name="Monthly revenue" value="$25K–$50K/month" /><span>$25K–$50K/month</span></label>
+                <label><input type="radio" name="Monthly revenue" value="$50K–$100K/month" /><span>$50K–$100K/month</span></label>
+                <label><input type="radio" name="Monthly revenue" value="$100K+/month" /><span>$100K+/month</span></label>
               </div>
+              <p class="step-help">This is confidential. We use it to understand the stage of the business and what level of support makes sense.</p>
               <p class="step-error" role="alert"></p>
             </fieldset>
 
             <fieldset class="assessment-step" data-step="3" hidden>
-              <legend>What is your brand’s current monthly revenue?</legend>
-              <p class="step-help">A range is enough.</p>
-              <div class="choice-grid">
-                <label><input type="radio" name="Monthly revenue" value="Under $10K/month" /><span>Under $10K/month</span></label>
-                <label><input type="radio" name="Monthly revenue" value="$10K–$30K/month" /><span>$10K–$30K/month</span></label>
-                <label><input type="radio" name="Monthly revenue" value="$30K–$100K/month" /><span>$30K–$100K/month</span></label>
-                <label><input type="radio" name="Monthly revenue" value="$100K+/month" /><span>$100K+/month</span></label>
+              <legend>What are you still personally managing in the marketing?</legend>
+              <p class="step-help">Select all that apply.</p>
+              <div class="choice-grid choice-grid--two">
+                <label><input type="checkbox" name="Marketing personally managed" value="Shopify / website updates" /><span>Shopify / website updates</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Paid ads" /><span>Paid ads</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Campaigns / promotions" /><span>Campaigns / promotions</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Email / SMS" /><span>Email / SMS</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Social media" /><span>Social media</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Creative production" /><span>Creative production</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Managing freelancers or specialists" /><span>Managing freelancers or specialists</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Reviewing / approving everything" /><span>Reviewing / approving everything</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Planning what needs to happen next" /><span>Planning what needs to happen next</span></label>
+                <label><input type="checkbox" name="Marketing personally managed" value="Most of the above" /><span>Most of the above</span></label>
               </div>
               <p class="step-error" role="alert"></p>
             </fieldset>
 
             <fieldset class="assessment-step" data-step="4" hidden>
-              <legend>When would you want support to begin?</legend>
-              <p class="step-help">This helps us understand urgency and availability.</p>
-              <div class="choice-grid">
-                <label><input type="radio" name="Start timing" value="Yes, this month" /><span>Yes, this month</span></label>
-                <label><input type="radio" name="Start timing" value="Within 30–60 days" /><span>Within 30–60 days</span></label>
-                <label><input type="radio" name="Start timing" value="Just exploring" /><span>Just exploring</span></label>
+              <legend>What would you most like to stop managing yourself?</legend>
+              <p class="step-help">Pick the biggest one.</p>
+              <div class="choice-grid choice-grid--two">
+                <label><input type="radio" name="Top responsibility to remove" value="Day-to-day marketing execution" /><span>Day-to-day marketing execution</span></label>
+                <label><input type="radio" name="Top responsibility to remove" value="Managing multiple freelancers / specialists" /><span>Managing multiple freelancers / specialists</span></label>
+                <label><input type="radio" name="Top responsibility to remove" value="Paid ads" /><span>Paid ads</span></label>
+                <label><input type="radio" name="Top responsibility to remove" value="Shopify / website work" /><span>Shopify / website work</span></label>
+                <label><input type="radio" name="Top responsibility to remove" value="Campaigns and launches" /><span>Campaigns and launches</span></label>
+                <label><input type="radio" name="Top responsibility to remove" value="Email / SMS" /><span>Email / SMS</span></label>
+                <label><input type="radio" name="Top responsibility to remove" value="Social media" /><span>Social media</span></label>
+                <label><input type="radio" name="Top responsibility to remove" value="Creative production" /><span>Creative production</span></label>
+                <label class="choice-wide"><input type="radio" name="Top responsibility to remove" value="Honestly, most of it" /><span>Honestly, most of it</span></label>
               </div>
               <p class="step-error" role="alert"></p>
             </fieldset>
 
             <fieldset class="assessment-step" data-step="5" hidden>
-              <legend>Last step—where should Jason send the next step?</legend>
-              <p class="step-help">No mailing list. These details are only used to review your fit and follow up.</p>
+              <legend>What happens to the marketing when you get busy?</legend>
+              <div class="choice-grid">
+                <label><input type="radio" name="Marketing when busy" value="It mostly keeps running without me" /><span>It mostly keeps running without me</span></label>
+                <label><input type="radio" name="Marketing when busy" value="Some things slow down" /><span>Some things slow down</span></label>
+                <label><input type="radio" name="Marketing when busy" value="A lot of things get delayed" /><span>A lot of things get delayed</span></label>
+                <label><input type="radio" name="Marketing when busy" value="Most marketing depends on me keeping it moving" /><span>Most marketing depends on me keeping it moving</span></label>
+              </div>
+              <p class="step-error" role="alert"></p>
+            </fieldset>
+
+            <fieldset class="assessment-step" data-step="6" hidden>
+              <legend>Who is currently helping with your marketing?</legend>
+              <p class="step-help">Select all that apply.</p>
+              <div class="choice-grid choice-grid--two">
+                <label><input type="checkbox" name="Current marketing support" value="I do most of it myself" /><span>I do most of it myself</span></label>
+                <label><input type="checkbox" name="Current marketing support" value="In-house employee(s)" /><span>In-house employee(s)</span></label>
+                <label><input type="checkbox" name="Current marketing support" value="Freelancers" /><span>Freelancers</span></label>
+                <label><input type="checkbox" name="Current marketing support" value="Ad specialist / media buyer" /><span>Ad specialist / media buyer</span></label>
+                <label><input type="checkbox" name="Current marketing support" value="Designer / creative specialist" /><span>Designer / creative specialist</span></label>
+                <label><input type="checkbox" name="Current marketing support" value="Social media manager" /><span>Social media manager</span></label>
+                <label><input type="checkbox" name="Current marketing support" value="Email marketer" /><span>Email marketer</span></label>
+                <label><input type="checkbox" name="Current marketing support" value="Agency" /><span>Agency</span></label>
+                <label class="choice-wide"><input type="checkbox" name="Current marketing support" value="Nobody consistently" /><span>Nobody consistently</span></label>
+              </div>
+              <p class="step-error" role="alert"></p>
+            </fieldset>
+
+            <fieldset class="assessment-step" data-step="7" hidden>
+              <legend>What is the biggest marketing problem you want solved right now?</legend>
+              <p class="step-help">Be specific. What is taking too much of your time, not getting done, or constantly coming back to you?</p>
+              <label class="long-answer"><span class="sr-only">Biggest marketing problem</span><textarea name="Biggest marketing problem" rows="7" required></textarea></label>
+              <p class="step-error" role="alert"></p>
+            </fieldset>
+
+            <fieldset class="assessment-step" data-step="8" hidden>
+              <legend>If we’re a fit, when would you want help to start?</legend>
+              <div class="choice-grid">
+                <label><input type="radio" name="Start timing" value="As soon as possible" /><span>As soon as possible</span></label>
+                <label><input type="radio" name="Start timing" value="Within the next 30 days" /><span>Within the next 30 days</span></label>
+                <label><input type="radio" name="Start timing" value="Within 1–3 months" /><span>Within 1–3 months</span></label>
+                <label><input type="radio" name="Start timing" value="Just exploring right now" /><span>Just exploring right now</span></label>
+              </div>
+              <p class="step-error" role="alert"></p>
+            </fieldset>
+
+            <fieldset class="assessment-step" data-step="9" hidden>
+              <legend>Are you comfortable investing $3,000+/month to get the day-to-day marketing off your plate?</legend>
+              <div class="choice-grid">
+                <label><input type="radio" name="Comfortable investing $3,000+/month" value="Yes" /><span>Yes</span></label>
+                <label><input type="radio" name="Comfortable investing $3,000+/month" value="Possibly, if the fit and scope make sense" /><span>Possibly, if the fit and scope make sense</span></label>
+                <label><input type="radio" name="Comfortable investing $3,000+/month" value="Not right now" /><span>Not right now</span></label>
+              </div>
+              <p class="step-help">Growth Operator engagements currently start from $3,000/month.</p>
+              <p class="step-error" role="alert"></p>
+            </fieldset>
+
+            <fieldset class="assessment-step" data-step="10" hidden>
+              <legend>Tell me where to look.</legend>
               <div class="contact-fields">
                 <label><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
-                <label><span>Work email</span><input type="email" name="email" autocomplete="email" inputmode="email" required /></label>
-                <label class="field-wide"><span>Brand website</span><input type="url" name="website" autocomplete="url" inputmode="url" placeholder="https://" required /></label>
+                <label><span>Email</span><input type="email" name="email" autocomplete="email" inputmode="email" required /></label>
+                <label class="field-wide"><span>Website / Shopify store</span><input type="url" name="website" autocomplete="url" inputmode="url" placeholder="https://" required /></label>
+                <label><span>Instagram / social account <small>Optional</small></span><input type="text" name="social_account" autocomplete="url" /></label>
+                <label><span>Phone <small>Optional</small></span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" /></label>
+                <label class="field-wide"><span>Anything else I should know before I look at the business? <small>Optional</small></span><textarea name="Additional context" rows="5"></textarea></label>
               </div>
               <p class="step-error" role="alert"></p>
             </fieldset>
