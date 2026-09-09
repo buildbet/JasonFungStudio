@@ -188,7 +188,7 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 
 .hero::before { opacity: .07; }
 .hero-inner { width: min(100%, 1040px); max-width: none; margin: 0 auto; }
-.hero .eyebrow { width: fit-content; margin: 0 auto 26px; padding: 11px 24px; border-radius: 999px; background: linear-gradient(90deg, #3563e9, #6597ff); color: #fff; box-shadow: 0 12px 35px rgba(79,124,255,.24); }
+.hero .eyebrow { width: fit-content; margin: 0 auto 26px; padding: 8px 24px; border-radius: 999px; background: linear-gradient(90deg, #3563e9, #6597ff); color: #fff; box-shadow: 0 12px 35px rgba(79,124,255,.24); }
 .hero h1 { max-width: 980px; margin: 0 auto; font-size: clamp(3.25rem, 6.2vw, 5.75rem); letter-spacing: -.058em; line-height: .94; }
 .hero-lede { max-width: 710px; margin: 28px auto 0; color: #d8e0ee; font-size: clamp(1.02rem, 1.7vw, 1.25rem); line-height: 1.6; }
 .hero-terms { margin: 22px 0 28px; justify-content: center; }
@@ -220,7 +220,7 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 @media (max-width: 720px) {
   .hero { padding: 28px 20px 64px; }
   .hero h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
-  .hero .eyebrow { padding: 9px 14px; font-size: .62rem; }
+  .hero .eyebrow { padding: 7px 14px; font-size: .62rem; }
   .hero-lede { font-size: 1rem; }
   .assessment-section { padding-top: 42px; }
 }
