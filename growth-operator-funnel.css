@@ -218,7 +218,7 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .calendar-result > p:not(.section-kicker,.calendar-fallback) { color: #a5b1c4; }
 
 @media (max-width: 720px) {
-  .hero { padding: 46px 20px 64px; }
+  .hero { padding: 28px 20px 64px; }
   .hero h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
   .hero .eyebrow { padding: 9px 14px; font-size: .62rem; }
   .hero-lede { font-size: 1rem; }
@@ -279,8 +279,7 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .guarantee-band .button { min-width: 190px; }
 
 @media (max-width: 720px) {
-  .hero-brand { margin-bottom: 20px; }
-  .hero h1 { font-size: clamp(2.2rem, 10vw, 3.45rem); line-height: 1.02; letter-spacing: -.05em; }
+  .hero h1 { font-size: clamp(1.55rem, 6.5vw, 1.8rem); line-height: 1.18; letter-spacing: -.01em; }
   .hero .eyebrow { max-width: 100%; font-size: .75rem; line-height: 1.45; }
   .vsl h2, .section h2, .assessment-section h2, .handoff h2, .final-cta h2, .trust-intro h2 { font-size: clamp(2rem, 9vw, 3rem); line-height: 1.05; }
   .trust-stories, .tried-grid, .fix-sequence, .payoff-grid { grid-template-columns: 1fr; }
