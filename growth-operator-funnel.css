@@ -194,7 +194,7 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .hero-terms { margin: 22px 0 28px; justify-content: center; }
 .vsl-cue { margin: 30px 0 18px; color: var(--pink); font-size: .88rem; font-weight: 700; }
 .hero .video-stage { margin: 0 auto 24px; }
-.hero-guarantee { width: min(100%, 860px); margin: 0 auto 24px; padding: 18px 22px; display: grid; gap: 5px; border: 1px solid rgba(79,124,255,.34); border-radius: 10px; background: rgba(79,124,255,.09); }
+.hero-guarantee { width: min(100%, 860px); margin: 18px auto 24px; padding: 18px 22px; display: grid; gap: 5px; border: 1px solid rgba(79,124,255,.34); border-radius: 10px; background: rgba(79,124,255,.09); }
 .hero-guarantee span { color: var(--pink); font-size: .68rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .hero-guarantee strong { color: #fff; font-family: var(--serif); font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 400; }
 .hero .availability { margin-top: 17px; }
@@ -276,6 +276,7 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .guarantee-band { padding: clamp(52px, 7vw, 88px) clamp(22px, 7vw, 110px); display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: center; background: var(--pink); color: #fff; }
 .guarantee-band .section-kicker { margin-bottom: 14px; color: #fff; }
 .guarantee-band h2 { max-width: 900px; margin: 0; font-size: clamp(2rem, 4vw, 3.8rem); letter-spacing: -.045em; line-height: 1.05; }
+.guarantee-band .hero-highlight { color: #0b1020; }
 .guarantee-band small { margin-top: 18px; display: block; color: rgba(255,255,255,.82); font-size: .82rem; }
 .guarantee-band .button { min-width: 190px; }
 
