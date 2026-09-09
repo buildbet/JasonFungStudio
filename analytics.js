@@ -141,6 +141,50 @@ document.addEventListener('growth_operator_assessment_cta_clicked', (event) => {
   });
 });
 
+document.addEventListener('growth_operator_reservation_cta_clicked', (event) => {
+  sendAnalyticsEvent('reservation_cta_click', {
+    flow_variant: 'growth_operator_funnel',
+    button_text: event.detail?.label || 'See If You Qualify',
+    button_location: event.detail?.location || 'page'
+  });
+});
+
+document.addEventListener('growth_operator_reservation_started', (event) => {
+  sendAnalyticsEvent('reservation_started', {
+    flow_variant: event.detail?.flow_variant || 'growth_operator_funnel',
+    visitor_timezone: event.detail?.timezone || 'not_set'
+  });
+});
+
+document.addEventListener('growth_operator_lead_captured', (event) => {
+  sendAnalyticsEvent('generate_lead', {
+    lead_type: 'growth_operator',
+    flow_variant: event.detail?.flow_variant || 'growth_operator_funnel',
+    campaign_source: event.detail?.campaign_source || 'direct'
+  });
+  sendMetaEvent('Lead', {
+    content_name: 'growth_operator_fit_call'
+  });
+});
+
+document.addEventListener('growth_operator_lead_capture_failed', () => {
+  sendAnalyticsEvent('lead_capture_error', {
+    lead_type: 'growth_operator',
+    flow_variant: 'growth_operator_funnel'
+  });
+});
+
+document.addEventListener('growth_operator_reservation_confirmed', (event) => {
+  sendAnalyticsEvent('appointment_booked', {
+    lead_type: 'growth_operator',
+    flow_variant: 'growth_operator_funnel',
+    visitor_timezone: event.detail?.timezone || 'not_set'
+  });
+  sendMetaEvent('Schedule', {
+    content_name: 'growth_operator_fit_call'
+  });
+});
+
 document.addEventListener('shopify_growth_apply_opened', (event) => {
   sendAnalyticsEvent('quick_apply_open', {
     button_location: event.detail?.location || 'unknown'

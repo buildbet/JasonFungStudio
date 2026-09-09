@@ -2,102 +2,175 @@
   const form = document.querySelector("#reserve-form");
   const scheduler = document.querySelector("#mini-scheduler");
   const status = document.querySelector("#reserve-status");
-  const calendar = document.querySelector("#mini-calendar");
-  const monthLabel = document.querySelector("#calendar-month");
-  const timeGrid = document.querySelector("#time-grid");
-  const timezoneLabel = document.querySelector("#timezone-label");
-  const confirmButton = document.querySelector("#confirm-reservation");
-  if (!form || !scheduler || !calendar || !timeGrid || !confirmButton) return;
+  const submitButton = form?.querySelector("button[type='submit']");
+  const schedulerTimezone = document.querySelector("#scheduler-timezone");
+  const calendarWrap = document.querySelector("#funnel-calendar-wrap");
+  const calendarLoading = document.querySelector("#funnel-calendar-loading");
+  const calEmbed = document.querySelector("#funnel-cal-embed");
+  const campaignAvailability = document.querySelector("#campaign-availability");
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"];
+  let calendarLoaded = false;
+  if (!form || !scheduler || !status || !submitButton || !calEmbed) return;
 
   const dispatch = (name, detail = {}) => document.dispatchEvent(new CustomEvent(name, { detail }));
-  const times = ["9:00 AM", "10:30 AM", "12:00 PM", "1:30 PM", "3:00 PM", "4:30 PM"];
-  let selectedDate = "";
-  let selectedTime = "";
-  let timezone = "America/Los_Angeles";
 
-  const updateConfirm = () => { confirmButton.disabled = !(selectedDate && selectedTime); };
-  const renderTimes = () => {
-    timeGrid.replaceChildren(...times.map((time) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = `time-option${selectedTime === time ? " is-selected" : ""}`;
-      button.textContent = time;
-      button.addEventListener("click", () => { selectedTime = time; renderTimes(); updateConfirm(); });
-      return button;
-    }));
+  if (campaignAvailability) {
+    const expiresAt = new Date(campaignAvailability.dataset.expires).getTime();
+    if (Number.isFinite(expiresAt) && Date.now() > expiresAt) {
+      campaignAvailability.innerHTML = '<i aria-hidden="true"></i> Limited onboarding capacity';
+    }
+  }
+
+  const timeZoneName = new Intl.DateTimeFormat(undefined, {
+    timeZone,
+    timeZoneName: "long"
+  }).formatToParts(new Date()).find(({ type }) => type === "timeZoneName")?.value;
+  if (schedulerTimezone) {
+    schedulerTimezone.textContent = `Showing actual availability in ${timeZoneName || timeZone}. You can change the timezone below.`;
+  }
+
+  const markCalendarLoaded = () => {
+    calendarWrap?.classList.add("is-loaded");
+    calendarWrap?.setAttribute("aria-busy", "false");
+    status.textContent = "";
   };
 
-  const renderCalendar = () => {
-    const today = new Date();
-    monthLabel.textContent = today.toLocaleDateString("en-US", { month: "long", year: "numeric" });
-    const dates = Array.from({ length: 14 }, (_, index) => {
-      const date = new Date(today);
-      date.setDate(today.getDate() + index + 1);
-      return date;
+  const saveLead = async (email) => {
+    const data = new FormData();
+    data.append("access_key", form.dataset.web3formsKey);
+    data.append("subject", "Growth Operator call reservation started");
+    data.append("from_name", "Jason Fung Studio website");
+    data.append("email", email);
+    data.append("timezone", timeZone);
+    data.append("page", window.location.href);
+    data.append("referrer", document.referrer || "direct");
+    const searchParams = new URLSearchParams(window.location.search);
+    campaignKeys.forEach((key) => {
+      const value = searchParams.get(key);
+      if (value) data.append(key, value);
     });
-    calendar.replaceChildren(...dates.map((date, index) => {
-      const value = date.toISOString().slice(0, 10);
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = `date-option${selectedDate === value ? " is-selected" : ""}`;
-      button.disabled = index >= 7;
-      button.setAttribute("aria-label", date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }));
-      button.innerHTML = `<small>${date.toLocaleDateString("en-US", { weekday: "short" })}</small><strong>${date.getDate()}</strong>`;
-      button.addEventListener("click", () => { selectedDate = value; renderCalendar(); updateConfirm(); });
-      return button;
-    }));
+
+    const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
+    const result = await response.json();
+    if (!response.ok || !result.success) throw new Error(result.message || "Lead capture failed.");
+    dispatch("growth_operator_lead_captured", {
+      flow_variant: "growth_operator_funnel",
+      timezone: timeZone,
+      campaign_source: searchParams.get("utm_source") || "direct"
+    });
+  };
+
+  const loadCalendar = (email) => {
+    if (calendarLoaded) return;
+    calendarLoaded = true;
+
+    const observer = new MutationObserver(() => {
+      const frame = calEmbed.querySelector("iframe");
+      if (!frame) return;
+      frame.addEventListener("load", markCalendarLoaded, { once: true });
+      window.setTimeout(markCalendarLoaded, 2500);
+      observer.disconnect();
+    });
+    observer.observe(calEmbed, { childList: true, subtree: true });
+
+    ((C, A, L) => {
+      const p = (a, ar) => a.q.push(ar);
+      const d = C.document;
+      C.Cal = C.Cal || function () {
+        const cal = C.Cal;
+        const ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          const script = d.createElement("script");
+          script.src = A;
+          script.async = true;
+          script.onerror = () => {
+            calendarWrap?.setAttribute("aria-busy", "false");
+            if (calendarLoading) calendarLoading.textContent = "Calendar could not load. Use the direct link below.";
+            status.textContent = "The calendar could not load here. Please use the direct booking link below.";
+          };
+          d.head.appendChild(script);
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal("init", { origin: "https://app.cal.com" });
+    Cal("inline", {
+      elementOrSelector: "#funnel-cal-embed",
+      calLink: calEmbed.dataset.calLink,
+      config: {
+        layout: "week_view",
+        useSlotsViewOnSmallScreen: "true",
+        theme: "dark",
+        email
+      }
+    });
+    Cal("ui", {
+      hideEventTypeDetails: false,
+      layout: "week_view",
+      useSlotsViewOnSmallScreen: true
+    });
+    Cal("on", {
+      action: "bookingSuccessfulV2",
+      callback: () => {
+        dispatch("growth_operator_reservation_confirmed", { timezone: timeZone });
+        window.location.assign("growth-operator-confirmed.html");
+      }
+    });
   };
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const email = form.elements.email;
     status.textContent = "";
+    if (form.elements.botcheck?.checked) return;
     if (!email.checkValidity()) {
       status.textContent = "Enter a valid email address to see available times.";
       email.focus();
       return;
     }
-    scheduler.hidden = false;
-    form.querySelector("button").textContent = "Reserved ✓";
-    form.querySelector("button").disabled = true;
-    email.readOnly = true;
-    renderCalendar();
-    renderTimes();
-    scheduler.scrollIntoView({ behavior: "smooth", block: "center" });
-    dispatch("growth_operator_reservation_started", { flow_variant: "growth_operator_funnel" });
-  });
 
-  document.querySelectorAll("[data-timezone]").forEach((button) => {
-    button.addEventListener("click", () => {
-      timezone = button.dataset.timezone;
-      timezoneLabel.textContent = button.textContent;
-      document.querySelectorAll("[data-timezone]").forEach((item) => item.classList.toggle("is-active", item === button));
+    scheduler.hidden = false;
+    submitButton.textContent = "Times ready ✓";
+    submitButton.disabled = true;
+    email.readOnly = true;
+    status.textContent = "Loading actual availability…";
+    loadCalendar(email.value.trim());
+    scheduler.focus({ preventScroll: true });
+    scheduler.scrollIntoView({ behavior: "smooth", block: "center" });
+    dispatch("growth_operator_reservation_started", {
+      flow_variant: "growth_operator_funnel",
+      timezone: timeZone
+    });
+    saveLead(email.value.trim()).catch(() => {
+      dispatch("growth_operator_lead_capture_failed", {
+        flow_variant: "growth_operator_funnel"
+      });
     });
   });
 
-  confirmButton.addEventListener("click", async () => {
-    confirmButton.disabled = true;
-    confirmButton.textContent = "Confirming…";
-    const data = new FormData();
-    data.append("access_key", form.dataset.web3formsKey);
-    data.append("subject", "Growth Operator call reservation");
-    data.append("from_name", "Jason Fung Studio website");
-    data.append("email", form.elements.email.value.trim());
-    data.append("date", selectedDate);
-    data.append("time", selectedTime);
-    data.append("timezone", timezone);
-    data.append("page", window.location.href);
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
-      const result = await response.json();
-      if (!response.ok || !result.success) throw new Error("Could not confirm your reservation.");
-      dispatch("growth_operator_reservation_confirmed", { date: selectedDate, time: selectedTime, timezone });
-      window.location.assign("growth-operator-confirmed.html");
-    } catch (error) {
-      status.textContent = `${error.message} Please try again.`;
-      confirmButton.disabled = false;
-      confirmButton.textContent = "Confirm reservation";
-    }
+  document.querySelectorAll('a[href="#reserve-form"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      dispatch("growth_operator_reservation_cta_clicked", {
+        label: link.textContent.trim().replace(/\s+/g, " "),
+        location: link.closest("section")?.className || "page"
+      });
+    });
   });
 
   document.querySelectorAll(".faq details").forEach((detail) => {
