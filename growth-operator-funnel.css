@@ -18,6 +18,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { overflow-x: hidden; }
 body, button, input, textarea { font-family: var(--sans); }
 em { font-family: inherit; font-style: normal; }
 img { max-width: 100%; }
@@ -229,31 +230,43 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .hero-brand img { width: 34px; height: 34px; object-fit: contain; }
 .hero h1 { max-width: 1120px; font-size: clamp(2.8rem, 5.5vw, 5.25rem); line-height: 1; }
 .hero-lede { max-width: 850px; }
+.button { font-size: .9rem; }
+.eyebrow, .section-kicker { font-size: .75rem; }
+.step-help { font-size: .875rem; }
 .choice-grid span { font-size: .9rem; }
 .contact-fields label > span { font-size: .86rem; }
+.proof-ribbon span, .site-footer nav a, .site-footer > span { font-size: .75rem; }
 
 .trust-intro { padding-top: clamp(78px, 9vw, 120px); padding-bottom: clamp(78px, 9vw, 120px); text-align: center; }
 .trust-intro h2 { max-width: 980px; margin: 0 auto; font-size: clamp(2.5rem, 5vw, 4.8rem); letter-spacing: -.055em; line-height: 1; }
-.trust-stories { max-width: 1100px; margin: 52px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; text-align: left; }
+.trust-stories { max-width: 1100px; margin: 52px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
 .trust-stories article { padding: clamp(25px, 4vw, 38px); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; background: rgba(255,255,255,.04); }
 .trust-stories strong { color: var(--pink); font-size: 1rem; }
 .trust-stories p { margin: 14px 0 0; color: #c2cede; font-size: 1rem; line-height: 1.7; }
+.trust-stories article > p:first-child { margin-top: 0; }
 
 .section-kicker > span { margin-right: 10px; color: inherit; font-size: 1.25rem; }
 .section-lede { max-width: 780px; margin: 24px auto 0; color: #adbad0; font-size: 1.05rem; line-height: 1.7; }
+.problem-grid--story { align-items: start; }
+.founder-story { display: grid; gap: 0; }
+.founder-story p { margin: 0; padding: 18px 6px; border-bottom: 1px solid var(--line); font-size: 1rem; font-weight: 600; line-height: 1.55; }
+.tried-grid { margin-top: 54px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tried-grid p { margin: 0; padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: #f8fafc; font-size: 1rem; line-height: 1.65; }
 .cta-band--dark { background: #11111a; }
 .fix-sequence { max-width: 1050px; margin: 52px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: left; }
 .fix-sequence article { padding: 28px; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; background: rgba(255,255,255,.045); }
 .fix-sequence span { color: var(--pink); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .fix-sequence p { margin: 14px 0 0; color: #d5deeb; line-height: 1.6; }
+.fix-sequence article > p:first-child { margin-top: 0; }
 
-.scope-grid { grid-template-columns: repeat(2, 1fr); }
+.scope-grid { grid-template-columns: repeat(3, 1fr); }
 .scope-grid article { min-height: 250px; }
 .scope-grid article:last-child { grid-column: auto; }
+.scope-grid article p { margin-top: 42px; color: var(--ink); font-size: 1.05rem; font-weight: 600; line-height: 1.55; }
 
 .payoff { background: #eaf0f7; text-align: center; }
 .payoff h2 { max-width: 1050px; margin: 0 auto; }
-.payoff-grid { margin-top: 58px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; text-align: left; }
+.payoff-grid { margin-top: 58px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
 .payoff-grid article { padding: clamp(26px, 4vw, 40px); border: 1px solid #cbd5e2; border-radius: 14px; background: #fff; }
 .payoff-grid span { color: var(--pink); font-size: .72rem; font-weight: 800; }
 .payoff-grid h3 { margin: 34px 0 12px; font-size: 1.4rem; }
@@ -267,9 +280,16 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 
 @media (max-width: 720px) {
   .hero-brand { margin-bottom: 20px; }
-  .hero h1 { font-size: clamp(2.45rem, 11.5vw, 4rem); }
-  .trust-stories, .fix-sequence, .payoff-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 3.45rem); line-height: 1.02; letter-spacing: -.05em; }
+  .hero .eyebrow { max-width: 100%; font-size: .75rem; line-height: 1.45; }
+  .vsl h2, .section h2, .assessment-section h2, .handoff h2, .final-cta h2, .trust-intro h2 { font-size: clamp(2rem, 9vw, 3rem); line-height: 1.05; }
+  .trust-stories, .tried-grid, .fix-sequence, .payoff-grid { grid-template-columns: 1fr; }
   .guarantee-band { grid-template-columns: 1fr; gap: 28px; text-align: center; }
   .guarantee-band .button { width: 100%; }
   .scope-grid { grid-template-columns: 1fr; }
+  .trust-stories, .tried-grid, .fix-sequence, .payoff-grid, .scope-grid { margin-top: 36px; }
+  .trust-stories article, .tried-grid p, .fix-sequence article, .payoff-grid article { padding: 22px; }
+  .scope-grid article { min-height: 0; padding: 24px; }
+  .scope-grid article p { margin-top: 24px; }
+  .site-footer nav { flex-wrap: wrap; gap: 14px 18px; }
 }
