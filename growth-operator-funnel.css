@@ -229,6 +229,7 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .hero-brand { width: fit-content; margin: 0 auto 26px; display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: .9rem; font-weight: 700; }
 .hero-brand img { width: 34px; height: 34px; object-fit: contain; }
 .hero h1 { max-width: 1120px; font-size: clamp(2.8rem, 5.5vw, 5.25rem); line-height: 1; }
+.hero-highlight { color: #78a7ff; }
 .hero-lede { max-width: 850px; }
 .button { font-size: .9rem; }
 .eyebrow, .section-kicker { font-size: .75rem; }
