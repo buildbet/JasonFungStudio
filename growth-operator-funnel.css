@@ -198,6 +198,8 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .hero-guarantee strong { color: #fff; font-family: var(--serif); font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 400; }
 .hero-guarantee .hero-highlight { color: #78a7ff; font-size: inherit; font-weight: inherit; letter-spacing: inherit; text-transform: none; }
 .hero-guarantee small { color: #91a1bb; font-size: .72rem; line-height: 1.5; }
+.hero-inclusions { margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 24px; list-style: none; color: #c9d6ea; font-size: .86rem; font-weight: 600; }
+.hero-inclusions li::before { content: "+"; margin-right: 7px; color: #78a7ff; font-weight: 800; }
 .hero .availability { margin: 17px auto 24px; }
 .reserve-form { width: min(100%, 610px); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 10px; }
 .reserve-form input { min-width: 0; padding: 15px 18px; border: 1px solid #3b3b47; border-radius: 7px; background: #171721; color: #fff; font: inherit; font-size: 1rem; outline: none; }
