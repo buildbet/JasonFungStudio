@@ -11,6 +11,7 @@
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
   const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"];
   let calendarLoaded = false;
+  let calendarReady = false;
   if (!form || !scheduler || !status || !submitButton || !calEmbed) return;
 
   const dispatch = (name, detail = {}) => document.dispatchEvent(new CustomEvent(name, { detail }));
@@ -31,6 +32,7 @@
   }
 
   const markCalendarLoaded = () => {
+    calendarReady = true;
     calendarWrap?.classList.add("is-loaded");
     calendarWrap?.setAttribute("aria-busy", "false");
     status.textContent = "";
@@ -61,7 +63,7 @@
     });
   };
 
-  const loadCalendar = (email) => {
+  const loadCalendar = (email = "") => {
     if (calendarLoaded) return;
     calendarLoaded = true;
 
@@ -117,7 +119,7 @@
         layout: "week_view",
         useSlotsViewOnSmallScreen: "true",
         theme: "dark",
-        email
+        ...(email ? { email } : {})
       }
     });
     Cal("ui", {
@@ -149,7 +151,7 @@
     submitButton.textContent = "Times ready ✓";
     submitButton.disabled = true;
     email.readOnly = true;
-    status.textContent = "Loading actual availability…";
+    status.textContent = calendarReady ? "" : "Loading actual availability…";
     loadCalendar(email.value.trim());
     scheduler.focus({ preventScroll: true });
     scheduler.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -163,6 +165,13 @@
       });
     });
   });
+
+  const preloadCalendar = () => loadCalendar();
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(preloadCalendar, { timeout: 1500 });
+  } else {
+    window.addEventListener("load", preloadCalendar, { once: true });
+  }
 
   document.querySelectorAll('a[href="#reserve-form"]').forEach((link) => {
     link.addEventListener("click", () => {
