@@ -38,12 +38,13 @@
     status.textContent = "";
   };
 
-  const saveLead = async (email) => {
+  const saveLead = async (email, phone) => {
     const data = new FormData();
     data.append("access_key", form.dataset.web3formsKey);
     data.append("subject", "Growth Operator call reservation started");
     data.append("from_name", "Jason Fung Studio website");
     data.append("email", email);
+    data.append("phone", phone);
     data.append("timezone", timeZone);
     data.append("page", window.location.href);
     data.append("referrer", document.referrer || "direct");
@@ -139,6 +140,7 @@
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const email = form.elements.email;
+    const phone = form.elements.phone;
     status.textContent = "";
     if (form.elements.botcheck?.checked) return;
     if (!email.checkValidity()) {
@@ -146,11 +148,17 @@
       email.focus();
       return;
     }
+    if (!phone.checkValidity()) {
+      status.textContent = "Enter your phone number to continue.";
+      phone.focus();
+      return;
+    }
 
     scheduler.hidden = false;
     submitButton.textContent = "Times ready ✓";
     submitButton.disabled = true;
     email.readOnly = true;
+    phone.readOnly = true;
     status.textContent = calendarReady ? "" : "Loading actual availability…";
     loadCalendar(email.value.trim());
     scheduler.focus({ preventScroll: true });
@@ -159,7 +167,7 @@
       flow_variant: "growth_operator_funnel",
       timezone: timeZone
     });
-    saveLead(email.value.trim()).catch(() => {
+    saveLead(email.value.trim(), phone.value.trim()).catch(() => {
       dispatch("growth_operator_lead_capture_failed", {
         flow_variant: "growth_operator_funnel"
       });
