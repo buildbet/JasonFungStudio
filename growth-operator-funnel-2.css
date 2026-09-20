@@ -6,7 +6,8 @@
 .f2-profile-header, .f2-section, .f2-final { padding: 42px 0; border: 0; border-bottom: 1px solid var(--f2-line); border-radius: 0; background: transparent; }
 .f2-profile-header { padding-top: 48px; }
 .f2-profile-header h2 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.8rem); letter-spacing: -.045em; line-height: 1.08; }
-.f2-provider { margin: 18px 0 0; font-size: 1.08rem; font-weight: 700; }
+.f2-provider { margin: 18px 0 0; display: flex; align-items: center; gap: 10px; font-size: 1.08rem; font-weight: 700; }
+.f2-provider img { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 8px; object-fit: cover; }
 .f2-location { margin: 5px 0 0; color: var(--f2-muted); font-size: 1rem; }
 .f2-section h2, .f2-final h2 { margin: 0; color: var(--f2-text); font-size: clamp(1.45rem, 4vw, 1.9rem); letter-spacing: -.03em; line-height: 1.2; }
 .f2-section h3 { margin: 28px 0 8px; font-size: 1.04rem; }
