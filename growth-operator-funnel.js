@@ -7,7 +7,7 @@
   const calendarWrap = document.querySelector("#funnel-calendar-wrap");
   const calendarLoading = document.querySelector("#funnel-calendar-loading");
   const calEmbed = document.querySelector("#funnel-cal-embed");
-  const campaignAvailability = document.querySelector("#campaign-availability");
+  const campaignAvailability = document.querySelectorAll("[data-campaign-availability]");
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
   const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"];
   let calendarLoaded = false;
@@ -16,12 +16,13 @@
 
   const dispatch = (name, detail = {}) => document.dispatchEvent(new CustomEvent(name, { detail }));
 
-  if (campaignAvailability) {
-    const expiresAt = new Date(campaignAvailability.dataset.expires).getTime();
+  campaignAvailability.forEach((notice) => {
+    const expiresAt = new Date(notice.dataset.expires).getTime();
     if (Number.isFinite(expiresAt) && Date.now() > expiresAt) {
-      campaignAvailability.innerHTML = '<i aria-hidden="true"></i> Limited onboarding capacity';
+      const statusClass = notice.classList.contains("cta-urgency") ? "cta-urgency__spots" : "hero-urgency__spots";
+      notice.innerHTML = `<span class="${statusClass}">Limited onboarding capacity</span>`;
     }
-  }
+  });
 
   const timeZoneName = new Intl.DateTimeFormat(undefined, {
     timeZone,
@@ -190,7 +191,7 @@
     });
   });
 
-  document.querySelectorAll(".faq details").forEach((detail) => {
+  document.querySelectorAll(".faq details, .f2-faq details").forEach((detail) => {
     detail.addEventListener("toggle", () => {
       const marker = detail.querySelector("summary span");
       if (marker) marker.textContent = detail.open ? "−" : "+";

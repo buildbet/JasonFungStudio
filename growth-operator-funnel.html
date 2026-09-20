@@ -3,20 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fffdf8" />
-    <meta name="description" content="See how brand owners remove themselves from day-to-day marketing and build a brand that keeps moving without them." />
-    <title>Remove Yourself From Day-To-Day Marketing | Jason Fung Studio</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="A clear overview of Growth Operator support for existing brand owners." />
+    <title>Growth Operator Services | Jason Fung Studio</title>
     <link rel="icon" href="assets/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://app.cal.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=DM+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="growth-operator-funnel.css" />
+    <link rel="stylesheet" href="growth-operator-funnel-2.css" />
     <script src="analytics.js" defer></script>
     <script src="growth-operator-funnel.js" defer></script>
   </head>
-  <body>
+  <body class="funnel-two">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <main id="main">
@@ -25,7 +26,7 @@
         <div class="hero-inner">
           <p class="eyebrow">For Existing Brand Owners Only</p>
           <div class="hero-guarantee">
-            <span class="hero-guarantee__deadline">Apply before Sept 30</span>
+            <span class="hero-urgency" id="campaign-availability" data-campaign-availability data-expires="2026-09-30T23:59:59-04:00"><span class="hero-urgency__deadline">Apply by Sept 30</span><span class="hero-urgency__spots">2 spots left</span></span>
             <h1>Marketing off your plate in 7 days. <span class="hero-highlight">Guaranteed.</span></h1>
           </div>
           <p class="hero-secondary">How Brand Owners Remove Themselves From <span class="hero-highlight">Day-To-Day Marketing</span> And Build A Brand That Keeps Moving <span class="hero-highlight">Without Them</span></p>
@@ -40,14 +41,14 @@
               <li>Static creative production</li>
             </ul>
           </div>
-          <p class="availability" id="campaign-availability" data-expires="2026-09-30T23:59:59-04:00"><i aria-hidden="true"></i> 2 spots left</p>
           <form class="reserve-form" id="reserve-form" data-web3forms-key="1795d87a-1dd7-42b5-85c4-36cad41e0c05" novalidate>
             <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" aria-hidden="true" />
             <label class="sr-only" for="reserve-email">Email</label>
             <input id="reserve-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Email" required />
             <label class="sr-only" for="reserve-phone">Phone number</label>
             <input id="reserve-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Phone number" required />
-            <button class="button button-primary" type="submit">Claim Your Spot <span aria-hidden="true">→</span></button>
+            <button class="button button-primary" type="submit">Reserve Your Spot <span aria-hidden="true">→</span></button>
+            <p class="cta-urgency" data-campaign-availability data-expires="2026-09-30T23:59:59-04:00"><span class="cta-urgency__spots">2 spots left</span><span aria-hidden="true">·</span><span>Apply by Sept 30</span></p>
           </form>
           <div class="hero-proof" aria-label="Five stars and more than 50 brands supported"><span aria-hidden="true">★★★★★</span><strong>50+ brands supported</strong></div>
           <p class="reserve-note">The soonest openings will appear in your local time. Your details are used only to arrange this call. <a href="privacy.html">Privacy</a></p>
@@ -60,172 +61,144 @@
         </div>
       </section>
 
-      <section class="trust-intro section-dark" aria-label="Client results overview">
-        <p class="eyebrow">Real Brand Owners. Real Execution.</p>
-        <div class="funnel-brand-marquee" role="group" aria-label="Business names rotation">
-          <div class="funnel-brand-marquee__row"><div class="funnel-brand-marquee__track"><span class="brand-style--serif">Amoire</span><span class="brand-style--script">Amourlyah Beauty</span><span class="brand-style--wide">ATB Luxury Curls</span><span class="brand-style--italic">Beauty by Camille</span><span class="brand-style--sans">Blixed</span><span class="brand-style--serif" aria-hidden="true">Amoire</span><span class="brand-style--script" aria-hidden="true">Amourlyah Beauty</span><span class="brand-style--wide" aria-hidden="true">ATB Luxury Curls</span><span class="brand-style--italic" aria-hidden="true">Beauty by Camille</span><span class="brand-style--sans" aria-hidden="true">Blixed</span></div></div>
-          <div class="funnel-brand-marquee__row funnel-brand-marquee__row--reverse"><div class="funnel-brand-marquee__track"><span class="brand-style--serif">Don Lucci</span><span class="brand-style--wide">Fitted Dscpls</span><span class="brand-style--quiet">Glayse Skin</span><span class="brand-style--script">Glowani</span><span class="brand-style--italic">Simple Stitch</span><span class="brand-style--serif" aria-hidden="true">Don Lucci</span><span class="brand-style--wide" aria-hidden="true">Fitted Dscpls</span><span class="brand-style--quiet" aria-hidden="true">Glayse Skin</span><span class="brand-style--script" aria-hidden="true">Glowani</span><span class="brand-style--italic" aria-hidden="true">Simple Stitch</span></div></div>
-        </div>
-      </section>
+      <div class="f2-page">
+        <header class="f2-profile-header">
+          <h2>Your External Marketing Team</h2>
+          <p class="f2-provider">Jason Fung Studio</p>
+          <p class="f2-location">Remote</p>
+        </header>
 
-      <section class="copy-section section section-light" aria-labelledby="problem-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">01</span></p>
-        <div class="copy-block">
-          <h2 id="problem-title">The problem.</h2>
-          <p class="section-lead section-lead--plain">You stuck at managing daily executions, instead of actually growing the business.</p>
-          <p class="scan-label">You tried:</p>
-          <ul class="scan-list scan-list--dots scan-list--plain">
+        <section class="f2-section f2-service-details" aria-labelledby="services-title">
+          <h2 id="services-title">Service details</h2>
+          <div class="f2-detail-list">
+            <div class="f2-detail-row"><h3><span aria-hidden="true">$</span> Pricing</h3><div class="f2-pills"><span class="f2-pill f2-pill--price">$3,000/month</span></div></div>
+            <div class="f2-detail-row"><h3><span aria-hidden="true">⌖</span> Location</h3><div class="f2-pills"><span class="f2-pill">Remote</span></div></div>
+            <div class="f2-detail-row"><h3><span aria-hidden="true">◷</span> Hours</h3><div class="f2-pills"><span class="f2-pill">Flexible</span><span class="f2-pill">Ongoing support</span></div></div>
+            <div class="f2-detail-row">
+              <h3><span aria-hidden="true">✦</span> Specialists</h3>
+              <div class="f2-pills f2-pills--services"><span class="f2-pill">Shopify</span><span class="f2-pill">Email &amp; SMS</span><span class="f2-pill">Paid advertising</span><span class="f2-pill">Campaigns &amp; offers</span><span class="f2-pill">Creative production <small>30-day free bonus</small></span><span class="f2-pill">Social media <small>30-day free bonus</small></span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="f2-section f2-description-intro" aria-labelledby="description-title">
+          <h2 id="description-title">Full service description</h2>
+          <p>Jason Fung Studio acts as your external marketing execution team—coordinating specialists and handling the recurring work required to keep your marketing moving.</p>
+        </section>
+
+        <section class="f2-section" aria-labelledby="problem-two-title">
+          <h2 id="problem-two-title">The problem</h2>
+          <p>You are stuck managing daily executions, <strong>instead of actually growing the business.</strong></p>
+          <p>You tried:</p>
+          <ul>
             <li>Handling everything yourself</li>
             <li>Hiring freelancers</li>
             <li>Working with agencies</li>
           </ul>
-          <p class="section-takeaway"><strong>On paper, you own the brand. In reality, marketing can't run for a week without you.</strong></p>
-        </div>
-      </section>
+          <p class="f2-callout"><strong>On paper, you own the brand. In reality, marketing can’t run for a week without you.</strong></p>
+        </section>
 
-      <section class="copy-section section section-dark" aria-labelledby="why-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">02</span></p>
-        <div class="copy-block copy-block--portrait">
-          <h2 id="why-title">Who am I and Why?</h2>
-          <figure><img src="assets/jason-event-portrait.jpg" alt="Jason Fung at a marketing industry event" loading="lazy" decoding="async" /></figure>
-          <div class="copy-block__body">
-            <p class="section-lead">My name is Jason. I started my own ecommerce journey 6 years ago.</p>
-            <ul class="scan-list scan-list--facts">
-              <li><strong>50+ brands</strong> supported</li>
-              <li>Businesses from <strong>5–7 figures</strong></li>
-              <li><strong>$100K+</strong> in ad spend</li>
-            </ul>
-            <p>Most business owners are not stuck because they don't know what to do. They are chained to day-to-day operations instead of doing what they do best.</p>
-            <p class="section-takeaway"><strong>Building the business to the next level—setting its direction, building connections, and experimenting with the next transformative product.</strong></p>
+        <section class="f2-section" aria-labelledby="role-title">
+          <h2 id="role-title">What I take off your plate</h2>
+          <p>I coordinate the specialists, priorities, approvals, and follow-through required to keep marketing execution moving.</p>
+          <ul>
+            <li>Turn your direction into clear tasks and deadlines</li>
+            <li>Coordinate the people working across each channel</li>
+            <li>Keep campaigns and recurring work moving forward</li>
+            <li>Reduce the questions and approvals coming back to you</li>
+            <li>Give you one reliable point of accountability</li>
+          </ul>
+          <p class="f2-callout"><strong>You set the direction. We handle the work.</strong></p>
+        </section>
+
+        <section class="f2-section" aria-labelledby="experience-title">
+          <h2 id="experience-title">About Jason</h2>
+          <div class="f2-about">
+            <img src="assets/jason-event-portrait.jpg" alt="Jason Fung at a marketing industry event" loading="lazy" decoding="async" />
+            <div class="f2-about-intro">
+              <p>I started my ecommerce journey 6 years ago. Since then, we have supported ecommerce and physical-store brands across different stages of growth.</p>
+            </div>
+            <div class="f2-about-body">
+              <ul>
+                <li><strong>50+ brands</strong> supported</li>
+                <li>Experience with <strong>5–7 figure businesses</strong></li>
+                <li><strong>$100K+</strong> in ad spend</li>
+              </ul>
+              <p>Most owners are not stuck because they do not know what to do. They are chained to daily operations instead of focusing on what only they can do: <strong>set the direction, build relationships, and find the next growth opportunity.</strong></p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="copy-section section section-light" aria-labelledby="in-house-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">03</span></p>
-        <div class="copy-block">
-          <h2 id="in-house-title">Why not hire someone in-house?</h2>
-          <p class="section-lead">Building an internal team costs more than salary alone.</p>
-          <ul class="scan-list scan-list--dots scan-list--plain">
-            <li>One generalist: around <strong>$70K/year</strong></li>
-            <li>Multiple specialists: around <strong>$210K/year</strong></li>
-            <li>Training, managing, and coordination</li>
-            <li>Hiring is difficult—and firing is a hassle</li>
+        <section class="f2-section" aria-labelledby="why-two-title">
+          <h2 id="why-two-title">Why this model</h2>
+          <h3>Instead of building an in-house team</h3>
+          <ul>
+            <li>One generalist can cost around <strong>$70K/year</strong></li>
+            <li>Multiple specialists can cost around <strong>$210K/year</strong></li>
+            <li>You still carry the hiring, training, management, and coordination</li>
           </ul>
-          <p class="section-takeaway"><strong>An in-house team can make the business rigid when you need to experiment and move fast.</strong></p>
-        </div>
-      </section>
-
-      <section class="copy-section section section-dark" aria-labelledby="agencies-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">04</span></p>
-        <div class="copy-block">
-          <h2 id="agencies-title">Why not other agencies?</h2>
-          <p class="section-lead">Too many agencies sell promises instead of dependable execution.</p>
-          <ul class="scan-list scan-list--dots">
-            <li>Insane revenue claims within a set number of days</li>
-            <li>Overpriced contracts and sneaky terms</li>
-            <li>Advice without the hands-on work to move it forward</li>
+          <h3>Instead of relying on a traditional agency</h3>
+          <ul>
+            <li>No unrealistic revenue or ROAS promises</li>
+            <li>No overpriced long-term contract</li>
+            <li>No advice that leaves all the execution with you</li>
           </ul>
-          <p class="section-takeaway"><strong>The right outside experts can guide you. You still need time—and a reliable team—to put that guidance into action.</strong></p>
-        </div>
-      </section>
+          <p class="f2-callout"><strong>Access multiple specialists without managing an expensive internal team.</strong></p>
+        </section>
 
-      <section class="copy-section section section-light" aria-labelledby="best-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">05</span></p>
-        <div class="copy-block">
-          <h2 id="best-title">Why not the best of both worlds?</h2>
-          <p class="section-lead">Get the capabilities of a specialist team without building one in-house.</p>
-          <ul class="scan-list">
-            <li>Access to multiple specialists</li>
-            <li>One person coordinating the work</li>
-            <li>No internal hiring or team-management burden</li>
-          </ul>
-          <p class="section-takeaway"><strong>You get the support you need at the right price—without an overpriced agency or expensive internal team.</strong></p>
-        </div>
-      </section>
-
-      <section class="copy-section section section-dark" aria-labelledby="help-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">06</span></p>
-        <div class="copy-block">
-          <h2 id="help-title">What I help you with</h2>
-          <p class="section-lead">I coordinate the specialists and keep execution moving across:</p>
-          <ul class="scan-list scan-list--services">
-            <li>Shopify and ecommerce management</li>
-            <li>Ads and campaigns</li>
-            <li>Email and SMS</li>
-            <li>Creative and social media</li>
-          </ul>
-          <p class="section-takeaway"><strong>You set the direction, and we handle the work.</strong></p>
-        </div>
-      </section>
-
-      <section class="copy-section section section-light" aria-labelledby="risks-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">07</span></p>
-        <div class="copy-block">
-          <h2 id="risks-title">So, what's the risk?</h2>
-          <p class="section-lead">Start small and keep control.</p>
-          <ul class="scan-list scan-list--plain scan-list--plain-checks">
+        <section class="f2-section" aria-labelledby="terms-title">
+          <h2 id="terms-title">Low-risk way to start</h2>
+          <ul class="f2-checks">
             <li>All data, assets, and files stay yours</li>
-            <li>Move in-house whenever you are ready</li>
+            <li>Move the work in-house whenever you are ready</li>
             <li>No long-term contract</li>
             <li>Cancel at any time</li>
           </ul>
-          <p class="section-takeaway"><strong>$300 first-week trial—credited toward your first month if you continue.</strong></p>
-        </div>
-      </section>
+          <p class="f2-callout"><strong>$300 first-week trial—credited toward your first month if you continue.</strong></p>
+        </section>
 
-      <section class="copy-section section section-dark" aria-labelledby="philosophy-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">08</span></p>
-        <div class="copy-block">
-          <h2 id="philosophy-title">My philosophy</h2>
-          <p class="section-lead">Business should be built on actual value and trust.</p>
-          <ul class="scan-list scan-list--dots">
-            <li>No overpromising or sneaky tactics</li>
-            <li>Careful work backed by skill and experience</li>
-            <li>Long-term relationships, not disposable clients</li>
-          </ul>
-          <p class="section-takeaway"><strong>Let’s get to know each other and see how I can help you.</strong></p>
-          <div class="philosophy-actions">
-            <a class="button button-primary" href="#reserve-form">Book a Call <span aria-hidden="true">→</span></a>
-            <details class="message-menu">
-              <summary class="button button-ghost">Message Jason <span aria-hidden="true">+</span></summary>
-              <div class="message-options">
-                <a href="mailto:jasonfungstudio@gmail.com?subject=Growth%20Operator%20question"><strong>Email Jason <span aria-hidden="true">→</span></strong><small>jasonfungstudio@gmail.com</small></a>
-                <a href="https://www.instagram.com/direct/t/18164380366399175/" target="_blank" rel="noopener"><strong>Instagram DM <span aria-hidden="true">→</span></strong><small>Best for a quick question</small></a>
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
+        <section class="f2-section" aria-labelledby="steps-two-title">
+          <h2 id="steps-two-title">How to get started</h2>
+          <ol class="f2-steps">
+            <li><span>1</span><div><strong>Reserve your spot</strong><p>Submit your details.</p></div></li>
+            <li><span>2</span><div><strong>Book your fit call</strong><p>We review your brand and priorities.</p></div></li>
+            <li><span>3</span><div><strong>Start the handoff</strong><p>If it’s a fit, we begin taking day-to-day execution off your plate.</p></div></li>
+          </ol>
+        </section>
 
-      <section class="proof section-dark" aria-labelledby="testimonials-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">09</span></p>
-        <h2 id="testimonials-title">Testimonials</h2>
-        <div class="testimonials"><blockquote class="testimonial-featured"><p>“Jason took the time to understand the business, implemented improvements instead of just giving generic advice, and helped make the marketing side easier to manage by keeping the work moving.”</p><footer>Joshua</footer></blockquote><blockquote><p>“Jason became a hands-on ecommerce partner who could manage the Shopify side, explain what would help the brand and give the founder one reliable person to work with.”</p><footer><img src="assets/amourlyah-beauty-logo.png" alt="" width="38" height="38" loading="lazy" decoding="async" /> Amourlyah Beauty</footer></blockquote><blockquote><p>“Jason reviewed the store, found specific improvements and gave actionable recommendations the team could immediately use.”</p><footer><img src="assets/momoji-pets-logo.webp" alt="" width="38" height="38" loading="lazy" decoding="async" /> Momoji CA</footer></blockquote></div>
-      </section>
+        <section class="f2-section" aria-labelledby="proof-two-title">
+          <h2 id="proof-two-title">What brand owners say</h2>
+          <blockquote>“He is easy to talk to and he can handle all your shop and can explain everything that will be good for your brand. He will make sure to take your brand to the next level 🔥 like he did to me.”<cite><img src="assets/amourlyah-beauty-logo.png" alt="" width="30" height="30" loading="lazy" decoding="async" /><span>Elisa — Amourlyah Beauty</span></cite></blockquote>
+          <blockquote>“Jason did an amazing job reviewing our website. He was super active in giving us valuable insights and actionable recommendations for editing our theme. Love his proactive attitude and helpful ideas—would definitely work with him again!”<cite><img src="assets/momoji-pets-logo.webp" alt="" width="30" height="30" loading="lazy" decoding="async" /><span>Momoji CA</span></cite></blockquote>
+        </section>
 
-      <section class="portfolio section section-light" aria-labelledby="portfolio-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">10</span></p>
-        <h2 id="portfolio-title">Selected work</h2>
-        <div class="portfolio-grid"><article><img src="assets/funnel-shopify.webp" alt="Mobile Shopify storefront with campaign promotion" loading="lazy" decoding="async" width="900" height="2223" /><div><h3>Shopify Store Experience</h3><p>Store / Mobile Ecommerce</p></div></article><article><img src="assets/funnel-campaign.webp" alt="Free soap bar promotional campaign creative" loading="lazy" decoding="async" width="900" height="1125" /><div><h3>Campaigns &amp; Offers</h3><p>Campaign / Offer Creative</p></div></article><article><img src="assets/funnel-creative.webp" alt="Beauty product campaign creative" loading="lazy" decoding="async" width="900" height="1599" /><div><h3>Creative Production</h3><p>Product / Campaign Visuals</p></div></article><article><img src="assets/funnel-pandaii.webp" alt="PANDA-II fashion brand visual" loading="lazy" decoding="async" width="900" height="1350" /><div><h3>PANDA-II</h3><p>Founder Brand / Ecommerce</p></div></article></div>
-      </section>
+        <section class="f2-section f2-faq" aria-labelledby="faq-two-title">
+          <h2 id="faq-two-title">Frequently asked questions</h2>
+          <details><summary>What exactly is a Growth Operator?<span>+</span></summary><p>One accountable point of ownership for day-to-day marketing coordination and execution across your channels, specialists, and priorities.</p></details>
+          <details><summary>Do you replace my existing team?<span>+</span></summary><p>Not necessarily. I can coordinate the people you already have and fill the execution gaps around them.</p></details>
+          <details><summary>Do I lose control of my marketing?<span>+</span></summary><p>No. You keep the direction, accounts, assets, and major decisions.</p></details>
+          <details><summary>Is there a long-term contract?<span>+</span></summary><p>No. Start with the first-week trial and continue only if the model fits your business.</p></details>
+          <details><summary>Do you guarantee revenue or ROAS?<span>+</span></summary><p>No. The guarantee covers agreed execution, not revenue or ROAS.</p></details>
+        </section>
 
-      <section class="faq section-light section" aria-labelledby="faq-title">
-        <div class="section-heading"><p class="section-kicker section-kicker--numbered"><span class="section-number">11</span></p><h2 id="faq-title">Frequently Asked Questions</h2></div>
-        <div class="faq-list"><details><summary>What exactly is a Growth Operator?<span>+</span></summary><p>A Growth Operator is one accountable point of ownership for day-to-day marketing coordination and execution across your channels, specialists and priorities.</p></details><details><summary>Do you replace my existing team?<span>+</span></summary><p>Not necessarily. Jason can coordinate the people you already have.</p></details><details><summary>What if I already have an ads specialist, designer or social media manager?<span>+</span></summary><p>They can keep focusing on their specialties. Jason helps connect priorities, approvals and follow-through so the work does not keep coming back to you.</p></details><details><summary>Do I lose control of my marketing?<span>+</span></summary><p>No. You keep the direction, accounts, assets and major decisions.</p></details><details><summary>What exactly do you handle?<span>+</span></summary><p>Scope can include Shopify, campaigns, ads, email/SMS, creative, social and specialist coordination. Exact responsibilities are agreed before starting.</p></details><details><summary>How quickly can we start?<span>+</span></summary><p>Start timing depends on current onboarding capacity. If there is a fit, the next available start date will be confirmed on the call.</p></details><details><summary>Is there a long-term contract?<span>+</span></summary><p>Start with 30 days. There is no long-term commitment.</p></details><details><summary>How much does it cost?<span>+</span></summary><p>Growth Operator engagements start from $3,000 per month.</p></details><details><summary>Do you guarantee revenue or ROAS?<span>+</span></summary><p>No. The guarantee covers the agreed execution, not revenue or ROAS.</p></details></div>
-      </section>
-
-      <section class="final-cta" aria-labelledby="final-cta-title">
-        <p class="section-kicker section-kicker--numbered"><span class="section-number">12</span></p>
-        <h2 id="final-cta-title">Marketing off your plate in 7 days. Guaranteed.</h2>
-        <a class="button button-light" href="#reserve-form">Claim Your Spot <span aria-hidden="true">→</span></a>
-      </section>
+        <section class="f2-final" aria-labelledby="f2-final-title">
+          <p>Ready to get marketing execution off your plate?</p>
+          <h2 id="f2-final-title">Reserve your fit call.</h2>
+          <a class="f2-button" href="#reserve-form">Reserve Your Spot <span aria-hidden="true">→</span></a>
+          <p class="f2-message">Still hesitating? <a href="mailto:jasonfungstudio@gmail.com?subject=Growth%20Operator%20question">Message Jason</a> and ask anything.</p>
+        </section>
+      </div>
     </main>
+
+    <div class="f2-sticky" aria-label="Reserve your spot">
+      <div><strong>2 spots left</strong><span>Apply by Sept 30</span></div>
+      <a href="#reserve-form">Reserve Your Spot</a>
+    </div>
 
     <footer class="site-footer">
       <a class="brand" href="https://jasonfung.studio/"><img src="assets/jf-logo-white.png" alt="" width="30" height="30" /><span>Jason Fung Studio</span></a>
-      <nav aria-label="Footer"><a href="terms.html">Terms of Service</a><a href="terms.html#fulfillment">Fulfillment Policy</a><a href="privacy.html">Privacy Policy</a></nav>
-      <span>© 2026 Jason Fung Studio. All Rights Reserved.</span>
+      <nav aria-label="Footer"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+      <span>© 2026 Jason Fung Studio.</span>
     </footer>
   </body>
 </html>
