@@ -540,6 +540,11 @@ body { background: #fff; }
 .button-primary { border-radius: 999px; background: linear-gradient(90deg, #d68b00, #ffbb16 48%, #ffe45b); color: #17130c; box-shadow: 0 18px 38px rgba(214,139,0,.22); }
 .button-primary:hover { background: linear-gradient(90deg, #c77f00, #f4ad00 48%, #f8d847); }
 .reserve-form input { border-radius: 999px; }
+.phone-field { min-width: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); overflow: hidden; border: 1px solid #d8c9ae; border-radius: 999px; background: #fff; box-shadow: 0 8px 28px rgba(83,55,0,.06); }
+.phone-field:focus-within { border-color: #e59a00; box-shadow: 0 0 0 3px rgba(229,154,0,.14); }
+.reserve-form .phone-field select { min-width: 92px; padding: 0 10px 0 14px; border: 0; border-right: 1px solid #e7dece; background: #fff; color: #423b30; font: inherit; font-size: .9rem; font-weight: 700; outline: none; cursor: pointer; }
+.reserve-form .phone-field input { width: 100%; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.reserve-form .phone-field input:focus { border: 0; box-shadow: none; }
 .hero-proof { margin: 22px auto 0; display: flex; align-items: center; justify-content: center; gap: 12px; color: #3e3931; }
 .hero-proof span { color: #13ae7a; font-size: 1.05rem; letter-spacing: .06em; }
 .hero-proof strong { font-size: .94rem; }

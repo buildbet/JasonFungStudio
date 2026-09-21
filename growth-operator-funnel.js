@@ -2,12 +2,21 @@
   const form = document.querySelector("#reserve-form");
   const status = document.querySelector("#reserve-status");
   const submitButton = form?.querySelector("button[type='submit']");
+  const countryCodeField = form?.elements.country_code;
   const campaignAvailability = document.querySelectorAll("[data-campaign-availability]");
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
   const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"];
-  if (!form || !status || !submitButton) return;
+  if (!form || !status || !submitButton || !countryCodeField) return;
 
   const dispatch = (name, detail = {}) => document.dispatchEvent(new CustomEvent(name, { detail }));
+
+  try {
+    const browserRegion = new Intl.Locale(navigator.language).region;
+    const regionalOption = Array.from(countryCodeField.options).find((option) => option.dataset.region === browserRegion);
+    if (regionalOption) regionalOption.selected = true;
+  } catch {
+    // Canada +1 remains the fallback when the browser does not expose a region.
+  }
 
   campaignAvailability.forEach((notice) => {
     const expiresAt = new Date(notice.dataset.expires).getTime();
@@ -50,6 +59,7 @@
     event.preventDefault();
     const email = form.elements.email;
     const phone = form.elements.phone;
+    const countryCode = countryCodeField;
     status.textContent = "";
     if (form.elements.botcheck?.checked) return;
     if (!email.checkValidity()) {
@@ -57,18 +67,28 @@
       email.focus();
       return;
     }
-    if (!phone.checkValidity()) {
+    const rawPhone = phone.value.trim();
+    const phoneDigits = rawPhone.replace(/\D/g, "");
+    const countryDigits = countryCode.value.replace(/\D/g, "");
+    const localDigits = !rawPhone.startsWith("+") && countryDigits !== "1" && phoneDigits.startsWith("0")
+      ? phoneDigits.slice(1)
+      : phoneDigits;
+    const normalizedPhone = rawPhone.startsWith("+")
+      ? `+${phoneDigits}`
+      : `+${localDigits.startsWith(countryDigits) && localDigits.length > 10 ? localDigits : countryDigits + localDigits}`;
+    if (!phone.checkValidity() || phoneDigits.length < 7 || normalizedPhone.length > 16) {
       status.textContent = "Enter your phone number to continue.";
       phone.focus();
       return;
     }
 
     const emailValue = email.value.trim();
-    const phoneValue = phone.value.trim();
+    const phoneValue = normalizedPhone;
     submitButton.textContent = "Holding your spot…";
     submitButton.disabled = true;
     email.readOnly = true;
     phone.readOnly = true;
+    countryCode.disabled = true;
     status.textContent = "Saving your details…";
     try {
       sessionStorage.setItem("growthOperatorReservation", JSON.stringify({

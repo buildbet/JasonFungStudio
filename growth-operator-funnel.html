@@ -44,8 +44,30 @@
             <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" aria-hidden="true" />
             <label class="sr-only" for="reserve-email">Email</label>
             <input id="reserve-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Email" required />
-            <label class="sr-only" for="reserve-phone">Phone number</label>
-            <input id="reserve-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Phone number" required />
+            <div class="phone-field">
+              <label class="sr-only" for="reserve-country-code">Country code</label>
+              <select id="reserve-country-code" name="country_code" autocomplete="tel-country-code" aria-label="Country code">
+                <option value="+1" data-region="CA" selected>🇨🇦 +1</option>
+                <option value="+1" data-region="US">🇺🇸 +1</option>
+                <option value="+44" data-region="GB">🇬🇧 +44</option>
+                <option value="+61" data-region="AU">🇦🇺 +61</option>
+                <option value="+852" data-region="HK">🇭🇰 +852</option>
+                <option value="+65" data-region="SG">🇸🇬 +65</option>
+                <option value="+971" data-region="AE">🇦🇪 +971</option>
+                <option value="+91" data-region="IN">🇮🇳 +91</option>
+                <option value="+64" data-region="NZ">🇳🇿 +64</option>
+                <option value="+63" data-region="PH">🇵🇭 +63</option>
+                <option value="+86" data-region="CN">🇨🇳 +86</option>
+                <option value="+81" data-region="JP">🇯🇵 +81</option>
+                <option value="+82" data-region="KR">🇰🇷 +82</option>
+                <option value="+60" data-region="MY">🇲🇾 +60</option>
+                <option value="+52" data-region="MX">🇲🇽 +52</option>
+                <option value="+49" data-region="DE">🇩🇪 +49</option>
+                <option value="+33" data-region="FR">🇫🇷 +33</option>
+              </select>
+              <label class="sr-only" for="reserve-phone">Phone number</label>
+              <input id="reserve-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Phone number" required />
+            </div>
             <button class="button button-primary" type="submit">Reserve Your Spot <span aria-hidden="true">→</span></button>
             <p class="cta-urgency" data-campaign-availability data-expires="2026-09-30T23:59:59-04:00"><span class="cta-urgency__spots">2 spots left</span><span aria-hidden="true">·</span><span>Apply by Sept 30</span></p>
           </form>
