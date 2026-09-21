@@ -30,8 +30,19 @@
           </div>
           <p class="hero-secondary">How Brand Owners Remove Themselves From <span class="hero-highlight">Day-To-Day Marketing</span> And Build A Brand That Keeps Moving <span class="hero-highlight">Without Them</span></p>
           <p class="vsl-cue">Here’s how it works for you <span aria-hidden="true">↓</span></p>
-          <div class="video-stage" role="group" aria-label="Video">
-            <div class="video-stage__center"><span class="play-mark" aria-hidden="true">▶</span><strong>VIDEO</strong></div>
+          <div class="video-stage vsl-player" id="vsl-player" role="group" aria-label="Growth Operator video">
+            <video id="vsl-video" autoplay muted playsinline preload="auto" disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen">
+              <source src="assets/vsl-jason-fung-studio-funnel.mp4" type="video/mp4" />
+            </video>
+            <button class="vsl-unmute" id="vsl-unmute" type="button"><span aria-hidden="true">🔊</span> Tap for sound</button>
+            <div class="vsl-controls">
+              <button id="vsl-play" type="button" aria-label="Pause video"><span class="vsl-icon-play" aria-hidden="true">▶</span><span class="vsl-icon-pause" aria-hidden="true"><i></i><i></i></span></button>
+              <button id="vsl-rewind" type="button" aria-label="Go back 10 seconds">↶ <span>10</span></button>
+              <div class="vsl-progress" id="vsl-progress" role="progressbar" aria-label="Video progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="vsl-progress-fill"></span></div>
+              <span class="vsl-time" id="vsl-time">0:00 / 2:03</span>
+              <button id="vsl-sound" type="button" aria-label="Turn sound on">🔇</button>
+              <button id="vsl-fullscreen" type="button" aria-label="Enter fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5" /></svg></button>
+            </div>
           </div>
           <div class="hero-bonus">
             <span class="hero-bonus-label">30-Day Free Bonus</span>

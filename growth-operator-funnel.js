@@ -3,12 +3,97 @@
   const status = document.querySelector("#reserve-status");
   const submitButton = form?.querySelector("button[type='submit']");
   const countryCodeField = form?.elements.country_code;
+  const vslVideo = document.querySelector("#vsl-video");
+  const vslPlay = document.querySelector("#vsl-play");
+  const vslRewind = document.querySelector("#vsl-rewind");
+  const vslSound = document.querySelector("#vsl-sound");
+  const vslFullscreen = document.querySelector("#vsl-fullscreen");
+  const vslUnmute = document.querySelector("#vsl-unmute");
+  const vslTime = document.querySelector("#vsl-time");
+  const vslProgress = document.querySelector("#vsl-progress");
+  const vslProgressFill = document.querySelector("#vsl-progress-fill");
   const campaignAvailability = document.querySelectorAll("[data-campaign-availability]");
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
   const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"];
   if (!form || !status || !submitButton || !countryCodeField) return;
 
   const dispatch = (name, detail = {}) => document.dispatchEvent(new CustomEvent(name, { detail }));
+
+  if (vslVideo && vslPlay && vslRewind && vslSound && vslFullscreen && vslUnmute && vslTime && vslProgress && vslProgressFill) {
+    let furthestTime = 0;
+    let correctingSeek = false;
+    let soundHasBeenEnabled = false;
+    const formatTime = (seconds) => {
+      if (!Number.isFinite(seconds)) return "0:00";
+      const wholeSeconds = Math.max(0, Math.floor(seconds));
+      return `${Math.floor(wholeSeconds / 60)}:${String(wholeSeconds % 60).padStart(2, "0")}`;
+    };
+    const updatePlayer = () => {
+      const duration = Number.isFinite(vslVideo.duration) ? vslVideo.duration : 0;
+      const percent = duration ? Math.min(100, (vslVideo.currentTime / duration) * 100) : 0;
+      vslProgressFill.style.width = `${percent}%`;
+      vslProgress.setAttribute("aria-valuenow", String(Math.round(percent)));
+      vslTime.textContent = `${formatTime(vslVideo.currentTime)} / ${formatTime(duration)}`;
+      vslPlay.classList.toggle("is-paused", !vslVideo.paused);
+      vslPlay.setAttribute("aria-label", vslVideo.paused ? "Play video" : "Pause video");
+      vslSound.textContent = vslVideo.muted ? "🔇" : "🔊";
+      vslSound.setAttribute("aria-label", vslVideo.muted ? "Turn sound on" : "Mute video");
+    };
+
+    vslVideo.addEventListener("timeupdate", () => {
+      if (!vslVideo.seeking) furthestTime = Math.max(furthestTime, vslVideo.currentTime);
+      updatePlayer();
+    });
+    vslVideo.addEventListener("loadedmetadata", updatePlayer);
+    vslVideo.addEventListener("play", updatePlayer);
+    vslVideo.addEventListener("pause", updatePlayer);
+    vslVideo.addEventListener("ratechange", () => {
+      if (vslVideo.playbackRate !== 1) vslVideo.playbackRate = 1;
+    });
+    vslVideo.addEventListener("seeking", () => {
+      if (correctingSeek || vslVideo.currentTime <= furthestTime + .35) return;
+      correctingSeek = true;
+      vslVideo.currentTime = furthestTime;
+      window.setTimeout(() => { correctingSeek = false; }, 0);
+    });
+    vslPlay.addEventListener("click", () => {
+      if (vslVideo.paused) vslVideo.play().catch(() => {});
+      else vslVideo.pause();
+    });
+    vslRewind.addEventListener("click", () => {
+      vslVideo.currentTime = Math.max(0, vslVideo.currentTime - 10);
+      vslVideo.play().catch(() => {});
+    });
+    const toggleSound = () => {
+      const enablingSound = vslVideo.muted;
+      vslVideo.muted = !vslVideo.muted;
+      if (enablingSound && !soundHasBeenEnabled) {
+        soundHasBeenEnabled = true;
+        if (vslVideo.currentTime <= 10) vslVideo.currentTime = 0;
+      }
+      vslUnmute.classList.toggle("is-hidden", !vslVideo.muted);
+      vslVideo.play().catch(() => {});
+      updatePlayer();
+    };
+    vslSound.addEventListener("click", toggleSound);
+    vslUnmute.addEventListener("click", toggleSound);
+    vslFullscreen.addEventListener("click", () => {
+      const player = document.querySelector("#vsl-player");
+      if (document.fullscreenElement) {
+        document.exitFullscreen?.();
+      } else if (player?.requestFullscreen) {
+        player.requestFullscreen();
+      } else if (vslVideo.webkitEnterFullscreen) {
+        vslVideo.webkitEnterFullscreen();
+      }
+    });
+    document.addEventListener("fullscreenchange", () => {
+      vslFullscreen.setAttribute("aria-label", document.fullscreenElement ? "Exit fullscreen" : "Enter fullscreen");
+    });
+    vslVideo.muted = true;
+    vslVideo.play().catch(() => updatePlayer());
+    updatePlayer();
+  }
 
   try {
     const browserRegion = new Intl.Locale(navigator.language).region;

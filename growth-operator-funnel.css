@@ -202,6 +202,25 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .hero-terms { margin: 22px 0 28px; justify-content: center; }
 .vsl-cue { margin: 26px 0 16px; color: #bd6a00; font-size: .88rem; font-weight: 800; }
 .hero .video-stage { width: min(100%, 900px); margin: 0 auto 22px; color: #fff; border-radius: 24px; box-shadow: 0 24px 65px rgba(45,32,12,.18); }
+.hero .video-stage.vsl-player { display: block; border-color: #17130c; background: #000; }
+.hero .video-stage.vsl-player::before { display: none; }
+.vsl-player:fullscreen { width: 100vw; height: 100vh; max-width: none; margin: 0; border: 0; border-radius: 0; }
+.vsl-player video { width: 100%; height: 100%; display: block; background: #000; object-fit: contain; }
+.vsl-unmute { min-height: 48px; padding: 0 20px; position: absolute; z-index: 3; left: 50%; top: 50%; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; background: rgba(15,15,15,.82); color: #fff; font: inherit; font-size: .88rem; font-weight: 800; box-shadow: 0 12px 35px rgba(0,0,0,.35); backdrop-filter: blur(8px); cursor: pointer; transform: translate(-50%, -50%); }
+.vsl-unmute.is-hidden { display: none; }
+.vsl-controls { min-height: 70px; padding: 22px 18px 12px; position: absolute; z-index: 2; inset: auto 0 0; display: grid; grid-template-columns: auto auto minmax(70px, 1fr) auto auto auto; align-items: center; gap: 11px; background: linear-gradient(transparent, rgba(0,0,0,.88)); }
+.vsl-controls button { width: 38px; height: 38px; padding: 0; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; background: rgba(20,20,20,.72); color: #fff; font: inherit; font-size: .82rem; font-weight: 800; cursor: pointer; }
+.vsl-controls button:hover { background: rgba(255,255,255,.18); }
+.vsl-controls button span { font-size: .62rem; }
+.vsl-controls button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.vsl-icon-play { margin-left: 2px; font-size: .76rem !important; }
+.vsl-icon-pause { height: 15px; display: inline-flex; align-items: stretch; gap: 4px; }
+.vsl-icon-pause i { width: 4px; display: block; border-radius: 1px; background: currentColor; }
+.vsl-controls #vsl-play.is-paused .vsl-icon-play { display: none; }
+.vsl-controls #vsl-play:not(.is-paused) .vsl-icon-pause { display: none; }
+.vsl-progress { height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.28); pointer-events: none; }
+.vsl-progress span { width: 0; height: 100%; display: block; border-radius: inherit; background: linear-gradient(90deg, #e59a00, #ffd056); }
+.vsl-time { min-width: 86px; color: #fff; font-size: .7rem; font-variant-numeric: tabular-nums; text-align: right; }
 .hero-guarantee { width: min(100%, 960px); margin: 0 auto; padding: 0; display: grid; gap: 10px; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 .hero-guarantee strong { color: #17130c; font-family: var(--serif); font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 400; }
 .hero-guarantee h1 { max-width: 780px; margin: 4px auto; font-size: clamp(2.6rem, 5vw, 4.8rem); line-height: .98; }
@@ -676,4 +695,8 @@ body { background: #fff; }
   .philosophy-actions { align-items: stretch; flex-direction: column; }
   .philosophy-actions > .button, .message-menu, .message-menu > summary { width: 100%; }
   .message-options { width: 100%; position: static; }
+  .vsl-controls { padding: 18px 8px 8px; grid-template-columns: auto auto minmax(34px, 1fr) auto auto auto; gap: 5px; }
+  .vsl-controls button { width: 32px; height: 32px; }
+  .vsl-time { min-width: 74px; font-size: .62rem; }
+  .vsl-unmute { min-height: 44px; padding-inline: 16px; font-size: .8rem; }
 }
