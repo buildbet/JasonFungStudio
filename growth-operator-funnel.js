@@ -95,6 +95,32 @@
     updatePlayer();
   }
 
+  const sampleWorkTrack = document.querySelector("#sample-work-track");
+  const sampleWorkPrev = document.querySelector("#sample-work-prev");
+  const sampleWorkNext = document.querySelector("#sample-work-next");
+  const sampleWorkCount = document.querySelector("#sample-work-count");
+  if (sampleWorkTrack && sampleWorkPrev && sampleWorkNext && sampleWorkCount) {
+    const cards = Array.from(sampleWorkTrack.querySelectorAll(".f2-work-card"));
+    const currentIndex = () => cards.reduce((nearest, card, index) =>
+      Math.abs(card.offsetLeft - cards[0].offsetLeft - sampleWorkTrack.scrollLeft) <
+      Math.abs(cards[nearest].offsetLeft - cards[0].offsetLeft - sampleWorkTrack.scrollLeft) ? index : nearest, 0);
+    const updateWorkControls = () => {
+      const index = currentIndex();
+      sampleWorkCount.textContent = `${index + 1} of ${cards.length}`;
+      sampleWorkPrev.disabled = index === 0;
+      sampleWorkNext.disabled = index === cards.length - 1;
+    };
+    const goToWork = (index) => sampleWorkTrack.scrollTo({
+      left: cards[index].offsetLeft - cards[0].offsetLeft,
+      behavior: "smooth"
+    });
+    sampleWorkPrev.addEventListener("click", () => goToWork(Math.max(0, currentIndex() - 1)));
+    sampleWorkNext.addEventListener("click", () => goToWork(Math.min(cards.length - 1, currentIndex() + 1)));
+    sampleWorkTrack.addEventListener("scroll", updateWorkControls, { passive: true });
+    window.addEventListener("resize", updateWorkControls);
+    updateWorkControls();
+  }
+
   try {
     const browserRegion = new Intl.Locale(navigator.language).region;
     const regionalOption = Array.from(countryCodeField.options).find((option) => option.dataset.region === browserRegion);
