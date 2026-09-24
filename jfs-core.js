@@ -1,6 +1,23 @@
 const GA_MEASUREMENT_ID = 'G-3W5FPCSZQQ';
 const META_PIXEL_ID = '1987381435535989';
 
+const loadFirstPartyTrafficAnalytics = () => {
+  if (window.__jfsTrafficAnalyticsLoading) return;
+  window.__jfsTrafficAnalyticsLoading = true;
+  const sourceScript = document.currentScript;
+  const baseUrl = sourceScript?.src ? new URL('.', sourceScript.src) : new URL('.', window.location.href);
+  const configScript = document.createElement('script');
+  configScript.src = new URL('traffic-analytics-config.js', baseUrl).href;
+  configScript.onload = () => {
+    const trackerScript = document.createElement('script');
+    trackerScript.src = new URL('traffic-analytics.js', baseUrl).href;
+    document.head.appendChild(trackerScript);
+  };
+  document.head.appendChild(configScript);
+};
+
+loadFirstPartyTrafficAnalytics();
+
 const analyticsIsConfigured = /^G-[A-Z0-9]+$/.test(GA_MEASUREMENT_ID)
   && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX';
 

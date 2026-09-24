@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="theme-color" content="#f6f7f9" />
+    <title>Traffic Dashboard | Jason Fung Studio</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="traffic-dashboard.css" />
+    <script src="traffic-analytics-config.js"></script>
+    <script type="module" src="traffic-dashboard.js"></script>
+  </head>
+  <body>
+    <main class="dashboard-shell">
+      <header class="dashboard-header">
+        <a class="dashboard-brand" href="/"><img src="assets/favicon.png" alt="" width="38" height="38" /><span>Jason Fung Studio</span></a>
+        <div><p>Private analytics</p><h1>Traffic dashboard</h1></div>
+        <button class="quiet-button" id="sign-out" type="button" hidden>Sign out</button>
+      </header>
+
+      <section class="setup-card" id="setup-card" hidden>
+        <strong>Analytics is not connected yet.</strong>
+        <p>Add the Supabase project URL and public anon key to <code>traffic-analytics-config.js</code>, then deploy the schema and tracking function.</p>
+      </section>
+
+      <section class="auth-card" id="auth-card" hidden>
+        <p class="eyebrow">Admin access</p>
+        <h2>Sign in to view traffic</h2>
+        <p>Enter the private dashboard password for <strong>jasonfungstudio@gmail.com</strong>.</p>
+        <form id="login-form">
+          <label for="login-password">Password</label>
+          <div class="auth-row"><input id="login-password" type="password" autocomplete="current-password" required /><button type="submit">Sign in</button></div>
+        </form>
+        <p class="form-status" id="login-status" role="status"></p>
+      </section>
+
+      <div id="dashboard" hidden>
+        <section class="filter-bar" aria-label="Traffic filters">
+          <label>From<input id="filter-from" type="date" /></label>
+          <label>To<input id="filter-to" type="date" /></label>
+          <label>Device<select id="filter-device"><option value="">All devices</option></select></label>
+          <label>Source<select id="filter-source"><option value="">All sources</option></select></label>
+          <label>Country<select id="filter-country"><option value="">All countries</option></select></label>
+          <button id="refresh-dashboard" type="button">Apply filters</button>
+        </section>
+
+        <p class="dashboard-status" id="dashboard-status" role="status"></p>
+
+        <section class="metric-grid" aria-label="Traffic overview">
+          <article><span>Sessions</span><strong id="metric-sessions">—</strong></article>
+          <article><span>Page views</span><strong id="metric-pageviews">—</strong></article>
+          <article><span>Average engaged</span><strong id="metric-active">—</strong></article>
+          <article><span>Average session</span><strong id="metric-duration">—</strong></article>
+          <article><span>Single-page sessions</span><strong id="metric-bounce">—</strong></article>
+        </section>
+
+        <section class="dashboard-panel chart-panel">
+          <div class="panel-heading"><div><p class="eyebrow">Trend</p><h2>Sessions by day</h2></div><span id="chart-total"></span></div>
+          <div class="bar-chart" id="daily-chart" aria-label="Daily sessions chart"></div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Acquisition</p><h2>Where visitors came from</h2><p class="panel-note">Source and channel, such as Google · Organic search or Instagram · Paid.</p></div></div><div class="rank-list" id="source-list"></div></section>
+          <section class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Technology</p><h2>Devices</h2></div></div><div class="rank-list" id="device-list"></div></section>
+          <section class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Geography</p><h2>Approximate location</h2></div></div><div class="rank-list" id="location-list"></div></section>
+          <section class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Content</p><h2>Top pages</h2></div></div><div class="page-list" id="page-list"></div></section>
+        </div>
+
+        <p class="privacy-note">Anonymous first-party measurements only. Form contents and raw IP addresses are not stored. Location is approximate.</p>
+      </div>
+    </main>
+  </body>
+</html>
