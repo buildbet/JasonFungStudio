@@ -11,6 +11,8 @@ added.
 - Referral host, UTM source/medium/campaign/content/term, `gclid`, and `fbclid`
 - Source + channel reporting (for example Google organic search, Google paid,
   Instagram paid/social, Facebook paid/social, referrals, and direct visits)
+- Persistent anonymous browser visitors, repeat sessions, video watch milestones,
+  reserve-form actions, confirmation views, and contact-channel choices
 - Mobile, tablet, or desktop; browser; operating system; language; and timezone
 - Approximate country, region, and city when IPinfo is configured
 - Session duration, active time, maximum scroll depth, and page dimensions
@@ -89,7 +91,8 @@ protection is Supabase Auth plus row-level security.
 3. Open `https://jasonfung.studio/traffic-dashboard.html`.
 4. Sign in using `jasonfungstudio@gmail.com` and apply a date range containing
    today.
-5. Confirm sessions, page views, source, device, engagement, and scroll values.
+5. Confirm sessions, page views, source, device, engagement, scroll values, and
+   visitor journeys. Play the VSL and confirm its timeline records playback.
 
 UTM test example:
 
@@ -103,4 +106,6 @@ https://jasonfung.studio/growth-operator-funnel.html?utm_source=instagram&utm_me
 - `traffic-analytics.js` — anonymous browser tracker
 - `traffic-dashboard.html`, `.css`, `.js` — private dashboard
 - `supabase/migrations/202609230001_traffic_analytics.sql` — schema, RLS, and dashboard RPC
+- `supabase/migrations/202609230002_visitor_journeys.sql` — persistent visitor,
+  event timeline, and journey RPCs
 - `supabase/functions/track-visit/index.ts` — validated, origin-restricted ingestion endpoint

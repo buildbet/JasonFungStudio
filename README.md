@@ -68,8 +68,9 @@ as a conversion/key event.
 ### Private first-party traffic dashboard
 
 The site also includes an optional Supabase-backed, first-party traffic layer.
-It measures anonymous sessions, source/UTM attribution, device category,
-approximate location, engagement time, and scroll depth. The private dashboard
+It measures anonymous visitors and repeat sessions, source/UTM attribution,
+device category, approximate location, engagement time, scroll depth, video
+milestones, and reservation-funnel events. The private dashboard
 is at `traffic-dashboard.html` and is protected by Supabase password auth plus
 row-level security. See `SUPABASE_ANALYTICS_SETUP.md` for the one-time project
 connection and deployment steps. Tracking remains inactive while

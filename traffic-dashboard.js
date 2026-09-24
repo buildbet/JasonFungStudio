@@ -34,6 +34,16 @@ if (!configured) {
     return `${Math.floor(total / 60)}m ${total % 60}s`;
   };
 
+  const shortDate = (value) => value ? new Date(value).toLocaleString([], {
+    month: "short", day: "numeric", hour: "numeric", minute: "2-digit"
+  }) : "—";
+
+  const sourceLabel = (source, medium) => {
+    if (!source || source === "direct") return "Direct";
+    const channel = ({ paid: "Paid", organic: "Organic search", social: "Social", referral: "Referral", campaign: "Campaign" })[medium] || medium || "Unknown";
+    return `${source.charAt(0).toUpperCase()}${source.slice(1)} · ${channel}`;
+  };
+
   const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
   })[character]);
@@ -92,25 +102,98 @@ if (!configured) {
     setOptions($("#filter-country"), filters.countries || [], $("#filter-country").value, (item) => ({ value: item.code, label: item.name }));
   };
 
+  const eventNames = {
+    page_view: "Viewed page",
+    video_play: "Started video",
+    video_pause: "Paused video",
+    video_progress: "Reached video milestone",
+    video_watch: "Watched video",
+    video_complete: "Completed video",
+    form_start: "Started reserve form",
+    reserve_cta_click: "Clicked reserve CTA",
+    reserve_submit: "Submitted reservation",
+    confirmation_view: "Reached confirmation page",
+    contact_channel_click: "Selected contact channel"
+  };
+
+  const renderJourneys = (rows = []) => {
+    $("#journey-total").textContent = `${rows.length.toLocaleString()} visitors`;
+    $("#journey-list").innerHTML = rows.length ? rows.map((row) => {
+      const id = String(row.visitor_id || "");
+      const shortId = id.slice(-6).toUpperCase();
+      const progress = Number(row.video_progress || 0);
+      return `<button class="journey-row" type="button" data-visitor-id="${escapeHtml(id)}">
+        <span class="journey-identity"><strong>Visitor ${escapeHtml(shortId)}</strong><small>Last seen ${escapeHtml(shortDate(row.last_visit))}</small></span>
+        <span><strong>${Number(row.visits || 0)} visit${Number(row.visits) === 1 ? "" : "s"}</strong><small>${Number(row.pageviews || 0)} page views</small></span>
+        <span><strong>${escapeHtml(sourceLabel(row.first_source, row.first_medium))}</strong><small>First source</small></span>
+        <span><strong>${escapeHtml(seconds(row.total_seconds))}</strong><small>Total time</small></span>
+        <span><strong>${progress ? `${progress}%` : "Not played"}</strong><small>${Number(row.video_watch_seconds || 0) ? `${seconds(row.video_watch_seconds)} watched` : "Video"}</small></span>
+        <span class="${row.converted ? "journey-converted" : ""}"><strong>${row.converted ? "Reserved" : "In progress"}</strong><small>${escapeHtml(row.location || "Unknown")}</small></span>
+      </button>`;
+    }).join("") : '<p class="empty-state">No visitor journeys in this range yet.</p>';
+  };
+
+  const eventDetail = (event) => {
+    const meta = event.event_metadata || {};
+    if (["video_progress", "video_complete"].includes(event.event_name)) return `${Number(meta.progress || event.event_value || 0)}% · ${seconds(meta.watch_seconds)} actually watched`;
+    if (["video_play", "video_pause", "video_watch"].includes(event.event_name)) return `${seconds(meta.video_time)} into video · ${seconds(meta.watch_seconds)} actually watched`;
+    if (event.event_name === "contact_channel_click") return event.event_label || meta.channel || "Contact selected";
+    return event.event_label || event.page_path || "";
+  };
+
+  const openJourney = async (visitorId) => {
+    const dialog = $("#journey-dialog");
+    $("#journey-dialog-title").textContent = `Visitor ${visitorId.slice(-6).toUpperCase()}`;
+    $("#journey-dialog-content").innerHTML = '<p class="empty-state">Loading journey…</p>';
+    dialog.showModal();
+    const { data, error } = await supabase.rpc("analytics_visitor_timeline", { p_visitor: visitorId });
+    if (error) {
+      $("#journey-dialog-content").innerHTML = `<p class="empty-state">Could not load journey: ${escapeHtml(error.message)}</p>`;
+      return;
+    }
+    const visitor = data?.visitor || {};
+    const sessions = data?.sessions || [];
+    const events = data?.events || [];
+    $("#journey-dialog-content").innerHTML = `
+      <div class="journey-summary">
+        <div><span>First seen</span><strong>${escapeHtml(shortDate(visitor.first_seen_at))}</strong></div>
+        <div><span>Latest visit</span><strong>${escapeHtml(shortDate(visitor.last_seen_at))}</strong></div>
+        <div><span>Visits</span><strong>${Number(visitor.visits || sessions.length)}</strong></div>
+        <div><span>First source</span><strong>${escapeHtml(sourceLabel(visitor.first_source, visitor.first_medium))}</strong></div>
+        <div><span>Latest source</span><strong>${escapeHtml(sourceLabel(visitor.latest_source, visitor.latest_medium))}</strong></div>
+        <div><span>Device</span><strong>${escapeHtml(visitor.device_type || "Unknown")}</strong></div>
+      </div>
+      <div class="timeline">${events.length ? events.map((event) => `<div class="timeline-item">
+        <strong>${escapeHtml(eventNames[event.event_name] || event.event_name)}</strong>
+        <span>${escapeHtml(shortDate(event.occurred_at))} · ${escapeHtml(event.page_path || "")}</span>
+        ${eventDetail(event) ? `<span>${escapeHtml(eventDetail(event))}</span>` : ""}
+      </div>`).join("") : '<p class="empty-state">No detailed events recorded yet.</p>'}</div>`;
+  };
+
   const loadDashboard = async () => {
     status.textContent = "Loading traffic…";
     $("#refresh-dashboard").disabled = true;
     const from = new Date(`${$("#filter-from").value}T00:00:00`);
     const to = new Date(`${$("#filter-to").value}T00:00:00`);
     to.setDate(to.getDate() + 1);
-    const { data, error } = await supabase.rpc("analytics_dashboard", {
+    const params = {
       p_from: from.toISOString(),
       p_to: to.toISOString(),
       p_device: $("#filter-device").value || null,
       p_source: $("#filter-source").value || null,
       p_country: $("#filter-country").value || null
-    });
+    };
+    const [{ data, error }, { data: journeys, error: journeyError }] = await Promise.all([
+      supabase.rpc("analytics_dashboard", params),
+      supabase.rpc("analytics_visitor_journeys", params)
+    ]);
     $("#refresh-dashboard").disabled = false;
     if (error) {
       status.textContent = error.message.includes("authorized") ? "This account is not authorized to view analytics." : `Could not load traffic: ${error.message}`;
       return;
     }
     renderDashboard(data || {});
+    renderJourneys(journeyError ? [] : journeys || []);
     status.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
   };
 
@@ -136,6 +219,14 @@ if (!configured) {
 
   signOut.addEventListener("click", async () => { await supabase.auth.signOut(); location.reload(); });
   $("#refresh-dashboard").addEventListener("click", loadDashboard);
+  $("#journey-list").addEventListener("click", (event) => {
+    const row = event.target.closest("[data-visitor-id]");
+    if (row) openJourney(row.dataset.visitorId);
+  });
+  $("#journey-dialog-close").addEventListener("click", () => $("#journey-dialog").close());
+  $("#journey-dialog").addEventListener("click", (event) => {
+    if (event.target === $("#journey-dialog")) $("#journey-dialog").close();
+  });
   const { data: { session } } = await supabase.auth.getSession();
   await showSession(session);
   supabase.auth.onAuthStateChange((_event, nextSession) => setTimeout(() => showSession(nextSession), 0));

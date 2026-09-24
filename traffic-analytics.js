@@ -10,11 +10,21 @@
 
   if (!isConfigured || navigator.doNotTrack === "1") return;
 
-  const uuid = () => crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  const uuid = () => {
+    if (crypto.randomUUID) return crypto.randomUUID();
+    const bytes = crypto.getRandomValues(new Uint8Array(16));
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, "0"));
+    return `${hex.slice(0, 4).join("")}-${hex.slice(4, 6).join("")}-${hex.slice(6, 8).join("")}-${hex.slice(8, 10).join("")}-${hex.slice(10).join("")}`;
+  };
   const storageKey = "jfs_traffic_session";
+  const visitorStorageKey = "jfs_traffic_visitor";
   const sessionMaxAge = 30 * 60 * 1000;
+  const visitorMaxAge = 365 * 24 * 60 * 60 * 1000;
   const now = Date.now();
   let stored = {};
+  let visitor = {};
 
   try {
     stored = JSON.parse(sessionStorage.getItem(storageKey) || "{}");
@@ -30,6 +40,18 @@
     sessionStorage.setItem(storageKey, JSON.stringify(stored));
   } catch (_) {}
 
+  try {
+    visitor = JSON.parse(localStorage.getItem(visitorStorageKey) || "{}");
+  } catch (_) {}
+  if (!visitor.id || !visitor.createdAt || now - Number(visitor.lastSeenAt || 0) > visitorMaxAge) {
+    visitor = { id: uuid(), createdAt: now, lastSeenAt: now };
+  } else {
+    visitor.lastSeenAt = now;
+  }
+  try {
+    localStorage.setItem(visitorStorageKey, JSON.stringify(visitor));
+  } catch (_) {}
+
   const pageviewId = uuid();
   const pageStartedAt = Date.now();
   let visibleSince = document.visibilityState === "visible" ? performance.now() : null;
@@ -38,6 +60,7 @@
   let lastSentActive = -1;
   let lastSentDuration = -1;
   let ending = false;
+  let sessionReady = null;
 
   const clampText = (value, max = 500) => String(value || "").slice(0, max);
   const query = new URLSearchParams(location.search);
@@ -103,6 +126,7 @@
 
   const source = classifySource();
   const basePayload = {
+    visitor_id: visitor.id,
     session_id: stored.id,
     pageview_id: pageviewId,
     page_path: clampText(location.pathname, 1000),
@@ -142,6 +166,18 @@
       body: payload
     }).catch(() => undefined);
   };
+
+  const trackEvent = (eventName, details = {}) => {
+    const send = () => transmit("custom_event", {
+      event_id: uuid(),
+      event_name: clampText(eventName, 50),
+      event_label: clampText(details.label, 120),
+      event_value: Number.isFinite(Number(details.value)) ? Number(details.value) : null,
+      event_metadata: details.metadata && typeof details.metadata === "object" ? details.metadata : {}
+    });
+    return sessionReady ? sessionReady.then(send, send) : send();
+  };
+  window.jfsTrackEvent = trackEvent;
 
   const sendEngagement = (force = false) => {
     const active = visibleActiveSeconds();
@@ -187,8 +223,91 @@
     sendEngagement(true);
   });
 
-  transmit("page_view", {
+  const setupJourneyTracking = () => {
+    const video = document.querySelector("#vsl-video");
+    if (video) {
+      const milestones = new Set();
+      let watchedSeconds = 0;
+      let lastPosition = Number(video.currentTime) || 0;
+      let lastReportedWatch = -1;
+
+      const videoDetails = (progress = null) => ({
+        label: "Growth Operator VSL",
+        value: progress ?? Math.round(video.currentTime || 0),
+        metadata: {
+          progress: progress ?? Math.round(((video.currentTime || 0) / Math.max(video.duration || 1, 1)) * 100),
+          video_time: Math.round(video.currentTime || 0),
+          video_duration: Math.round(video.duration || 0),
+          watch_seconds: Math.round(watchedSeconds)
+        }
+      });
+
+      const reportWatch = (force = false) => {
+        const rounded = Math.round(watchedSeconds);
+        if (rounded <= 0 || (!force && rounded - lastReportedWatch < 15)) return;
+        lastReportedWatch = rounded;
+        trackEvent("video_watch", videoDetails());
+      };
+
+      video.addEventListener("play", () => trackEvent("video_play", videoDetails()));
+      video.addEventListener("pause", () => {
+        if (!video.ended) trackEvent("video_pause", videoDetails());
+        reportWatch(true);
+      });
+      video.addEventListener("timeupdate", () => {
+        const position = Number(video.currentTime) || 0;
+        const delta = position - lastPosition;
+        if (!video.paused && document.visibilityState === "visible" && delta > 0 && delta < 2) watchedSeconds += delta;
+        lastPosition = position;
+        if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+        const progress = Math.min(100, Math.floor((position / video.duration) * 100));
+        [25, 50, 75, 90].forEach((milestone) => {
+          if (progress >= milestone && !milestones.has(milestone)) {
+            milestones.add(milestone);
+            trackEvent("video_progress", videoDetails(milestone));
+          }
+        });
+        reportWatch(false);
+      });
+      video.addEventListener("ended", () => {
+        trackEvent("video_complete", videoDetails(100));
+        reportWatch(true);
+      });
+      addEventListener("pagehide", () => reportWatch(true));
+    }
+
+    const reserveForm = document.querySelector("#reserve-form");
+    if (reserveForm) {
+      let formStarted = false;
+      const noteStart = () => {
+        if (formStarted) return;
+        formStarted = true;
+        trackEvent("form_start", { label: "Reserve your spot" });
+      };
+      reserveForm.addEventListener("focusin", noteStart);
+      reserveForm.addEventListener("input", noteStart, { once: true });
+      reserveForm.addEventListener("submit", () => trackEvent("reserve_submit", { label: "Reserve your spot" }));
+    }
+
+    document.querySelectorAll('a[href="#reserve-form"]').forEach((link) => {
+      link.addEventListener("click", () => trackEvent("reserve_cta_click", { label: link.textContent.trim() }));
+    });
+
+    if (document.querySelector("#reservation-countdown")) {
+      trackEvent("confirmation_view", { label: "Reservation confirmation" });
+    }
+    [["#reserved-whatsapp", "whatsapp"], ["#reserved-instagram", "instagram"], ["#reserved-email", "email"]].forEach(([selector, channel]) => {
+      document.querySelector(selector)?.addEventListener("click", () => trackEvent("contact_channel_click", {
+        label: channel,
+        metadata: { channel }
+      }));
+    });
+  };
+
+  sessionReady = transmit("page_view", {
     session_started_at: new Date(Number(stored.startedAt)).toISOString()
   });
   setInterval(() => sendEngagement(false), 15000);
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setupJourneyTracking, { once: true });
+  else setupJourneyTracking();
 })();

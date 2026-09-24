@@ -70,8 +70,18 @@
           <section class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Content</p><h2>Top pages</h2></div></div><div class="page-list" id="page-list"></div></section>
         </div>
 
+        <section class="dashboard-panel journey-panel">
+          <div class="panel-heading"><div><p class="eyebrow">Behavior</p><h2>Visitor journeys</h2><p class="panel-note">Anonymous repeat visits and funnel activity from the same browser. Select a visitor to see the full timeline.</p></div><span id="journey-total"></span></div>
+          <div class="journey-list" id="journey-list"></div>
+        </section>
+
         <p class="privacy-note">Anonymous first-party measurements only. Form contents and raw IP addresses are not stored. Location is approximate.</p>
       </div>
     </main>
+
+    <dialog class="journey-dialog" id="journey-dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">Anonymous visitor</p><h2 id="journey-dialog-title">Visitor journey</h2></div><button id="journey-dialog-close" type="button" aria-label="Close visitor journey">×</button></div>
+      <div id="journey-dialog-content"><p class="empty-state">Loading journey…</p></div>
+    </dialog>
   </body>
 </html>

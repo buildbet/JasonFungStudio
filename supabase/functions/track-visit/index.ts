@@ -66,16 +66,20 @@ Deno.serve(async (request) => {
   }
 
   const event = text(body.event, 30);
+  const visitorId = text(body.visitor_id, 50);
   const sessionId = text(body.session_id, 100);
   const pageviewId = text(body.pageview_id, 50);
   const pagePath = text(body.page_path, 1000);
-  if (!['page_view', 'engagement'].includes(event) || !sessionId || !validUuid(pageviewId) || !pagePath.startsWith('/')) {
+  if (!['page_view', 'engagement', 'custom_event'].includes(event) || !validUuid(visitorId) || !sessionId || !validUuid(pageviewId) || !pagePath.startsWith('/')) {
     return Response.json({ error: "Invalid event" }, { status: 422, headers });
   }
 
   const supabase = createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false } });
   const now = new Date().toISOString();
-  const { data: existing } = await supabase.from("analytics_sessions").select("session_id,pageviews").eq("session_id", sessionId).maybeSingle();
+  const [{ data: existing }, { data: existingVisitor }] = await Promise.all([
+    supabase.from("analytics_sessions").select("session_id,pageviews").eq("session_id", sessionId).maybeSingle(),
+    supabase.from("analytics_visitors").select("visitor_id,visits").eq("visitor_id", visitorId).maybeSingle()
+  ]);
 
   if (!existing) {
     const location = await approximateLocation(request);
@@ -83,6 +87,7 @@ Deno.serve(async (request) => {
     try { referrerHost = body.referrer_url ? new URL(text(body.referrer_url, 1000)).hostname : ""; } catch (_) {}
     const startedAt = text(body.session_started_at, 40);
     const session = {
+      visitor_id: visitorId,
       session_id: sessionId,
       started_at: /^\d{4}-\d{2}-\d{2}T/.test(startedAt) ? startedAt : now,
       last_seen_at: now,
@@ -106,6 +111,32 @@ Deno.serve(async (request) => {
     };
     const { error } = await supabase.from("analytics_sessions").insert(session);
     if (error) return Response.json({ error: "Session write failed" }, { status: 500, headers });
+
+    const visitorUpdate = {
+      visitor_id: visitorId,
+      first_seen_at: now,
+      last_seen_at: now,
+      visits: 1,
+      first_source: session.source,
+      first_medium: session.medium,
+      first_campaign: session.campaign,
+      latest_source: session.source,
+      latest_medium: session.medium,
+      latest_campaign: session.campaign,
+      device_type: session.device_type,
+      browser: session.browser,
+      os: session.os,
+      country_code: session.country_code,
+      country: session.country,
+      region: session.region,
+      city: session.city
+    };
+    if (existingVisitor) {
+      const { first_seen_at: _firstSeen, first_source: _firstSource, first_medium: _firstMedium, first_campaign: _firstCampaign, ...returningUpdate } = visitorUpdate;
+      await supabase.from("analytics_visitors").update({ ...returningUpdate, visits: Number(existingVisitor.visits || 0) + 1 }).eq("visitor_id", visitorId);
+    } else {
+      await supabase.from("analytics_visitors").insert(visitorUpdate);
+    }
   }
 
   if (event === "page_view") {
@@ -127,7 +158,19 @@ Deno.serve(async (request) => {
         last_seen_at: now
       }).eq("session_id", sessionId);
     }
-  } else {
+    if (inserted) {
+      await supabase.from("analytics_events").insert({
+        event_id: pageviewId,
+        visitor_id: visitorId,
+        session_id: sessionId,
+        pageview_id: pageviewId,
+        event_name: "page_view",
+        event_label: text(body.page_title, 300) || null,
+        page_path: pagePath,
+        occurred_at: now
+      });
+    }
+  } else if (event === "engagement") {
     const duration = integer(body.duration_seconds, 0, 86400);
     const active = integer(body.active_seconds, 0, 86400);
     const scroll = integer(body.max_scroll, 0, 100);
@@ -144,7 +187,41 @@ Deno.serve(async (request) => {
         exit_page: pagePath
       }).eq("session_id", sessionId)
     ]);
+  } else {
+    const eventId = text(body.event_id, 50);
+    const eventName = text(body.event_name, 50);
+    const allowedEvents = new Set([
+      "video_play", "video_pause", "video_progress", "video_watch", "video_complete",
+      "form_start", "reserve_cta_click", "reserve_submit", "confirmation_view", "contact_channel_click"
+    ]);
+    if (!validUuid(eventId) || !allowedEvents.has(eventName)) {
+      return Response.json({ error: "Invalid custom event" }, { status: 422, headers });
+    }
+    const rawMetadata = body.event_metadata && typeof body.event_metadata === "object" ? body.event_metadata as Record<string, unknown> : {};
+    const metadata = {
+      progress: integer(rawMetadata.progress, 0, 100),
+      video_time: integer(rawMetadata.video_time, 0, 86400),
+      video_duration: integer(rawMetadata.video_duration, 0, 86400),
+      watch_seconds: integer(rawMetadata.watch_seconds, 0, 86400),
+      channel: text(rawMetadata.channel, 30) || null
+    };
+    const numericValue = Number(body.event_value);
+    const { error } = await supabase.from("analytics_events").upsert({
+      event_id: eventId,
+      visitor_id: visitorId,
+      session_id: sessionId,
+      pageview_id: pageviewId,
+      event_name: eventName,
+      event_label: text(body.event_label, 120) || null,
+      event_value: Number.isFinite(numericValue) ? numericValue : null,
+      event_metadata: metadata,
+      page_path: pagePath,
+      occurred_at: now
+    }, { onConflict: "event_id", ignoreDuplicates: true });
+    if (error) return Response.json({ error: "Event write failed" }, { status: 500, headers });
   }
+
+  await supabase.from("analytics_visitors").update({ last_seen_at: now }).eq("visitor_id", visitorId);
 
   return Response.json({ ok: true }, { headers: { ...headers, "Cache-Control": "no-store" } });
 });
