@@ -230,6 +230,7 @@
       let watchedSeconds = 0;
       let lastPosition = Number(video.currentTime) || 0;
       let lastReportedWatch = -1;
+      let playReported = false;
 
       const videoDetails = (progress = null) => ({
         label: "Growth Operator VSL",
@@ -249,8 +250,14 @@
         trackEvent("video_watch", videoDetails());
       };
 
-      video.addEventListener("play", () => trackEvent("video_play", videoDetails()));
+      const reportPlay = () => {
+        if (playReported) return;
+        playReported = true;
+        trackEvent("video_play", videoDetails());
+      };
+      video.addEventListener("play", reportPlay);
       video.addEventListener("pause", () => {
+        playReported = false;
         if (!video.ended) trackEvent("video_pause", videoDetails());
         reportWatch(true);
       });
@@ -274,6 +281,7 @@
         reportWatch(true);
       });
       addEventListener("pagehide", () => reportWatch(true));
+      if (!video.paused && !video.ended) reportPlay();
     }
 
     const reserveForm = document.querySelector("#reserve-form");
