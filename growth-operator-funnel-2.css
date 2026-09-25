@@ -66,6 +66,8 @@
 .f2-steps strong { font-size: 1rem; }
 .f2-steps p { margin: 5px 0 0; color: var(--f2-muted); font-size: .92rem; }
 .f2-section blockquote { margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid #b9c7d8; background: #f8f9fa; color: #454545; line-height: 1.65; }
+.f2-testimonial-label { margin: 0 0 10px !important; color: var(--f2-green) !important; font-size: .68rem !important; font-weight: 800; letter-spacing: .09em; line-height: 1.2 !important; text-transform: uppercase; }
+.f2-featured-testimonial blockquote { margin-top: 0; }
 .f2-section blockquote cite { margin-top: 12px; display: flex; align-items: center; gap: 9px; color: var(--f2-muted); font-size: .82rem; font-style: normal; font-weight: 700; }
 .f2-section blockquote cite img { width: 30px; height: 30px; flex: 0 0 auto; border: 1px solid #e1e1e1; border-radius: 50%; background: #fff; object-fit: cover; }
 .f2-faq details { border-bottom: 1px solid var(--f2-line); }

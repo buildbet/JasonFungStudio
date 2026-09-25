@@ -227,6 +227,7 @@
     const sections = [...document.querySelectorAll("[data-analytics-section]")];
     if (sections.length) {
       const reachedSections = new Set();
+      const sectionTotal = sections.length;
       const reportSection = (section) => {
         const sectionId = clampText(section.dataset.analyticsSection, 80);
         if (!sectionId || reachedSections.has(sectionId)) return;
@@ -236,7 +237,7 @@
         trackEvent("section_view", {
           label: sectionName,
           value: sectionOrder,
-          metadata: { section_id: sectionId, section_name: sectionName, section_order: sectionOrder }
+          metadata: { section_id: sectionId, section_name: sectionName, section_order: sectionOrder, section_total: sectionTotal }
         });
       };
 

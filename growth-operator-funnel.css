@@ -234,11 +234,6 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .cta-urgency { grid-column: 3; margin: -2px 0 0; justify-self: center; display: inline-flex; align-items: center; gap: 6px; color: #756a57; font-size: .72rem; font-weight: 700; line-height: 1.2; }
 .cta-urgency__spots { display: inline-flex; align-items: center; gap: 6px; color: #4e4536; }
 .cta-urgency__spots::before { content: ""; width: 6px; height: 6px; flex: 0 0 auto; border-radius: 50%; background: #27ad75; box-shadow: 0 0 0 3px rgba(39,173,117,.11); }
-.hero-bonus { display: grid; justify-items: center; gap: 10px; }
-.hero-bonus-label { width: fit-content; padding: 6px 12px; border: 1px solid #f1ad37; border-radius: 999px; background: #fff3d2; color: #714300; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.hero-inclusions { margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; list-style: none; color: #3d2d11; font-size: .82rem; font-weight: 700; }
-.hero-inclusions li { padding: 2px 6px; }
-.hero-inclusions li::before { content: "✓"; margin-right: 7px; color: #a65b00; font-weight: 900; }
 .hero-secondary { max-width: 860px; margin: 24px auto 0; color: #464646; font-size: clamp(1.08rem, 1.8vw, 1.4rem); font-weight: 500; letter-spacing: -.015em; line-height: 1.45; }
 .hero .availability { margin: 17px auto 24px; color: #6f6044; }
 .reserve-form { width: min(100%, 610px); margin: 24px auto 0; display: grid; grid-template-columns: 1fr auto; gap: 10px; }
@@ -544,14 +539,15 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .final-cta { color: #211706; }
 .final-cta .section-kicker { color: #211706; opacity: .8; }
 .final-cta .button { margin-top: 30px; }
-.hero .hero-guarantee h1 { max-width: 780px; margin: 4px auto; font-size: clamp(2.6rem, 5vw, 4.8rem); line-height: .98; }
+.hero .hero-guarantee h1 { max-width: 960px; margin: 4px auto; font-size: clamp(2.6rem, 5vw, 4.8rem); line-height: .98; }
+.hero-title-line { display: block; white-space: nowrap; }
 
 @media (max-width: 720px) {
   .reserve-form { grid-template-columns: 1fr; }
   .copy-section { grid-template-columns: 1fr; gap: 18px; }
   .copy-section > .section-kicker { position: static; }
   .hero-guarantee { padding: 18px 16px; }
-  .hero .hero-guarantee h1 { font-size: clamp(2rem, 9vw, 2.9rem); letter-spacing: -.045em; line-height: 1.02; text-wrap: balance; }
+  .hero .hero-guarantee h1 { font-size: clamp(1.5rem, 6.8vw, 2rem); letter-spacing: -.035em; line-height: 1.08; }
 }
 
 /* Clean editorial long-form treatment inspired by the supplied reference. */

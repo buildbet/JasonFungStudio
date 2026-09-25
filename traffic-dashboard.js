@@ -13,6 +13,7 @@ const authCard = $("#auth-card");
 const dashboard = $("#dashboard");
 const signOut = $("#sign-out");
 const status = $("#dashboard-status");
+const layoutUpdateAt = new Date("2026-09-25T12:29:17-04:00").getTime();
 
 if (!configured) {
   setupCard.hidden = false;
@@ -119,7 +120,7 @@ if (!configured) {
 
   const renderJourneys = (rows = []) => {
     $("#journey-total").textContent = `${rows.length.toLocaleString()} visitors`;
-    $("#journey-list").innerHTML = rows.length ? rows.map((row) => {
+    const renderJourney = (row) => {
       const id = String(row.visitor_id || "");
       const shortId = id.slice(-6).toUpperCase();
       const progress = Number(row.video_progress || 0);
@@ -132,14 +133,29 @@ if (!configured) {
         <span><strong>${escapeHtml(row.furthest_section || "Not tracked")}</strong><small>Furthest section</small></span>
         <span class="${row.converted ? "journey-converted" : ""}"><strong>${row.converted ? "Reserved" : "In progress"}</strong><small>${escapeHtml(row.location || "Unknown")}</small></span>
       </button>`;
-    }).join("") : '<p class="empty-state">No visitor journeys in this range yet.</p>';
+    };
+    if (!rows.length) {
+      $("#journey-list").innerHTML = '<p class="empty-state">No visitor journeys in this range yet.</p>';
+      return;
+    }
+    const newLayoutVisitors = rows.filter((row) => new Date(row.first_visit).getTime() >= layoutUpdateAt);
+    const earlierVisitors = rows.filter((row) => new Date(row.first_visit).getTime() < layoutUpdateAt);
+    const divider = earlierVisitors.length
+      ? `<div class="journey-divider"><span>Earlier visitors · before this layout update (${earlierVisitors.length})</span></div>`
+      : "";
+    $("#journey-list").innerHTML = `${newLayoutVisitors.map(renderJourney).join("")}${divider}${earlierVisitors.map(renderJourney).join("")}`;
   };
 
   const eventDetail = (event) => {
     const meta = event.event_metadata || {};
     if (["video_progress", "video_complete"].includes(event.event_name)) return `${Number(meta.progress || event.event_value || 0)}% · ${seconds(meta.watch_seconds)} actually watched`;
     if (["video_play", "video_pause", "video_watch"].includes(event.event_name)) return `${seconds(meta.video_time)} into video · ${seconds(meta.watch_seconds)} actually watched`;
-    if (event.event_name === "section_view") return `Section ${Number(meta.section_order || event.event_value || 0)} of 14`;
+    if (event.event_name === "section_view") {
+      const total = Number(meta.section_total || 0);
+      return total
+        ? `Section ${Number(meta.section_order || event.event_value || 0)} of ${total}`
+        : `Section ${Number(meta.section_order || event.event_value || 0)}`;
+    }
     if (event.event_name === "contact_channel_click") return event.event_label || meta.channel || "Contact selected";
     return event.event_label || event.page_path || "";
   };

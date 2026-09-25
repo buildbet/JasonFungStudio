@@ -40,6 +40,9 @@ code { padding: 2px 5px; border-radius: 5px; background: #eef2f6; }
 .dashboard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .journey-panel { margin-top: 18px; }
 .journey-list { display: grid; gap: 8px; }
+.journey-divider { display: flex; align-items: center; gap: 12px; padding: 11px 2px; color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .055em; text-align: center; text-transform: uppercase; }
+.journey-divider::before, .journey-divider::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+.journey-divider span { flex: 0 1 auto; }
 .journey-row { width: 100%; display: grid; grid-template-columns: minmax(150px, 1.2fr) repeat(6, minmax(85px, .8fr)); gap: 12px; align-items: center; padding: 13px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); text-align: left; }
 .journey-row:hover { border-color: #b2ccff; background: #f8faff; }
 .journey-identity strong, .journey-row > span strong { display: block; font-size: .82rem; }
