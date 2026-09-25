@@ -242,6 +242,8 @@ h1 em, h2 em { color: var(--pink); font-family: var(--serif); font-weight: 400; 
 .reserve-form input::placeholder { color: #8b806c; }
 .reserve-note { margin: 10px 0 0; color: #766b58; font-size: .78rem; }
 .reserve-note a { color: #9c6200; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.hero-bonus-note { width: min(100%, 720px); margin: 14px auto 0; color: #5f4a20; font-size: .86rem; line-height: 1.45; }
+.hero-bonus-note strong { color: #9c6200; }
 .reserve-status { min-height: 22px; margin: 10px 0 0; color: #ffafbd; font-size: .86rem; }
 .mini-scheduler { width: min(100%, 860px); margin: 30px auto 0; padding: clamp(22px, 4vw, 38px); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; background: #11111a; text-align: left; box-shadow: 0 30px 90px rgba(0,0,0,.35); }
 .scheduler-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
