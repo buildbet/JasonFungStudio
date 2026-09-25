@@ -192,7 +192,8 @@ Deno.serve(async (request) => {
     const eventName = text(body.event_name, 50);
     const allowedEvents = new Set([
       "video_play", "video_pause", "video_progress", "video_watch", "video_complete",
-      "form_start", "reserve_cta_click", "reserve_submit", "confirmation_view", "contact_channel_click"
+      "form_start", "reserve_cta_click", "reserve_submit", "confirmation_view", "contact_channel_click",
+      "section_view"
     ]);
     if (!validUuid(eventId) || !allowedEvents.has(eventName)) {
       return Response.json({ error: "Invalid custom event" }, { status: 422, headers });
@@ -203,7 +204,10 @@ Deno.serve(async (request) => {
       video_time: integer(rawMetadata.video_time, 0, 86400),
       video_duration: integer(rawMetadata.video_duration, 0, 86400),
       watch_seconds: integer(rawMetadata.watch_seconds, 0, 86400),
-      channel: text(rawMetadata.channel, 30) || null
+      channel: text(rawMetadata.channel, 30) || null,
+      section_id: text(rawMetadata.section_id, 80) || null,
+      section_name: text(rawMetadata.section_name, 120) || null,
+      section_order: integer(rawMetadata.section_order, 0, 999)
     };
     const numericValue = Number(body.event_value);
     const { error } = await supabase.from("analytics_events").upsert({

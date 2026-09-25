@@ -113,7 +113,8 @@ if (!configured) {
     reserve_cta_click: "Clicked reserve CTA",
     reserve_submit: "Submitted reservation",
     confirmation_view: "Reached confirmation page",
-    contact_channel_click: "Selected contact channel"
+    contact_channel_click: "Selected contact channel",
+    section_view: "Reached section"
   };
 
   const renderJourneys = (rows = []) => {
@@ -128,6 +129,7 @@ if (!configured) {
         <span><strong>${escapeHtml(sourceLabel(row.first_source, row.first_medium))}</strong><small>First source</small></span>
         <span><strong>${escapeHtml(seconds(row.total_seconds))}</strong><small>Total time</small></span>
         <span><strong>${progress ? `${progress}%` : "Not played"}</strong><small>${Number(row.video_watch_seconds || 0) ? `${seconds(row.video_watch_seconds)} watched` : "Video"}</small></span>
+        <span><strong>${escapeHtml(row.furthest_section || "Not tracked")}</strong><small>Furthest section</small></span>
         <span class="${row.converted ? "journey-converted" : ""}"><strong>${row.converted ? "Reserved" : "In progress"}</strong><small>${escapeHtml(row.location || "Unknown")}</small></span>
       </button>`;
     }).join("") : '<p class="empty-state">No visitor journeys in this range yet.</p>';
@@ -137,6 +139,7 @@ if (!configured) {
     const meta = event.event_metadata || {};
     if (["video_progress", "video_complete"].includes(event.event_name)) return `${Number(meta.progress || event.event_value || 0)}% · ${seconds(meta.watch_seconds)} actually watched`;
     if (["video_play", "video_pause", "video_watch"].includes(event.event_name)) return `${seconds(meta.video_time)} into video · ${seconds(meta.watch_seconds)} actually watched`;
+    if (event.event_name === "section_view") return `Section ${Number(meta.section_order || event.event_value || 0)} of 14`;
     if (event.event_name === "contact_channel_click") return event.event_label || meta.channel || "Contact selected";
     return event.event_label || event.page_path || "";
   };
@@ -154,6 +157,9 @@ if (!configured) {
     const visitor = data?.visitor || {};
     const sessions = data?.sessions || [];
     const events = data?.events || [];
+    const furthestSection = events
+      .filter((event) => event.event_name === "section_view")
+      .sort((a, b) => Number(b.event_value || 0) - Number(a.event_value || 0))[0];
     $("#journey-dialog-content").innerHTML = `
       <div class="journey-summary">
         <div><span>First seen</span><strong>${escapeHtml(shortDate(visitor.first_seen_at))}</strong></div>
@@ -162,6 +168,7 @@ if (!configured) {
         <div><span>First source</span><strong>${escapeHtml(sourceLabel(visitor.first_source, visitor.first_medium))}</strong></div>
         <div><span>Latest source</span><strong>${escapeHtml(sourceLabel(visitor.latest_source, visitor.latest_medium))}</strong></div>
         <div><span>Device</span><strong>${escapeHtml(visitor.device_type || "Unknown")}</strong></div>
+        <div><span>Furthest section</span><strong>${escapeHtml(furthestSection?.event_label || "Not tracked")}</strong></div>
       </div>
       <div class="timeline">${events.length ? events.map((event) => `<div class="timeline-item">
         <strong>${escapeHtml(eventNames[event.event_name] || event.event_name)}</strong>

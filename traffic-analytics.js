@@ -224,6 +224,42 @@
   });
 
   const setupJourneyTracking = () => {
+    const sections = [...document.querySelectorAll("[data-analytics-section]")];
+    if (sections.length) {
+      const reachedSections = new Set();
+      const reportSection = (section) => {
+        const sectionId = clampText(section.dataset.analyticsSection, 80);
+        if (!sectionId || reachedSections.has(sectionId)) return;
+        reachedSections.add(sectionId);
+        const sectionName = clampText(section.dataset.analyticsSectionName || sectionId, 120);
+        const sectionOrder = Math.max(0, Math.min(999, Number(section.dataset.analyticsSectionOrder) || 0));
+        trackEvent("section_view", {
+          label: sectionName,
+          value: sectionOrder,
+          metadata: { section_id: sectionId, section_name: sectionName, section_order: sectionOrder }
+        });
+      };
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+              reportSection(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: [0.1] });
+        sections.forEach((section) => observer.observe(section));
+      } else {
+        const reportVisibleSections = () => sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < innerHeight * 0.9 && rect.bottom > innerHeight * 0.1) reportSection(section);
+        });
+        reportVisibleSections();
+        addEventListener("scroll", reportVisibleSections, { passive: true });
+      }
+    }
+
     const video = document.querySelector("#vsl-video");
     if (video) {
       const milestones = new Set();
